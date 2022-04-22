@@ -1,0 +1,16 @@
+kube-prometheus-stack:
+  fullnameOverride: weaveworks-prometheus
+  enabled: true
+  grafana:
+    enabled: false
+  prometheus:
+    server:
+      remoteWrite:
+      - url: "ttps://prometheus-us-central1.grafana.net/api/prom/push"
+        basicAuth:
+            username:
+              name: grafana-cloud-secret
+              key: username
+            password:
+              name: grafana-cloud-secret
+              key: password
