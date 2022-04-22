@@ -99,7 +99,10 @@ jobs:
         - name: Create wego-system namespace (kind)
           if: steps.compile-and-sort-layers.outputs.kind-ci == 'true' 
           run: kubectl create namespace wego-system
-
+          
+        - name: Install flux CRDs
+          if: steps.compile-and-sort-layers.outputs.kind-ci == 'true' 
+          run:  kubectl apply -k https://raw.githubusercontent.com/fluxcd/flux2/main/manifests/crds/kustomization.yaml
         - name: Test kind platform (kind)
           if: steps.compile-and-sort-layers.outputs.kind-ci == 'true' 
           env:
