@@ -1,0 +1,14 @@
+.conf/**
+.repo
+.repo/**
+.DS_Store
+*.tgz
+*.tar
+team-quick-silver
+terraform.tfvars.json
+.terraform/
+terraform.tfstate*
+.terraform*
+cluster.yaml
+config.yaml
+embedded_vCSA_on_ESXi.json

@@ -1,0 +1,19 @@
+{
+    "autodiscover": "false",
+    "branchPrefix": "renovate/",
+    "dryRun": false,
+    "username": "renovate-release",
+    "gitAuthor": "Renovate Bot <bot@renovateapp.com>",
+    "onboarding": false,
+    "platform": "github",
+    "repositories": ["weavegitops/skeleton-profiles-catalog"],
+    "extends": [
+      "config:base",
+      ":disableDependencyDashboard"
+    ],
+    "labels": [
+      "dependencies"
+    ],
+    "assigneesFromCodeOwners": false
+  }
+  
