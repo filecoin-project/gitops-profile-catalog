@@ -6,7 +6,7 @@
     "gitAuthor": "Renovate Bot <bot@renovateapp.com>",
     "onboarding": false,
     "platform": "github",
-    "repositories": ["weavegitops/skeleton-profiles-catalog"],
+    "repositories": ["filecoin-project/gitops-profile-catalog"],
     "extends": [
       "config:base",
       ":disableDependencyDashboard"
