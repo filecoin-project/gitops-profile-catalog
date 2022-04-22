@@ -48,4 +48,4 @@ jobs:
           charts_dir: charts
           charts_repo_url: https://raw.githubusercontent.com/filecoin-project/gitops-profile-catalog/gh-pages/
         env:
-          YACR_TOKEN: "${{ secrets.WEAVEWORKSBOT_PROFILES_CATALOG_RELEASE_TOKEN }}"
+          YACR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
