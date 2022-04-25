@@ -16,7 +16,7 @@ spec:
   decryption:
     provider: sops
     secretRef:
-      name: wge-prod-sops-gpg
+      name: profiles-sops-gpg
   path: "./profiles/prometheus/secrets"
   prune: true
   sourceRef:
