@@ -1,5 +1,43 @@
 apiVersion: v1
 entries:
+  external-dns:
+  - annotations:
+      weave.works/category: dns
+      weave.works/layer: layer-1
+      weave.works/links: |
+        - name: Chart Sources
+          url: https://github.com/bitnami/charts/tree/master/bitnami/external-dns
+        - name: Upstream Project
+          url: https://github.com/bitnami/charts/tree/master/bitnami/external-dns
+      weave.works/operator: "true"
+      weave.works/profile: external-dns
+      weave.works/profile-ci: |
+        - "gke"
+        - "kind"
+    apiVersion: v2
+    created: "2022-04-27T18:32:07.99182464Z"
+    dependencies:
+    - name: external-dns
+      repository: https://charts.bitnami.com/bitnami
+      version: 6.2.7
+    description: A Weaveworks Helm chart for external dns
+    digest: 66e5159dba3e4e4ef626615e49d1d1826cae8067155b4e1a15484394f45bf82d
+    home: https://github.com/weaveworks/profiles-catalog
+    icon: https://raw.githubusercontent.com/external-dns/external-dns.github.io/master/assets/external-dns_logo-cb55bb5c346.png
+    keywords:
+    - operator
+    - dns
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: external-dns
+    sources:
+    - https://github.com/bitnami/charts/tree/master/bitnami/external-dns
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/external-dns-0.0.1/external-dns-0.0.1.tgz
+    version: 0.0.1
   ingress-nginx:
   - annotations:
       weave.works/category: Ingress
@@ -121,4 +159,4 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/prometheus-0.0.12/prometheus-0.0.12.tgz
     version: 0.0.12
-generated: "2022-04-27T17:48:36.878067081Z"
+generated: "2022-04-27T18:32:07.991839641Z"
