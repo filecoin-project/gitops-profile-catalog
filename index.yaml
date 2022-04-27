@@ -1,5 +1,45 @@
 apiVersion: v1
 entries:
+  cert-manager:
+  - annotations:
+      weave.works/category: Certificate
+      weave.works/layer: layer-0
+      weave.works/links: |
+        - name: Chart Sources
+          url: https://charts.jetstack.io
+        - name: Upstream Project
+          url: https://github.com/jetstack/cert-manager
+      weave.works/operator: "true"
+      weave.works/profile: cert-manager
+      weave.works/profile-ci: |
+        - "gke"
+        - "kind"
+    apiVersion: v2
+    created: "2022-04-27T19:05:59.596157003Z"
+    dependencies:
+    - name: cert-manager
+      repository: https://charts.jetstack.io
+      version: 1.6.0
+    description: A Weaveworks Helm chart for the Certificate Profile
+    digest: 7e2b5caee388ffc10dd35eb02bf44b8f78212ec5d8369b0ed88b3b9c67b37ed6
+    home: https://github.com/weaveworks/profiles-catalog
+    icon: https://raw.githubusercontent.com/jetstack/cert-manager/master/logo/logo.png
+    keywords:
+    - cert-manager
+    - kube-lego
+    - letsencrypt
+    - tls
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: cert-manager
+    sources:
+    - https://charts.jetstack.io
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/cert-manager-0.0.7/cert-manager-0.0.7.tgz
+    version: 0.0.7
   external-dns:
   - annotations:
       weave.works/category: dns
@@ -159,4 +199,4 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/prometheus-0.0.12/prometheus-0.0.12.tgz
     version: 0.0.12
-generated: "2022-04-27T18:32:07.991839641Z"
+generated: "2022-04-27T19:05:59.596173704Z"
