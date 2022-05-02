@@ -1,0 +1,30 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: GitRepository
+metadata:
+  name: storetheindex
+  namespace: default
+spec:
+  interval: 5m0s
+  url: {{ .Values.url }}
+  ref:
+    branch: main
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: storetheindex
+  namespace: {{ template "storetheindex.namespace" . }}
+  labels:
+    app: {{ template "storetheindex.name" . }}
+    chart: {{ template "storetheindex.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  interval: 5m
+  path: "./deploy/manifests/dev-v2/us-east-2/cluster"
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: storetheindex
+  timeout: 2m
