@@ -1,0 +1,33 @@
+apiVersion: v2
+name: storetheindex
+icon: https://raw.githubusercontent.com/storetheindex/storetheindex.github.io/master/assets/storetheindex_logo-cb55bb5c346.png
+description: A Weaveworks Helm chart for storetheindex
+type: application
+version: 0.0.1
+kubeVersion: ">=1.16.0-0"
+home: https://github.com/weaveworks/profiles-catalog
+sources:
+  - https://github.com/storetheindex-community/helm-charts
+  - https://github.com/storetheindex-operator/kube-storetheindex
+
+keywords:
+- storetheindex
+
+annotations:
+  "weave.works/profile": storetheindex
+  "weave.works/category": client
+  "weave.works/operator": "true"
+  "weave.works/layer": layer-1
+  "weave.works/links": |
+    - name: Chart Sources
+      url: https://github.com/storetheindex-community/helm-charts
+    - name: Upstream Project
+      url: https://github.com/storetheindex-operator/kube-storetheindex
+  "weave.works/profile-ci": |
+    - "gke"
+    - "kind"
+
+maintainers:
+  - name: Weaveworks
+    email: support@weave.works
+

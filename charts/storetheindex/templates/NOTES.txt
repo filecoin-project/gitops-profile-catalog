@@ -1,0 +1,4 @@
+{{ $.Chart.Name }} has been installed. Check its status by running:
+  kubectl --namespace {{ template "kube-storetheindex-stack.namespace" . }} get pods -l "release={{ $.Release.Name }}"
+
+Visit https://github.com/storetheindex-operator/kube-storetheindex for instructions on how to create & configure Alertmanager and storetheindex instances using the Operator.
