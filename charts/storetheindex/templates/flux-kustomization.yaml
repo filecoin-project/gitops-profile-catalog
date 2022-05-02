@@ -3,7 +3,7 @@ apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: GitRepository
 metadata:
   name: storetheindex
-  namespace: default
+  namespace: {{ template "storetheindex.namespace" . }}
 spec:
   interval: 5m0s
   url: {{ .Values.url }}
@@ -27,4 +27,5 @@ spec:
   sourceRef:
     kind: GitRepository
     name: storetheindex
+    namespace: {{ template "storetheindex.namespace" . }}
   timeout: 2m
