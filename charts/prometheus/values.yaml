@@ -6,7 +6,7 @@ kube-prometheus-stack:
   prometheus:
     server:
       remoteWrite:
-      - url: "ttps://prometheus-us-central1.grafana.net/api/prom/push"
+      - url: "https://prometheus-us-central1.grafana.net/api/prom/push"
         basicAuth:
           username:
             name: grafana-cloud-secret
