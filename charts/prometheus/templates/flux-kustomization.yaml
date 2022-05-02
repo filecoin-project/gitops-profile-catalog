@@ -3,9 +3,6 @@ kind: Kustomization
 metadata:
   name: prometheus-secrets
   namespace: {{ template "prometheus.namespace" . }}
-  annotations:
-    "helm.sh/hook": "pre-install"
-    "helm.sh/hook-delete-policy": "before-hook-creation"
   labels:
     app: {{ template "prometheus.name" . }}
     chart: {{ template "prometheus.chart" . }}
@@ -16,10 +13,11 @@ spec:
   decryption:
     provider: sops
     secretRef:
-      name: profiles-sops-gpg
+      name: wge-profiles-sops-gpg
   path: "./profiles/prometheus/secrets"
   prune: true
   sourceRef:
     kind: GitRepository
-    name: wego-auto-github-gitops-root
+    name: flux-system
+    namespace: flux-system
   timeout: 2m
