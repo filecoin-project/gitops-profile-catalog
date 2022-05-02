@@ -25,7 +25,6 @@ annotations:
       url: https://github.com/storetheindex-operator/kube-storetheindex
   "weave.works/profile-ci": |
     - "gke"
-    - "kind"
 
 maintainers:
   - name: Weaveworks
