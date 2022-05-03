@@ -131,6 +131,47 @@ entries:
         - "gke"
         - "kind"
     apiVersion: v2
+    created: "2022-05-03T11:26:45.827556148Z"
+    dependencies:
+    - condition: kube-prometheus-stack.enabled
+      name: kube-prometheus-stack
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 19.2.2
+    description: A Weaveworks Helm chart for observability
+    digest: d4973c5ae5af5644c5c9fc47d42aa5d0f45e0549128d91b171919ab66a91cbc8
+    home: https://github.com/weaveworks/profiles-catalog
+    icon: https://raw.githubusercontent.com/prometheus/prometheus.github.io/master/assets/prometheus_logo-cb55bb5c346.png
+    keywords:
+    - operator
+    - prometheus
+    - kube-prometheus
+    - observability
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: prometheus
+    sources:
+    - https://github.com/prometheus-community/helm-charts
+    - https://github.com/prometheus-operator/kube-prometheus
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/prometheus-0.0.17/prometheus-0.0.17.tgz
+    version: 0.0.17
+  - annotations:
+      weave.works/category: Observability
+      weave.works/layer: layer-1
+      weave.works/links: |
+        - name: Chart Sources
+          url: https://github.com/prometheus-community/helm-charts
+        - name: Upstream Project
+          url: https://github.com/prometheus-operator/kube-prometheus
+      weave.works/operator: "true"
+      weave.works/profile: prometheus
+      weave.works/profile-ci: |
+        - "gke"
+        - "kind"
+    apiVersion: v2
     created: "2022-05-03T11:04:05.927249763Z"
     dependencies:
     - condition: kube-prometheus-stack.enabled
@@ -336,6 +377,38 @@ entries:
       weave.works/profile-ci: |
         - "gke"
     apiVersion: v2
+    created: "2022-05-03T11:26:45.949315839Z"
+    description: A Weaveworks Helm chart for storetheindex
+    digest: efd2a7c94893fa825580f6022e471cb90ec63c1879fe7b4df86104d757cdddd7
+    home: https://github.com/weaveworks/profiles-catalog
+    icon: https://raw.githubusercontent.com/storetheindex/storetheindex.github.io/master/assets/storetheindex_logo-cb55bb5c346.png
+    keywords:
+    - storetheindex
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: storetheindex
+    sources:
+    - https://github.com/storetheindex-community/helm-charts
+    - https://github.com/storetheindex-operator/kube-storetheindex
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/storetheindex-0.0.4/storetheindex-0.0.4.tgz
+    version: 0.0.4
+  - annotations:
+      weave.works/category: client
+      weave.works/layer: layer-1
+      weave.works/links: |
+        - name: Chart Sources
+          url: https://github.com/storetheindex-community/helm-charts
+        - name: Upstream Project
+          url: https://github.com/storetheindex-operator/kube-storetheindex
+      weave.works/operator: "true"
+      weave.works/profile: storetheindex
+      weave.works/profile-ci: |
+        - "gke"
+    apiVersion: v2
     created: "2022-05-03T11:04:06.058769478Z"
     description: A Weaveworks Helm chart for storetheindex
     digest: ceb1be9c6dc9f266fe2b79641bcf1210cb03ad855c3d284751f1d0b925c803a7
@@ -421,4 +494,4 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/storetheindex-0.0.1/storetheindex-0.0.1.tgz
     version: 0.0.1
-generated: "2022-05-03T11:04:06.05880888Z"
+generated: "2022-05-03T11:26:45.949449447Z"
