@@ -8,7 +8,7 @@ kube-prometheus-stack:
   grafana:
     enabled: false
   prometheus:
-    server:
+    prometheusSpec:
       remoteWrite:
       - url: "https://prometheus-us-central1.grafana.net/api/prom/push"
         basicAuth:
