@@ -19,7 +19,6 @@ metadata:
   namespace: {{ template "storetheindex.namespace" . }}
   labels:
     {{- include "storetheindex.labels" . | nindent 4 }}   
-    
 spec:
   interval: 5m
   path: "./deploy/manifests/dev-v2/us-east-2/cluster"
