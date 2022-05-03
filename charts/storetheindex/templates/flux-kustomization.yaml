@@ -4,6 +4,8 @@ kind: GitRepository
 metadata:
   name: storetheindex
   namespace: {{ template "storetheindex.namespace" . }}
+  labels:
+    {{- include "storetheindex.labels" . | nindent 4 }}   
 spec:
   interval: 5m0s
   url: {{ .Values.url }}
@@ -16,10 +18,7 @@ metadata:
   name: storetheindex
   namespace: {{ template "storetheindex.namespace" . }}
   labels:
-    app: {{ template "storetheindex.name" . }}
-    chart: {{ template "storetheindex.chart" . }}
-    release: {{ .Release.Name }}
-    heritage: {{ .Release.Service }}
+    {{- include "storetheindex.labels" . | nindent 4 }}   
 spec:
   interval: 5m
   path: "./deploy/manifests/dev-v2/us-east-2/cluster"

@@ -4,10 +4,8 @@ metadata:
   name: prometheus-secrets
   namespace: {{ template "prometheus.namespace" . }}
   labels:
-    app: {{ template "prometheus.name" . }}
-    chart: {{ template "prometheus.chart" . }}
-    release: {{ .Release.Name }}
-    heritage: {{ .Release.Service }}
+    {{- include "prometheus.labels" . | nindent 4 }}
+
 spec:
   interval: 5m
   decryption:
