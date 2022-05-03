@@ -1,3 +1,7 @@
+sourceRef:
+  namespace: flux-system
+  name: flux-system
+
 kube-prometheus-stack:
   fullnameOverride: weaveworks-prometheus
   enabled: true
