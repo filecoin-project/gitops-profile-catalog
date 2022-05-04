@@ -2,9 +2,9 @@ apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
   name: dex-secrets
-  namespace: {{ template "dex-secrets.namespace" . }}
+  namespace: {{ template "dex.namespace" . }}
   labels:
-    {{- include "dex-secrets.labels" . | nindent 4 }}
+    {{- include "dex.labels" . | nindent 4 }}
 spec:
   interval: 5m
   decryption:
