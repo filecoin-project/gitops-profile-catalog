@@ -66,7 +66,12 @@ dex:
         # flag which will switch from using the internal GitHub id to the users handle (@mention) as the user id.
         # It is possible for a user to change their own user name but it is very rare for them to do so
         useLoginAsID: true
-
+        staticClients:
+        - id: web-app
+          redirectURIs:
+          - 'https://nonprod-gitops.w3ops.net/oauth2/callback'
+          name: 'WGE app'
+          secret: wge-dex-secret
   ingress:
     enabled: true
     className: nginx
