@@ -1,3 +1,8 @@
+kustomization:
+  path: "./profiles/dex/wge-nonprod/secrets"
+sourceRef:
+  namespace: wego-system
+  name: wego-auto-github-gitops-root
 dex:
   enabled: true
   config:

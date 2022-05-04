@@ -1,0 +1,20 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: dex-secrets
+  namespace: {{ template "dex-secrets.namespace" . }}
+  labels:
+    {{- include "dex-secrets.labels" . | nindent 4 }}
+spec:
+  interval: 5m
+  decryption:
+    provider: sops
+    secretRef:
+      name: wge-profiles-sops-gpg
+  path: {{ .Values.kustomization.path }}
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: {{ .Values.sourceRef.name }}
+    namespace:  {{ .Values.sourceRef.namespace }}
+  timeout: 2m
