@@ -1,1 +1,5 @@
+sourceRef:
+  namespace: flux-system
+  name: flux-system
+
 url: https://github.com/steve-fraser/storetheindex
