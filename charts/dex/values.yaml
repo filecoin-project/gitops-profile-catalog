@@ -73,15 +73,5 @@ dex:
           - path: /
             pathType: ImplementationSpecific
   envFrom:
-  - name: GITHUB_CLIENT_ID
-    valueFrom:
-      secretKeyRef:
-        name: dex-auth
-        key: GITHUB_CLIENT_ID
-        optional: false
-  - name: SECRET_USERNAME
-    valueFrom:
-      secretKeyRef:
-        name: dex-auth
-        key: SECRET_USERNAME
-        optional: false
+  - secretKeyRef:
+      name: dex-auth
