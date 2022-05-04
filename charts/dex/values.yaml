@@ -4,11 +4,22 @@ sourceRef:
   namespace: wego-system
   name: wego-auto-github-gitops-root
 dex:
+  enabled: true
+  config:
+    issuer: https://nonprod-auth.w3ops.net
+    storage:
+      type: memory
+    enablePasswordDB: true
   ingress:
     enabled: true
     className: nginx
     annotations:
       cert-manager.io/cluster-issuer: letsencrypt
+    hosts:
+      - host: nonprod-auth.w3ops.net
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
   envFrom:
   - secretRef:
       name: dex-auth
