@@ -73,5 +73,5 @@ dex:
           - path: /
             pathType: ImplementationSpecific
   envFrom:
-  - secretKeyRef:
+  - secretRef:
       name: dex-auth
