@@ -457,6 +457,38 @@ entries:
       weave.works/profile-ci: |
         - "gke"
     apiVersion: v2
+    created: "2022-05-04T11:42:53.941875356Z"
+    description: A Weaveworks Helm chart for storetheindex
+    digest: 57ff9d4a82e308f4b161b9bb3f46c46beb47b95e07e0a83dcdf10ef35dac51fa
+    home: https://github.com/weaveworks/profiles-catalog
+    icon: https://raw.githubusercontent.com/storetheindex/storetheindex.github.io/master/assets/storetheindex_logo-cb55bb5c346.png
+    keywords:
+    - storetheindex
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: storetheindex
+    sources:
+    - https://github.com/storetheindex-community/helm-charts
+    - https://github.com/storetheindex-operator/kube-storetheindex
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/storetheindex-0.0.5/storetheindex-0.0.5.tgz
+    version: 0.0.5
+  - annotations:
+      weave.works/category: client
+      weave.works/layer: layer-1
+      weave.works/links: |
+        - name: Chart Sources
+          url: https://github.com/storetheindex-community/helm-charts
+        - name: Upstream Project
+          url: https://github.com/storetheindex-operator/kube-storetheindex
+      weave.works/operator: "true"
+      weave.works/profile: storetheindex
+      weave.works/profile-ci: |
+        - "gke"
+    apiVersion: v2
     created: "2022-05-03T11:26:45.949315839Z"
     description: A Weaveworks Helm chart for storetheindex
     digest: efd2a7c94893fa825580f6022e471cb90ec63c1879fe7b4df86104d757cdddd7
@@ -574,4 +606,4 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/storetheindex-0.0.1/storetheindex-0.0.1.tgz
     version: 0.0.1
-generated: "2022-05-03T12:30:01.639800437Z"
+generated: "2022-05-04T11:42:53.942217461Z"
