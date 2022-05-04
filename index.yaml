@@ -79,7 +79,80 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/cert-manager-0.0.7/cert-manager-0.0.7.tgz
     version: 0.0.7
+  dex:
+  - annotations:
+      weave.works/links: |
+        - name: Chart Sources
+          url: https://github.com/dexidp/helm-charts
+        - name: Upstream Project
+          url: https://github.com/dexidp/dex
+      weave.works/operator: "true"
+      weave.works/profile: dex
+      weave.works/profile-ci: |
+        - "gke"
+    apiVersion: v2
+    created: "2022-05-04T16:20:19.221670853Z"
+    dependencies:
+    - condition: dex.enabled
+      name: dex
+      repository: https://charts.dexidp.io
+      version: 0.6.5
+    description: A Weaveworks Helm chart for OpenID Connect (OIDC)
+    digest: d59d98de3e9b8b0813a106a77bec544f8d31fbfb5ea80cdb2d641ea0e9d27a40
+    home: https://github.com/weaveworks/profiles-catalog
+    icon: https://dexidp.io/img/logos/dex-horizontal-color.png
+    keywords:
+    - dex
+    - oidc
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: dex
+    sources:
+    - https://github.com/dexidp/helm-charts
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/dex-0.0.12/dex-0.0.12.tgz
+    version: 0.0.12
   external-dns:
+  - annotations:
+      weave.works/category: dns
+      weave.works/layer: layer-1
+      weave.works/links: |
+        - name: Chart Sources
+          url: https://github.com/bitnami/charts/tree/master/bitnami/external-dns
+        - name: Upstream Project
+          url: https://github.com/bitnami/charts/tree/master/bitnami/external-dns
+      weave.works/operator: "true"
+      weave.works/profile: external-dns
+      weave.works/profile-ci: |
+        - "gke"
+        - "kind"
+    apiVersion: v2
+    created: "2022-05-04T16:20:19.370029746Z"
+    dependencies:
+    - name: external-dns
+      repository: https://charts.bitnami.com/bitnami
+      version: 6.2.7
+    description: A Weaveworks Helm chart for external dns
+    digest: 46b7f6ba4ee5447e8227f95dcc6fb70501cda7c0c71fc2f2c4c80376bfb80fbb
+    home: https://github.com/weaveworks/profiles-catalog
+    icon: https://raw.githubusercontent.com/external-dns/external-dns.github.io/master/assets/external-dns_logo-cb55bb5c346.png
+    keywords:
+    - operator
+    - dns
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: external-dns
+    sources:
+    - https://github.com/bitnami/charts/tree/master/bitnami/external-dns
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/external-dns-0.0.2/external-dns-0.0.2.tgz
+    version: 0.0.2
   - annotations:
       weave.works/category: dns
       weave.works/layer: layer-1
@@ -606,4 +679,4 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/storetheindex-0.0.1/storetheindex-0.0.1.tgz
     version: 0.0.1
-generated: "2022-05-04T11:42:53.942217461Z"
+generated: "2022-05-04T16:20:19.370260158Z"
