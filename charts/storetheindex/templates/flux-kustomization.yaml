@@ -44,7 +44,7 @@ metadata:
     {{- include "storetheindex.labels" . | nindent 4 }}   
 spec:
   interval: 5m
-  path: "./deploy/manifests/dev-v2/us-east-2/cluster"
+  path: {{ .Values.path }}
   prune: true
   sourceRef:
     kind: GitRepository
