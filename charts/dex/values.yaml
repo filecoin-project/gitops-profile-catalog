@@ -1,6 +1,6 @@
 secrets:
   url: https://github.com/filecoin-project/gitops-profile-catalog
-  path: "./secrets/dex/wge-nonprod/secrets"
+  path: "./secrets/dex/wge-nonprod"
 
 sourceRef:
   namespace: wego-system
