@@ -1,0 +1,35 @@
+apiVersion: v2
+name: dex
+icon: https://dexidp.io/img/logos/dex-horizontal-color.png
+description: A Weaveworks Helm chart for OpenID Connect (OIDC)
+type: application
+version: 0.0.21
+kubeVersion: ">=1.16.0-0"
+home: https://github.com/weaveworks/profiles-catalog
+sources:
+  - https://github.com/dexidp/helm-charts
+
+keywords:
+- dex
+- oidc
+
+maintainers:
+  - name: Weaveworks
+    email: support@weave.works
+
+annotations:
+  "weave.works/profile": dex
+  "weave.works/operator": "true"
+  "weave.works/links": |
+    - name: Chart Sources
+      url: https://github.com/dexidp/helm-charts
+    - name: Upstream Project
+      url: https://github.com/dexidp/dex
+  "weave.works/profile-ci": |
+    - "gke"
+
+dependencies:
+- name: dex
+  version: "0.6.5"
+  repository: "https://charts.dexidp.io"
+  condition: dex.enabled
