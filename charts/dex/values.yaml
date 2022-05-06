@@ -1,5 +1,7 @@
-kustomization:
-  path: "./profiles/dex/wge-nonprod/secrets"
+secrets:
+  url: https://github.com/filecoin-project/gitops-profile-catalog
+  path: "./secrets/dex/wge-nonprod/secrets"
+
 sourceRef:
   namespace: wego-system
   name: wego-auto-github-gitops-root
