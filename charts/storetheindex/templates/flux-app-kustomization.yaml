@@ -1,7 +1,7 @@
 apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: GitRepository
 metadata:
-  name: storetheindex-secrets
+  name: storetheindex-app
   namespace: {{ template "storetheindex.namespace" . }}
   labels:
     {{- include "storetheindex.labels" . | nindent 4 }}   
@@ -29,6 +29,6 @@ spec:
   prune: true
   sourceRef:
     kind: GitRepository
-    name: storetheindex-secrets
+    name: storetheindex-app
     namespace:  {{ template "storetheindex.namespace" . }}
   timeout: 2m
