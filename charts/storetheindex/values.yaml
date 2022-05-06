@@ -1,7 +1,9 @@
 secrets:
   url: https://github.com/filecoin-project/gitops-profile-catalog
   path: "./secrets/storetheindex"
+  serviceAccountName: flux-system
 
 app:
   url: https://github.com/steve-fraser/storetheindex
   path: "./deploy/manifests/sti-dev-v2/us-east-2/cluster"
+  serviceAccountName: flux-system
