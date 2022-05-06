@@ -3,7 +3,7 @@ name: storetheindex
 icon: https://raw.githubusercontent.com/storetheindex/storetheindex.github.io/master/assets/storetheindex_logo-cb55bb5c346.png
 description: A Weaveworks Helm chart for storetheindex
 type: application
-version: 0.0.15
+version: 0.0.16
 kubeVersion: ">=1.16.0-0"
 home: https://github.com/weaveworks/profiles-catalog
 sources:
