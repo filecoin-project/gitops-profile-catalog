@@ -1,6 +1,6 @@
-sourceRef:
-  namespace: flux-system
-  name: flux-system
+secrets:
+  url: https://github.com/filecoin-project/gitops-profile-catalog
+  path: "./profiles/secrets/prometheus"
 
 kube-prometheus-stack:
   fullnameOverride: weaveworks-prometheus

@@ -1,20 +1,36 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: GitRepository
+metadata:
+  name: prometheus
+  namespace: {{ template "prometheus.namespace" . }}
+  labels:
+    {{- include "prometheus.labels" . | nindent 4 }}   
+spec:
+  interval: 5m0s
+  url: {{ .Values.app.url }}
+  ref:
+    branch: main
+  secretRef:
+    name: github-auth
+---
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
   name: prometheus-secrets
   namespace: {{ template "prometheus.namespace" . }}
   labels:
-    {{- include "prometheus.labels" . | nindent 4 }}
+    {{- include "prometheus.labels" . | nindent 4 }}   
 spec:
   interval: 5m
   decryption:
     provider: sops
     secretRef:
       name: wge-profiles-sops-gpg
-  path: "./profiles/prometheus/secrets"
+  path: {{ .Values.secrets.path }}
   prune: true
   sourceRef:
     kind: GitRepository
-    name: {{ .Values.sourceRef.name }}
-    namespace:  {{ .Values.sourceRef.namespace }}
+    name: prometheus
+    namespace: {{ template "prometheus.namespace" . }}
   timeout: 2m
