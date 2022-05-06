@@ -130,6 +130,41 @@ entries:
       weave.works/profile-ci: |
         - "gke"
     apiVersion: v2
+    created: "2022-05-06T16:34:35.493338208Z"
+    dependencies:
+    - condition: dex.enabled
+      name: dex
+      repository: https://charts.dexidp.io
+      version: 0.6.5
+    description: A Weaveworks Helm chart for OpenID Connect (OIDC)
+    digest: cd66c7eef94b128dda44c916011a2ae0868c301f762ac21ca74a12c9a5743b0d
+    home: https://github.com/weaveworks/profiles-catalog
+    icon: https://dexidp.io/img/logos/dex-horizontal-color.png
+    keywords:
+    - dex
+    - oidc
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: dex
+    sources:
+    - https://github.com/dexidp/helm-charts
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/dex-0.0.22/dex-0.0.22.tgz
+    version: 0.0.22
+  - annotations:
+      weave.works/links: |
+        - name: Chart Sources
+          url: https://github.com/dexidp/helm-charts
+        - name: Upstream Project
+          url: https://github.com/dexidp/dex
+      weave.works/operator: "true"
+      weave.works/profile: dex
+      weave.works/profile-ci: |
+        - "gke"
+    apiVersion: v2
     created: "2022-05-06T11:30:41.326334788Z"
     dependencies:
     - condition: dex.enabled
@@ -657,6 +692,47 @@ entries:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/ingress-nginx-0.0.10/ingress-nginx-0.0.10.tgz
     version: 0.0.10
   prometheus:
+  - annotations:
+      weave.works/category: Observability
+      weave.works/layer: layer-1
+      weave.works/links: |
+        - name: Chart Sources
+          url: https://github.com/prometheus-community/helm-charts
+        - name: Upstream Project
+          url: https://github.com/prometheus-operator/kube-prometheus
+      weave.works/operator: "true"
+      weave.works/profile: prometheus
+      weave.works/profile-ci: |
+        - "gke"
+        - "kind"
+    apiVersion: v2
+    created: "2022-05-06T16:34:35.667540872Z"
+    dependencies:
+    - condition: kube-prometheus-stack.enabled
+      name: kube-prometheus-stack
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 19.2.2
+    description: A Weaveworks Helm chart for observability
+    digest: ac79924f5286274c310d56ff8e2f576eac96a7200f15644c9c320bd3a69384cc
+    home: https://github.com/weaveworks/profiles-catalog
+    icon: https://raw.githubusercontent.com/prometheus/prometheus.github.io/master/assets/prometheus_logo-cb55bb5c346.png
+    keywords:
+    - operator
+    - prometheus
+    - kube-prometheus
+    - observability
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: prometheus
+    sources:
+    - https://github.com/prometheus-community/helm-charts
+    - https://github.com/prometheus-operator/kube-prometheus
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/prometheus-0.0.20/prometheus-0.0.20.tgz
+    version: 0.0.20
   - annotations:
       weave.works/category: Observability
       weave.works/layer: layer-1
@@ -1596,4 +1672,4 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/storetheindex-0.0.1/storetheindex-0.0.1.tgz
     version: 0.0.1
-generated: "2022-05-06T16:07:21.511667877Z"
+generated: "2022-05-06T16:34:35.667830875Z"
