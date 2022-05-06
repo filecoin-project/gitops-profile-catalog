@@ -21,6 +21,7 @@ metadata:
     {{- include "storetheindex.labels" . | nindent 4 }}
 spec:
   interval: 5m
+  serviceAccountName: kustomize-controller
   decryption:
     provider: sops
     secretRef:
