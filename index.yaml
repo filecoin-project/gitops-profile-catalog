@@ -15,6 +15,45 @@ entries:
         - "gke"
         - "kind"
     apiVersion: v2
+    created: "2022-05-06T11:30:41.119994026Z"
+    dependencies:
+    - name: cert-manager
+      repository: https://charts.jetstack.io
+      version: 1.8.0
+    description: A Weaveworks Helm chart for the Certificate Profile
+    digest: 30a32dc48f75623a74c4f03afa6608638d2791ec935244c79cf5da7ebf42675b
+    home: https://github.com/weaveworks/profiles-catalog
+    icon: https://raw.githubusercontent.com/jetstack/cert-manager/master/logo/logo.png
+    keywords:
+    - cert-manager
+    - kube-lego
+    - letsencrypt
+    - tls
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: cert-manager
+    sources:
+    - https://charts.jetstack.io
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/cert-manager-0.0.9/cert-manager-0.0.9.tgz
+    version: 0.0.9
+  - annotations:
+      weave.works/category: Certificate
+      weave.works/layer: layer-0
+      weave.works/links: |
+        - name: Chart Sources
+          url: https://charts.jetstack.io
+        - name: Upstream Project
+          url: https://github.com/jetstack/cert-manager
+      weave.works/operator: "true"
+      weave.works/profile: cert-manager
+      weave.works/profile-ci: |
+        - "gke"
+        - "kind"
+    apiVersion: v2
     created: "2022-05-03T12:30:01.639651039Z"
     dependencies:
     - name: cert-manager
@@ -80,6 +119,41 @@ entries:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/cert-manager-0.0.7/cert-manager-0.0.7.tgz
     version: 0.0.7
   dex:
+  - annotations:
+      weave.works/links: |
+        - name: Chart Sources
+          url: https://github.com/dexidp/helm-charts
+        - name: Upstream Project
+          url: https://github.com/dexidp/dex
+      weave.works/operator: "true"
+      weave.works/profile: dex
+      weave.works/profile-ci: |
+        - "gke"
+    apiVersion: v2
+    created: "2022-05-06T11:30:41.326334788Z"
+    dependencies:
+    - condition: dex.enabled
+      name: dex
+      repository: https://charts.dexidp.io
+      version: 0.6.5
+    description: A Weaveworks Helm chart for OpenID Connect (OIDC)
+    digest: 51d9c1b9ac619b50b7592ad0c0d0881a97c4f9c06f7b0f94eb4dbb3d594887c0
+    home: https://github.com/weaveworks/profiles-catalog
+    icon: https://dexidp.io/img/logos/dex-horizontal-color.png
+    keywords:
+    - dex
+    - oidc
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: dex
+    sources:
+    - https://github.com/dexidp/helm-charts
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/dex-0.0.21/dex-0.0.21.tgz
+    version: 0.0.21
   - annotations:
       weave.works/links: |
         - name: Chart Sources
@@ -410,6 +484,43 @@ entries:
         - "gke"
         - "kind"
     apiVersion: v2
+    created: "2022-05-06T11:30:41.537698363Z"
+    dependencies:
+    - name: external-dns
+      repository: https://charts.bitnami.com/bitnami
+      version: 6.2.7
+    description: A Weaveworks Helm chart for external dns
+    digest: b1658aee0cd0f0f57d3eabaa6b87cd629df6b4110cbd23ad72efa67fbe7bfa74
+    home: https://github.com/weaveworks/profiles-catalog
+    icon: https://raw.githubusercontent.com/external-dns/external-dns.github.io/master/assets/external-dns_logo-cb55bb5c346.png
+    keywords:
+    - operator
+    - dns
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: external-dns
+    sources:
+    - https://github.com/bitnami/charts/tree/master/bitnami/external-dns
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/external-dns-0.0.3/external-dns-0.0.3.tgz
+    version: 0.0.3
+  - annotations:
+      weave.works/category: dns
+      weave.works/layer: layer-1
+      weave.works/links: |
+        - name: Chart Sources
+          url: https://github.com/bitnami/charts/tree/master/bitnami/external-dns
+        - name: Upstream Project
+          url: https://github.com/bitnami/charts/tree/master/bitnami/external-dns
+      weave.works/operator: "true"
+      weave.works/profile: external-dns
+      weave.works/profile-ci: |
+        - "gke"
+        - "kind"
+    apiVersion: v2
     created: "2022-05-04T16:20:19.370029746Z"
     dependencies:
     - name: external-dns
@@ -483,6 +594,43 @@ entries:
       weave.works/profile-ci: |
         - "gke"
     apiVersion: v2
+    created: "2022-05-06T11:30:41.749253439Z"
+    dependencies:
+    - name: ingress-nginx
+      repository: https://kubernetes.github.io/ingress-nginx
+      version: 4.0.17
+    description: A Weaveworks Helm chart for ingress-nginx
+    digest: 5c6d07fb062836f37d8c286a9d7841c4a9d44d97864d709aa2c5444e6376ed7b
+    home: https://github.com/weaveworks/profiles-catalog
+    icon: https://raw.githubusercontent.com/prometheus/prometheus.github.io/master/assets/prometheus_logo-cb55bb5c346.png
+    keywords:
+    - network
+    - ingress
+    - nginx
+    - nginx-ingress
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: ingress-nginx
+    sources:
+    - https://kubernetes.github.io/ingress-nginx
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/ingress-nginx-0.0.11/ingress-nginx-0.0.11.tgz
+    version: 0.0.11
+  - annotations:
+      weave.works/category: Ingress
+      weave.works/layer: layer-1
+      weave.works/links: |
+        - name: Chart Sources
+          url:  https://kubernetes.github.io/ingress-nginx
+        - name: Upstream Project
+          url: https://github.com/kubernetes/ingress-nginx/tree/main/charts/ingress-nginx
+      weave.works/profile: ingress-nginx
+      weave.works/profile-ci: |
+        - "gke"
+    apiVersion: v2
     created: "2022-04-27T17:48:36.703720887Z"
     dependencies:
     - name: ingress-nginx
@@ -509,6 +657,47 @@ entries:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/ingress-nginx-0.0.10/ingress-nginx-0.0.10.tgz
     version: 0.0.10
   prometheus:
+  - annotations:
+      weave.works/category: Observability
+      weave.works/layer: layer-1
+      weave.works/links: |
+        - name: Chart Sources
+          url: https://github.com/prometheus-community/helm-charts
+        - name: Upstream Project
+          url: https://github.com/prometheus-operator/kube-prometheus
+      weave.works/operator: "true"
+      weave.works/profile: prometheus
+      weave.works/profile-ci: |
+        - "gke"
+        - "kind"
+    apiVersion: v2
+    created: "2022-05-06T11:30:41.989726494Z"
+    dependencies:
+    - condition: kube-prometheus-stack.enabled
+      name: kube-prometheus-stack
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 19.2.2
+    description: A Weaveworks Helm chart for observability
+    digest: 4b2cc6bb17554890d1dc0b5bd064c22a9ae82439473fea370358682d5a55e0e1
+    home: https://github.com/weaveworks/profiles-catalog
+    icon: https://raw.githubusercontent.com/prometheus/prometheus.github.io/master/assets/prometheus_logo-cb55bb5c346.png
+    keywords:
+    - operator
+    - prometheus
+    - kube-prometheus
+    - observability
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: prometheus
+    sources:
+    - https://github.com/prometheus-community/helm-charts
+    - https://github.com/prometheus-operator/kube-prometheus
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/prometheus-0.0.19/prometheus-0.0.19.tgz
+    version: 0.0.19
   - annotations:
       weave.works/category: Observability
       weave.works/layer: layer-1
@@ -810,6 +999,38 @@ entries:
       weave.works/profile-ci: |
         - "gke"
     apiVersion: v2
+    created: "2022-05-06T11:30:42.185592427Z"
+    description: A Weaveworks Helm chart for storetheindex
+    digest: 46fa2ec76e2d109cf396f6787bcea3dffa3aefc5f00a92e5b9362f6a092239d1
+    home: https://github.com/weaveworks/profiles-catalog
+    icon: https://raw.githubusercontent.com/storetheindex/storetheindex.github.io/master/assets/storetheindex_logo-cb55bb5c346.png
+    keywords:
+    - storetheindex
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: storetheindex
+    sources:
+    - https://github.com/storetheindex-community/helm-charts
+    - https://github.com/storetheindex-operator/kube-storetheindex
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/storetheindex-0.0.9/storetheindex-0.0.9.tgz
+    version: 0.0.9
+  - annotations:
+      weave.works/category: client
+      weave.works/layer: layer-1
+      weave.works/links: |
+        - name: Chart Sources
+          url: https://github.com/storetheindex-community/helm-charts
+        - name: Upstream Project
+          url: https://github.com/storetheindex-operator/kube-storetheindex
+      weave.works/operator: "true"
+      weave.works/profile: storetheindex
+      weave.works/profile-ci: |
+        - "gke"
+    apiVersion: v2
     created: "2022-05-06T10:20:13.399959925Z"
     description: A Weaveworks Helm chart for storetheindex
     digest: c916f0d2b4f128b05d51fcec6be49ac0a7dec61273d4253bf9734373257c166c
@@ -1023,4 +1244,4 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/storetheindex-0.0.1/storetheindex-0.0.1.tgz
     version: 0.0.1
-generated: "2022-05-06T10:20:13.400011225Z"
+generated: "2022-05-06T11:30:42.185749528Z"
