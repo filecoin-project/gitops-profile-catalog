@@ -26,7 +26,7 @@ spec:
     secretRef:
       name: wge-profiles-sops-gpg
   path: "./profiles/storetheindex/secrets"
-  prune: true
+  prune: false
   sourceRef:
     kind: GitRepository
     name: storetheindex-app
