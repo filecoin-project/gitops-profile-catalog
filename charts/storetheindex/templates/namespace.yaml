@@ -1,6 +1,0 @@
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: {{ template "storetheindex.namespace" . }}
-  labels:
-    {{- include "storetheindex.labels" . | nindent 4 }}
