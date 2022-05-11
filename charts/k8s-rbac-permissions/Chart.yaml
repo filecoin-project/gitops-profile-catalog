@@ -1,0 +1,32 @@
+apiVersion: v2
+name: k8s-rbac-permissions
+icon: https://raw.githubusercontent.com/k8s-rbac-permissions/k8s-rbac-permissions.github.io/master/assets/k8s-rbac-permissions_logo-cb55bb5c346.png
+description: A Weaveworks Helm chart for k8s-rbac-permissions
+type: application
+version: 0.0.1
+kubeVersion: ">=1.16.0-0"
+home: https://github.com/weaveworks/profiles-catalog
+sources:
+  - https://github.com/k8s-rbac-permissions-community/helm-charts
+  - https://github.com/k8s-rbac-permissions-operator/kube-k8s-rbac-permissions
+
+keywords:
+- k8s-rbac-permissions
+
+annotations:
+  "weave.works/profile": k8s-rbac-permissions
+  "weave.works/category": client
+  "weave.works/operator": "true"
+  "weave.works/layer": layer-1
+  "weave.works/links": |
+    - name: Chart Sources
+      url: https://github.com/k8s-rbac-permissions-community/helm-charts
+    - name: Upstream Project
+      url: https://github.com/k8s-rbac-permissions-operator/kube-k8s-rbac-permissions
+  "weave.works/profile-ci": |
+    - "gke"
+    - "kind"
+
+maintainers:
+  - name: Weaveworks
+    email: support@weave.works
