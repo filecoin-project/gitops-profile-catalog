@@ -761,6 +761,40 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/ingress-nginx-0.0.10/ingress-nginx-0.0.10.tgz
     version: 0.0.10
+  k8s-rbac-permissions:
+  - annotations:
+      weave.works/category: client
+      weave.works/layer: layer-1
+      weave.works/links: |
+        - name: Chart Sources
+          url: https://github.com/k8s-rbac-permissions-community/helm-charts
+        - name: Upstream Project
+          url: https://github.com/k8s-rbac-permissions-operator/kube-k8s-rbac-permissions
+      weave.works/operator: "true"
+      weave.works/profile: k8s-rbac-permissions
+      weave.works/profile-ci: |
+        - "gke"
+        - "kind"
+    apiVersion: v2
+    created: "2022-05-11T11:23:58.438853969Z"
+    description: A Weaveworks Helm chart for k8s-rbac-permissions
+    digest: 840e3bae8d561745557953c956aa37a35a05467a764a52c69fbd81f951a6770d
+    home: https://github.com/weaveworks/profiles-catalog
+    icon: https://raw.githubusercontent.com/k8s-rbac-permissions/k8s-rbac-permissions.github.io/master/assets/k8s-rbac-permissions_logo-cb55bb5c346.png
+    keywords:
+    - k8s-rbac-permissions
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: k8s-rbac-permissions
+    sources:
+    - https://github.com/k8s-rbac-permissions-community/helm-charts
+    - https://github.com/k8s-rbac-permissions-operator/kube-k8s-rbac-permissions
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/k8s-rbac-permissions-0.0.1/k8s-rbac-permissions-0.0.1.tgz
+    version: 0.0.1
   prometheus:
   - annotations:
       weave.works/category: Observability
@@ -1774,4 +1808,4 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/storetheindex-0.0.1/storetheindex-0.0.1.tgz
     version: 0.0.1
-generated: "2022-05-10T15:33:01.071226359Z"
+generated: "2022-05-11T11:23:58.439249073Z"
