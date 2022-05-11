@@ -3,3 +3,6 @@ external-dns:
   aws:
     assumeRoleArn: ""
     zoneType: public
+  serviceAccount:
+    annotations:
+      eks.amazonaws.com/role-arn: ""
