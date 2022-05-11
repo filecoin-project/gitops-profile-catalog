@@ -25,6 +25,7 @@ annotations:
       url: https://github.com/k8s-rbac-permissions-operator/kube-k8s-rbac-permissions
   "weave.works/profile-ci": |
     - "gke"
+    - "kind"
 
 maintainers:
   - name: Weaveworks
