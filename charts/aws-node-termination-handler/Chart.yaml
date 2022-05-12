@@ -1,0 +1,32 @@
+apiVersion: v2
+name: aws-node-termination-handler
+icon: https://raw.githubusercontent.com/aws-node-termination-handler/aws-node-termination-handler.github.io/master/assets/aws-node-termination-handler_logo-cb55bb5c346.png
+description: A Weaveworks Helm chart for the aws node termination handler
+type: application
+version: 0.0.1
+kubeVersion: ">=1.16.0-0"
+home: https://github.com/weaveworks/profiles-catalog
+sources:
+  - https://kubernetes.github.io/autoscaler
+
+keywords:
+- operator
+- aws-node-termination-handler
+
+annotations:
+  "weave.works/profile": aws-node-termination-handler
+  "weave.works/category": eks
+  "weave.works/operator": "true"
+  "weave.works/layer": layer-1
+  "weave.works/links": |
+    - name: Chart Sources
+      url: https://aws.github.io/eks-charts/
+
+maintainers:
+  - name: Weaveworks
+    email: support@weave.works
+
+dependencies:
+- name: aws-node-termination-handler
+  version: "0.18.3"
+  repository: "https://aws.github.io/eks-charts/"
