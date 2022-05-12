@@ -1,4 +1,4 @@
-aws-node-termination-handler:
-  serviceAccount:
-    annotations:
-      eks.amazonaws.com/role-arn: ""
+# aws-node-termination-handler:
+#   serviceAccount:
+#     annotations:
+#       eks.amazonaws.com/role-arn: ""
