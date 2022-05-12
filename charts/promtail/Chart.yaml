@@ -1,0 +1,32 @@
+apiVersion: v2
+name: promtail
+icon: https://raw.githubusercontent.com/promtail/promtail.github.io/master/assets/promtail_logo-cb55bb5c346.png
+description: A Weaveworks Helm chart for the promtail
+type: application
+version: 0.0.1
+kubeVersion: ">=1.16.0-0"
+home: https://github.com/weaveworks/profiles-catalog
+sources:
+  - https://grafana.github.io/loki/charts
+
+keywords:
+- operator
+- promtail
+
+annotations:
+  "weave.works/profile": promtail
+  "weave.works/category": monitoring
+  "weave.works/operator": "true"
+  "weave.works/layer": layer-1
+  "weave.works/links": |
+    - name: Chart Sources
+      url: https://grafana.github.io/loki/charts
+
+maintainers:
+  - name: Weaveworks
+    email: support@weave.works
+
+dependencies:
+- name: promtail
+  version: "2.0.2"
+  repository: "https://grafana.github.io/loki/charts"

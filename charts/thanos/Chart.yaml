@@ -1,0 +1,32 @@
+apiVersion: v2
+name: thanos
+icon: https://raw.githubusercontent.com/thanos/thanos.github.io/master/assets/thanos_logo-cb55bb5c346.png
+description: A Weaveworks Helm chart for the thanos
+type: application
+version: 0.0.1
+kubeVersion: ">=1.16.0-0"
+home: https://github.com/weaveworks/profiles-catalog
+sources:
+  - https://charts.bitnami.com/bitnami
+
+keywords:
+- operator
+- thanos
+
+annotations:
+  "weave.works/profile": thanos
+  "weave.works/category": monitoring
+  "weave.works/operator": "true"
+  "weave.works/layer": layer-1
+  "weave.works/links": |
+    - name: Chart Sources
+      url: https://charts.bitnami.com/bitnami
+
+maintainers:
+  - name: Weaveworks
+    email: support@weave.works
+
+dependencies:
+- name: thanos
+  version: "10.3.8"
+  repository: "https://charts.bitnami.com/bitnami"
