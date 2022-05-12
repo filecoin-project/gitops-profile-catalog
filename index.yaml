@@ -118,6 +118,46 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/cert-manager-0.0.7/cert-manager-0.0.7.tgz
     version: 0.0.7
+  cert-manager-issuer:
+  - annotations:
+      weave.works/category: Certificate
+      weave.works/layer: layer-1
+      weave.works/links: |
+        - name: Chart Sources
+          url: https://charts.jetstack.io
+        - name: Upstream Project
+          url: https://github.com/jetstack/cert-manager-issuer
+      weave.works/operator: "true"
+      weave.works/profile: cert-manager-issuer
+      weave.works/profile-ci: |
+        - "gke"
+        - "kind"
+    apiVersion: v2
+    created: "2022-05-12T11:50:45.156550948Z"
+    dependencies:
+    - name: cert-manager
+      repository: https://charts.jetstack.io
+      version: 1.8.0
+    description: A Weaveworks Helm chart for the Certificate Profile
+    digest: 86f920b1b43ed3d41fed344eee7895279c8fc6c8efb08d72375018906c495de1
+    home: https://github.com/weaveworks/profiles-catalog
+    icon: https://raw.githubusercontent.com/jetstack/cert-manager-issuer/master/logo/logo.png
+    keywords:
+    - cert-manager-issuer
+    - kube-lego
+    - letsencrypt
+    - tls
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: cert-manager-issuer
+    sources:
+    - https://charts.jetstack.io
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/cert-manager-issuer-0.0.1/cert-manager-issuer-0.0.1.tgz
+    version: 0.0.1
   dex:
   - annotations:
       weave.works/links: |
@@ -799,6 +839,39 @@ entries:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/ingress-nginx-0.0.10/ingress-nginx-0.0.10.tgz
     version: 0.0.10
   k8s-rbac-permissions:
+  - annotations:
+      weave.works/category: client
+      weave.works/layer: layer-1
+      weave.works/links: |
+        - name: Chart Sources
+          url: https://github.com/k8s-rbac-permissions-community/helm-charts
+        - name: Upstream Project
+          url: https://github.com/k8s-rbac-permissions-operator/kube-k8s-rbac-permissions
+      weave.works/operator: "true"
+      weave.works/profile: k8s-rbac-permissions
+      weave.works/profile-ci: |
+        - "gke"
+        - "kind"
+    apiVersion: v2
+    created: "2022-05-12T11:50:45.272689008Z"
+    description: A Weaveworks Helm chart for k8s-rbac-permissions
+    digest: 378cf8f4b31378f4b1a3fd5f53572aace1a5abcbe7fc0fd58d91d9543d2d258e
+    home: https://github.com/weaveworks/profiles-catalog
+    icon: https://raw.githubusercontent.com/k8s-rbac-permissions/k8s-rbac-permissions.github.io/master/assets/k8s-rbac-permissions_logo-cb55bb5c346.png
+    keywords:
+    - k8s-rbac-permissions
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: k8s-rbac-permissions
+    sources:
+    - https://github.com/k8s-rbac-permissions-community/helm-charts
+    - https://github.com/k8s-rbac-permissions-operator/kube-k8s-rbac-permissions
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/k8s-rbac-permissions-0.0.2/k8s-rbac-permissions-0.0.2.tgz
+    version: 0.0.2
   - annotations:
       weave.works/category: client
       weave.works/layer: layer-1
@@ -1845,4 +1918,4 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/storetheindex-0.0.1/storetheindex-0.0.1.tgz
     version: 0.0.1
-generated: "2022-05-11T18:45:07.898183505Z"
+generated: "2022-05-12T11:50:45.272853306Z"
