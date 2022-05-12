@@ -1,5 +1,38 @@
 apiVersion: v1
 entries:
+  aws-node-termination-handler:
+  - annotations:
+      weave.works/category: eks
+      weave.works/layer: layer-1
+      weave.works/links: |
+        - name: Chart Sources
+          url: https://aws.github.io/eks-charts/
+      weave.works/operator: "true"
+      weave.works/profile: aws-node-termination-handler
+    apiVersion: v2
+    created: "2022-05-12T16:54:11.382331406Z"
+    dependencies:
+    - name: aws-node-termination-handler
+      repository: https://aws.github.io/eks-charts/
+      version: 0.18.3
+    description: A Weaveworks Helm chart for the aws node termination handler
+    digest: 76ec36be3aba5feaee5b61d97f7a125e93bd561bef838473c12ab8c921c220be
+    home: https://github.com/weaveworks/profiles-catalog
+    icon: https://raw.githubusercontent.com/aws-node-termination-handler/aws-node-termination-handler.github.io/master/assets/aws-node-termination-handler_logo-cb55bb5c346.png
+    keywords:
+    - operator
+    - aws-node-termination-handler
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: aws-node-termination-handler
+    sources:
+    - https://kubernetes.github.io/autoscaler
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/aws-node-termination-handler-0.0.1/aws-node-termination-handler-0.0.1.tgz
+    version: 0.0.1
   cert-manager:
   - annotations:
       weave.works/category: Certificate
@@ -157,6 +190,39 @@ entries:
     type: application
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/cert-manager-issuer-0.0.1/cert-manager-issuer-0.0.1.tgz
+    version: 0.0.1
+  cluster-autoscaler:
+  - annotations:
+      weave.works/category: autoscaler
+      weave.works/layer: layer-1
+      weave.works/links: |
+        - name: Chart Sources
+          url: https://kubernetes.github.io/autoscaler
+      weave.works/operator: "true"
+      weave.works/profile: cluster-autoscaler
+    apiVersion: v2
+    created: "2022-05-12T16:54:11.513976109Z"
+    dependencies:
+    - name: cluster-autoscaler
+      repository: https://kubernetes.github.io/autoscaler
+      version: 9.18.0
+    description: A Weaveworks Helm chart for the cluster-autoscaler
+    digest: 61a399decef09e14bc359a0d71c1ef091f26a464738185adfc07571d09d1e6ea
+    home: https://github.com/weaveworks/profiles-catalog
+    icon: https://raw.githubusercontent.com/cluster-autoscaler/cluster-autoscaler.github.io/master/assets/cluster-autoscaler_logo-cb55bb5c346.png
+    keywords:
+    - operator
+    - cluster-autoscaler
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: cluster-autoscaler
+    sources:
+    - https://kubernetes.github.io/autoscaler
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/cluster-autoscaler-0.0.1/cluster-autoscaler-0.0.1.tgz
     version: 0.0.1
   dex:
   - annotations:
@@ -1918,4 +1984,4 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/storetheindex-0.0.1/storetheindex-0.0.1.tgz
     version: 0.0.1
-generated: "2022-05-12T11:50:45.272853306Z"
+generated: "2022-05-12T16:54:11.514175511Z"
