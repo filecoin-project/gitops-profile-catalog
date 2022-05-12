@@ -8,6 +8,9 @@ kube-prometheus-stack:
   grafana:
     enabled: false
   prometheus:
+    serviceAccount:
+      annotations:
+        eks.amazonaws.com/role-arn: ""
     thanosIngress:
       enabled: true
       ingressClassName: nginx
