@@ -1,5 +1,3 @@
-region: us-west-2
-zone: dev-v2.cid.contact
 cert-manager:
   installCRDs: true
   serviceAccount:
