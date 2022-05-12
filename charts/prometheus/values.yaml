@@ -8,13 +8,18 @@ kube-prometheus-stack:
   grafana:
     enabled: false
   prometheus:
-    prometheusSpec:
-      remoteWrite:
-      - url: "https://prometheus-us-central1.grafana.net/api/prom/push"
-        basicAuth:
-          username:
-            name: grafana-cloud-secret
-            key: username
-          password:
-            name: grafana-cloud-secret
-            key: password
+    thanosIngress:
+      enabled: true
+      ingressClassName: nginx
+      annotations:
+        cert-manager.io/cluster-issuer: "letsencrypt"
+        nginx.ingress.kubernetes.io/ssl-redirect: "true"
+        nginx.ingress.kubernetes.io/backend-protocol: "GRPC"
+      hosts:
+      - thanos-sidecar.example
+      paths:
+      - /
+      tls:
+      - secretName: thanos-sidecar-tls
+        hosts:
+        - thanos-sidecar.example

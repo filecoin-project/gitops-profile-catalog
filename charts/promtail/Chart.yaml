@@ -15,7 +15,7 @@ keywords:
 
 annotations:
   "weave.works/profile": promtail
-  "weave.works/category": autoscaler
+  "weave.works/category": monitoring
   "weave.works/operator": "true"
   "weave.works/layer": layer-1
   "weave.works/links": |
