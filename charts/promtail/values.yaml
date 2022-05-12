@@ -1,0 +1,3 @@
+promtail:
+  loki:
+    serviceName: loki
