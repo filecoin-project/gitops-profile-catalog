@@ -5,7 +5,11 @@ thanos:
     key: thanos-storage-config.yaml
     name: thanos-storage-config
   compactor:
+    enabled: true
     retentionResolution5m: 90d
+    serviceAccount:
+      annotations:
+        eks.amazonaws.com/role-arn: ""
   query:
     enabled: false
   queryFrontend:
