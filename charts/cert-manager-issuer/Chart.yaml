@@ -5,7 +5,7 @@ description: A Weaveworks Helm chart for the Certificate Profile
 type: application
 version: 0.0.1
 dependencies:
-  - name: cert-manager-issuer
+  - name: cert-manager
     version: "1.8.0"
     repository: "https://charts.jetstack.io"
 kubeVersion: ">=1.16.0-0"
