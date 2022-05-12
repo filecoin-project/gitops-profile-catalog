@@ -1,0 +1,32 @@
+apiVersion: v2
+name: cluster-autoscaler
+icon: https://raw.githubusercontent.com/cluster-autoscaler/cluster-autoscaler.github.io/master/assets/cluster-autoscaler_logo-cb55bb5c346.png
+description: A Weaveworks Helm chart for the cluster-autoscaler
+type: application
+version: 0.0.1
+kubeVersion: ">=1.16.0-0"
+home: https://github.com/weaveworks/profiles-catalog
+sources:
+  - https://kubernetes.github.io/autoscaler
+
+keywords:
+- operator
+- cluster-autoscaler
+
+annotations:
+  "weave.works/profile": cluster-autoscaler
+  "weave.works/category": autoscaler
+  "weave.works/operator": "true"
+  "weave.works/layer": layer-1
+  "weave.works/links": |
+    - name: Chart Sources
+      url: https://kubernetes.github.io/autoscaler
+
+maintainers:
+  - name: Weaveworks
+    email: support@weave.works
+
+dependencies:
+- name: cluster-autoscaler
+  version: "9.18.0"
+  repository: "https://kubernetes.github.io/autoscaler"
