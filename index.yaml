@@ -1,5 +1,38 @@
 apiVersion: v1
 entries:
+  aws-ebs-csi-driver:
+  - annotations:
+      weave.works/category: eks
+      weave.works/layer: layer-1
+      weave.works/links: |
+        - name: Chart Sources
+          url: https://kubernetes-sigs.github.io/aws-ebs-csi-driver
+      weave.works/operator: "true"
+      weave.works/profile: aws-ebs-csi-driver
+    apiVersion: v2
+    created: "2022-05-15T15:28:33.164360673Z"
+    dependencies:
+    - name: aws-ebs-csi-driver
+      repository: https://kubernetes-sigs.github.io/aws-ebs-csi-driver
+      version: 2.6.7
+    description: A Weaveworks Helm chart for the aws ebs csi driver
+    digest: e98dbb3aa64702af0b2757ef5b23776a859ba16041e9e114a0da3219b68e8436
+    home: https://github.com/weaveworks/profiles-catalog
+    icon: https://raw.githubusercontent.com/aws-ebs-csi-driver/aws-ebs-csi-driver.github.io/master/assets/aws-ebs-csi-driver_logo-cb55bb5c346.png
+    keywords:
+    - operator
+    - aws-ebs-csi-driver
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: aws-ebs-csi-driver
+    sources:
+    - https://kubernetes-sigs.github.io/aws-ebs-csi-driver
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/aws-ebs-csi-driver-0.0.1/aws-ebs-csi-driver-0.0.1.tgz
+    version: 0.0.1
   aws-node-termination-handler:
   - annotations:
       weave.works/category: eks
@@ -951,6 +984,39 @@ entries:
         - "gke"
         - "kind"
     apiVersion: v2
+    created: "2022-05-15T15:28:33.340585224Z"
+    description: A Weaveworks Helm chart for k8s-rbac-permissions
+    digest: 09f6f5f7356a22b8c21e47ae10aca2b3681d267309d23f60a494e0691dfaa8c0
+    home: https://github.com/weaveworks/profiles-catalog
+    icon: https://raw.githubusercontent.com/k8s-rbac-permissions/k8s-rbac-permissions.github.io/master/assets/k8s-rbac-permissions_logo-cb55bb5c346.png
+    keywords:
+    - k8s-rbac-permissions
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: k8s-rbac-permissions
+    sources:
+    - https://github.com/k8s-rbac-permissions-community/helm-charts
+    - https://github.com/k8s-rbac-permissions-operator/kube-k8s-rbac-permissions
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/k8s-rbac-permissions-0.0.3/k8s-rbac-permissions-0.0.3.tgz
+    version: 0.0.3
+  - annotations:
+      weave.works/category: client
+      weave.works/layer: layer-1
+      weave.works/links: |
+        - name: Chart Sources
+          url: https://github.com/k8s-rbac-permissions-community/helm-charts
+        - name: Upstream Project
+          url: https://github.com/k8s-rbac-permissions-operator/kube-k8s-rbac-permissions
+      weave.works/operator: "true"
+      weave.works/profile: k8s-rbac-permissions
+      weave.works/profile-ci: |
+        - "gke"
+        - "kind"
+    apiVersion: v2
     created: "2022-05-12T11:50:45.272689008Z"
     description: A Weaveworks Helm chart for k8s-rbac-permissions
     digest: 378cf8f4b31378f4b1a3fd5f53572aace1a5abcbe7fc0fd58d91d9543d2d258e
@@ -1004,6 +1070,47 @@ entries:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/k8s-rbac-permissions-0.0.1/k8s-rbac-permissions-0.0.1.tgz
     version: 0.0.1
   prometheus:
+  - annotations:
+      weave.works/category: Observability
+      weave.works/layer: layer-1
+      weave.works/links: |
+        - name: Chart Sources
+          url: https://github.com/prometheus-community/helm-charts
+        - name: Upstream Project
+          url: https://github.com/prometheus-operator/kube-prometheus
+      weave.works/operator: "true"
+      weave.works/profile: prometheus
+      weave.works/profile-ci: |
+        - "gke"
+        - "kind"
+    apiVersion: v2
+    created: "2022-05-15T15:28:33.540124524Z"
+    dependencies:
+    - condition: kube-prometheus-stack.enabled
+      name: kube-prometheus-stack
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 19.2.2
+    description: A Weaveworks Helm chart for observability
+    digest: a60351a23118b57f8349df4b25f06a49346d9de42b6455bcd8185c8034bbc397
+    home: https://github.com/weaveworks/profiles-catalog
+    icon: https://raw.githubusercontent.com/prometheus/prometheus.github.io/master/assets/prometheus_logo-cb55bb5c346.png
+    keywords:
+    - operator
+    - prometheus
+    - kube-prometheus
+    - observability
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: prometheus
+    sources:
+    - https://github.com/prometheus-community/helm-charts
+    - https://github.com/prometheus-operator/kube-prometheus
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/prometheus-0.0.22/prometheus-0.0.22.tgz
+    version: 0.0.22
   - annotations:
       weave.works/category: Observability
       weave.works/layer: layer-1
@@ -1448,6 +1555,38 @@ entries:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/promtail-0.0.1/promtail-0.0.1.tgz
     version: 0.0.1
   storetheindex:
+  - annotations:
+      weave.works/category: client
+      weave.works/layer: layer-1
+      weave.works/links: |
+        - name: Chart Sources
+          url: https://github.com/storetheindex-community/helm-charts
+        - name: Upstream Project
+          url: https://github.com/storetheindex-operator/kube-storetheindex
+      weave.works/operator: "true"
+      weave.works/profile: storetheindex
+      weave.works/profile-ci: |
+        - "gke"
+    apiVersion: v2
+    created: "2022-05-15T15:28:33.70201979Z"
+    description: A Weaveworks Helm chart for storetheindex
+    digest: 42e1c54b5a39c3e303555698d4a18d427d45b8fef851608fe3a4d7ae10f3e47e
+    home: https://github.com/weaveworks/profiles-catalog
+    icon: https://raw.githubusercontent.com/storetheindex/storetheindex.github.io/master/assets/storetheindex_logo-cb55bb5c346.png
+    keywords:
+    - storetheindex
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: storetheindex
+    sources:
+    - https://github.com/storetheindex-community/helm-charts
+    - https://github.com/storetheindex-operator/kube-storetheindex
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/storetheindex-0.0.22/storetheindex-0.0.22.tgz
+    version: 0.0.22
   - annotations:
       weave.works/category: client
       weave.works/layer: layer-1
@@ -2155,4 +2294,4 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/thanos-0.0.1/thanos-0.0.1.tgz
     version: 0.0.1
-generated: "2022-05-12T19:41:47.312722286Z"
+generated: "2022-05-15T15:28:33.702252987Z"
