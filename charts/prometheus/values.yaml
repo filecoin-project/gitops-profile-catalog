@@ -22,6 +22,7 @@ kube-prometheus-stack:
       - thanos-sidecar.example
       paths:
       - /
+      pathType: ImplementationSpecific
       tls:
       - secretName: thanos-sidecar-tls
         hosts:
