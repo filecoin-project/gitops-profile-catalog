@@ -1121,6 +1121,47 @@ entries:
         - "gke"
         - "kind"
     apiVersion: v2
+    created: "2022-05-16T02:59:07.268008016Z"
+    dependencies:
+    - condition: kube-prometheus-stack.enabled
+      name: kube-prometheus-stack
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 19.2.2
+    description: A Weaveworks Helm chart for observability
+    digest: 0317122260ab9921a1646dbae0f86c682ea88b6a7fe8a0a2b1aa6ef30220b190
+    home: https://github.com/weaveworks/profiles-catalog
+    icon: https://raw.githubusercontent.com/prometheus/prometheus.github.io/master/assets/prometheus_logo-cb55bb5c346.png
+    keywords:
+    - operator
+    - prometheus
+    - kube-prometheus
+    - observability
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: prometheus
+    sources:
+    - https://github.com/prometheus-community/helm-charts
+    - https://github.com/prometheus-operator/kube-prometheus
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/prometheus-0.0.23/prometheus-0.0.23.tgz
+    version: 0.0.23
+  - annotations:
+      weave.works/category: Observability
+      weave.works/layer: layer-1
+      weave.works/links: |
+        - name: Chart Sources
+          url: https://github.com/prometheus-community/helm-charts
+        - name: Upstream Project
+          url: https://github.com/prometheus-operator/kube-prometheus
+      weave.works/operator: "true"
+      weave.works/profile: prometheus
+      weave.works/profile-ci: |
+        - "gke"
+        - "kind"
+    apiVersion: v2
     created: "2022-05-15T15:28:33.540124524Z"
     dependencies:
     - condition: kube-prometheus-stack.enabled
@@ -2331,4 +2372,4 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/thanos-0.0.1/thanos-0.0.1.tgz
     version: 0.0.1
-generated: "2022-05-16T02:31:35.772064901Z"
+generated: "2022-05-16T02:59:07.268436631Z"
