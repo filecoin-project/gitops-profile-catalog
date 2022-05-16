@@ -1,4 +1,5 @@
 cluster-autoscaler:
+  awsRegion: us-east-2
   autoDiscovery:
     clusterName: ""
   rbac:
