@@ -2,12 +2,20 @@ secrets:
   url: https://github.com/filecoin-project/gitops-profile-catalog
   path: "./profiles/secrets/prometheus"
 
+region: us-west-2
+clusterName: default
+
 kube-prometheus-stack:
   fullnameOverride: weaveworks-prometheus
   enabled: true
   grafana:
     enabled: false
   prometheus:
+    prometheusSpec:
+      thanos: 
+        objectStorageConfig: 
+          key: thanos-storage-config.yaml
+          name: thanos-storage-config
     serviceAccount:
       annotations:
         eks.amazonaws.com/role-arn: ""
