@@ -2652,6 +2652,32 @@ entries:
         - "gke"
         - "kind"
     apiVersion: v2
+    created: "2022-05-16T21:47:05.230060491Z"
+    description: A Weaveworks Helm chart for thanos bucket configurations
+    digest: 7fb8c67fcd8353f341a47ed40c353133f156d999e1a6eea2d461802a7746a06a
+    home: https://github.com/weaveworks/profiles-catalog
+    icon: https://raw.githubusercontent.com/thanos-bucket-config/thanos-bucket-config.github.io/master/assets/thanos-bucket-config_logo-cb55bb5c346.png
+    keywords:
+    - operator
+    - thanos-bucket-config
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: thanos-bucket-config
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/thanos-bucket-config-0.0.4/thanos-bucket-config-0.0.4.tgz
+    version: 0.0.4
+  - annotations:
+      weave.works/category: Observability
+      weave.works/layer: layer-0
+      weave.works/operator: "true"
+      weave.works/profile: thanos-bucket-config
+      weave.works/profile-ci: |
+        - "gke"
+        - "kind"
+    apiVersion: v2
     created: "2022-05-16T19:15:39.692222133Z"
     description: A Weaveworks Helm chart for thanos bucket configurations
     digest: 8d367717671f462b64c624560c6c166bf252307d26d53f80442656fa5cfcc8ca
@@ -2721,4 +2747,4 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/thanos-bucket-config-0.0.1/thanos-bucket-config-0.0.1.tgz
     version: 0.0.1
-generated: "2022-05-16T19:15:39.692528651Z"
+generated: "2022-05-16T21:47:05.230361295Z"
