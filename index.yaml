@@ -266,6 +266,38 @@ entries:
       weave.works/operator: "true"
       weave.works/profile: cluster-autoscaler
     apiVersion: v2
+    created: "2022-05-16T12:59:58.385439444Z"
+    dependencies:
+    - name: cluster-autoscaler
+      repository: https://kubernetes.github.io/autoscaler
+      version: 9.18.0
+    description: A Weaveworks Helm chart for the cluster-autoscaler
+    digest: 507eeb26c866a4e3ec80c14ad659b90f32cecc853c592c2b474f41ef0b315e32
+    home: https://github.com/weaveworks/profiles-catalog
+    icon: https://raw.githubusercontent.com/cluster-autoscaler/cluster-autoscaler.github.io/master/assets/cluster-autoscaler_logo-cb55bb5c346.png
+    keywords:
+    - operator
+    - cluster-autoscaler
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: cluster-autoscaler
+    sources:
+    - https://kubernetes.github.io/autoscaler
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/cluster-autoscaler-0.0.3/cluster-autoscaler-0.0.3.tgz
+    version: 0.0.3
+  - annotations:
+      weave.works/category: autoscaler
+      weave.works/layer: layer-1
+      weave.works/links: |
+        - name: Chart Sources
+          url: https://kubernetes.github.io/autoscaler
+      weave.works/operator: "true"
+      weave.works/profile: cluster-autoscaler
+    apiVersion: v2
     created: "2022-05-16T12:50:16.950795352Z"
     dependencies:
     - name: cluster-autoscaler
@@ -2404,4 +2436,4 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/thanos-0.0.1/thanos-0.0.1.tgz
     version: 0.0.1
-generated: "2022-05-16T12:50:16.951009154Z"
+generated: "2022-05-16T12:59:58.385645044Z"
