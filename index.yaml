@@ -10,6 +10,38 @@ entries:
       weave.works/operator: "true"
       weave.works/profile: aws-ebs-csi-driver
     apiVersion: v2
+    created: "2022-05-16T18:06:56.988218783Z"
+    dependencies:
+    - name: aws-ebs-csi-driver
+      repository: https://kubernetes-sigs.github.io/aws-ebs-csi-driver
+      version: 2.6.7
+    description: A Weaveworks Helm chart for the aws ebs csi driver
+    digest: 6e3d344a6df81e57cd6fcde9f7edd4fa1636bca4c16a8d5f1a75ec5571ca591f
+    home: https://github.com/weaveworks/profiles-catalog
+    icon: https://raw.githubusercontent.com/aws-ebs-csi-driver/aws-ebs-csi-driver.github.io/master/assets/aws-ebs-csi-driver_logo-cb55bb5c346.png
+    keywords:
+    - operator
+    - aws-ebs-csi-driver
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: aws-ebs-csi-driver
+    sources:
+    - https://kubernetes-sigs.github.io/aws-ebs-csi-driver
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/aws-ebs-csi-driver-0.0.2/aws-ebs-csi-driver-0.0.2.tgz
+    version: 0.0.2
+  - annotations:
+      weave.works/category: eks
+      weave.works/layer: layer-1
+      weave.works/links: |
+        - name: Chart Sources
+          url: https://kubernetes-sigs.github.io/aws-ebs-csi-driver
+      weave.works/operator: "true"
+      weave.works/profile: aws-ebs-csi-driver
+    apiVersion: v2
     created: "2022-05-15T15:28:33.164360673Z"
     dependencies:
     - name: aws-ebs-csi-driver
@@ -996,6 +1028,43 @@ entries:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/external-dns-0.0.1/external-dns-0.0.1.tgz
     version: 0.0.1
   ingress-nginx:
+  - annotations:
+      weave.works/category: Ingress
+      weave.works/layer: layer-0
+      weave.works/links: |
+        - name: Chart Sources
+          url:  https://kubernetes.github.io/ingress-nginx
+        - name: Upstream Project
+          url: https://github.com/kubernetes/ingress-nginx/tree/main/charts/ingress-nginx
+      weave.works/profile: ingress-nginx
+      weave.works/profile-ci: |
+        - "gke"
+    apiVersion: v2
+    created: "2022-05-16T18:06:57.126898328Z"
+    dependencies:
+    - name: ingress-nginx
+      repository: https://kubernetes.github.io/ingress-nginx
+      version: 4.0.17
+    description: A Weaveworks Helm chart for ingress-nginx
+    digest: be039fa2b17090d24d6c4a5c88787af2be590c9b3bbb57c1dd6ab1c2b9176c68
+    home: https://github.com/weaveworks/profiles-catalog
+    icon: https://raw.githubusercontent.com/prometheus/prometheus.github.io/master/assets/prometheus_logo-cb55bb5c346.png
+    keywords:
+    - network
+    - ingress
+    - nginx
+    - nginx-ingress
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: ingress-nginx
+    sources:
+    - https://kubernetes.github.io/ingress-nginx
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/ingress-nginx-0.0.12/ingress-nginx-0.0.12.tgz
+    version: 0.0.12
   - annotations:
       weave.works/category: Ingress
       weave.works/layer: layer-1
@@ -2436,4 +2505,31 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/thanos-0.0.1/thanos-0.0.1.tgz
     version: 0.0.1
-generated: "2022-05-16T12:59:58.385645044Z"
+  thanos-bucket-config:
+  - annotations:
+      weave.works/category: Observability
+      weave.works/layer: layer-0
+      weave.works/operator: "true"
+      weave.works/profile: thanos-bucket-config
+      weave.works/profile-ci: |
+        - "gke"
+        - "kind"
+    apiVersion: v2
+    created: "2022-05-16T18:06:57.250045038Z"
+    description: A Weaveworks Helm chart for thanos bucket configurations
+    digest: 98a62430b6c0a226ae58d57c78dd1ce348c86e02606575ad16b7cf11cb5541fb
+    home: https://github.com/weaveworks/profiles-catalog
+    icon: https://raw.githubusercontent.com/thanos-bucket-config/thanos-bucket-config.github.io/master/assets/thanos-bucket-config_logo-cb55bb5c346.png
+    keywords:
+    - operator
+    - thanos-bucket-config
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: thanos-bucket-config
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/thanos-bucket-config-0.0.1/thanos-bucket-config-0.0.1.tgz
+    version: 0.0.1
+generated: "2022-05-16T18:06:57.250510066Z"
