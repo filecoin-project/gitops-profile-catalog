@@ -2450,6 +2450,38 @@ entries:
       weave.works/operator: "true"
       weave.works/profile: thanos
     apiVersion: v2
+    created: "2022-05-16T19:01:30.987379721Z"
+    dependencies:
+    - name: thanos
+      repository: https://charts.bitnami.com/bitnami
+      version: 10.3.8
+    description: A Weaveworks Helm chart for the thanos
+    digest: 3594da72f27779f3f7f0b4f33f2805f9aa7f2422ce8ffef529631e0f60b8c1b2
+    home: https://github.com/weaveworks/profiles-catalog
+    icon: https://raw.githubusercontent.com/thanos/thanos.github.io/master/assets/thanos_logo-cb55bb5c346.png
+    keywords:
+    - operator
+    - thanos
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: thanos
+    sources:
+    - https://charts.bitnami.com/bitnami
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/thanos-0.0.4/thanos-0.0.4.tgz
+    version: 0.0.4
+  - annotations:
+      weave.works/category: monitoring
+      weave.works/layer: layer-1
+      weave.works/links: |
+        - name: Chart Sources
+          url: https://charts.bitnami.com/bitnami
+      weave.works/operator: "true"
+      weave.works/profile: thanos
+    apiVersion: v2
     created: "2022-05-16T18:51:00.688967883Z"
     dependencies:
     - name: thanos
@@ -2590,4 +2622,4 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/thanos-bucket-config-0.0.1/thanos-bucket-config-0.0.1.tgz
     version: 0.0.1
-generated: "2022-05-16T18:51:00.881593859Z"
+generated: "2022-05-16T19:01:30.98761584Z"
