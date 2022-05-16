@@ -5,3 +5,5 @@ cluster-autoscaler:
     serviceAccount:
       annotations:
         eks.amazonaws.com/role-arn: ""
+  extraArgs:
+     aws-use-static-instance-list: true
