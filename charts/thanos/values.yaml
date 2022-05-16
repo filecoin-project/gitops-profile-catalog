@@ -1,9 +1,7 @@
 region: us-west-2
 clusterName: default
 thanos:
-  objectStorageConfig:
-    key: thanos-storage-config.yaml
-    name: thanos-storage-config
+  existingObjstoreSecret: thanos-storage-config
   compactor:
     enabled: true
     retentionResolution5m: 90d
