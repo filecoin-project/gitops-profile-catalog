@@ -1,0 +1,14 @@
+apiVersion: v1
+data:
+  thanos-storage-config.yaml: |
+    type: S3
+    config:
+      bucket: {{ .Values.clusterName }}-thanos
+      region: {{ .Values.region }}
+      endpoint: s3.amazonaws.com
+kind: ConfigMap
+metadata:
+  name: thanos-storage-config
+  namespace: {{ template "thanos-bucket-config.namespace" . }}
+  labels:
+    {{- include "thanos-bucket-config.labels" . | nindent 4 }}   
