@@ -3,7 +3,7 @@ name: cluster-autoscaler
 icon: https://raw.githubusercontent.com/cluster-autoscaler/cluster-autoscaler.github.io/master/assets/cluster-autoscaler_logo-cb55bb5c346.png
 description: A Weaveworks Helm chart for the cluster-autoscaler
 type: application
-version: 0.0.1
+version: 0.0.2
 kubeVersion: ">=1.16.0-0"
 home: https://github.com/weaveworks/profiles-catalog
 sources:
