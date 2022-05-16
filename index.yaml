@@ -760,6 +760,43 @@ entries:
         - "gke"
         - "kind"
     apiVersion: v2
+    created: "2022-05-16T02:31:35.771742287Z"
+    dependencies:
+    - name: external-dns
+      repository: https://charts.bitnami.com/bitnami
+      version: 6.2.7
+    description: A Weaveworks Helm chart for external dns
+    digest: 38922c062cd6dd3e7064836eed95f11e5c5c3e57dfeffea0ab61cfe1bb4d048a
+    home: https://github.com/weaveworks/profiles-catalog
+    icon: https://raw.githubusercontent.com/external-dns/external-dns.github.io/master/assets/external-dns_logo-cb55bb5c346.png
+    keywords:
+    - operator
+    - dns
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: external-dns
+    sources:
+    - https://github.com/bitnami/charts/tree/master/bitnami/external-dns
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/external-dns-0.0.5/external-dns-0.0.5.tgz
+    version: 0.0.5
+  - annotations:
+      weave.works/category: dns
+      weave.works/layer: layer-1
+      weave.works/links: |
+        - name: Chart Sources
+          url: https://github.com/bitnami/charts/tree/master/bitnami/external-dns
+        - name: Upstream Project
+          url: https://github.com/bitnami/charts/tree/master/bitnami/external-dns
+      weave.works/operator: "true"
+      weave.works/profile: external-dns
+      weave.works/profile-ci: |
+        - "gke"
+        - "kind"
+    apiVersion: v2
     created: "2022-05-11T18:45:07.897698277Z"
     dependencies:
     - name: external-dns
@@ -2294,4 +2331,4 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/thanos-0.0.1/thanos-0.0.1.tgz
     version: 0.0.1
-generated: "2022-05-15T15:28:33.702252987Z"
+generated: "2022-05-16T02:31:35.772064901Z"
