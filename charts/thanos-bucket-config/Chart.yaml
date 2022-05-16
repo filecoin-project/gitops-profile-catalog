@@ -3,7 +3,7 @@ name: thanos-bucket-config
 icon: https://raw.githubusercontent.com/thanos-bucket-config/thanos-bucket-config.github.io/master/assets/thanos-bucket-config_logo-cb55bb5c346.png
 description: A Weaveworks Helm chart for thanos bucket configurations
 type: application
-version: 0.0.2
+version: 0.0.3
 kubeVersion: ">=1.16.0-0"
 home: https://github.com/weaveworks/profiles-catalog
 
