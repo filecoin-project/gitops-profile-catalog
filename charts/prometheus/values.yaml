@@ -14,8 +14,8 @@ kube-prometheus-stack:
     enabled: false
   prometheus:
     prometheusSpec:
-      thanos: 
-        objectStorageConfig: 
+      thanos:
+        objectStorageConfig:
           key: objstore.yml
           name: thanos-storage-config
     serviceAccount:
