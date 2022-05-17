@@ -6,6 +6,8 @@ region: us-west-2
 clusterName: default
 
 kube-prometheus-stack:
+  server:
+    replicaCount: 2
   fullnameOverride: weaveworks-prometheus
   enabled: true
   grafana:
@@ -26,6 +28,8 @@ kube-prometheus-stack:
         cert-manager.io/cluster-issuer: "letsencrypt"
         nginx.ingress.kubernetes.io/ssl-redirect: "true"
         nginx.ingress.kubernetes.io/backend-protocol: "GRPC"
+        nginx.ingress.kubernetes.io/auth-tls-verify-client: "on"
+        nginx.ingress.kubernetes.io/auth-tls-secret: "flux-system/thanos-ca"
       hosts:
       - thanos-sidecar.example
       paths:

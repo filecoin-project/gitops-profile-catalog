@@ -12,3 +12,5 @@ terraform.tfstate*
 cluster.yaml
 config.yaml
 secret.yaml
+temp/*
+temp
