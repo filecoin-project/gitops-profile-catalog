@@ -2788,4 +2788,41 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/thanos-bucket-config-0.0.1/thanos-bucket-config-0.0.1.tgz
     version: 0.0.1
-generated: "2022-05-17T12:38:47.531442537Z"
+  velero:
+  - annotations:
+      weave.works/category: backup
+      weave.works/layer: layer-1
+      weave.works/links: |
+        - name: Chart Sources
+          url: https://vmware-tanzu.github.io/helm-charts
+        - name: Upstream Project
+          url: https://vmware-tanzu.github.io/helm-charts
+      weave.works/operator: "true"
+      weave.works/profile: velero
+      weave.works/profile-ci: |
+        - "gke"
+        - "kind"
+    apiVersion: v2
+    created: "2022-05-18T17:39:58.772452465Z"
+    dependencies:
+    - name: velero
+      repository: https://vmware-tanzu.github.io/helm-charts
+      version: 2.29.5
+    description: A Weaveworks Helm chart for Velero
+    digest: d15804e80932a4c4f203c27c0fdf6cb3a5d4a666c369ff2bc62a2cf36e9a8ee5
+    home: https://velero.io/
+    keywords:
+    - operator
+    - backup
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: velero
+    sources:
+    - https://github.com/vmware-tanzu/velero
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/velero-0.0.1/velero-0.0.1.tgz
+    version: 0.0.1
+generated: "2022-05-18T17:39:58.77266427Z"
