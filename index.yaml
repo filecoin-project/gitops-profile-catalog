@@ -1254,6 +1254,47 @@ entries:
         - "gke"
         - "kind"
     apiVersion: v2
+    created: "2022-05-19T12:07:48.713646962Z"
+    dependencies:
+    - condition: kube-prometheus-stack.enabled
+      name: kube-prometheus-stack
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 19.2.2
+    description: A Weaveworks Helm chart for observability
+    digest: 42aba8a763a808fbdf2d528d7405253c3baebbf92da1d43caef491c4d9a8fac9
+    home: https://github.com/weaveworks/profiles-catalog
+    icon: https://raw.githubusercontent.com/prometheus/prometheus.github.io/master/assets/prometheus_logo-cb55bb5c346.png
+    keywords:
+    - operator
+    - prometheus
+    - kube-prometheus
+    - observability
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: prometheus
+    sources:
+    - https://github.com/prometheus-community/helm-charts
+    - https://github.com/prometheus-operator/kube-prometheus
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/prometheus-0.0.26/prometheus-0.0.26.tgz
+    version: 0.0.26
+  - annotations:
+      weave.works/category: Observability
+      weave.works/layer: layer-1
+      weave.works/links: |
+        - name: Chart Sources
+          url: https://github.com/prometheus-community/helm-charts
+        - name: Upstream Project
+          url: https://github.com/prometheus-operator/kube-prometheus
+      weave.works/operator: "true"
+      weave.works/profile: prometheus
+      weave.works/profile-ci: |
+        - "gke"
+        - "kind"
+    apiVersion: v2
     created: "2022-05-17T12:38:47.531030931Z"
     dependencies:
     - condition: kube-prometheus-stack.enabled
@@ -2532,6 +2573,38 @@ entries:
       weave.works/operator: "true"
       weave.works/profile: thanos
     apiVersion: v2
+    created: "2022-05-19T12:07:48.943351534Z"
+    dependencies:
+    - name: thanos
+      repository: https://charts.bitnami.com/bitnami
+      version: 10.3.8
+    description: A Weaveworks Helm chart for the thanos
+    digest: 9596c42be55a171f857053e2e727dd9ed9a5a2557c2de9ead6e6297289e589d1
+    home: https://github.com/weaveworks/profiles-catalog
+    icon: https://raw.githubusercontent.com/thanos/thanos.github.io/master/assets/thanos_logo-cb55bb5c346.png
+    keywords:
+    - operator
+    - thanos
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: thanos
+    sources:
+    - https://charts.bitnami.com/bitnami
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/thanos-0.0.6/thanos-0.0.6.tgz
+    version: 0.0.6
+  - annotations:
+      weave.works/category: monitoring
+      weave.works/layer: layer-1
+      weave.works/links: |
+        - name: Chart Sources
+          url: https://charts.bitnami.com/bitnami
+      weave.works/operator: "true"
+      weave.works/profile: thanos
+    apiVersion: v2
     created: "2022-05-16T19:15:39.56387125Z"
     dependencies:
     - name: thanos
@@ -2825,4 +2898,4 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/velero-0.0.1/velero-0.0.1.tgz
     version: 0.0.1
-generated: "2022-05-18T17:39:58.77266427Z"
+generated: "2022-05-19T12:07:48.943762731Z"
