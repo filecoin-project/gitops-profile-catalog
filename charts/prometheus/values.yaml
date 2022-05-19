@@ -29,7 +29,7 @@ kube-prometheus-stack:
         nginx.ingress.kubernetes.io/ssl-redirect: "true"
         nginx.ingress.kubernetes.io/backend-protocol: "GRPC"
         nginx.ingress.kubernetes.io/auth-tls-verify-client: "on"
-        nginx.ingress.kubernetes.io/auth-tls-secret: "flux-system/thanos-ca"
+        nginx.ingress.kubernetes.io/auth-tls-secret: "flux-system/thanos-server-tls"
       hosts:
       - thanos-sidecar.example
       paths:
