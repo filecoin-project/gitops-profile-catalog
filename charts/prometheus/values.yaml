@@ -1,9 +1,6 @@
 secrets:
   url: https://github.com/filecoin-project/gitops-profile-catalog
-  path: "./profiles/secrets/prometheus"
-
-region: us-west-2
-clusterName: default
+  path: "./secrets/prometheus"
 
 kube-prometheus-stack:
   server:
