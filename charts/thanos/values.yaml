@@ -1,5 +1,3 @@
-region: us-west-2
-clusterName: default
 thanos:
   existingObjstoreSecret: thanos-storage-config
   compactor:
