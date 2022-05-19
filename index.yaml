@@ -1142,6 +1142,39 @@ entries:
   k8s-rbac-permissions:
   - annotations:
       weave.works/category: client
+      weave.works/layer: layer-0
+      weave.works/links: |
+        - name: Chart Sources
+          url: https://github.com/k8s-rbac-permissions-community/helm-charts
+        - name: Upstream Project
+          url: https://github.com/k8s-rbac-permissions-operator/kube-k8s-rbac-permissions
+      weave.works/operator: "true"
+      weave.works/profile: k8s-rbac-permissions
+      weave.works/profile-ci: |
+        - "gke"
+        - "kind"
+    apiVersion: v2
+    created: "2022-05-19T22:50:44.423563225Z"
+    description: A Weaveworks Helm chart for k8s-rbac-permissions
+    digest: ff21e164311132136bbdd0be9f91d2a3856ce5fe256c51c17f48f5f0536dc76b
+    home: https://github.com/weaveworks/profiles-catalog
+    icon: https://raw.githubusercontent.com/k8s-rbac-permissions/k8s-rbac-permissions.github.io/master/assets/k8s-rbac-permissions_logo-cb55bb5c346.png
+    keywords:
+    - k8s-rbac-permissions
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: k8s-rbac-permissions
+    sources:
+    - https://github.com/k8s-rbac-permissions-community/helm-charts
+    - https://github.com/k8s-rbac-permissions-operator/kube-k8s-rbac-permissions
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/k8s-rbac-permissions-0.0.4/k8s-rbac-permissions-0.0.4.tgz
+    version: 0.0.4
+  - annotations:
+      weave.works/category: client
       weave.works/layer: layer-1
       weave.works/links: |
         - name: Chart Sources
@@ -1897,6 +1930,38 @@ entries:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/prometheus-0.0.12/prometheus-0.0.12.tgz
     version: 0.0.12
   promtail:
+  - annotations:
+      weave.works/category: monitoring
+      weave.works/layer: layer-1
+      weave.works/links: |
+        - name: Chart Sources
+          url: https://grafana.github.io/loki/charts
+      weave.works/operator: "true"
+      weave.works/profile: promtail
+    apiVersion: v2
+    created: "2022-05-19T22:50:44.525919609Z"
+    dependencies:
+    - name: promtail
+      repository: https://grafana.github.io/loki/charts
+      version: 2.0.2
+    description: A Weaveworks Helm chart for the promtail
+    digest: eb366aaf97dbd14b73e01a3f68684abb41ed56de2ef669299d6d2e1566156c57
+    home: https://github.com/weaveworks/profiles-catalog
+    icon: https://raw.githubusercontent.com/promtail/promtail.github.io/master/assets/promtail_logo-cb55bb5c346.png
+    keywords:
+    - operator
+    - promtail
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: promtail
+    sources:
+    - https://grafana.github.io/loki/charts
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/promtail-0.0.2/promtail-0.0.2.tgz
+    version: 0.0.2
   - annotations:
       weave.works/category: monitoring
       weave.works/layer: layer-1
@@ -2939,4 +3004,4 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/velero-0.0.1/velero-0.0.1.tgz
     version: 0.0.1
-generated: "2022-05-19T12:18:28.284305791Z"
+generated: "2022-05-19T22:50:44.526268213Z"
