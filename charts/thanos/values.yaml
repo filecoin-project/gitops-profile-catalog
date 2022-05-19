@@ -1,5 +1,7 @@
-region: us-west-2
-clusterName: default
+secrets:
+  url: https://github.com/filecoin-project/gitops-profile-catalog
+  path: "./profiles/secrets/thanos"
+
 thanos:
   existingObjstoreSecret: thanos-storage-config
   compactor:
