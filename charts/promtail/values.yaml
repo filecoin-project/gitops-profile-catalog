@@ -1,3 +1,12 @@
+secrets:
+  url: https://github.com/filecoin-project/gitops-profile-catalog
+  path: "./secrets/promtail"
+
 promtail:
-  loki:
-    serviceName: loki
+  config:
+    lokiAddress: https://logs-prod-us-central1.grafana.net/loki/api/v1/push
+  extraEnvFrom:
+  # - configMapRef:
+  #     name: promtail-env
+  - secretRef:
+      name: promtail-auth
