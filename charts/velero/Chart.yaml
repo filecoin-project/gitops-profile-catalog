@@ -3,7 +3,7 @@ name: velero
 #icon: https://raw.githubusercontent.com/velero/velero.github.io/master/assets/velero_logo-cb55bb5c346.png
 description: A Weaveworks Helm chart for Velero
 type: application
-version: 0.0.2
+version: 0.0.1
 kubeVersion: ">=1.16.0-0"
 home: https://velero.io/
 sources:
