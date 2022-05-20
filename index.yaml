@@ -1939,6 +1939,38 @@ entries:
       weave.works/operator: "true"
       weave.works/profile: promtail
     apiVersion: v2
+    created: "2022-05-20T19:02:29.279189968Z"
+    dependencies:
+    - name: promtail
+      repository: https://grafana.github.io/helm-charts
+      version: 4.2.0
+    description: A Weaveworks Helm chart for the promtail
+    digest: 2a1cb09a1478edee7b25b7a38ecec7dae6c10b1bdebc32f82eff397337319f33
+    home: https://github.com/weaveworks/profiles-catalog
+    icon: https://raw.githubusercontent.com/promtail/promtail.github.io/master/assets/promtail_logo-cb55bb5c346.png
+    keywords:
+    - operator
+    - promtail
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: promtail
+    sources:
+    - https://grafana.github.io/loki/charts
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/promtail-0.0.4/promtail-0.0.4.tgz
+    version: 0.0.4
+  - annotations:
+      weave.works/category: monitoring
+      weave.works/layer: layer-1
+      weave.works/links: |
+        - name: Chart Sources
+          url: https://grafana.github.io/loki/charts
+      weave.works/operator: "true"
+      weave.works/profile: promtail
+    apiVersion: v2
     created: "2022-05-20T13:41:29.17258216Z"
     dependencies:
     - name: promtail
@@ -3036,4 +3068,4 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/velero-0.0.1/velero-0.0.1.tgz
     version: 0.0.1
-generated: "2022-05-20T13:41:29.173012063Z"
+generated: "2022-05-20T19:02:29.279485469Z"
