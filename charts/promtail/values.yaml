@@ -15,7 +15,7 @@ promtail:
         - url: {{ tpl .Values.config.lokiAddress . }}
           basic_auth:
             username: ${PROMTAIL_USERNAME}
-            password: ${PROMTAIL_PASSWORD}         
+            password: ${PROMTAIL_PASSWORD}
         {{- with .Values.config.snippets.extraClientConfigs }}
         {{- toYaml . | nindent 2 }}
         {{- end }}
