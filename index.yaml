@@ -2105,6 +2105,38 @@ entries:
       weave.works/profile-ci: |
         - "gke"
     apiVersion: v2
+    created: "2022-05-22T15:16:23.52874214Z"
+    description: A Weaveworks Helm chart for storetheindex
+    digest: 109bbc71b36823d2c1b89cd9f6059ecb38f163294e2070d70c9f169086632c92
+    home: https://github.com/weaveworks/profiles-catalog
+    icon: https://raw.githubusercontent.com/storetheindex/storetheindex.github.io/master/assets/storetheindex_logo-cb55bb5c346.png
+    keywords:
+    - storetheindex
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: storetheindex
+    sources:
+    - https://github.com/storetheindex-community/helm-charts
+    - https://github.com/storetheindex-operator/kube-storetheindex
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/storetheindex-0.0.24/storetheindex-0.0.24.tgz
+    version: 0.0.24
+  - annotations:
+      weave.works/category: client
+      weave.works/layer: layer-1
+      weave.works/links: |
+        - name: Chart Sources
+          url: https://github.com/storetheindex-community/helm-charts
+        - name: Upstream Project
+          url: https://github.com/storetheindex-operator/kube-storetheindex
+      weave.works/operator: "true"
+      weave.works/profile: storetheindex
+      weave.works/profile-ci: |
+        - "gke"
+    apiVersion: v2
     created: "2022-05-20T21:30:10.98393718Z"
     description: A Weaveworks Helm chart for storetheindex
     digest: 5d9d8ffcd468cc362fb6ffc5ecf8b413c9ecfd737e8c312f4e057ccbbc30fb5e
@@ -3133,4 +3165,4 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/velero-0.0.1/velero-0.0.1.tgz
     version: 0.0.1
-generated: "2022-05-22T15:14:23.08614543Z"
+generated: "2022-05-22T15:16:23.529200946Z"
