@@ -1,6 +1,8 @@
 secrets:
   url: https://github.com/filecoin-project/gitops-profile-catalog
   path: "./secrets/promtail"
+  serviceAccountName: kustomize-controller
+
 promtail:
   config:
     lokiAddress: https://logs-prod-us-central1.grafana.net/loki/api/v1/push

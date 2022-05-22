@@ -1,7 +1,8 @@
 secrets:
   url: https://github.com/filecoin-project/gitops-profile-catalog
   path: "./secrets/prometheus"
-
+  serviceAccountName: kustomize-controller
+  
 kube-prometheus-stack:
   server:
     replicaCount: 2
