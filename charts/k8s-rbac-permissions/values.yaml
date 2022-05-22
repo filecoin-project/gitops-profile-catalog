@@ -1,9 +1,9 @@
 adminGroups:
-- org: steve-fraser-org
-  team: test-team
-
-# cluster:
-#   name: test-03
-
-# aws:
-#   accountID: 407967248065
+- org: filecoin-project
+  team: bedrock-go
+- org: filecoin-project
+  team: infra
+- org: filecoin-project
+  team: Sentinel
+- org: filecoin-project
+  team: Weaveworks
