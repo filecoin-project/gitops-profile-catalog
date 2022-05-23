@@ -1,11 +1,9 @@
 external-dns:
+  rbac:
+    create: true
   txtOwnerId: Z06730012R49VCK4SGLRZ
-  namespace: ""
   domainFilters:
   - ""
-  aws:
-    assumeRoleArn: ""
-    zoneType: public
   serviceAccount:
     annotations:
       eks.amazonaws.com/role-arn: ""

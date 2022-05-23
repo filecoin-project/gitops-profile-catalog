@@ -3,11 +3,11 @@ name: external-dns
 icon: https://raw.githubusercontent.com/external-dns/external-dns.github.io/master/assets/external-dns_logo-cb55bb5c346.png
 description: A Weaveworks Helm chart for external dns
 type: application
-version: 0.0.6
+version: 0.0.7
 kubeVersion: ">=1.16.0-0"
 home: https://github.com/weaveworks/profiles-catalog
 sources:
-  - https://github.com/bitnami/charts/tree/master/bitnami/external-dns
+  - https://kubernetes-sigs.github.io/external-dns/
 
 keywords:
 - operator
@@ -20,9 +20,9 @@ annotations:
   "weave.works/layer": layer-1
   "weave.works/links": |
     - name: Chart Sources
-      url: https://github.com/bitnami/charts/tree/master/bitnami/external-dns
+      url: https://kubernetes-sigs.github.io/external-dns/
     - name: Upstream Project
-      url: https://github.com/bitnami/charts/tree/master/bitnami/external-dns
+      url: https://kubernetes-sigs.github.io/external-dns/
   "weave.works/profile-ci": |
     - "gke"
     - "kind"
@@ -33,5 +33,5 @@ maintainers:
 
 dependencies:
 - name: external-dns
-  version: "6.4.4"
-  repository: "https://charts.bitnami.com/bitnami"
+  version: "1.9.0"
+  repository: "https://kubernetes-sigs.github.io/external-dns/"
