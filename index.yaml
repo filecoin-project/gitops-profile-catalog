@@ -847,6 +847,43 @@ entries:
       weave.works/layer: layer-1
       weave.works/links: |
         - name: Chart Sources
+          url: https://kubernetes-sigs.github.io/external-dns/
+        - name: Upstream Project
+          url: https://kubernetes-sigs.github.io/external-dns/
+      weave.works/operator: "true"
+      weave.works/profile: external-dns
+      weave.works/profile-ci: |
+        - "gke"
+        - "kind"
+    apiVersion: v2
+    created: "2022-05-23T12:07:14.142761293Z"
+    dependencies:
+    - name: external-dns
+      repository: https://kubernetes-sigs.github.io/external-dns/
+      version: 1.9.0
+    description: A Weaveworks Helm chart for external dns
+    digest: 945399532f7d678ba9b183fcdefc663bf6a0abb50fce7721986c986d98e37e06
+    home: https://github.com/weaveworks/profiles-catalog
+    icon: https://raw.githubusercontent.com/external-dns/external-dns.github.io/master/assets/external-dns_logo-cb55bb5c346.png
+    keywords:
+    - operator
+    - dns
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: external-dns
+    sources:
+    - https://kubernetes-sigs.github.io/external-dns/
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/external-dns-0.0.7/external-dns-0.0.7.tgz
+    version: 0.0.7
+  - annotations:
+      weave.works/category: dns
+      weave.works/layer: layer-1
+      weave.works/links: |
+        - name: Chart Sources
           url: https://github.com/bitnami/charts/tree/master/bitnami/external-dns
         - name: Upstream Project
           url: https://github.com/bitnami/charts/tree/master/bitnami/external-dns
@@ -3275,4 +3312,4 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/velero-0.0.1/velero-0.0.1.tgz
     version: 0.0.1
-generated: "2022-05-23T11:28:17.245834864Z"
+generated: "2022-05-23T12:07:14.143307436Z"
