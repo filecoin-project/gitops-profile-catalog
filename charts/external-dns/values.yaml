@@ -1,5 +1,6 @@
 external-dns:
   txtOwnerId: Z06730012R49VCK4SGLRZ
+  namespace: ""
   domainFilters:
   - ""
   aws:
