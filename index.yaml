@@ -3395,6 +3395,42 @@ entries:
         - "gke"
         - "kind"
     apiVersion: v2
+    created: "2022-05-25T21:43:36.316856477Z"
+    dependencies:
+    - name: velero
+      repository: https://vmware-tanzu.github.io/helm-charts
+      version: 2.29.5
+    description: A Weaveworks Helm chart for Velero
+    digest: 201a15f198742ad3f79bf83982a3d0d3f53315e8a67f28ca8a93eecbb74a8790
+    home: https://velero.io/
+    keywords:
+    - operator
+    - backup
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: velero
+    sources:
+    - https://github.com/vmware-tanzu/velero
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/velero-0.0.3/velero-0.0.3.tgz
+    version: 0.0.3
+  - annotations:
+      weave.works/category: backup
+      weave.works/layer: layer-1
+      weave.works/links: |
+        - name: Chart Sources
+          url: https://vmware-tanzu.github.io/helm-charts
+        - name: Upstream Project
+          url: https://vmware-tanzu.github.io/helm-charts
+      weave.works/operator: "true"
+      weave.works/profile: velero
+      weave.works/profile-ci: |
+        - "gke"
+        - "kind"
+    apiVersion: v2
     created: "2022-05-24T17:39:08.221064875Z"
     dependencies:
     - name: velero
@@ -3453,4 +3489,4 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/velero-0.0.1/velero-0.0.1.tgz
     version: 0.0.1
-generated: "2022-05-24T17:39:08.221633086Z"
+generated: "2022-05-25T21:43:36.317237189Z"
