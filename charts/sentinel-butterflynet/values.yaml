@@ -1,0 +1,9 @@
+secrets:
+  url: https://github.com/filecoin-project/gitops-profile-catalog
+  path: "./secrets/sentinel-butterflynet"
+  branch: main
+
+app:
+  url: https://github.com/steve-fraser/sentinel-butterflynet
+  path: "./kubernetes/gitops/staging/butterflynet"
+  branch: main
