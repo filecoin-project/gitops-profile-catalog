@@ -1,0 +1,28 @@
+apiVersion: v2
+name: sentinel-butterflynet
+description: A Weaveworks Helm chart for sentinel-butterflynet
+type: application
+version: 0.0.1
+kubeVersion: ">=1.16.0-0"
+home: https://github.com/weaveworks/profiles-catalog
+sources:
+  - https://github.com/filecoin-project/sentinel-infra
+
+
+keywords:
+- sentinel-butterflynet
+
+annotations:
+  "weave.works/profile": sentinel-butterflynet
+  "weave.works/category": client
+  "weave.works/links": |
+    - name: Chart Sources
+      url: https://github.com/sentinel-butterflynet-community/helm-charts
+    - name: Upstream Project
+      url: https://github.com/sentinel-butterflynet-operator/kube-sentinel-butterflynet
+  "weave.works/profile-ci": |
+    - "gke"
+
+maintainers:
+  - name: Weaveworks
+    email: support@weave.works
