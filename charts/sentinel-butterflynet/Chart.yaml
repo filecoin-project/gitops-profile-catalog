@@ -15,11 +15,6 @@ keywords:
 annotations:
   "weave.works/profile": sentinel-butterflynet
   "weave.works/category": client
-  "weave.works/links": |
-    - name: Chart Sources
-      url: https://github.com/sentinel-butterflynet-community/helm-charts
-    - name: Upstream Project
-      url: https://github.com/sentinel-butterflynet-operator/kube-sentinel-butterflynet
   "weave.works/profile-ci": |
     - "gke"
 
