@@ -2343,6 +2343,30 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/promtail-0.0.1/promtail-0.0.1.tgz
     version: 0.0.1
+  sentinel-butterflynet:
+  - annotations:
+      weave.works/category: client
+      weave.works/profile: sentinel-butterflynet
+      weave.works/profile-ci: |
+        - "gke"
+    apiVersion: v2
+    created: "2022-06-01T18:43:08.26359546Z"
+    description: A Weaveworks Helm chart for sentinel-butterflynet
+    digest: b413a45e43ab25d7768741e4f6fdebcfe1f8b6827b3f6e001e507c3d47da4403
+    home: https://github.com/weaveworks/profiles-catalog
+    keywords:
+    - sentinel-butterflynet
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: sentinel-butterflynet
+    sources:
+    - https://github.com/filecoin-project/sentinel-infra
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/sentinel-butterflynet-0.0.1/sentinel-butterflynet-0.0.1.tgz
+    version: 0.0.1
   storetheindex:
   - annotations:
       weave.works/category: client
@@ -3489,4 +3513,4 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/velero-0.0.1/velero-0.0.1.tgz
     version: 0.0.1
-generated: "2022-05-25T21:43:36.317237189Z"
+generated: "2022-06-01T18:43:08.263962066Z"
