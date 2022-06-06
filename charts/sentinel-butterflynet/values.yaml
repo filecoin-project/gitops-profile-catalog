@@ -4,6 +4,6 @@ secrets:
   branch: main
 
 app:
-  url: https://github.com/steve-fraser/sentinel-butterflynet
+  url: https://github.com/filecoin-project/sentinel-infra
   path: "./kubernetes/gitops/staging/butterflynet"
-  branch: main
+  branch: butterflynet-poc

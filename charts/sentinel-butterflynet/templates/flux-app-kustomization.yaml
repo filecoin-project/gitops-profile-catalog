@@ -6,6 +6,8 @@ metadata:
   labels:
     {{- include "sentinel-butterflynet.labels" . | nindent 4 }}   
 spec:
+  secretRef:
+   name: wge-github-token
   interval: 1m0s
   ref:
     branch: {{ .Values.app.branch }}
