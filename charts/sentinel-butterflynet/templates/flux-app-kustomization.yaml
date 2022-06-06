@@ -29,7 +29,7 @@ spec:
   decryption:
     provider: sops
     secretRef:
-      name: wge-profiles-sops-gpg
+      name: sentinel-sops-gpg
   path: {{ .Values.app.path }}
   prune: false
   sourceRef:

@@ -5,5 +5,5 @@ secrets:
 
 app:
   url: https://github.com/filecoin-project/sentinel-infra
-  path: "./kubernetes/gitops/staging/butterflynet"
+  path: "./kubernetes/gitops/staging/butterflynet/cluster"
   branch: butterflynet-poc
