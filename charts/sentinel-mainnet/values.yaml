@@ -6,6 +6,6 @@ secrets:
 app:
   url: https://github.com/filecoin-project/sentinel-infra
   path: "./kubernetes/gitops/staging/mainnet/cluster"
-  branch: mainnet-poc
+  branch: butterflynet-poc
   key: sentinel-sops-gpg
   token: sentinel-mainnet-github-token
