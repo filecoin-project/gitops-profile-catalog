@@ -2350,6 +2350,29 @@ entries:
       weave.works/profile-ci: |
         - "gke"
     apiVersion: v2
+    created: "2022-06-07T13:57:11.038134639Z"
+    description: A Weaveworks Helm chart for sentinel-butterflynet
+    digest: 175eb129a715c43f5d441d6f2b0e299a031cda0acfae227998bb02a8b7fbe378
+    home: https://github.com/weaveworks/profiles-catalog
+    keywords:
+    - sentinel-butterflynet
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: sentinel-butterflynet
+    sources:
+    - https://github.com/filecoin-project/sentinel-infra
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/sentinel-butterflynet-0.0.2/sentinel-butterflynet-0.0.2.tgz
+    version: 0.0.2
+  - annotations:
+      weave.works/category: client
+      weave.works/profile: sentinel-butterflynet
+      weave.works/profile-ci: |
+        - "gke"
+    apiVersion: v2
     created: "2022-06-01T18:43:08.26359546Z"
     description: A Weaveworks Helm chart for sentinel-butterflynet
     digest: b413a45e43ab25d7768741e4f6fdebcfe1f8b6827b3f6e001e507c3d47da4403
@@ -2366,6 +2389,30 @@ entries:
     type: application
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/sentinel-butterflynet-0.0.1/sentinel-butterflynet-0.0.1.tgz
+    version: 0.0.1
+  sentinel-mainnet:
+  - annotations:
+      weave.works/category: client
+      weave.works/profile: sentinel-mainnet
+      weave.works/profile-ci: |
+        - "gke"
+    apiVersion: v2
+    created: "2022-06-07T13:57:11.203690175Z"
+    description: A Weaveworks Helm chart for sentinel-mainnet
+    digest: 7c03844a15b4ddffcb02a9c87412db80ddd06440a4665a0a8b8d114d4227f396
+    home: https://github.com/weaveworks/profiles-catalog
+    keywords:
+    - sentinel-mainnet
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: sentinel-mainnet
+    sources:
+    - https://github.com/filecoin-project/sentinel-infra
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/sentinel-mainnet-0.0.1/sentinel-mainnet-0.0.1.tgz
     version: 0.0.1
   storetheindex:
   - annotations:
@@ -3513,4 +3560,4 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/velero-0.0.1/velero-0.0.1.tgz
     version: 0.0.1
-generated: "2022-06-01T18:43:08.263962066Z"
+generated: "2022-06-07T13:57:11.204018581Z"
