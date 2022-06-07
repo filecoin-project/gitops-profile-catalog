@@ -1,11 +1,11 @@
 secrets:
   url: https://github.com/filecoin-project/gitops-profile-catalog
-  path: "./secrets/sentinel-butterflynet"
+  path: "./secrets/sentinel-mainnet"
   branch: main
 
 app:
   url: https://github.com/filecoin-project/sentinel-infra
-  path: "./kubernetes/gitops/staging/butterflynet/cluster"
+  path: "./kubernetes/gitops/staging/mainnet/cluster"
   branch: butterflynet-poc
   key: sentinel-sops-gpg
-  token: sentinel-butterflynet-github-token
+  token: sentinel-mainnet-github-token
