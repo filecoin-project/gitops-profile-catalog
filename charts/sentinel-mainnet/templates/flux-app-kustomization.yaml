@@ -1,10 +1,10 @@
 apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: GitRepository
 metadata:
-  name: sentinel-butterflynet-app
-  namespace: {{ template "sentinel-butterflynet.namespace" . }}
+  name: sentinel-mainnet-app
+  namespace: {{ template "sentinel-mainnet.namespace" . }}
   labels:
-    {{- include "sentinel-butterflynet.labels" . | nindent 4 }}   
+    {{- include "sentinel-mainnet.labels" . | nindent 4 }}   
 spec:
   secretRef:
    name: wge-github-token
@@ -17,10 +17,10 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
-  name: sentinel-butterflynet-app
-  namespace: {{ template "sentinel-butterflynet.namespace" . }}
+  name: sentinel-mainnet-app
+  namespace: {{ template "sentinel-mainnet.namespace" . }}
   labels:
-    {{- include "sentinel-butterflynet.labels" . | nindent 4 }}
+    {{- include "sentinel-mainnet.labels" . | nindent 4 }}
 spec:
   interval: 5m
   {{ if ((.Values.app).serviceAccountName) }}
@@ -29,11 +29,11 @@ spec:
   decryption:
     provider: sops
     secretRef:
-      name: {{ .Values.app.key }}
+      name:  {{ .Values.app.key }}
   path: {{ .Values.app.path }}
   prune: false
   sourceRef:
     kind: GitRepository
-    name: sentinel-butterflynet-app
-    namespace:  {{ template "sentinel-butterflynet.namespace" . }}
+    name: sentinel-mainnet-app
+    namespace:  {{ template "sentinel-mainnet.namespace" . }}
   timeout: 2m
