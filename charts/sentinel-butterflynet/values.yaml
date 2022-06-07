@@ -8,3 +8,4 @@ app:
   path: "./kubernetes/gitops/staging/butterflynet/cluster"
   branch: butterflynet-poc
   key: sentinel-sops-gpg
+  token: sentinel-butterflynet-github-token

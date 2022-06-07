@@ -8,3 +8,4 @@ app:
   path: "./kubernetes/gitops/staging/mainnet/cluster"
   branch: mainnet-poc
   key: sentinel-sops-gpg
+  token: sentinel-mainnet-github-token

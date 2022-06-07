@@ -7,7 +7,7 @@ metadata:
     {{- include "sentinel-mainnet.labels" . | nindent 4 }}   
 spec:
   secretRef:
-   name: wge-github-token
+   name: {{ .Values.app.token }}
   interval: 1m0s
   ref:
     branch: {{ .Values.app.branch }}
