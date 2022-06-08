@@ -1,10 +1,10 @@
 apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: GitRepository
 metadata:
-  name: sentinel-mainnet-app
-  namespace: {{ template "sentinel-mainnet.namespace" . }}
+  name: sentinel-app
+  namespace: {{ template "sentinel.namespace" . }}
   labels:
-    {{- include "sentinel-mainnet.labels" . | nindent 4 }}   
+    {{- include "sentinel.labels" . | nindent 4 }}   
 spec:
   secretRef:
    name: {{ .Values.app.token }}
@@ -17,10 +17,10 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
-  name: sentinel-mainnet-app
-  namespace: {{ template "sentinel-mainnet.namespace" . }}
+  name: sentinel-app
+  namespace: {{ template "sentinel.namespace" . }}
   labels:
-    {{- include "sentinel-mainnet.labels" . | nindent 4 }}
+    {{- include "sentinel.labels" . | nindent 4 }}
 spec:
   interval: 5m
   {{ if ((.Values.app).serviceAccountName) }}
@@ -34,6 +34,6 @@ spec:
   prune: false
   sourceRef:
     kind: GitRepository
-    name: sentinel-mainnet-app
-    namespace:  {{ template "sentinel-mainnet.namespace" . }}
+    name: sentinel-app
+    namespace:  {{ template "sentinel.namespace" . }}
   timeout: 2m
