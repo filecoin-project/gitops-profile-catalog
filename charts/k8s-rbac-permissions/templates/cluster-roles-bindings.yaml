@@ -14,3 +14,22 @@ subjects:
 - kind: Group
   name: {{ $adminGroup.org }}:{{ $adminGroup.team }}
 {{- end }}
+{{- if .Values.viewerGroups -}}
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: k8s-oidc-viewer
+  namespace: kube-system
+  labels:
+    {{- include "k8s-rbac-permissions.labels" . | nindent 4 }}   
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: view
+subjects:
+{{- range $viewerGroup := .Values.viewerGroups }}
+- kind: Group
+  name: {{ $viewerGroup.org }}:{{ $viewerGroup.team }}
+{{- end }}
+{{- end -}}
