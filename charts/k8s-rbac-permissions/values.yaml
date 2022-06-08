@@ -11,3 +11,7 @@ adminGroups:
 # viewerGroups:
 # - org: filecoin-project
 #   team: bedrock-go
+
+# editGroups:
+# - org: filecoin-project
+#   team: bedrock-go
