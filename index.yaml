@@ -1550,6 +1550,35 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/k8s-rbac-permissions-0.0.1/k8s-rbac-permissions-0.0.1.tgz
     version: 0.0.1
+  policy-agent:
+  - annotations:
+      weave.works/category: Policy
+      weave.works/layer: layer-1
+      weave.works/links: |
+        - name: Upstream Project
+          url: https://github.com/weaveworks/policy-agent
+      weave.works/operator: "true"
+      weave.works/profile: weave-policy
+    apiVersion: v2
+    appVersion: "1.0"
+    created: "2022-06-09T19:05:17.821790211Z"
+    description: A Weaveworks Helm chart for Kubernetes to configure the policy agent
+    digest: cf36a8560376b130c2b8a12bb3b7674c699b15abdec6d7508dce75a9094feb78
+    home: https://github.com/weaveworks/profiles-catalog
+    icon: https://www.magalix.com/hubfs/Imported%20images/logo-02.png%3Fwidth=560%26name=logo-02-Dec-18-2020-11-24-41-75-AM.png
+    keywords:
+    - policy
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: policy-agent
+    sources:
+    - https://github.com/weaveworks/policy-agent
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/policy-agent-0.2.5/policy-agent-0.2.5.tgz
+    version: 0.2.5
   prometheus:
   - annotations:
       weave.works/category: Observability
@@ -3631,4 +3660,4 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/weave-policy-agent-0.2.5/weave-policy-agent-0.2.5.tgz
     version: 0.2.5
-generated: "2022-06-09T14:19:47.457058016Z"
+generated: "2022-06-09T19:05:17.822075007Z"
