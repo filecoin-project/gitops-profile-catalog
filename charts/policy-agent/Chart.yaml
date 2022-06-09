@@ -18,7 +18,7 @@ maintainers:
     email: support@weave.works
 
 annotations:
-  "weave.works/profile": weave-policy
+  "weave.works/profile": policy-agent
   "weave.works/layer": layer-1
   "weave.works/category": Policy
   "weave.works/operator": "true"
