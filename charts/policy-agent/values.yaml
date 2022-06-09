@@ -33,14 +33,13 @@ policySource:
   enabled: true
   url: ssh://git@github.com/cmharden/policy-library
   branch: wge-profile
-  path: ./  # Could be a path to the policies dir or a kustomization.yaml file
-  secretRef: policy-library-auth # (Optional): Name of the K8s secret with private repo auth credentials
+  path: ./                                             # Could be a path to the policies dir or a kustomization.yaml file
+  secretRef: policy-library-auth                       # (Optional): Name of the K8s secret with private repo auth credentials
 
 accountId: "policy-acct-v1"
 clusterId: "policy-cltr-v1"
 
 secrets:
   url: https://github.com/filecoin-project/gitops-profile-catalog
-  path: "./secrets/weave-policy-agent"
+  path: "./secrets/policy-agent"
   serviceAccountName: kustomize-controller
-
