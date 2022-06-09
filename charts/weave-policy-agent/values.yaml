@@ -41,6 +41,6 @@ clusterId: "policy-cltr-v1"
 
 secrets:
   url: https://github.com/filecoin-project/gitops-profile-catalog
-  path: "./secrets/weave-policy-agent"
+  path: "./secrets/policy-agent"
   serviceAccountName: kustomize-controller
 
