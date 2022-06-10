@@ -3,10 +3,7 @@ kind: Namespace
 metadata:
   labels:
     agent-admission: ignore
-    app.kubernetes.io/name: "{{ .Values.namespace }}"
-    app.kubernetes.io/version: "1"
-    app.kubernetes.io/component: "namespace"
-    app.kubernetes.io/tier: "backend"
+    {{- include "policy-agent.labels" . | nindent 4 }}
   name: {{ .Values.namespace }}
 ---
 apiVersion: v1
@@ -15,20 +12,14 @@ metadata:
   name: policy-agent
   namespace: {{ .Values.namespace }}
   labels:
-    app.kubernetes.io/name: "policy-agent"
-    app.kubernetes.io/version: "1"
-    app.kubernetes.io/component: "service-account"
-    app.kubernetes.io/tier: "backend"
+    {{- include "policy-agent.labels" . | nindent 4 }}
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   name: policy-agent
   labels:
-    app.kubernetes.io/name: "policy-agent"
-    app.kubernetes.io/version: "1"
-    app.kubernetes.io/component: "cluster-role"
-    app.kubernetes.io/tier: "backend"
+    {{- include "policy-agent.labels" . | nindent 4 }}
 rules:
 - apiGroups:
   - 'pac.weave.works'
@@ -51,10 +42,7 @@ kind: ClusterRoleBinding
 metadata:
   name: policy-agent
   labels:
-    app.kubernetes.io/name: "policy-agent"
-    app.kubernetes.io/version: "1"
-    app.kubernetes.io/component: "cluster-role-binding"
-    app.kubernetes.io/tier: "backend"
+    {{- include "policy-agent.labels" . | nindent 4 }}
 subjects:
 - kind: ServiceAccount
   name: policy-agent
@@ -136,13 +124,7 @@ metadata:
   name: policy-agent
   namespace: {{ .Values.namespace }}
   labels:
-    app.kubernetes.io/name: "policy-agent"
-    app.kubernetes.io/instance: "policy-agent"
-    app.kubernetes.io/part-of: "policy-agent"
-    app.kubernetes.io/managed-by: "weaveworks"
-    app.kubernetes.io/version: "1"
-    app.kubernetes.io/component: "policy-agent"
-    app.kubernetes.io/tier: "backend"
+    {{- include "policy-agent.labels" . | nindent 4 }}
 spec:
   replicas: 1
   selector:
@@ -228,7 +210,7 @@ kind: ValidatingWebhookConfiguration
 metadata:
   name: policy-agent
   labels:
-    app.kubernetes.io/name: policy-agent
+    {{- include "policy-agent.labels" . | nindent 4 }}
   {{- if eq .Values.useCertManager true }}
   annotations:
     cert-manager.io/inject-ca-from: {{ .Values.namespace }}/agent-certificate

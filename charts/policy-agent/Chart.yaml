@@ -25,3 +25,6 @@ annotations:
   "weave.works/links": |
     - name: Upstream Project
       url: https://github.com/weaveworks/policy-agent
+  "weave.works/profile-ci": |
+    - "gke"
+    - "kind"

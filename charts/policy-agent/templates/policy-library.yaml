@@ -4,6 +4,8 @@ kind: GitRepository
 metadata:
   name: policy-library
   namespace: flux-system
+  labels:
+    {{- include "policy-agent.labels" . | nindent 4 }}
 spec:
   interval: 10s
   url: {{ .Values.policySource.url }}
@@ -20,6 +22,8 @@ kind: Kustomization
 metadata:
   name: policy-library
   namespace: flux-system
+  labels:
+    {{- include "policy-agent.labels" . | nindent 4 }}
 spec:
   interval: 10m0s
   sourceRef:
