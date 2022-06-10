@@ -1,6 +1,6 @@
 apiVersion: v2
-name: sentinel-butterflynet
-description: A Weaveworks Helm chart for sentinel-butterflynet
+name: sentinel
+description: A Weaveworks Helm chart for sentinel
 type: application
 version: 0.0.2
 kubeVersion: ">=1.16.0-0"
@@ -10,10 +10,10 @@ sources:
 
 
 keywords:
-- sentinel-butterflynet
+- sentinel
 
 annotations:
-  "weave.works/profile": sentinel-butterflynet
+  "weave.works/profile": sentinel
   "weave.works/category": client
   "weave.works/profile-ci": |
     - "gke"

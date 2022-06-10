@@ -7,3 +7,11 @@ adminGroups:
   team: Sentinel
 - org: filecoin-project
   team: Weaveworks
+
+# viewerGroups:
+# - org: filecoin-project
+#   team: bedrock-go
+
+# editGroups:
+# - org: filecoin-project
+#   team: bedrock-go
