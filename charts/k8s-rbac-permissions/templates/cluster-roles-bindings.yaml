@@ -14,7 +14,7 @@ subjects:
 - kind: Group
   name: {{ $adminGroup.org }}:{{ $adminGroup.team }}
 {{- end }}
-{{- if .Values.viewerGroups -}}
+{{ if .Values.viewerGroups }}
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
@@ -33,7 +33,7 @@ subjects:
   name: {{ $viewerGroup.org }}:{{ $viewerGroup.team }}
 {{- end }}
 {{- end -}}
-{{- if .Values.editGroups -}}
+{{ if .Values.editGroups }}
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
