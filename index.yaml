@@ -1333,6 +1333,39 @@ entries:
         - "gke"
         - "kind"
     apiVersion: v2
+    created: "2022-06-13T13:25:39.3932497Z"
+    description: A Weaveworks Helm chart for k8s-rbac-permissions
+    digest: af268ac86e01862d0d501d0ecc6dbed30ff08551db771be13e27174b9c967b0b
+    home: https://github.com/weaveworks/profiles-catalog
+    icon: https://raw.githubusercontent.com/k8s-rbac-permissions/k8s-rbac-permissions.github.io/master/assets/k8s-rbac-permissions_logo-cb55bb5c346.png
+    keywords:
+    - k8s-rbac-permissions
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: k8s-rbac-permissions
+    sources:
+    - https://github.com/k8s-rbac-permissions-community/helm-charts
+    - https://github.com/k8s-rbac-permissions-operator/kube-k8s-rbac-permissions
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/k8s-rbac-permissions-0.0.8/k8s-rbac-permissions-0.0.8.tgz
+    version: 0.0.8
+  - annotations:
+      weave.works/category: client
+      weave.works/layer: layer-0
+      weave.works/links: |
+        - name: Chart Sources
+          url: https://github.com/k8s-rbac-permissions-community/helm-charts
+        - name: Upstream Project
+          url: https://github.com/k8s-rbac-permissions-operator/kube-k8s-rbac-permissions
+      weave.works/operator: "true"
+      weave.works/profile: k8s-rbac-permissions
+      weave.works/profile-ci: |
+        - "gke"
+        - "kind"
+    apiVersion: v2
     created: "2022-06-08T22:02:07.466046437Z"
     description: A Weaveworks Helm chart for k8s-rbac-permissions
     digest: 9c93769f75bff435d3658641141bdebff97350af3857c40777afdc2f7570e385
@@ -3718,4 +3751,4 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/velero-0.0.1/velero-0.0.1.tgz
     version: 0.0.1
-generated: "2022-06-10T19:29:17.566984851Z"
+generated: "2022-06-13T13:25:39.393590698Z"
