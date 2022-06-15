@@ -1,0 +1,4 @@
+secrets:
+  url: https://github.com/filecoin-project/gitops-profile-catalog
+  path: "./secrets/grafana-agent"
+  serviceAccountName: kustomize-controller

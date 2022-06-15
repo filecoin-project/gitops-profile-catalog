@@ -1,0 +1,32 @@
+apiVersion: v2
+name: grafana-agent
+description: A Weaveworks Helm chart for grafana-agent
+type: application
+version: 0.0.1
+kubeVersion: ">=1.16.0-0"
+home: https://github.com/weaveworks/profiles-catalog
+sources:
+  - https://artifacthub.io/packages/helm/grafana/grafana-agent
+  - https://github.com/grafana/grafana-agent
+
+keywords:
+- grafana-agent
+
+annotations:
+  "weave.works/profile": grafana-agent
+  "weave.works/category": tracing
+  "weave.works/operator": "true"
+  "weave.works/layer": layer-0
+  "weave.works/links": |
+    - name: Chart Sources
+      url: https://artifacthub.io/packages/helm/grafana/grafana-agent
+    - name: Upstream Project
+      url: https://github.com/grafana/grafana-agent
+  "weave.works/profile-ci": |
+    - "gke"
+    - "kind"
+
+maintainers:
+  - name: Weaveworks
+    email: support@weave.works
+
