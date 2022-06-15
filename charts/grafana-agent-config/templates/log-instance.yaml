@@ -1,0 +1,17 @@
+apiVersion: monitoring.grafana.com/v1alpha1
+kind: MetricsInstance
+metadata:
+  name: primary
+  namespace: {{ template "grafana-agent-config.namespace" . }}
+  labels:
+    {{- include "grafana-agent-config.labels" . | nindent 4 }}   
+spec:
+  remoteWrite:
+  - url: your_remote_write_URL
+    basicAuth:
+      username:
+        name: primary-credentials-metrics
+        key: username
+      password:
+        name: primary-credentials-metrics
+        key: password

@@ -1,0 +1,6 @@
+region: us-west-2
+clusterName: default
+secrets:
+  url: https://github.com/filecoin-project/gitops-profile-catalog
+  path: "./secrets/grafana-agent-config"
+  serviceAccountName: kustomize-controller
