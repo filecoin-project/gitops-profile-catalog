@@ -1,0 +1,21 @@
+apiVersion: monitoring.grafana.com/v1alpha1
+kind: GrafanaAgent
+metadata:
+  name: grafana-agent
+  namespace: {{ template "grafana-agent-config.namespace" . }}
+  labels:
+    {{- include "grafana-agent-config.labels" . | nindent 4 }}   
+spec:
+  image: grafana/agent:v0.25.0
+  logLevel: info
+  serviceAccountName: grafana-agent
+  metrics:
+    instanceSelector:
+      matchLabels:
+        agent: grafana-agent-metrics
+    externalLabels:
+      cluster: cloud
+  logs:
+    instanceSelector:
+      matchLabels:
+        agent: grafana-agent-logs

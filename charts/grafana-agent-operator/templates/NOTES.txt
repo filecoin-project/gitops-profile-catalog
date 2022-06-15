@@ -1,0 +1,4 @@
+{{ $.Chart.Name }} has been installed. Check its status by running:
+  kubectl --namespace {{ template "grafana-agent-operator.namespace" . }} get pods -l "release={{ $.Release.Name }}"
+
+Visit https://github.com/filecoin-project/gitops-profile-catalog for support

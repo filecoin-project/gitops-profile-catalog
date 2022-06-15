@@ -1,0 +1,28 @@
+apiVersion: v2
+name: grafana-agent-config
+description: A Weaveworks Helm chart for grafana-agent-config
+type: application
+version: 0.0.1
+kubeVersion: ">=1.16.0-0"
+home: https://github.com/weaveworks/profiles-catalog
+sources:
+  - https://github.com/grafana/helm-charts/tree/main/charts/agent-operator
+
+keywords:
+- grafana-agent-config
+
+annotations:
+  "weave.works/profile": grafana-agent-config
+  "weave.works/category": client
+  "weave.works/operator": "true"
+  "weave.works/layer": layer-1
+  "weave.works/links": |
+    - name: Chart Sources
+      url: https://github.com/grafana/helm-charts/tree/main/charts/agent-operator
+  "weave.works/profile-ci": |
+    - "gke"
+    - "kind"
+
+maintainers:
+  - name: Weaveworks
+    email: support@weave.works
