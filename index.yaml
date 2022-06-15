@@ -1206,6 +1206,39 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/external-dns-0.0.1/external-dns-0.0.1.tgz
     version: 0.0.1
+  grafana-agent:
+  - annotations:
+      weave.works/category: tracing
+      weave.works/layer: layer-0
+      weave.works/links: |
+        - name: Chart Sources
+          url: https://artifacthub.io/packages/helm/grafana/grafana-agent
+        - name: Upstream Project
+          url: https://github.com/grafana/grafana-agent
+      weave.works/operator: "true"
+      weave.works/profile: grafana-agent
+      weave.works/profile-ci: |
+        - "gke"
+        - "kind"
+    apiVersion: v2
+    created: "2022-06-15T21:43:52.390819229Z"
+    description: A Weaveworks Helm chart for grafana-agent
+    digest: ab7c273580a074d993b8d5b7b45f820f6dac5995b4e2d50283e8580b9ca844a1
+    home: https://github.com/weaveworks/profiles-catalog
+    keywords:
+    - grafana-agent
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: grafana-agent
+    sources:
+    - https://artifacthub.io/packages/helm/grafana/grafana-agent
+    - https://github.com/grafana/grafana-agent
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/grafana-agent-0.0.1/grafana-agent-0.0.1.tgz
+    version: 0.0.1
   ingress-nginx:
   - annotations:
       weave.works/category: Ingress
@@ -3751,4 +3784,4 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/velero-0.0.1/velero-0.0.1.tgz
     version: 0.0.1
-generated: "2022-06-13T13:25:39.393590698Z"
+generated: "2022-06-15T21:43:52.391940638Z"
