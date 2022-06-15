@@ -15,6 +15,8 @@ persistence:
   # storageClassName: standard
 
 config:
+  # The path on the K8s node in which the agent writes the violation. 
+  # This can be used for reporting, observability, etc...
   AGENT_FILESYSTEM_SINK_FILE_PATH: "/tmp/result.json"
 
   # Enable writing violations as K8s events
@@ -23,11 +25,11 @@ config:
   # Enable pushing violations to flux notification controller
   # AGENT_FLUX_NOTIFICATION_SINK_ADDR: <flux-notification-controller-svc>
 
-  # Enable admission functionality
+  # Enable admission functionality, "1" true or "0" false
   AGENT_ENABLE_ADMISSION: "1"
 
-  # Enable audit functionality
-  AGENT_ENABLE_AUDIT: "1"
+  # Enable audit functionality, "1" true or "0" false
+  AGENT_ENABLE_AUDIT: "1" 
 
 policySource:
   enabled: true
