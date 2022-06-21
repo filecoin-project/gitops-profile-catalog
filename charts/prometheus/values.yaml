@@ -13,7 +13,6 @@ kube-prometheus-stack:
   prometheus:
     prometheusSpec:
       replicaExternalLabelName: __replica__
-      prometheusExternalLabelName: cluster
       thanos:
         objectStorageConfig:
           key: objstore.yml
