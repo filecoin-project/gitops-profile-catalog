@@ -4,12 +4,35 @@ secrets:
   serviceAccountName: kustomize-controller
 
 kube-prometheus-stack:
-  server:
-    replicaCount: 2
   fullnameOverride: weaveworks-prometheus
   enabled: true
   grafana:
     enabled: false
+  alertManager:
+    enabled: true
+    alertmanagerSpec:
+      replicas: 3
+    templateFiles:
+      slack.tmpl: >-
+        {{ define "slack.filecoin.text" }}
+        {{ range .Alerts -}}
+        *Alert:* {{ .Annotations.title }}{{ if .Labels.severity }} - `{{ .Labels.severity }}`{{ end }}
+        *Description:* {{ .Annotations.description }}
+        *Details:*
+         {{ range .Labels.SortedPairs }} • *{{ .Name }}:* `{{ .Value }}`
+         {{ end }}
+        {{ end }}
+        {{ end }}
+    config:
+      route:
+        group_by: ["alertname", "cluster"]
+        group_wait: 500ms
+        receiver: "null"
+        group_interval: 500ms
+        repeat_interval: 1d
+      templates:
+        - '/etc/alertmanager/config/slack.tmpl'
+
   prometheus:
     prometheusSpec:
       replicaExternalLabelName: __replica__
@@ -38,3 +61,9 @@ kube-prometheus-stack:
       - secretName: thanos-sidecar-tls
         hosts:
         - thanos-sidecar.example
+
+prometheus-pushgateway:
+  enabled: true
+  serviceMonitor:
+    enabled: true
+    namespace: kube-system
