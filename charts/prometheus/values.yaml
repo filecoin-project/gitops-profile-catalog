@@ -4,8 +4,6 @@ secrets:
   serviceAccountName: kustomize-controller
 
 kube-prometheus-stack:
-  server:
-    replicaCount: 2
   fullnameOverride: weaveworks-prometheus
   enabled: true
   grafana:
