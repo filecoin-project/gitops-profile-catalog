@@ -3,7 +3,7 @@ name: prometheus
 icon: https://raw.githubusercontent.com/prometheus/prometheus.github.io/master/assets/prometheus_logo-cb55bb5c346.png
 description: A Weaveworks Helm chart for observability
 type: application
-version: 0.0.29
+version: 0.0.30
 kubeVersion: ">=1.16.0-0"
 home: https://github.com/weaveworks/profiles-catalog
 sources:
@@ -36,6 +36,6 @@ maintainers:
 
 dependencies:
 - name: kube-prometheus-stack
-  version: "19.2.2"
+  version: "36.0.3"
   repository: "https://prometheus-community.github.io/helm-charts"
   condition: kube-prometheus-stack.enabled
