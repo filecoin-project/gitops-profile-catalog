@@ -1,0 +1,39 @@
+apiVersion: v2
+name: opentelemetry-operator
+description: A Weaveworks Helm chart for opentelemetry-operator
+type: application
+version: 0.0.1
+kubeVersion: ">=1.16.0-0"
+home: https://github.com/weaveworks/profiles-catalog
+sources:
+  - https://github.com/open-telemetry/opentelemetry-helm-charts
+  - https://github.com/open-telemetry/opentelemetry-operator
+  - https://github.com/open-telemetry/opentelemetry-operator-contrib/tree/main/exporter/logzioexporter
+
+keywords:
+- operator
+- opentelemetry-operator
+- observability
+
+annotations:
+  "weave.works/profile": opentelemetry-operator
+  "weave.works/category": Observability
+  "weave.works/operator": "true"
+  "weave.works/layer": layer-1
+  "weave.works/links": |
+    - name: Chart Sources
+      url: https://github.com/open-telemetry/opentelemetry-helm-charts
+    - name: Upstream Project
+      url: https://github.com/open-telemetry/opentelemetry-operator
+  "weave.works/profile-ci": |
+    - "gke"
+    - "kind"
+
+maintainers:
+  - name: Weaveworks
+    email: support@weave.works
+
+dependencies:
+- name: opentelemetry-operator
+  version: "0.8.2"
+  repository: "https://open-telemetry.github.io/opentelemetry-helm-charts"

@@ -1,0 +1,26 @@
+apiVersion: opentelemetry.io/v1alpha1
+kind: OpenTelemetryCollector
+metadata:
+  name: opentelemetry
+  namespace: {{ template "opentelemetry-collector-config.namespace" . }}
+  labels:
+    {{- include "opentelemetry-collector-config.labels" . | nindent 4 }}
+spec:
+{{- if .Values.args }}
+  args: 
+{{ toYaml .Values.args | indent 3 }}
+{{- end }}
+{{- if .Values.envFrom }}
+  envFrom: 
+{{ toYaml .Values.envFrom | indent 3 }}
+{{- end }}
+{{- if .Values.ports }}
+  ports: 
+{{ toYaml .Values.ports | indent 3 }}
+{{- end }}
+{{- if .Values.config }}
+  config: |
+{{ .Values.config | indent 3 }}
+{{- end }}
+  mode: {{ .Values.mode }}
+  image: {{ .Values.image }}

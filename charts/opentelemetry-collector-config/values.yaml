@@ -1,0 +1,32 @@
+secrets:
+  url: https://github.com/filecoin-project/gitops-profile-catalog
+  path: "./secrets/opentelemetry-colector-config"
+  serviceAccountName: kustomize-controller
+
+mode: sidecar
+image: otel/opentelemetry-collector-contrib:0.53.0
+ports:
+- name: otlp
+  port: 4317
+  protocol: TCP
+  targetPort: 4317
+- name: jgr-udp-thriftc
+  port: 6831
+  protocol: UDP
+  targetPort: 6831
+- name: jgr-udp-thrift
+  port: 6832
+  protocol: UDP
+  targetPort: 6832
+- name: jaeger-thrift
+  port: 14268
+  protocol: TCP
+  targetPort: 14268
+- name: jaeger-grpc
+  port: 14250
+  protocol: TCP
+  targetPort: 14250
+- name: zipkin
+  port: 9411
+  protocol: TCP
+  targetPort: 9411
