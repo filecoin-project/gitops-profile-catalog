@@ -1,0 +1,11 @@
+apiVersion: opentelemetry.io/v1alpha1
+kind: OpenTelemetryCollector
+metadata:
+  name: opentelemetry
+  namespace: {{ template "opentelemetry-logzio.namespace" . }}
+  labels:
+    {{- include "opentelemetry-logzio.labels" . | nindent 4 }}
+
+spec:
+  mode: {{ .Values.mode }}
+  image: {{ .Values.image }}
