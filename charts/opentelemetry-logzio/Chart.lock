@@ -1,6 +1,0 @@
-dependencies:
-- name: opentelemetry-collector-config
-  repository: file://../opentelemetry-collector-config
-  version: 0.0.1
-digest: sha256:3ab927234402bcbdc5961624d25ea314e123595e77f64fc57ef2e1d4e1902058
-generated: "2022-06-23T15:36:02.949753-04:00"
