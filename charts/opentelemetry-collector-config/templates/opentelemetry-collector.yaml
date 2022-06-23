@@ -6,8 +6,6 @@ metadata:
   labels:
     {{- include "opentelemetry-collector-config.labels" . | nindent 4 }}
 spec:
-  mode: {{ .Values.mode }}
-  image: {{ .Values.image }}
 {{- if .Values.args }}
   args: 
 {{ toYaml .Values.args | indent 3 }}
@@ -20,5 +18,9 @@ spec:
   ports: 
 {{ toYaml .Values.ports | indent 3 }}
 {{- end }}
+{{- if .Values.config }}
   config: |
 {{ .Values.config | indent 3 }}
+{{- end }}
+  mode: {{ .Values.mode }}
+  image: {{ .Values.image }}
