@@ -1616,6 +1616,108 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/k8s-rbac-permissions-0.0.1/k8s-rbac-permissions-0.0.1.tgz
     version: 0.0.1
+  opentelemetry-collector-config:
+  - apiVersion: v2
+    created: "2022-06-23T20:35:44.024193744Z"
+    description: A Weaveworks Helm chart for opentelemetry-collector-config
+    digest: 02e1d783e6cb3889ff167c98e6ddd8e77aa95cb9472940210fc06213f5ae9047
+    home: https://github.com/weaveworks/profiles-catalog
+    keywords:
+    - operator
+    - opentelemetry-collector-config
+    - observability
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: opentelemetry-collector-config
+    sources:
+    - https://github.com/open-telemetry/opentelemetry-helm-charts
+    - https://github.com/open-telemetry/opentelemetry-collector-config
+    - https://github.com/open-telemetry/opentelemetry-collector-config-contrib/tree/main/exporter/logzioexporter
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/opentelemetry-collector-config-0.0.1/opentelemetry-collector-config-0.0.1.tgz
+    version: 0.0.1
+  opentelemetry-logzio:
+  - annotations:
+      weave.works/category: Observability
+      weave.works/layer: layer-2
+      weave.works/links: |
+        - name: Chart Sources
+          url: https://github.com/open-telemetry/opentelemetry-helm-charts
+        - name: Upstream Project
+          url: https://github.com/open-telemetry/opentelemetry-collector-config
+      weave.works/operator: "true"
+      weave.works/profile-ci: |
+        - "gke"
+        - "kind"
+    apiVersion: v2
+    created: "2022-06-23T20:35:44.143552711Z"
+    dependencies:
+    - name: opentelemetry-collector-config
+      repository: file://../opentelemetry-collector-config
+      version: 0.0.1
+    description: A Weaveworks Helm chart for opentelemetry-logzio
+    digest: 33523062e27d7fdb739abd7836e9927dfb2ee61b9b95b90593dce9b569495a23
+    home: https://github.com/weaveworks/profiles-catalog
+    keywords:
+    - operator
+    - opentelemetry-logzio
+    - observability
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: opentelemetry-logzio
+    sources:
+    - https://github.com/open-telemetry/opentelemetry-helm-charts
+    - https://github.com/open-telemetry/opentelemetry-logzio
+    - https://github.com/open-telemetry/opentelemetry-logzio-contrib/tree/main/exporter/logzioexporter
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/opentelemetry-logzio-0.0.1/opentelemetry-logzio-0.0.1.tgz
+    version: 0.0.1
+  opentelemetry-operator:
+  - annotations:
+      weave.works/category: Observability
+      weave.works/layer: layer-1
+      weave.works/links: |
+        - name: Chart Sources
+          url: https://github.com/open-telemetry/opentelemetry-helm-charts
+        - name: Upstream Project
+          url: https://github.com/open-telemetry/opentelemetry-operator
+      weave.works/operator: "true"
+      weave.works/profile: opentelemetry-operator
+      weave.works/profile-ci: |
+        - "gke"
+        - "kind"
+    apiVersion: v2
+    created: "2022-06-23T20:35:44.274434191Z"
+    dependencies:
+    - name: opentelemetry-operator
+      repository: https://open-telemetry.github.io/opentelemetry-helm-charts
+      version: 0.8.2
+    description: A Weaveworks Helm chart for opentelemetry-operator
+    digest: 00c42cda0e0b06e246212322ccdd6704950f27f8f879a13253c3bddec6c9b63a
+    home: https://github.com/weaveworks/profiles-catalog
+    keywords:
+    - operator
+    - opentelemetry-operator
+    - observability
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: opentelemetry-operator
+    sources:
+    - https://github.com/open-telemetry/opentelemetry-helm-charts
+    - https://github.com/open-telemetry/opentelemetry-operator
+    - https://github.com/open-telemetry/opentelemetry-operator-contrib/tree/main/exporter/logzioexporter
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/opentelemetry-operator-0.0.1/opentelemetry-operator-0.0.1.tgz
+    version: 0.0.1
   policy-agent:
   - annotations:
       weave.works/category: Policy
@@ -3915,4 +4017,4 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/velero-0.0.1/velero-0.0.1.tgz
     version: 0.0.1
-generated: "2022-06-22T21:52:05.727514069Z"
+generated: "2022-06-23T20:35:44.27496761Z"
