@@ -1649,6 +1649,45 @@ entries:
         - name: Upstream Project
           url: https://github.com/open-telemetry/opentelemetry-collector-config
       weave.works/operator: "true"
+      weave.works/profile: opentelemetry-logzio
+      weave.works/profile-ci: |
+        - "gke"
+        - "kind"
+    apiVersion: v2
+    created: "2022-06-23T20:58:11.867026459Z"
+    dependencies:
+    - name: opentelemetry-collector-config
+      repository: file://../opentelemetry-collector-config
+      version: 0.0.1
+    description: A Weaveworks Helm chart for opentelemetry-logzio
+    digest: 9b47ba1870d40b976542666a05f6a5b6f51b1910152abcbb2606bb736fcf2c89
+    home: https://github.com/weaveworks/profiles-catalog
+    keywords:
+    - operator
+    - opentelemetry-logzio
+    - observability
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: opentelemetry-logzio
+    sources:
+    - https://github.com/open-telemetry/opentelemetry-helm-charts
+    - https://github.com/open-telemetry/opentelemetry-logzio
+    - https://github.com/open-telemetry/opentelemetry-logzio-contrib/tree/main/exporter/logzioexporter
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/opentelemetry-logzio-0.0.2/opentelemetry-logzio-0.0.2.tgz
+    version: 0.0.2
+  - annotations:
+      weave.works/category: Observability
+      weave.works/layer: layer-2
+      weave.works/links: |
+        - name: Chart Sources
+          url: https://github.com/open-telemetry/opentelemetry-helm-charts
+        - name: Upstream Project
+          url: https://github.com/open-telemetry/opentelemetry-collector-config
+      weave.works/operator: "true"
       weave.works/profile-ci: |
         - "gke"
         - "kind"
@@ -4017,4 +4056,4 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/velero-0.0.1/velero-0.0.1.tgz
     version: 0.0.1
-generated: "2022-06-23T20:35:44.27496761Z"
+generated: "2022-06-23T20:58:11.867339965Z"
