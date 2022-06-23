@@ -28,7 +28,6 @@ opentelemetry-collector-config:
     exporters:
       logzio:
         account_token: ""
-        
     processors:
       probabilistic_sampler:
         hash_seed: 22
