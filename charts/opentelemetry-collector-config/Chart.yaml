@@ -1,0 +1,22 @@
+apiVersion: v2
+name: opentelemetry-collector-config
+description: A Weaveworks Helm chart for opentelemetry-collector-config
+type: application
+version: 0.0.1
+kubeVersion: ">=1.16.0-0"
+home: https://github.com/weaveworks/profiles-catalog
+sources:
+  - https://github.com/open-telemetry/opentelemetry-helm-charts
+  - https://github.com/open-telemetry/opentelemetry-collector-config
+  - https://github.com/open-telemetry/opentelemetry-collector-config-contrib/tree/main/exporter/logzioexporter
+
+keywords:
+- operator
+- opentelemetry-collector-config
+- observability
+
+
+maintainers:
+  - name: Weaveworks
+    email: support@weave.works
+

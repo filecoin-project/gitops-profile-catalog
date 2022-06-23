@@ -1,0 +1,4 @@
+{{ $.Chart.Name }} has been installed. Check its status by running:
+  kubectl --namespace {{ template "opentelemetry-collector-config.namespace" . }} get pods -l "release={{ $.Release.Name }}"
+
+Visit https://github.com/opentelemetry-collector-config-operator/opentelemetry-collector-config for instructions on how to create & configure Alertmanager and opentelemetry-collector-config instances using the Operator.

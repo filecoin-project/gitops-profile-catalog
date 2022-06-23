@@ -16,7 +16,6 @@ keywords:
 - observability
 
 annotations:
-  "weave.works/profile": opentelemetry-logzio
   "weave.works/category": Observability
   "weave.works/operator": "true"
   "weave.works/layer": layer-2
@@ -24,12 +23,17 @@ annotations:
     - name: Chart Sources
       url: https://github.com/open-telemetry/opentelemetry-helm-charts
     - name: Upstream Project
-      url: https://github.com/open-telemetry/opentelemetry-logzio
+      url: https://github.com/open-telemetry/opentelemetry-collector-config
   "weave.works/profile-ci": |
     - "gke"
     - "kind"
+
 
 maintainers:
   - name: Weaveworks
     email: support@weave.works
 
+dependencies:
+- name: opentelemetry-collector-config
+  version: "0.0.1"
+  repository: "file://../opentelemetry-collector-config"
