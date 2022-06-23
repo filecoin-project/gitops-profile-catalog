@@ -4,7 +4,7 @@ opentelemetry-collector-config:
     path: "./secrets/opentelemetry-logzio"
     serviceAccountName: kustomize-controller
   args:
-  set: exporters.logzio.account_token=${API_TOKEN}
+    set: exporters.logzio.account_token=${API_TOKEN}
   envFrom:
   - secretRef:
       name: logzio-auth
