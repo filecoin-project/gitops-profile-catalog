@@ -1,0 +1,101 @@
+secrets:
+  url: https://github.com/filecoin-project/gitops-profile-catalog
+  path: "./secrets/opentelemetry-operator"
+  serviceAccountName: kustomize-controller
+
+
+opentelemetry-operator:
+  enabled: true
+  # use opentelemetry-operator-contrib, which has the logzio exporter built into it.
+  # https://github.com/open-telemetry/opentelemetry-operator-contrib/tree/main/exporter/logzioexporter
+  image:
+    repository: otel/opentelemetry-operator-contrib
+  command:
+    name: otelcontribcol
+  serviceMonitor:
+    enabled: true
+  autoscaling:
+    enabled: true
+  agentCollector:
+    enabled: true
+  standaloneCollector:
+    enabled: true
+  ports:
+    otlp:
+      enabled: true
+      containerPort: 4317
+      servicePort: 4317
+      hostPort: 4317
+      protocol: TCP
+    jgr-udp-thriftc:
+      enabled: true
+      containerPort: 6831
+      servicePort: 6831
+      hostPort: 6831
+      protocol: UDP
+    jgr-udp-thrift:
+      enabled: true
+      containerPort: 6832
+      servicePort: 6832
+      hostPort: 6832
+      protocol: UDP
+    jaeger-thrift:
+      enabled: true
+      containerPort: 14268
+      servicePort: 14268
+      hostPort: 14268
+      protocol: TCP
+    jaeger-grpc:
+      enabled: true
+      containerPort: 14250
+      servicePort: 14250
+      hostPort: 14250
+      protocol: TCP
+    zipkin:
+      enabled: true
+      containerPort: 9411
+      servicePort: 9411
+      hostPort: 9411
+      protocol: TCP
+  config:
+    receivers:
+      otlp:
+        protocols:
+          grpc:
+          http:
+      zipkin:
+      jaeger:
+        protocols:
+          grpc:
+            endpoint: 0.0.0.0:14250
+          thrift_binary:
+            endpoint: 0.0.0.0:6832
+          thrift_compact:
+            endpoint: 0.0.0.0:6831
+          thrift_http:
+            endpoint: 0.0.0.0:14268
+    exporters:
+      logzio:
+        account_token: _set_xxx
+    processors:
+      k8s_tagger:
+        passthrough: true
+      probabilistic_sampler:
+        hash_seed: 22
+        sampling_percentage: 1
+      batch:
+        send_batch_size: 1024
+        timeout: 10s
+    service:
+      pipelines:
+        traces:
+          receivers:
+            - jaeger
+            - otlp
+            - zipkin
+          processors:
+            - probabilistic_sampler
+            - k8s_tagger
+            - batch
+          exporters:
+            - logzio
