@@ -1,5 +1,5 @@
 dependencies:
-- name: aws-node-termination-handler
+- name: aws-node-term-handler
   repository: https://aws.github.io/eks-charts/
   version: 0.18.3
 digest: sha256:7af4d053a2e6fe04026c7aa8345ede52b0099d49d16ab8445c572493bf9a9d31
