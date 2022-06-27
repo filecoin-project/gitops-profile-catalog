@@ -65,6 +65,38 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/aws-ebs-csi-driver-0.0.1/aws-ebs-csi-driver-0.0.1.tgz
     version: 0.0.1
+  aws-node-term-handler:
+  - annotations:
+      weave.works/category: eks
+      weave.works/links: |
+        - name: Chart Sources
+          url: https://aws.github.io/eks-charts/
+      weave.works/operator: "true"
+      weave.works/profile: aws-node-term-handler
+    apiVersion: v2
+    created: "2022-06-27T13:31:48.447693955Z"
+    dependencies:
+    - name: aws-node-termination-handler
+      repository: https://aws.github.io/eks-charts/
+      version: 0.18.3
+    description: A Weaveworks Helm chart for the aws node termination handler
+    digest: f63ebd59ff88d8e9476f3c35079eae09c516930b215a923499bd77080b050b1c
+    home: https://github.com/weaveworks/profiles-catalog
+    icon: https://raw.githubusercontent.com/aws/eks-charts/master/docs/logo/aws.png
+    keywords:
+    - operator
+    - aws-node-term-handler
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: aws-node-term-handler
+    sources:
+    - https://aws.github.io/eks-charts/
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/aws-node-term-handler-0.0.1/aws-node-term-handler-0.0.1.tgz
+    version: 0.0.1
   aws-node-termination-handler:
   - annotations:
       weave.works/category: eks
@@ -4056,4 +4088,4 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/velero-0.0.1/velero-0.0.1.tgz
     version: 0.0.1
-generated: "2022-06-23T20:58:11.867339965Z"
+generated: "2022-06-27T13:31:48.448064784Z"
