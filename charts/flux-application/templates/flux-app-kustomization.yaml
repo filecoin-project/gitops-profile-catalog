@@ -1,3 +1,4 @@
+{{ if ((.Values.app).create) }}
 apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: GitRepository
 metadata:
@@ -6,11 +7,15 @@ metadata:
   labels:
     {{- include "flux-application.labels" . | nindent 4 }}   
 spec:
+  {{ if ((.Values.app).token) }}
   secretRef:
    name: {{ .Values.app.token }}
+  {{ end }}
   interval: 1m0s
+  {{ if ((.Values.app).branch) }}
   ref:
     branch: {{ .Values.app.branch }}
+  {{ end }}
   timeout: 60s
   url: {{ .Values.app.url }}
 ---
@@ -39,3 +44,4 @@ spec:
     name: {{ .Release.Name }}-app
     namespace:  {{ template "flux-application.namespace" . }}
   timeout: 2m
+{{ end }}

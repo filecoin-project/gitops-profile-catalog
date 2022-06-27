@@ -1,5 +1,4 @@
-
-# The secrets fow are designed to perform the following functions:
+# The secrets are designed to perform the following functions:
 # - Provide a github token to pull a private repo
 # - Pass profiles secrets to leaf clusters
 secrets:
@@ -9,8 +8,9 @@ secrets:
   key: wge-profiles-sops-gpg
   serviceAccountName: kustomize-controller
 
-# Used to configure a GitRepo and a Kustomization for applications 
-# app:
+# Used to configure a GitRepo and a Kustomization for applications
+app:
+  create: false
 #   url: "https://github.com/filecoin-project/lotus-infra"
 #   path: "./kubernetes/gitops/prod/us-east-2/cluster"
 #   branch: gitops-poc

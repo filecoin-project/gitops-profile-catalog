@@ -5,3 +5,4 @@ flux-application:
     branch: gitops-poc
     # key: ""
     token: flux-application-github-token
+    create: true
