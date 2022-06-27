@@ -17,7 +17,6 @@ annotations:
   "weave.works/profile": aws-node-term-handler
   "weave.works/category": eks
   "weave.works/operator": "true"
-  "weave.works/layer": layer-1
   "weave.works/links": |
     - name: Chart Sources
       url: https://aws.github.io/eks-charts/
