@@ -1,7 +1,7 @@
 apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: GitRepository
 metadata:
-  name: flux-application
+  name:  {{ .Release.Name }}-app
   namespace: {{ template "flux-application.namespace" . }}
   labels:
     {{- include "flux-application.labels" . | nindent 4 }}   
@@ -17,7 +17,7 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
-  name: flux-application
+  name: {{ .Release.Name }}-app
   namespace: {{ template "flux-application.namespace" . }}
   labels:
     {{- include "flux-application.labels" . | nindent 4 }}
@@ -36,6 +36,6 @@ spec:
   prune: true
   sourceRef:
     kind: GitRepository
-    name: flux-application
+    name: {{ .Release.Name }}-app
     namespace:  {{ template "flux-application.namespace" . }}
   timeout: 2m
