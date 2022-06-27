@@ -1,0 +1,12 @@
+secrets:
+  url: ""
+  path: ""
+  branch: main
+  key: wge-profiles-sops-gpg
+
+app:
+  url: ""
+  path: ""
+  branch: main
+  # key: ""
+  # token: ""

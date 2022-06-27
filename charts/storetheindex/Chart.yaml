@@ -29,3 +29,8 @@ annotations:
 maintainers:
   - name: Weaveworks
     email: support@weave.works
+
+dependencies:
+- name: flux-application
+  version: "0.0.1"
+  repository: "file://../flux-application"

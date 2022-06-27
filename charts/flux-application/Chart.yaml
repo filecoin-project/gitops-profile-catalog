@@ -1,0 +1,24 @@
+apiVersion: v2
+name: flux-application
+description: A Weaveworks Helm chart for flux-application
+type: application
+version: 0.0.1
+kubeVersion: ">=1.16.0-0"
+home: https://github.com/weaveworks/profiles-catalog
+sources:
+  - https://github.com/filecoin-project/flux-application-infra
+
+
+keywords:
+- flux-application
+
+annotations:
+  "weave.works/profile": flux-application
+  "weave.works/category": client
+  "weave.works/profile-ci": |
+    - "gke"
+    - "kind"
+
+maintainers:
+  - name: Weaveworks
+    email: support@weave.works
