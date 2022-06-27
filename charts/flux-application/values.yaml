@@ -1,12 +1,17 @@
+
+# The secrets fow are designed to perform the following functions:
+# - Provide a github token to pull a private repo
+# - Pass profiles secrets to leaf clusters
 secrets:
-  url: ""
-  path: ""
-  branch: main
+  url: "https://github.com/filecoin-project/gitops-profile-catalog"
+  path: "./secrets/flux-application"
+  branch: generic-application-chart
   key: wge-profiles-sops-gpg
 
+# Used to configure a GitRepo and a Kustomization for applications 
 app:
-  url: ""
-  path: ""
-  branch: main
+  url: "https://github.com/filecoin-project/lotus-infra"
+  path: "./kubernetes/gitops/prod/us-east-2/cluster"
+  branch: gitops-poc
   # key: ""
-  # token: ""
+  token: flux-application-github-token
