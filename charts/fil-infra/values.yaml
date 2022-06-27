@@ -1,0 +1,7 @@
+flux-application:
+  app:
+    url: "https://github.com/filecoin-project/lotus-infra"
+    path: "./kubernetes/gitops/prod/us-east-2/cluster"
+    branch: gitops-poc
+    # key: ""
+    token: flux-application-github-token

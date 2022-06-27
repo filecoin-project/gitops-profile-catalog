@@ -7,11 +7,12 @@ secrets:
   path: "./secrets/flux-application"
   branch: generic-application-chart
   key: wge-profiles-sops-gpg
+  serviceAccountName: kustomize-controller
 
 # Used to configure a GitRepo and a Kustomization for applications 
-app:
-  url: "https://github.com/filecoin-project/lotus-infra"
-  path: "./kubernetes/gitops/prod/us-east-2/cluster"
-  branch: gitops-poc
-  # key: ""
-  token: flux-application-github-token
+# app:
+#   url: "https://github.com/filecoin-project/lotus-infra"
+#   path: "./kubernetes/gitops/prod/us-east-2/cluster"
+#   branch: gitops-poc
+#   # key: ""
+#   token: flux-application-github-token
