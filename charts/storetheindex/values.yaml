@@ -3,4 +3,5 @@ flux-application:
     url: https://github.com/steve-fraser/storetheindex
     path: "./deploy/manifests/dev-v3/us-east-2/cluster"
     serviceAccountName: kustomize-controller
+    branch: main
     create: true

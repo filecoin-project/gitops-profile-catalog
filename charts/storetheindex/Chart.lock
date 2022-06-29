@@ -1,6 +1,0 @@
-dependencies:
-- name: flux-application
-  repository: file://../flux-application
-  version: 0.0.1
-digest: sha256:ac8dede8746178d19ac4154a8719bbc98f33adf56feaa61c1a2929bdc4fbd533
-generated: "2022-06-27T12:43:43.525908-04:00"
