@@ -4,7 +4,7 @@
 secrets:
   url: "https://github.com/filecoin-project/gitops-profile-catalog"
   path: "./secrets/flux-application"
-  branch: generic-application-chart
+  branch: main
   key: wge-profiles-sops-gpg
   serviceAccountName: kustomize-controller
 
