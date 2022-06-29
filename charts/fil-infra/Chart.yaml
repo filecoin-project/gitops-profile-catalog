@@ -1,19 +1,19 @@
 apiVersion: v2
-name: sentinel
-description: A Weaveworks Helm chart for sentinel
+name: fil-infra
+description: A Weaveworks Helm chart for fil-infra
 type: application
-version: 0.1.0
+version: 0.0.1
 kubeVersion: ">=1.16.0-0"
 home: https://github.com/weaveworks/profiles-catalog
 sources:
-  - https://github.com/filecoin-project/sentinel-infra
+  - https://github.com/filecoin-project/fil-infra-infra
 
 
 keywords:
-- sentinel
+- fil-infra
 
 annotations:
-  "weave.works/profile": sentinel
+  "weave.works/profile": fil-infra
   "weave.works/category": client
   "weave.works/profile-ci": |
     - "gke"

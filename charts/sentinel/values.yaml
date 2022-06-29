@@ -1,11 +1,13 @@
-secrets:
-  url: https://github.com/filecoin-project/gitops-profile-catalog
-  path: "./secrets/sentinel"
-  branch: main
+flux-application:
+  secrets:
+    url: https://github.com/filecoin-project/gitops-profile-catalog
+    path: "./secrets/sentinel"
+    branch: main
 
-app:
-  url: https://github.com/filecoin-project/sentinel-infra
-  path: "./kubernetes/gitops/staging/cluster"
-  branch: main
-  key: sentinel-sops-gpg
-  token: sentinel-github-token
+  app:
+    url: https://github.com/filecoin-project/sentinel-infra
+    path: "./kubernetes/gitops/staging/cluster"
+    branch: main
+    key: sentinel-sops-gpg
+    token: sentinel-github-token
+    create: true

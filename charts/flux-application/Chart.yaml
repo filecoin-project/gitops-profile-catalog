@@ -1,28 +1,24 @@
 apiVersion: v2
-name: sentinel
-description: A Weaveworks Helm chart for sentinel
+name: flux-application
+description: A Weaveworks Helm chart for flux-application
 type: application
-version: 0.1.0
+version: 0.0.1
 kubeVersion: ">=1.16.0-0"
 home: https://github.com/weaveworks/profiles-catalog
 sources:
-  - https://github.com/filecoin-project/sentinel-infra
+  - https://github.com/filecoin-project/flux-application-infra
 
 
 keywords:
-- sentinel
+- flux-application
 
 annotations:
-  "weave.works/profile": sentinel
+  "weave.works/profile": flux-application
   "weave.works/category": client
   "weave.works/profile-ci": |
     - "gke"
+    - "kind"
 
 maintainers:
   - name: Weaveworks
     email: support@weave.works
-
-dependencies:
-- name: flux-application
-  version: "0.0.1"
-  repository: "file://../flux-application"
