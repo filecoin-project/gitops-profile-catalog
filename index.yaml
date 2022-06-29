@@ -1238,6 +1238,59 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/external-dns-0.0.1/external-dns-0.0.1.tgz
     version: 0.0.1
+  fil-infra:
+  - annotations:
+      weave.works/category: client
+      weave.works/profile: fil-infra
+      weave.works/profile-ci: |
+        - "gke"
+    apiVersion: v2
+    created: "2022-06-29T16:30:21.739849512Z"
+    dependencies:
+    - name: flux-application
+      repository: file://../flux-application
+      version: 0.0.1
+    description: A Weaveworks Helm chart for fil-infra
+    digest: e8234e1e2ad889563446fac6c7d9e62795decc35871f8ef80fe6a9ceea4f71e0
+    home: https://github.com/weaveworks/profiles-catalog
+    keywords:
+    - fil-infra
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: fil-infra
+    sources:
+    - https://github.com/filecoin-project/fil-infra-infra
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/fil-infra-0.0.1/fil-infra-0.0.1.tgz
+    version: 0.0.1
+  flux-application:
+  - annotations:
+      weave.works/category: client
+      weave.works/profile: flux-application
+      weave.works/profile-ci: |
+        - "gke"
+        - "kind"
+    apiVersion: v2
+    created: "2022-06-29T16:30:21.90348842Z"
+    description: A Weaveworks Helm chart for flux-application
+    digest: 42bce62bbb11d97bf87ece019c9311cdc987ef7c1c2ff50b2d0ddc483660d22b
+    home: https://github.com/weaveworks/profiles-catalog
+    keywords:
+    - flux-application
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: flux-application
+    sources:
+    - https://github.com/filecoin-project/flux-application-infra
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/flux-application-0.0.1/flux-application-0.0.1.tgz
+    version: 0.0.1
   grafana-agent:
   - annotations:
       weave.works/category: tracing
@@ -2902,6 +2955,33 @@ entries:
       weave.works/profile-ci: |
         - "gke"
     apiVersion: v2
+    created: "2022-06-29T16:30:22.058016826Z"
+    dependencies:
+    - name: flux-application
+      repository: file://../flux-application
+      version: 0.0.1
+    description: A Weaveworks Helm chart for sentinel
+    digest: 5a143f608b27bcb56d0d4dd310a7dd6fe69fd5863cb9973880cdcf9ca4a837dc
+    home: https://github.com/weaveworks/profiles-catalog
+    keywords:
+    - sentinel
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: sentinel
+    sources:
+    - https://github.com/filecoin-project/sentinel-infra
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/sentinel-0.1.0/sentinel-0.1.0.tgz
+    version: 0.1.0
+  - annotations:
+      weave.works/category: client
+      weave.works/profile: sentinel
+      weave.works/profile-ci: |
+        - "gke"
+    apiVersion: v2
     created: "2022-06-08T19:55:39.1416976Z"
     description: A Weaveworks Helm chart for sentinel
     digest: a258d72ed28c8fb5b067d3ebe609b567706495879a01321f54cbe765786815e9
@@ -2943,6 +3023,41 @@ entries:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/sentinel-0.0.1/sentinel-0.0.1.tgz
     version: 0.0.1
   storetheindex:
+  - annotations:
+      weave.works/category: client
+      weave.works/links: |
+        - name: Chart Sources
+          url: https://github.com/storetheindex-community/helm-charts
+        - name: Upstream Project
+          url: https://github.com/storetheindex-operator/kube-storetheindex
+      weave.works/operator: "true"
+      weave.works/profile: storetheindex
+      weave.works/profile-ci: |
+        - "gke"
+    apiVersion: v2
+    created: "2022-06-29T16:30:22.217730861Z"
+    dependencies:
+    - name: flux-application
+      repository: file://../flux-application
+      version: 0.0.1
+    description: A Weaveworks Helm chart for storetheindex
+    digest: 5ec0a521a0b14820bf0936526f508934dbf78086be90f26b1d96cecbf6cef750
+    home: https://github.com/weaveworks/profiles-catalog
+    icon: https://raw.githubusercontent.com/storetheindex/storetheindex.github.io/master/assets/storetheindex_logo-cb55bb5c346.png
+    keywords:
+    - storetheindex
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: storetheindex
+    sources:
+    - https://github.com/storetheindex-community/helm-charts
+    - https://github.com/storetheindex-operator/kube-storetheindex
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/storetheindex-0.1.0/storetheindex-0.1.0.tgz
+    version: 0.1.0
   - annotations:
       weave.works/category: client
       weave.works/layer: layer-1
@@ -4088,4 +4203,4 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/velero-0.0.1/velero-0.0.1.tgz
     version: 0.0.1
-generated: "2022-06-27T13:31:48.448064784Z"
+generated: "2022-06-29T16:30:22.218431292Z"
