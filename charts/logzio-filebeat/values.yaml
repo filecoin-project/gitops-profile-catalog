@@ -1,0 +1,17 @@
+flux-application:
+  secrets:
+    url: "https://github.com/filecoin-project/gitops-profile-catalog"
+    path: "./secrets/logzio-fluentbit"
+    branch: adding-filebeat
+
+logzio-k8s-logs:
+  extraEnvFrom:
+  - secretRef:
+     name: logzio-auth
+  enabled: true
+  secrets:
+    create: true
+    logzioShippingToken: ""
+    logzioRegion: "us"
+    clusterName: test-cluster
+    name: logzio-logs-secret
