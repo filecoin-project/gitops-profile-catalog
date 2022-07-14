@@ -1,0 +1,74 @@
+flux-application:
+  secrets:
+    url: "https://github.com/filecoin-project/gitops-profile-catalog"
+    path: "./secrets/logzio-fluent-bit"
+    branch: main
+
+logzio-fluent-bit:
+  enabled: true
+  envFrom:
+  - secretRef:
+        name: logzio-auth
+  config:
+    filters: |
+      [FILTER]
+          Name kubernetes
+          Match kube.*
+          Merge_Log On
+          Keep_Log Off
+          K8S-Logging.Parser On
+          K8S-Logging.Exclude On
+      [FILTER]
+          Name modify
+          Match *
+          Rename log message
+      [FILTER]
+          Name modify
+          Match *
+          Add cluster ${CLUSTER_NAME}
+      [FILTER]
+          Name    lua
+          Match   kube.*
+          script  /fluent-bit/etc/functions.lua
+          call    dedot
+    outputs: |
+      [OUTPUT]
+          Name  logzio
+          Match *
+          logzio_token ${API_TOKEN}
+          logzio_url   https://listener.logz.io:8071
+          logzio_type fluentbit
+    # This allows adding more files with arbitary filenames to /fluent-bit/etc by providing key/value pairs.
+    # The key becomes the filename, the value becomes the file content.
+    extraFiles:
+      functions.lua: |
+        function dedot(tag, timestamp, record)
+            if record["kubernetes"] == nil then
+                return 0, 0, 0
+            end
+            dedot_keys(record["kubernetes"]["annotations"])
+            dedot_keys(record["kubernetes"]["labels"])
+            return 1, timestamp, record
+        end
+        function dedot_keys(map)
+            if map == nil then
+                return
+            end
+            local new_map = {}
+            local changed_keys = {}
+            for k, v in pairs(map) do
+                local deslashed = string.gsub(k, "%/", "_")
+                local dedotted = string.gsub(deslashed, "%.", "_")
+                dedotted = dedotted .. "_"
+                if dedotted ~= k then
+                    new_map[dedotted] = v
+                    changed_keys[k] = true
+                end
+            end
+            for k in pairs(changed_keys) do
+                map[k] = nil
+            end
+            for k, v in pairs(new_map) do
+                map[k] = v
+            end
+        end

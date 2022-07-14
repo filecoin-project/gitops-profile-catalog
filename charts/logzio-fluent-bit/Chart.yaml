@@ -1,0 +1,37 @@
+apiVersion: v2
+name: logzio-fluent-bit
+description: A Weaveworks Helm chart for fluent bit
+type: application
+version: 0.0.1
+kubeVersion: ">=1.16.0-0"
+home: https://github.com/filecoin-project/gitops-profile-catalog
+sources:
+  - https://github.com/fluent/logzio-fluent-bit
+  - https://github.com/fluent/helm-charts
+
+keywords:
+- logzio-fluent-bit
+- observability
+
+annotations:
+  "weave.works/profile": logzio-fluent-bit
+  "weave.works/category": Observability
+  "weave.works/operator": "true"
+  "weave.works/links": |
+    - name: Chart Sources
+      url: https://github.com/logzio/logzio-helm
+  "weave.works/profile-ci": |
+    - "kind"
+
+maintainers:
+  - name: Weaveworks
+    email: support@weave.works
+
+dependencies:
+- name: logzio-fluent-bit
+  version: "0.0.2"
+  repository: "https://logzio.github.io/logzio-helm"
+  condition: logzio-fluent-bit.enabled
+- name: flux-application
+  version: "0.0.2"
+  repository: "file://../flux-application"
