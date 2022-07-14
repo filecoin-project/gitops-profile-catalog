@@ -23,6 +23,10 @@ logzio-fluent-bit:
           Match *
           Rename log message
       [FILTER]
+          Name modify
+          Match *
+          Add cluster ${CLUSTER_NAME}
+      [FILTER]
           Name    lua
           Match   kube.*
           script  /fluent-bit/etc/functions.lua
