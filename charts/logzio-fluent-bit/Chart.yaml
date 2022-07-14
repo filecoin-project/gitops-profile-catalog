@@ -29,8 +29,8 @@ maintainers:
 
 dependencies:
 - name: logzio-fluent-bit
-  version: "0.20.3"
-  repository: "https://fluent.github.io/helm-charts"
+  version: "0.0.2"
+  repository: "https://logzio.github.io/logzio-helm"
   condition: logzio-fluent-bit.enabled
 - name: flux-application
   version: "0.0.2"
