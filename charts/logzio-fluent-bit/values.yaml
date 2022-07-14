@@ -2,7 +2,7 @@ flux-application:
   secrets:
     url: "https://github.com/filecoin-project/gitops-profile-catalog"
     path: "./secrets/logzio-fluent-bit"
-    branch: add-fluentbit
+    branch: main
 
 logzio-fluent-bit:
   enabled: true
