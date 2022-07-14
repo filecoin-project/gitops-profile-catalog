@@ -1,0 +1,19 @@
+flux-application:
+  secrets:
+    url: "https://github.com/filecoin-project/gitops-profile-catalog"
+    path: "./secrets/logzio-fluent-bit"
+    branch: add-fluentbit
+
+logzio-fluent-bit:
+  enabled: true
+  envFrom:
+  - secretRef:
+        name: logzio-auth
+  config:
+    outputs: |
+      [OUTPUT]
+          Name  logzio
+          Match *
+          logzio_token ${API_TOKEN}
+          logzio_url   https://listener.logz.io:8071
+          logzio_type fluentbit
