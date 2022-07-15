@@ -10,7 +10,7 @@ logzio-k8s-logs:
      name: logzio-auth
   enabled: true
   secrets:
-    create: true
-    logzioRegion: "us"
-    clusterName: ${CLUSTER_NAME}
-    name: logzio-logs-secret
+   create: true
+   logzioRegion: "us"
+   clusterName: ${CLUSTER_NAME}
+   name: logzio-logs-secret
