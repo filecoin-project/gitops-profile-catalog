@@ -3,8 +3,8 @@ secrets:
   path: "./secrets/prometheus"
   serviceAccountName: kustomize-controller
 
-region: '{{ .params.AWS_REGION }}'
-clusterName: '{{ .params.CLUSTER_NAME }}'
+# region: '{{ .params.AWS_REGION }}'
+# clusterName: '{{ .params.CLUSTER_NAME }}'
 
 kube-prometheus-stack:
   fullnameOverride: weaveworks-prometheus
@@ -15,6 +15,13 @@ kube-prometheus-stack:
     enabled: true
     alertmanagerSpec:
       replicas: 3
+      volumeMounts:
+        - name: alertmanager-tmpl
+          mountPath: '/etc/alertmanager/config'
+      volumes:
+        - name: alertmanager-tmpl
+          configMap:
+            name: alertmanager-tmpl
     config:
       route:
         group_by: ["alertname", "cluster"]
@@ -23,7 +30,7 @@ kube-prometheus-stack:
         group_interval: 500ms
         repeat_interval: 1d
       templates:
-        - '/etc/alertmanager/config/slack.tmpl'
+        - '/etc/alertmanager/config/*.tmpl'
 
   prometheus:
     prometheusSpec:
@@ -57,15 +64,15 @@ kube-prometheus-stack:
         nginx.ingress.kubernetes.io/backend-protocol: "GRPC"
         nginx.ingress.kubernetes.io/auth-tls-verify-client: "on"
         nginx.ingress.kubernetes.io/auth-tls-secret: "flux-system/thanos-server-tls"
-      hosts:
-      - 'thanos.{{ printf "%.*s" 23 .params.CLUSTER_NAME }}.{{ .params.TEAM }}.{{ .params.AWS_ACCOUNT_NAME }}.w3ops.net'
+      # hosts:
+      # - 'thanos.{{ printf "%.*s" 23 .params.CLUSTER_NAME }}.{{ .params.TEAM }}.{{ .params.AWS_ACCOUNT_NAME }}.w3ops.net'
       paths:
       - /
       pathType: ImplementationSpecific
       tls:
       - secretName: thanos-sidecar-tls
-        hosts:
-        - 'thanos.{{ printf "%.*s" 23 .params.CLUSTER_NAME }}.{{ .params.TEAM }}.{{ .params.AWS_ACCOUNT_NAME }}.w3ops.net'
+        # hosts:
+        # - 'thanos.{{ printf "%.*s" 23 .params.CLUSTER_NAME }}.{{ .params.TEAM }}.{{ .params.AWS_ACCOUNT_NAME }}.w3ops.net'
 prometheus-pushgateway:
   enabled: true
   serviceMonitor:

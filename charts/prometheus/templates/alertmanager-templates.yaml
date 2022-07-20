@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: alertmanager-templates
+  labels:
+    {{- include "prometheus.labels" . | nindent 4 }}   
+data:
+  {{- (.Files.Glob "files/alertmanager-templates/*").AsConfig | nindent 2 }}
