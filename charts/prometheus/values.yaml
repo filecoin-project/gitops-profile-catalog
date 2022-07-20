@@ -15,13 +15,8 @@ kube-prometheus-stack:
     enabled: true
     alertmanagerSpec:
       replicas: 3
-      volumeMounts:
-        - name: alertmanager-tmpl
-          mountPath: '/etc/alertmanager/config'
-      volumes:
-        - name: alertmanager-tmpl
-          configMap:
-            name: alertmanager-tmpl
+      configMaps: ["alertmanager-templates"]
+      secrets: ["alertmanager-slack-urls"]
     config:
       route:
         group_by: ["alertname", "cluster"]
@@ -31,7 +26,17 @@ kube-prometheus-stack:
         repeat_interval: 1d
       templates:
         - '/etc/alertmanager/config/*.tmpl'
-
+        - '/etc/alertmanager/configmaps/alertmanager-templates/*.tmpl'
+      receivers:
+        - name: "null"
+        - name: "slack-infra-alerts-test"
+          slack_configs:
+          - channel: "#hook-testing"
+            api_url_file: "/etc/alertmanager/secrets/alertmanager-slack-urls/test-channel"
+            title: "[{{ .Alerts.Firing | len }} Firing] {{ .CommonLabels.severity }} {{ .GroupLabels.alertname }}"
+            text: |-
+              "{{ template "slack.filecoin.text" . }}"
+            send_resolved: true
   prometheus:
     prometheusSpec:
       replicaExternalLabelName: __replica__
