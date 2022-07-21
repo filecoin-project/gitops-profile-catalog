@@ -7,7 +7,7 @@ secrets:
   branch: main
   key: wge-profiles-sops-gpg
   serviceAccountName: kustomize-controller
-  
+
 # Used to configure a GitRepo and a Kustomization for applications
 app:
   create: false
