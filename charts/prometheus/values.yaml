@@ -3,6 +3,7 @@ flux-application:
     url: "https://github.com/filecoin-project/gitops-profile-catalog"
     path: "./secrets/prometheus"
     branch: main
+    targetNamespace: '{{ .params.NAMESPACE }}'
 
 kube-prometheus-stack:
   fullnameOverride: weaveworks-prometheus
