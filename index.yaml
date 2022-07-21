@@ -1174,6 +1174,30 @@ entries:
         - "gke"
         - "kind"
     apiVersion: v2
+    created: "2022-07-21T21:01:10.602009959Z"
+    description: A Weaveworks Helm chart for flux-application
+    digest: cf545c7dc66334bf177c1d43f3f4ed4a8ef9c8c2565f4fed688388c94a5afe7c
+    home: https://github.com/weaveworks/profiles-catalog
+    keywords:
+    - flux-application
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: flux-application
+    sources:
+    - https://github.com/filecoin-project/flux-application-infra
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/flux-application-0.1.1/flux-application-0.1.1.tgz
+    version: 0.1.1
+  - annotations:
+      weave.works/category: client
+      weave.works/profile: flux-application
+      weave.works/profile-ci: |
+        - "gke"
+        - "kind"
+    apiVersion: v2
     created: "2022-07-21T19:14:18.775170105Z"
     description: A Weaveworks Helm chart for flux-application
     digest: 9ddcfd93b2dc00e913a8d6e2dfd77d312aaed3de0231835321d8ff340c292f70
@@ -2029,6 +2053,51 @@ entries:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/policy-agent-0.2.5/policy-agent-0.2.5.tgz
     version: 0.2.5
   prometheus:
+  - annotations:
+      weave.works/category: Observability
+      weave.works/layer: layer-1
+      weave.works/links: |
+        - name: Chart Sources
+          url: https://github.com/prometheus-community/helm-charts
+        - name: Upstream Project
+          url: https://github.com/prometheus-operator/kube-prometheus
+      weave.works/operator: "true"
+      weave.works/profile: prometheus
+    apiVersion: v2
+    created: "2022-07-21T21:01:10.834326676Z"
+    dependencies:
+    - condition: kube-prometheus-stack.enabled
+      name: kube-prometheus-stack
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 36.0.3
+    - condition: prometheus-pushgateway.enabled
+      name: prometheus-pushgateway
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 1.18.2
+    - name: flux-application
+      repository: file://../flux-application
+      version: 0.1.1
+    description: A Weaveworks Helm chart for observability
+    digest: 196f78d457fb25d4b3483b6c6becd7bb5a69b858b669239dd3546bd67c02fe41
+    home: https://github.com/weaveworks/profiles-catalog
+    icon: https://raw.githubusercontent.com/prometheus/prometheus.github.io/master/assets/prometheus_logo-cb55bb5c346.png
+    keywords:
+    - operator
+    - prometheus
+    - kube-prometheus
+    - observability
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: prometheus
+    sources:
+    - https://github.com/prometheus-community/helm-charts
+    - https://github.com/prometheus-operator/kube-prometheus
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/prometheus-1.0.2/prometheus-1.0.2.tgz
+    version: 1.0.2
   - annotations:
       weave.works/category: Observability
       weave.works/layer: layer-1
@@ -4425,4 +4494,4 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/velero-0.0.1/velero-0.0.1.tgz
     version: 0.0.1
-generated: "2022-07-21T19:46:34.615741132Z"
+generated: "2022-07-21T21:01:10.834836909Z"
