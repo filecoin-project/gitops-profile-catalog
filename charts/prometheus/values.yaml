@@ -4,8 +4,8 @@ flux-application:
     url: "https://github.com/filecoin-project/gitops-profile-catalog"
     path: "./secrets/prometheus"
     branch: main
-    targetNamespace: '{{ (.params).CLUSTER_NAME | default "test-cluster" }}'
-    
+    targetNamespace: '{{ or (.params).CLUSTER_NAME "test-cluster" }}'
+
 kube-prometheus-stack:
   fullnameOverride: weaveworks-prometheus
   enabled: true
@@ -63,7 +63,7 @@ kube-prometheus-stack:
   prometheus:
     prometheusSpec:
       externalLabels:
-        cluster: '{{ (.params).CLUSTER_NAME | default "test-cluster" }}'
+        cluster: '{{ or (.params).CLUSTER_NAME "test-cluster" }}'
       replicaExternalLabelName: __replica__
       thanos:
         objectStorageConfig:
@@ -95,14 +95,14 @@ kube-prometheus-stack:
         nginx.ingress.kubernetes.io/auth-tls-verify-client: "on"
         nginx.ingress.kubernetes.io/auth-tls-secret: "flux-system/thanos-server-tls"
       hosts:
-      - 'thanos.{{ printf "%.*s" 23 (.params).CLUSTER_NAME }}.{{ (.params).TEAM | default "netops" }}.{{ (.params).AWS_ACCOUNT_NAME | default "netops" }}.w3ops.net'
+      - 'thanos.{{ printf "%.*s" 23 (.params).CLUSTER_NAME }}.{{ or (.params).TEAM "netops" }}.{{ or (.params).AWS_ACCOUNT_NAME "netops" }}.w3ops.net'
       paths:
       - /
       pathType: ImplementationSpecific
       tls:
       - secretName: thanos-sidecar-tls
         hosts:
-        - 'thanos.{{ printf "%.*s" 23 (.params).CLUSTER_NAME }}.{{ (.params).TEAM | default "netops" }}.{{ (.params).AWS_ACCOUNT_NAME | default "netops" }}.w3ops.net'
+        - 'thanos.{{ printf "%.*s" 23 (.params).CLUSTER_NAME }}.{{ or (.params).TEAM "netops" }}.{{ or (.params).AWS_ACCOUNT_NAME "netops" }}.w3ops.net'
 prometheus-pushgateway:
   enabled: true
   serviceMonitor:
