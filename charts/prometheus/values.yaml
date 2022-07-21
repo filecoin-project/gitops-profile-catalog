@@ -1,22 +1,32 @@
-secrets:
-  url: https://github.com/filecoin-project/gitops-profile-catalog
-  path: "./secrets/prometheus"
-  serviceAccountName: kustomize-controller
-
-# region: '{{ .params.AWS_REGION }}'
-# clusterName: '{{ .params.CLUSTER_NAME }}'
+flux-application:
+  secrets:
+    url: "https://github.com/filecoin-project/gitops-profile-catalog"
+    path: "./secrets/prometheus"
+    branch: main
 
 kube-prometheus-stack:
   fullnameOverride: weaveworks-prometheus
   enabled: true
   grafana:
     enabled: false
-  alertManager:
+  alertmanager:
     enabled: true
     alertmanagerSpec:
       replicas: 3
-      configMaps: ["alertmanager-templates"]
       secrets: ["alertmanager-slack-urls"]
+    templateFiles:
+      slack.tmpl: >-
+        {{`{{`}} define "slack.filecoin.text" {{`}}`}}
+        {{`{{ range .Alerts -}}`}}
+        *Alert:* {{`{{ .Annotations.title }}`}}{{`{{ if .Labels.severity }}`}} - `{{`{{ .Labels.severity }}`}}`{{`{{ end }}`}}
+
+        *Description:* {{`{{ .Annotations.description }}`}}
+
+        *Details:*
+         {{`{{ range .Labels.SortedPairs }}`}} • *{{`{{ .Name }}`}}:* `{{`{{ .Value }}`}}`
+         {{`{{ end }}`}}
+        {{`{{ end }}`}}
+        {{`{{ end }}`}}
     config:
       route:
         group_by: ["alertname", "cluster"]
@@ -24,21 +34,34 @@ kube-prometheus-stack:
         receiver: "null"
         group_interval: 500ms
         repeat_interval: 1d
+        routes:
+          - match:
+              severity: "critical|none|warning|info"
+            receiver: "slack-infra-alerts-test"
       templates:
         - '/etc/alertmanager/config/*.tmpl'
-        - '/etc/alertmanager/configmaps/alertmanager-templates/*.tmpl'
       receivers:
         - name: "null"
         - name: "slack-infra-alerts-test"
           slack_configs:
           - channel: "#hook-testing"
             api_url_file: "/etc/alertmanager/secrets/alertmanager-slack-urls/test-channel"
-            title: "[{{ .Alerts.Firing | len }} Firing] {{ .CommonLabels.severity }} {{ .GroupLabels.alertname }}"
+            title: "[{{`{{ .Alerts.Firing | len }}`}} Firing] {{`{{ .CommonLabels.severity }}`}} {{`{{ .GroupLabels.alertname }}`}}"
             text: |-
-              "{{ template "slack.filecoin.text" . }}"
+              {{`{{`}} template "slack.filecoin.text" . {{`}}`}}
+            send_resolved: true
+        - name: "slack-{{ .params.TEAM }}-alerts-test"
+          slack_configs:
+          - channel: "#{{ .params.TEAM }}-alerts-test"
+            api_url_file: "/etc/alertmanager/secrets/alertmanager-slack-urls/{{ .params.TEAM }}-alerts-test"
+            title: "[{{`{{ .Alerts.Firing | len }}`}} Firing] {{`{{ .CommonLabels.severity }}`}} {{`{{ .GroupLabels.alertname }}`}}"
+            text: |-
+              {{`{{`}} template "slack.filecoin.text" . {{`}}`}}
             send_resolved: true
   prometheus:
     prometheusSpec:
+      externalLabels:
+        cluster: {{ .params.CLUSTER_NAME }}
       replicaExternalLabelName: __replica__
       thanos:
         objectStorageConfig:
@@ -69,15 +92,15 @@ kube-prometheus-stack:
         nginx.ingress.kubernetes.io/backend-protocol: "GRPC"
         nginx.ingress.kubernetes.io/auth-tls-verify-client: "on"
         nginx.ingress.kubernetes.io/auth-tls-secret: "flux-system/thanos-server-tls"
-      # hosts:
-      # - 'thanos.{{ printf "%.*s" 23 .params.CLUSTER_NAME }}.{{ .params.TEAM }}.{{ .params.AWS_ACCOUNT_NAME }}.w3ops.net'
+      hosts:
+      - 'thanos.{{ printf "%.*s" 23 .params.CLUSTER_NAME }}.{{ .params.TEAM }}.{{ .params.AWS_ACCOUNT_NAME }}.w3ops.net'
       paths:
       - /
       pathType: ImplementationSpecific
       tls:
       - secretName: thanos-sidecar-tls
-        # hosts:
-        # - 'thanos.{{ printf "%.*s" 23 .params.CLUSTER_NAME }}.{{ .params.TEAM }}.{{ .params.AWS_ACCOUNT_NAME }}.w3ops.net'
+        hosts:
+        - 'thanos.{{ printf "%.*s" 23 .params.CLUSTER_NAME }}.{{ .params.TEAM }}.{{ .params.AWS_ACCOUNT_NAME }}.w3ops.net'
 prometheus-pushgateway:
   enabled: true
   serviceMonitor:
