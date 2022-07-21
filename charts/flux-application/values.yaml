@@ -7,7 +7,6 @@ secrets:
   branch: main
   key: wge-profiles-sops-gpg
   serviceAccountName: kustomize-controller
-  targetNamespace: flux-system
   
 # Used to configure a GitRepo and a Kustomization for applications
 app:
