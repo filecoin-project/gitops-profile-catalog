@@ -32,6 +32,6 @@ annotations:
       url: https://charts.jetstack.io
     - name: Upstream Project
       url: https://github.com/jetstack/cert-manager-issuer
-  "weave.works/profile-ci": |
-    - "gke"
-    - "kind"
+  # "weave.works/profile-ci": |
+  #   - "gke"
+  #   - "kind"
