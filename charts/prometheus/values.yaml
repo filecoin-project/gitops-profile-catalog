@@ -5,7 +5,7 @@ flux-application:
     path: "./secrets/prometheus"
     branch: main
     targetNamespace: '{{ or (.params).CLUSTER_NAME "test-cluster" }}'
-    
+
 kube-prometheus-stack:
   fullnameOverride: weaveworks-prometheus
   enabled: true
