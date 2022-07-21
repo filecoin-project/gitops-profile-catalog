@@ -1,6 +1,6 @@
 flux-application:
+  namespaceOverride: flux-system
   secrets:
-    helm: true
     url: "https://github.com/filecoin-project/gitops-profile-catalog"
     path: "./secrets/prometheus"
     branch: main
