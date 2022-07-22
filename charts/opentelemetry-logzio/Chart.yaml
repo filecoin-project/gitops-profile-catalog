@@ -35,6 +35,9 @@ maintainers:
     email: support@weave.works
 
 dependencies:
+- name: opentelemetry-operator
+  version: "0.8.2"
+  repository: "https://open-telemetry.github.io/opentelemetry-helm-charts"
 - name: opentelemetry-collector-config
   version: "0.0.1"
   repository: "file://../opentelemetry-collector-config"
