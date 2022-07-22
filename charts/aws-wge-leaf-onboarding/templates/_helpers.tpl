@@ -1,7 +1,7 @@
 {{/*
 Expand the name of the chart.
 */}}
-{{- define "crossplane-leaf-install.name" -}}
+{{- define "aws-wge-leaf-onboarding.name" -}}
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
@@ -10,7 +10,7 @@ Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 If release name contains chart name it will be used as a full name.
 */}}
-{{- define "crossplane-leaf-install.fullname" -}}
+{{- define "aws-wge-leaf-onboarding.fullname" -}}
 {{- if .Values.fullnameOverride }}
 {{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" }}
 {{- else }}
@@ -26,16 +26,16 @@ If release name contains chart name it will be used as a full name.
 {{/*
 Create chart name and version as used by the chart label.
 */}}
-{{- define "crossplane-leaf-install.chart" -}}
+{{- define "aws-wge-leaf-onboarding.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
 {{/*
 Common labels
 */}}
-{{- define "crossplane-leaf-install.labels" -}}
-helm.sh/chart: {{ include "crossplane-leaf-install.chart" . }}
-{{ include "crossplane-leaf-install.selectorLabels" . }}
+{{- define "aws-wge-leaf-onboarding.labels" -}}
+helm.sh/chart: {{ include "aws-wge-leaf-onboarding.chart" . }}
+{{ include "aws-wge-leaf-onboarding.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
@@ -45,17 +45,17 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{/*
 Selector labels
 */}}
-{{- define "crossplane-leaf-install.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "crossplane-leaf-install.name" . }}
+{{- define "aws-wge-leaf-onboarding.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "aws-wge-leaf-onboarding.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{/*
 Create the name of the service account to use
 */}}
-{{- define "crossplane-leaf-install.serviceAccountName" -}}
+{{- define "aws-wge-leaf-onboarding.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create }}
-{{- default (include "crossplane-leaf-install.fullname" .) .Values.serviceAccount.name }}
+{{- default (include "aws-wge-leaf-onboarding.fullname" .) .Values.serviceAccount.name }}
 {{- else }}
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}

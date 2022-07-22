@@ -1,5 +1,5 @@
 apiVersion: v2
-name: crossplane-leaf-install
+name: aws-wge-leaf-onboarding
 description: A Helm chart to install Crossplane roles and policies per leaf cluster definition
 
 type: application
