@@ -1,0 +1,22 @@
+apiVersion: v2
+name: crossplane-leaf-install
+description: A Helm chart to install Crossplane roles and policies per leaf cluster definition
+
+type: application
+
+version: 0.0.1
+
+appVersion: "1.16.0"
+
+home: https://github.com/weaveworks/profiles-catalog
+
+keywords:
+- operator
+- crossplane
+
+annotations:
+
+maintainers:
+  - name: Weaveworks
+    email: support@weave.works
+

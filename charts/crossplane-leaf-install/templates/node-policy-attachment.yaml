@@ -1,0 +1,43 @@
+---
+apiVersion: iam.aws.crossplane.io/v1beta1
+kind: RolePolicyAttachment
+metadata:
+  name: {{ .Values.awsAccountName }}-nodes-role-policy-attachment
+  # annotations:
+  #   crossplane.io/external-name: "arn:aws:iam::407967248065:${CLUSTER_NAME}-policy/external-dns"
+spec:
+  providerConfigRef:
+    name: {{ .Values.awsAccountName }}-provider
+  forProvider:
+    policyArnRef:
+      name: {{ .Values.awsAccountName }}-nodes
+    roleNameRef:
+      name: wge-{{ .Values.environment }}-{{ .Values.AWSAccountName }}-node
+---
+apiVersion: iam.aws.crossplane.io/v1beta1
+kind: RolePolicyAttachment
+metadata:
+  name: {{ .Values.awsAccountName }}-eks-worker-policy-attachment
+  # annotations:
+  #   crossplane.io/external-name: "arn:aws:iam::407967248065:${CLUSTER_NAME}-policy/external-dns"
+spec:
+  providerConfigRef:
+    name: {{ .Values.awsAccountName }}-provider
+  forProvider:
+    policyArn: arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy
+    roleNameRef:
+      name: wge-{{ .Values.environment }}-{{ .Values.AWSAccountName }}-node
+---
+apiVersion: iam.aws.crossplane.io/v1beta1
+kind: RolePolicyAttachment
+metadata:
+  name: {{ .Values.awsAccountName }}-eks-cni-policy-attachment
+  # annotations:
+  #   crossplane.io/external-name: "arn:aws:iam::407967248065:${CLUSTER_NAME}-policy/external-dns"
+spec:
+  providerConfigRef:
+    name: {{ .Values.awsAccountName }}-provider
+  forProvider:
+    policyArn: arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy
+    roleNameRef:
+      name: wge-{{ .Values.environment }}-{{ .Values.AWSAccountName }}-node

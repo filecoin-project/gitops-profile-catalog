@@ -1,0 +1,74 @@
+apiVersion: iam.aws.crossplane.io/v1beta1
+kind: RolePolicyAttachment
+metadata:
+  name: {{ .Values.awsAccountName }}-control-plane-policy-attachment
+  # annotations:
+  #   crossplane.io/external-name: "arn:aws:iam::407967248065:${CLUSTER_NAME}-policy/external-dns"
+spec:
+  providerConfigRef:
+    name: {{ .Values.awsAccountName }}-provider
+  forProvider:
+    policyArnRef:
+      name: {{ .Values.awsAccountName }}-control-plane
+    roleNameRef:
+      name: wge-{{ .Values.environment }}-{{ .Values.awsAccountName }}-control-plane
+---
+apiVersion: iam.aws.crossplane.io/v1beta1
+kind: RolePolicyAttachment
+metadata:
+  name: {{ .Values.awsAccountName }}-controllers-eks-policy-attachment
+  # annotations:
+  #   crossplane.io/external-name: "arn:aws:iam::407967248065:${CLUSTER_NAME}-policy/external-dns"
+spec:
+  providerConfigRef:
+    name: {{ .Values.awsAccountName }}-provider
+  forProvider:
+    policyArnRef:
+      name: {{ .Values.awsAccountName }}-controllers-eks
+    roleNameRef:
+      name: wge-{{ .Values.environment }}-{{ .Values.awsAccountName }}-control-plane
+---
+apiVersion: iam.aws.crossplane.io/v1beta1
+kind: RolePolicyAttachment
+metadata:
+  name: {{ .Values.awsAccountName }}-controllers-policy-attachment
+  # annotations:
+  #   crossplane.io/external-name: "arn:aws:iam::407967248065:${CLUSTER_NAME}-policy/external-dns"
+spec:
+  providerConfigRef:
+    name: {{ .Values.awsAccountName }}-provider
+  forProvider:
+    policyArnRef:
+      name: {{ .Values.awsAccountName }}-controllers
+    roleNameRef:
+      name: wge-{{ .Values.environment }}-{{ .Values.awsAccountName }}-control-plane
+---
+apiVersion: iam.aws.crossplane.io/v1beta1
+kind: RolePolicyAttachment
+metadata:
+  name: {{ .Values.awsAccountName }}-nodes-policy-attachment
+  # annotations:
+  #   crossplane.io/external-name: "arn:aws:iam::407967248065:${CLUSTER_NAME}-policy/external-dns"
+spec:
+  providerConfigRef:
+    name: {{ .Values.awsAccountName }}-provider
+  forProvider:
+    policyArnRef:
+      name: {{ .Values.awsAccountName }}-nodes
+    roleNameRef:
+      name: wge-{{ .Values.environment }}-{{ .Values.awsAccountName }}-control-plane
+---
+apiVersion: iam.aws.crossplane.io/v1beta1
+kind: RolePolicyAttachment
+metadata:
+  name: {{ .Values.awsAccountName }}-iam-policy-attachment
+  # annotations:
+  #   crossplane.io/external-name: "arn:aws:iam::407967248065:${CLUSTER_NAME}-policy/external-dns"
+spec:
+  providerConfigRef:
+    name: {{ .Values.awsAccountName }}-provider
+  forProvider:
+    policyArnRef:
+      name: {{ .Values.awsAccountName }}-iam
+    roleNameRef:
+      name: wge-{{ .Values.environment }}-{{ .Values.awsAccountName }}-control-plane

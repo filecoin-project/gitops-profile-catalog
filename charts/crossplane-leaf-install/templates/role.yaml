@@ -1,0 +1,28 @@
+apiVersion: iam.aws.crossplane.io/v1beta1
+kind: Role
+metadata:
+  name: wge-{{ .Values.environment }}-{{ .Values.awsAccountName }}-control-plane
+  # annotations:
+  #   crossplane.io/external-name: "arn:aws:iam::407967248065:role/${CLUSTER_NAME}-external-dns"
+spec:
+  providerConfigRef:
+    name: {{ .Values.awsAccountName }}-provider
+  forProvider:
+    assumeRolePolicyDocument: |
+      {
+      	"Version": "2012-10-17",
+      	"Statement": [
+      		{
+      			"Sid": "",
+      			"Effect": "Allow",
+      			"Principal": {
+      				"AWS": "arn:aws:iam::453477142348:role/nodes.cluster-api-provider-aws.sigs.k8s.io"
+      			},
+      			"Action": [
+      				"sts:TagSession",
+      				"sts:SetSourceIdentity",
+      				"sts:AssumeRole"
+      			]
+      		}
+      	]
+      }
