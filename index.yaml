@@ -97,6 +97,25 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/aws-node-term-handler-0.0.1/aws-node-term-handler-0.0.1.tgz
     version: 0.0.1
+  aws-wge-leaf-onboarding:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2022-07-22T19:32:21.31649125Z"
+    description: A Helm chart to install Crossplane roles and policies per leaf cluster
+      definition
+    digest: dff6ecd6a8d9b732920c583ebd39419911df497671221992803cbb83e58f94e0
+    home: https://github.com/weaveworks/profiles-catalog
+    keywords:
+    - operator
+    - crossplane
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: aws-wge-leaf-onboarding
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/aws-wge-leaf-onboarding-0.0.1/aws-wge-leaf-onboarding-0.0.1.tgz
+    version: 0.0.1
   cert-manager:
   - annotations:
       weave.works/category: Certificate
@@ -4619,4 +4638,4 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/velero-0.0.1/velero-0.0.1.tgz
     version: 0.0.1
-generated: "2022-07-22T19:04:59.666577254Z"
+generated: "2022-07-22T19:32:21.317502287Z"
