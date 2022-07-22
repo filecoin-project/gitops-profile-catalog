@@ -8,6 +8,10 @@ flux-application:
 kube-prometheus-stack:
   fullnameOverride: weaveworks-prometheus
   enabled: true
+  defaultRules:
+    rules:
+      kubeScheduler: false
+      kubeApiserverAvailability: false
   grafana:
     enabled: false
   alertmanager:
@@ -107,3 +111,21 @@ prometheus-pushgateway:
   serviceMonitor:
     enabled: true
     namespace: kube-system
+thanos:
+  enabled: true
+  existingObjstoreSecret: thanos-storage-config
+  compactor:
+    enabled: true
+    retentionResolution5m: 90d
+    serviceAccount:
+      annotations:
+        eks.amazonaws.com/role-arn: 'eks.amazonaws.com/role-arn: arn:aws:iam::{{ or (.params).AWS_ACCOUNT_ID "55555555555" }}:role/{{ or (.params).CLUSTER_NAME "test-cluster" }}-thanos-compactor'
+  query:
+    enabled: false
+  queryFrontend:
+    enabled: false
+  storegateway:
+    enabled: false
+thanos-bucket-config:
+  region: '{{ or (.params).AWS_REGION "us-east-1" }}'
+  clusterName: '{{ or (.params).CLUSTER_NAME "test-cluster" }}'
