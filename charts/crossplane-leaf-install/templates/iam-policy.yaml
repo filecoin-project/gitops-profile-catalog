@@ -1,0 +1,61 @@
+apiVersion: iam.aws.crossplane.io/v1beta1
+kind: Policy
+metadata:
+  name: {{ .Values.awsAccountName }}-iam
+  # annotations:
+  #   crossplane.io/external-name: "arn:aws:iam::407967248065:policy/${CLUSTER_NAME}-external-dns"
+spec:
+  providerConfigRef:
+    name: {{ .Values.awsAccountName }}-provider
+  deletionPolicy: Delete
+  forProvider:
+    description: "For the Kubernetes Cloud Provider AWS Control Plane"
+    name: wge-{{ .Values.environment }}-iam.cluster-api-provider-aws.sigs.k8s.io
+    document: |
+      {
+          "Version": "2012-10-17",
+          "Statement": [
+              {
+                  "Action": [
+                      "iam:PassRole",
+                      "iam:CreateServiceLinkedRole",
+                      "kms:DescribeKey",
+                      "iam:AttachRolePolicy",
+                      "iam:DeleteRolePolicy",
+                      "iam:DetachRolePolicy",
+                      "iam:GetRole",
+                      "iam:GetRolePolicy",
+                      "iam:ListAttachedRolePolicies",
+                      "iam:ListRolePolicies",
+                      "iam:PutRolePolicy",
+                      "iam:UpdateRole",
+                      "iam:UpdateRoleDescription",
+                      "iam:GetPolicy",
+                      "iam:CreatePolicy",
+                      "iam:CreateRole",
+                      "iam:GetPolicyVersion",
+                      "iam:ListEntitiesForPolicy",
+                      "iam:ListPolicies",
+                      "iam:TagPolicy",
+                      "iam:TagRole",
+                      "iam:TagOpenIDConnectProvider",
+                      "iam:UntagRole",
+                      "iam:UntagPolicy",
+                      "iam:UntagOpenIDConnectProvider",
+                      "iam:AddClientIDToOpenIDConnectProvider",
+                      "iam:ListOpenIDConnectProviders",
+                      "iam:CreateOpenIDConnectProvider",
+                      "iam:UpdateOpenIDConnectProviderThumbprint",
+                      "iam:GetOpenIDConnectProvider",
+                      "iam:ListPolicyVersions",
+                      "iam:DeletePolicy",
+                      "iam:DeleteRole",
+                      "iam:DeleteOpenIDConnectProvider"
+                  ],
+                  "Resource": [
+                      "*"
+                  ],
+                  "Effect": "Allow"
+              }
+          ]
+      }   
