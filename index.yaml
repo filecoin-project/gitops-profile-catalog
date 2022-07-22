@@ -290,6 +290,25 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/cert-manager-issuer-0.0.1/cert-manager-issuer-0.0.1.tgz
     version: 0.0.1
+  crossplane-leaf-install:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2022-07-22T17:58:42.584268999Z"
+    description: A Helm chart to install Crossplane roles and policies per leaf cluster
+      definition
+    digest: 242f14aa26f43d19646040f51ab6042d8108306fba838c24bdddbfcf1e16ea09
+    home: https://github.com/weaveworks/profiles-catalog
+    keywords:
+    - operator
+    - crossplane
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: crossplane-leaf-install
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/crossplane-leaf-install-0.0.1/crossplane-leaf-install-0.0.1.tgz
+    version: 0.0.1
   dex:
   - annotations:
       weave.works/links: |
@@ -4547,4 +4566,4 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/velero-0.0.1/velero-0.0.1.tgz
     version: 0.0.1
-generated: "2022-07-22T13:54:06.524621829Z"
+generated: "2022-07-22T17:58:42.585435874Z"
