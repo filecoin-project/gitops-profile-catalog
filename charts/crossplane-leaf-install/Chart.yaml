@@ -20,7 +20,3 @@ maintainers:
   - name: Weaveworks
     email: support@weave.works
 
-dependencies:
-- name: crossplane
-  version: "1.7.0"
-  repository: "https://charts.crossplane.io/stable"
