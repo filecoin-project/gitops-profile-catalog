@@ -8,7 +8,7 @@ logzio-fluent-bit:
   enabled: true
   envFrom:
   - secretRef:
-        name: logzio-log-shipping-auth
+      name: logzio-log-shipping-auth
   config:
     filters: |
       [FILTER]
