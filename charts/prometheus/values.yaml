@@ -119,7 +119,7 @@ thanos:
     retentionResolution5m: 90d
     serviceAccount:
       annotations:
-        eks.amazonaws.com/role-arn: 'eks.amazonaws.com/role-arn: arn:aws:iam::{{ or (.params).AWS_ACCOUNT_ID "55555555555" }}:role/{{ or (.params).CLUSTER_NAME "test-cluster" }}-thanos-compactor'
+        eks.amazonaws.com/role-arn: 'arn:aws:iam::{{ or (.params).AWS_ACCOUNT_ID "55555555555" }}:role/{{ or (.params).CLUSTER_NAME "test-cluster" }}-thanos-compactor'
   query:
     enabled: false
   queryFrontend:
