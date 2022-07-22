@@ -1,4 +1,5 @@
 flux-application:
+  namespaceOverride: flux-system
   secrets:
     url: "https://github.com/filecoin-project/gitops-profile-catalog"
     path: "./secrets/logzio-log-shipping-auth"
