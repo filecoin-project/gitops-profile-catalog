@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: {{ .Values.awsAccountName }}-thanos-storegateway
+  namespace: monitoring
+  annotations:
+    eks.amazonaws.com/role-arn: arn:aws:iam::{{ .Values.awsAccountId }}:role/wge-{{ .Values.environment }}
