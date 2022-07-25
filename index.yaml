@@ -336,6 +336,40 @@ entries:
         - name: Upstream Project
           url: https://github.com/dexidp/dex
       weave.works/operator: "true"
+      weave.works/profile-ci: |
+        - "gke"
+    apiVersion: v2
+    created: "2022-07-25T18:00:36.021302376Z"
+    dependencies:
+    - condition: dex.enabled
+      name: dex
+      repository: https://charts.dexidp.io
+      version: 0.6.5
+    description: A Weaveworks Helm chart for OpenID Connect (OIDC)
+    digest: dcba0115d3d212e7613ad223ac8ab355451632c1a8b4afc1b93eebb8ccf0a619
+    home: https://github.com/weaveworks/profiles-catalog
+    icon: https://dexidp.io/img/logos/dex-horizontal-color.png
+    keywords:
+    - dex
+    - oidc
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: dex
+    sources:
+    - https://github.com/dexidp/helm-charts
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/dex-0.0.28/dex-0.0.28.tgz
+    version: 0.0.28
+  - annotations:
+      weave.works/links: |
+        - name: Chart Sources
+          url: https://github.com/dexidp/helm-charts
+        - name: Upstream Project
+          url: https://github.com/dexidp/dex
+      weave.works/operator: "true"
       weave.works/profile: dex
       weave.works/profile-ci: |
         - "gke"
@@ -2206,6 +2240,59 @@ entries:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/policy-agent-0.2.5/policy-agent-0.2.5.tgz
     version: 0.2.5
   prometheus:
+  - annotations:
+      weave.works/category: Observability
+      weave.works/layer: layer-1
+      weave.works/links: |
+        - name: Chart Sources
+          url: https://github.com/prometheus-community/helm-charts
+        - name: Upstream Project
+          url: https://github.com/prometheus-operator/kube-prometheus
+      weave.works/operator: "true"
+      weave.works/profile: prometheus
+    apiVersion: v2
+    created: "2022-07-25T18:00:36.222377657Z"
+    dependencies:
+    - condition: kube-prometheus-stack.enabled
+      name: kube-prometheus-stack
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 36.0.3
+    - condition: prometheus-pushgateway.enabled
+      name: prometheus-pushgateway
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 1.18.2
+    - name: flux-application
+      repository: file://../flux-application
+      version: 0.1.1
+    - condition: thanos.enabled
+      name: thanos
+      repository: https://charts.bitnami.com/bitnami
+      version: 10.3.8
+    - condition: thanos.enabled
+      name: thanos-bucket-config
+      repository: file://../thanos-bucket-config
+      version: 0.0.5
+    description: A Weaveworks Helm chart for observability
+    digest: 7b761f7b967f4c3c60399cac10886338deb6e7187b1142893aabbb3311850aa9
+    home: https://github.com/weaveworks/profiles-catalog
+    icon: https://raw.githubusercontent.com/prometheus/prometheus.github.io/master/assets/prometheus_logo-cb55bb5c346.png
+    keywords:
+    - operator
+    - prometheus
+    - kube-prometheus
+    - observability
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: prometheus
+    sources:
+    - https://github.com/prometheus-community/helm-charts
+    - https://github.com/prometheus-operator/kube-prometheus
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/prometheus-1.1.2/prometheus-1.1.2.tgz
+    version: 1.1.2
   - annotations:
       weave.works/category: Observability
       weave.works/layer: layer-1
@@ -4354,6 +4441,37 @@ entries:
         - name: Chart Sources
           url: https://charts.bitnami.com/bitnami
       weave.works/operator: "true"
+    apiVersion: v2
+    created: "2022-07-25T18:00:36.379891878Z"
+    dependencies:
+    - name: thanos
+      repository: https://charts.bitnami.com/bitnami
+      version: 10.3.8
+    description: A Weaveworks Helm chart for the thanos
+    digest: aeb868e6e1f73188461544f9e789d2cab402738b2ee9a8c4a398bd811a9c11b3
+    home: https://github.com/weaveworks/profiles-catalog
+    icon: https://raw.githubusercontent.com/thanos/thanos.github.io/master/assets/thanos_logo-cb55bb5c346.png
+    keywords:
+    - operator
+    - thanos
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: thanos
+    sources:
+    - https://charts.bitnami.com/bitnami
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/thanos-0.0.7/thanos-0.0.7.tgz
+    version: 0.0.7
+  - annotations:
+      weave.works/category: monitoring
+      weave.works/layer: layer-1
+      weave.works/links: |
+        - name: Chart Sources
+          url: https://charts.bitnami.com/bitnami
+      weave.works/operator: "true"
       weave.works/profile: thanos
     apiVersion: v2
     created: "2022-05-19T12:07:48.943351534Z"
@@ -4540,6 +4658,31 @@ entries:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/thanos-0.0.1/thanos-0.0.1.tgz
     version: 0.0.1
   thanos-bucket-config:
+  - annotations:
+      weave.works/category: Observability
+      weave.works/layer: layer-0
+      weave.works/operator: "true"
+      weave.works/profile-ci: |
+        - "gke"
+        - "kind"
+    apiVersion: v2
+    created: "2022-07-25T18:00:36.498075444Z"
+    description: A Weaveworks Helm chart for thanos bucket configurations
+    digest: 114cb03689149e1c153c0257773aa1a77ae2740eec373279a41565708d24c6fd
+    home: https://github.com/weaveworks/profiles-catalog
+    icon: https://raw.githubusercontent.com/thanos-bucket-config/thanos-bucket-config.github.io/master/assets/thanos-bucket-config_logo-cb55bb5c346.png
+    keywords:
+    - operator
+    - thanos-bucket-config
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: thanos-bucket-config
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/thanos-bucket-config-0.0.5/thanos-bucket-config-0.0.5.tgz
+    version: 0.0.5
   - annotations:
       weave.works/category: Observability
       weave.works/layer: layer-0
@@ -4753,4 +4896,4 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/velero-0.0.1/velero-0.0.1.tgz
     version: 0.0.1
-generated: "2022-07-25T14:20:10.195371936Z"
+generated: "2022-07-25T18:00:36.498687145Z"
