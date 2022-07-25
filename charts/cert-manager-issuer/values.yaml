@@ -1,2 +1,0 @@
-region: '{{ .params.AWS_REGION }}'
-zone: '{{ printf "%.*s" 23 .params.CLUSTER_NAME }}.{{ .params.TEAM }}.{{ .params.AWS_ACCOUNT_NAME }}.w3ops.net'

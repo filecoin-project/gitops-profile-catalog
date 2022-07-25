@@ -1,5 +1,7 @@
+region: '{{ or (.params).AWS_REGION "us-east-1" }}'
+zone: '{{ printf "%.*s" 23 (.params).CLUSTER_NAME }}.{{ or (.params).TEAM "netops" }}.{{ or (.params).AWS_ACCOUNT_NAME "netops" }}.w3ops.net'
 cert-manager:
   installCRDs: true
   serviceAccount:
     annotations:
-      eks.amazonaws.com/role-arn: ""
+      eks.amazonaws.com/role-arn: arn:aws:iam::{{ or (.params).AWS_ACCOUNT_ID "55555555555" }}:role/{{ or (.params).CLUSTER_NAME "test-cluster" }}-cert-manager

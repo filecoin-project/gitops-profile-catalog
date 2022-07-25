@@ -3,7 +3,7 @@ name: external-dns
 icon: https://raw.githubusercontent.com/external-dns/external-dns.github.io/master/assets/external-dns_logo-cb55bb5c346.png
 description: A Weaveworks Helm chart for external dns
 type: application
-version: 0.0.7
+version: 0.0.8
 kubeVersion: ">=1.16.0-0"
 home: https://github.com/weaveworks/profiles-catalog
 sources:
