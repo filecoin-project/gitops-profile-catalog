@@ -1722,6 +1722,42 @@ entries:
       weave.works/profile-ci: |
         - "kind"
     apiVersion: v2
+    created: "2022-07-25T14:20:09.662911863Z"
+    dependencies:
+    - name: logzio-k8s-logs
+      repository: file://../filebeat
+      version: 0.1.0
+    - name: flux-application
+      repository: file://../flux-application
+      version: 0.1.1
+    description: A Weaveworks Helm chart for fluent bit
+    digest: 77022797c746fcfd7824195346a6c3273ec31ea09e5cd44b0ec3fe4b6670d509
+    home: https://github.com/filecoin-project/gitops-profile-catalog
+    keywords:
+    - logzio-filebeat
+    - observability
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: logzio-filebeat
+    sources:
+    - https://github.com/fluent/logzio-filebeat
+    - https://github.com/fluent/helm-charts
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/logzio-filebeat-0.1.0/logzio-filebeat-0.1.0.tgz
+    version: 0.1.0
+  - annotations:
+      weave.works/category: Observability
+      weave.works/links: |
+        - name: Chart Sources
+          url: https://github.com/logzio/logzio-helm
+      weave.works/operator: "true"
+      weave.works/profile: logzio-filebeat
+      weave.works/profile-ci: |
+        - "kind"
+    apiVersion: v2
     created: "2022-07-15T14:10:11.491162108Z"
     dependencies:
     - name: logzio-k8s-logs
@@ -1796,6 +1832,43 @@ entries:
       weave.works/profile-ci: |
         - "kind"
     apiVersion: v2
+    created: "2022-07-25T14:20:10.021139086Z"
+    dependencies:
+    - condition: logzio-fluent-bit.enabled
+      name: logzio-fluent-bit
+      repository: https://logzio.github.io/logzio-helm
+      version: 0.0.2
+    - name: flux-application
+      repository: file://../flux-application
+      version: 0.1.1
+    description: A Weaveworks Helm chart for fluent bit
+    digest: 0d8421a7988b68962c69d37df1306dbb7248bcfa7bc2e2158ddf4468337bfb7e
+    home: https://github.com/filecoin-project/gitops-profile-catalog
+    keywords:
+    - logzio-fluent-bit
+    - observability
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: logzio-fluent-bit
+    sources:
+    - https://github.com/fluent/logzio-fluent-bit
+    - https://github.com/fluent/helm-charts
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/logzio-fluent-bit-0.1.0/logzio-fluent-bit-0.1.0.tgz
+    version: 0.1.0
+  - annotations:
+      weave.works/category: Observability
+      weave.works/links: |
+        - name: Chart Sources
+          url: https://github.com/logzio/logzio-helm
+      weave.works/operator: "true"
+      weave.works/profile: logzio-fluent-bit
+      weave.works/profile-ci: |
+        - "kind"
+    apiVersion: v2
     created: "2022-07-14T17:43:59.0384507Z"
     dependencies:
     - condition: logzio-fluent-bit.enabled
@@ -1857,6 +1930,48 @@ entries:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/opentelemetry-collector-config-0.0.1/opentelemetry-collector-config-0.0.1.tgz
     version: 0.0.1
   opentelemetry-logzio:
+  - annotations:
+      weave.works/category: Observability
+      weave.works/layer: layer-2
+      weave.works/links: |
+        - name: Chart Sources
+          url: https://github.com/open-telemetry/opentelemetry-helm-charts
+        - name: Upstream Project
+          url: https://github.com/open-telemetry/opentelemetry-collector-config
+      weave.works/operator: "true"
+      weave.works/profile: opentelemetry-logzio
+      weave.works/profile-ci: |
+        - "gke"
+        - "kind"
+    apiVersion: v2
+    created: "2022-07-25T14:20:10.194996624Z"
+    dependencies:
+    - name: opentelemetry-operator
+      repository: https://open-telemetry.github.io/opentelemetry-helm-charts
+      version: 0.8.2
+    - name: opentelemetry-collector-config
+      repository: file://../opentelemetry-collector-config
+      version: 0.0.1
+    description: A Weaveworks Helm chart for opentelemetry-logzio
+    digest: 01fe36f52f322c4eab8a594c24cb907d190d36ed0afa9dc53ddecc3410d01684
+    home: https://github.com/weaveworks/profiles-catalog
+    keywords:
+    - operator
+    - opentelemetry-logzio
+    - observability
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: opentelemetry-logzio
+    sources:
+    - https://github.com/open-telemetry/opentelemetry-helm-charts
+    - https://github.com/open-telemetry/opentelemetry-logzio
+    - https://github.com/open-telemetry/opentelemetry-logzio-contrib/tree/main/exporter/logzioexporter
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/opentelemetry-logzio-0.1.0/opentelemetry-logzio-0.1.0.tgz
+    version: 0.1.0
   - annotations:
       weave.works/category: Observability
       weave.works/layer: layer-2
@@ -4638,4 +4753,4 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/velero-0.0.1/velero-0.0.1.tgz
     version: 0.0.1
-generated: "2022-07-22T19:32:21.317502287Z"
+generated: "2022-07-25T14:20:10.195371936Z"
