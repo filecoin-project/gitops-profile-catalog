@@ -2,7 +2,7 @@ apiVersion: v2
 name: logzio-filebeat
 description: A Weaveworks Helm chart for fluent bit
 type: application
-version: 0.1.0
+version: 0.1.1
 kubeVersion: ">=1.16.0-0"
 home: https://github.com/filecoin-project/gitops-profile-catalog
 sources:
