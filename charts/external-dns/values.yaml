@@ -1,7 +1,7 @@
 external-dns:
   rbac:
     create: true
-  txtOwnerId: Z06730012R49VCK4SGLRZ
+  txtOwnerId: '{{ or (.params).CLUSTER_NAME "test-cluster" }}'
   domainFilters:
   - w3ops.net
   serviceAccount:
