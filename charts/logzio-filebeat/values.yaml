@@ -1,13 +1,14 @@
 flux-application:
+  namespaceOverride: flux-system
   secrets:
     url: "https://github.com/filecoin-project/gitops-profile-catalog"
-    path: "./secrets/logzio-auth"
+    path: "./secrets/logzio-log-shipping-auth"
     branch: main
 
 logzio-k8s-logs:
   extraEnvFrom:
   - secretRef:
-      name: logzio-auth
+      name: logzio-log-shipping-auth
   enabled: true
   secrets:
     create: true
