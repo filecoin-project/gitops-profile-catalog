@@ -131,6 +131,45 @@ entries:
         - "gke"
         - "kind"
     apiVersion: v2
+    created: "2022-07-25T19:55:15.408393176Z"
+    dependencies:
+    - name: cert-manager
+      repository: https://charts.jetstack.io
+      version: 1.8.0
+    description: A Weaveworks Helm chart for the Certificate Profile
+    digest: 661ce24c951bf55dacf52f5b77e2584bf1d302baddbb5b2f58f04d42c3c6b7f9
+    home: https://github.com/weaveworks/profiles-catalog
+    icon: https://raw.githubusercontent.com/jetstack/cert-manager/master/logo/logo.png
+    keywords:
+    - cert-manager
+    - kube-lego
+    - letsencrypt
+    - tls
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: cert-manager
+    sources:
+    - https://charts.jetstack.io
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/cert-manager-1.0.0/cert-manager-1.0.0.tgz
+    version: 1.0.0
+  - annotations:
+      weave.works/category: Certificate
+      weave.works/layer: layer-0
+      weave.works/links: |
+        - name: Chart Sources
+          url: https://charts.jetstack.io
+        - name: Upstream Project
+          url: https://github.com/jetstack/cert-manager
+      weave.works/operator: "true"
+      weave.works/profile: cert-manager
+      weave.works/profile-ci: |
+        - "gke"
+        - "kind"
+    apiVersion: v2
     created: "2022-05-06T11:30:41.119994026Z"
     dependencies:
     - name: cert-manager
@@ -924,6 +963,43 @@ entries:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/dex-0.0.12/dex-0.0.12.tgz
     version: 0.0.12
   external-dns:
+  - annotations:
+      weave.works/category: dns
+      weave.works/layer: layer-1
+      weave.works/links: |
+        - name: Chart Sources
+          url: https://kubernetes-sigs.github.io/external-dns/
+        - name: Upstream Project
+          url: https://kubernetes-sigs.github.io/external-dns/
+      weave.works/operator: "true"
+      weave.works/profile: external-dns
+      weave.works/profile-ci: |
+        - "gke"
+        - "kind"
+    apiVersion: v2
+    created: "2022-07-25T19:55:15.704405728Z"
+    dependencies:
+    - name: external-dns
+      repository: https://kubernetes-sigs.github.io/external-dns/
+      version: 1.9.0
+    description: A Weaveworks Helm chart for external dns
+    digest: 6085aa446d2b2e2d8b4ae80c2cfc183ee71d45bf569ecc5b5947357e91617678
+    home: https://github.com/weaveworks/profiles-catalog
+    icon: https://raw.githubusercontent.com/external-dns/external-dns.github.io/master/assets/external-dns_logo-cb55bb5c346.png
+    keywords:
+    - operator
+    - dns
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: external-dns
+    sources:
+    - https://kubernetes-sigs.github.io/external-dns/
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/external-dns-0.0.8/external-dns-0.0.8.tgz
+    version: 0.0.8
   - annotations:
       weave.works/category: dns
       weave.works/layer: layer-1
@@ -4959,4 +5035,4 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/velero-0.0.1/velero-0.0.1.tgz
     version: 0.0.1
-generated: "2022-07-25T18:04:04.778838698Z"
+generated: "2022-07-25T19:55:15.705016471Z"
