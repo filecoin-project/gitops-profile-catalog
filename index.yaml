@@ -4545,7 +4545,6 @@ entries:
         - name: Chart Sources
           url: https://charts.bitnami.com/bitnami
       weave.works/operator: "true"
-      weave.works/profile: thanos
     apiVersion: v2
     created: "2022-05-19T12:07:48.943351534Z"
     dependencies:
@@ -4577,7 +4576,6 @@ entries:
         - name: Chart Sources
           url: https://charts.bitnami.com/bitnami
       weave.works/operator: "true"
-      weave.works/profile: thanos
     apiVersion: v2
     created: "2022-05-16T19:15:39.56387125Z"
     dependencies:
@@ -4609,7 +4607,6 @@ entries:
         - name: Chart Sources
           url: https://charts.bitnami.com/bitnami
       weave.works/operator: "true"
-      weave.works/profile: thanos
     apiVersion: v2
     created: "2022-05-16T19:01:30.987379721Z"
     dependencies:
@@ -4641,7 +4638,6 @@ entries:
         - name: Chart Sources
           url: https://charts.bitnami.com/bitnami
       weave.works/operator: "true"
-      weave.works/profile: thanos
     apiVersion: v2
     created: "2022-05-16T18:51:00.688967883Z"
     dependencies:
@@ -4673,7 +4669,6 @@ entries:
         - name: Chart Sources
           url: https://charts.bitnami.com/bitnami
       weave.works/operator: "true"
-      weave.works/profile: thanos
     apiVersion: v2
     created: "2022-05-12T19:41:47.312517484Z"
     dependencies:
@@ -4705,7 +4700,6 @@ entries:
         - name: Chart Sources
           url: https://charts.bitnami.com/bitnami
       weave.works/operator: "true"
-      weave.works/profile: thanos
     apiVersion: v2
     created: "2022-05-12T19:22:43.023801225Z"
     dependencies:
@@ -4760,7 +4754,6 @@ entries:
       weave.works/category: Observability
       weave.works/layer: layer-0
       weave.works/operator: "true"
-      weave.works/profile: thanos-bucket-config
       weave.works/profile-ci: |
         - "gke"
         - "kind"
@@ -4786,7 +4779,6 @@ entries:
       weave.works/category: Observability
       weave.works/layer: layer-0
       weave.works/operator: "true"
-      weave.works/profile: thanos-bucket-config
       weave.works/profile-ci: |
         - "gke"
         - "kind"
@@ -4812,7 +4804,6 @@ entries:
       weave.works/category: Observability
       weave.works/layer: layer-0
       weave.works/operator: "true"
-      weave.works/profile: thanos-bucket-config
       weave.works/profile-ci: |
         - "gke"
         - "kind"
@@ -4838,7 +4829,6 @@ entries:
       weave.works/category: Observability
       weave.works/layer: layer-0
       weave.works/operator: "true"
-      weave.works/profile: thanos-bucket-config
       weave.works/profile-ci: |
         - "gke"
         - "kind"
