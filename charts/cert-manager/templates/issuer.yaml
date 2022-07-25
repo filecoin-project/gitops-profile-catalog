@@ -4,6 +4,11 @@ kind: ClusterIssuer
 metadata:
   name: letsencrypt
   namespace: {{ template "cert-manager.namespace" . }}
+  annotations:
+    # This is what defines this resource as a hook. Without this line, the
+    # job is considered part of the release.
+    "helm.sh/hook": post-install,post-upgrade
+    "helm.sh/hook-weight": "-10"
   labels:
     {{- include "cert-manager.labels" . | nindent 4 }}   
 spec:

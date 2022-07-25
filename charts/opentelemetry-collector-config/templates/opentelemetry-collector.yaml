@@ -3,6 +3,11 @@ kind: OpenTelemetryCollector
 metadata:
   name: opentelemetry
   namespace: {{ template "opentelemetry-collector-config.namespace" . }}
+  annotations:
+    # This is what defines this resource as a hook. Without this line, the
+    # job is considered part of the release.
+    "helm.sh/hook": post-install,post-upgrade
+    "helm.sh/hook-weight": "-10"
   labels:
     {{- include "opentelemetry-collector-config.labels" . | nindent 4 }}
 spec:
