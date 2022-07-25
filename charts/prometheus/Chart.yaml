@@ -17,6 +17,7 @@ keywords:
 - observability
 
 annotations:
+  "weave.works/profile": prometheus
   "weave.works/category": Observability
   "weave.works/operator": "true"
   "weave.works/layer": layer-1
