@@ -1756,6 +1756,42 @@ entries:
       weave.works/profile-ci: |
         - "kind"
     apiVersion: v2
+    created: "2022-07-25T18:04:04.631328462Z"
+    dependencies:
+    - name: logzio-k8s-logs
+      repository: file://../filebeat
+      version: 0.1.0
+    - name: flux-application
+      repository: file://../flux-application
+      version: 0.1.1
+    description: A Weaveworks Helm chart for fluent bit
+    digest: f162a7c4b81c7fb18805912442c02fc3f980a18ae148b945edff3b4d547ed44d
+    home: https://github.com/filecoin-project/gitops-profile-catalog
+    keywords:
+    - logzio-filebeat
+    - observability
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: logzio-filebeat
+    sources:
+    - https://github.com/fluent/logzio-filebeat
+    - https://github.com/fluent/helm-charts
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/logzio-filebeat-0.1.1/logzio-filebeat-0.1.1.tgz
+    version: 0.1.1
+  - annotations:
+      weave.works/category: Observability
+      weave.works/links: |
+        - name: Chart Sources
+          url: https://github.com/logzio/logzio-helm
+      weave.works/operator: "true"
+      weave.works/profile: logzio-filebeat
+      weave.works/profile-ci: |
+        - "kind"
+    apiVersion: v2
     created: "2022-07-25T14:20:09.662911863Z"
     dependencies:
     - name: logzio-k8s-logs
@@ -1856,6 +1892,43 @@ entries:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/logzio-filebeat-0.0.1/logzio-filebeat-0.0.1.tgz
     version: 0.0.1
   logzio-fluent-bit:
+  - annotations:
+      weave.works/category: Observability
+      weave.works/links: |
+        - name: Chart Sources
+          url: https://github.com/logzio/logzio-helm
+      weave.works/operator: "true"
+      weave.works/profile: logzio-fluent-bit
+      weave.works/profile-ci: |
+        - "kind"
+    apiVersion: v2
+    created: "2022-07-25T18:04:04.77837649Z"
+    dependencies:
+    - condition: logzio-fluent-bit.enabled
+      name: logzio-fluent-bit
+      repository: https://logzio.github.io/logzio-helm
+      version: 0.0.2
+    - name: flux-application
+      repository: file://../flux-application
+      version: 0.1.1
+    description: A Weaveworks Helm chart for fluent bit
+    digest: 9b9db79945d5b935be4b5d001ba2c66d0e4973ed98bc322d38022fdee7dc7962
+    home: https://github.com/filecoin-project/gitops-profile-catalog
+    keywords:
+    - logzio-fluent-bit
+    - observability
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: logzio-fluent-bit
+    sources:
+    - https://github.com/fluent/logzio-fluent-bit
+    - https://github.com/fluent/helm-charts
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/logzio-fluent-bit-0.1.1/logzio-fluent-bit-0.1.1.tgz
+    version: 0.1.1
   - annotations:
       weave.works/category: Observability
       weave.works/links: |
@@ -4896,4 +4969,4 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/velero-0.0.1/velero-0.0.1.tgz
     version: 0.0.1
-generated: "2022-07-25T18:00:36.498687145Z"
+generated: "2022-07-25T18:04:04.778838698Z"
