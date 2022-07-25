@@ -131,6 +131,45 @@ entries:
         - "gke"
         - "kind"
     apiVersion: v2
+    created: "2022-07-25T21:40:09.72851227Z"
+    dependencies:
+    - name: cert-manager
+      repository: https://charts.jetstack.io
+      version: 1.8.0
+    description: A Weaveworks Helm chart for the Certificate Profile
+    digest: df2a8fe176b11841ae929c138840491316decba3069824cadcf2ac6cacd70ba6
+    home: https://github.com/weaveworks/profiles-catalog
+    icon: https://raw.githubusercontent.com/jetstack/cert-manager/master/logo/logo.png
+    keywords:
+    - cert-manager
+    - kube-lego
+    - letsencrypt
+    - tls
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: cert-manager
+    sources:
+    - https://charts.jetstack.io
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/cert-manager-1.0.1/cert-manager-1.0.1.tgz
+    version: 1.0.1
+  - annotations:
+      weave.works/category: Certificate
+      weave.works/layer: layer-0
+      weave.works/links: |
+        - name: Chart Sources
+          url: https://charts.jetstack.io
+        - name: Upstream Project
+          url: https://github.com/jetstack/cert-manager
+      weave.works/operator: "true"
+      weave.works/profile: cert-manager
+      weave.works/profile-ci: |
+        - "gke"
+        - "kind"
+    apiVersion: v2
     created: "2022-07-25T19:55:15.408393176Z"
     dependencies:
     - name: cert-manager
@@ -2091,6 +2130,28 @@ entries:
     version: 0.1.0
   opentelemetry-collector-config:
   - apiVersion: v2
+    created: "2022-07-25T21:40:09.909122158Z"
+    description: A Weaveworks Helm chart for opentelemetry-collector-config
+    digest: 2e96609c3fcd09ea88bc7f2958ffb4292760950b37a64c931a860c9654d4458e
+    home: https://github.com/weaveworks/profiles-catalog
+    keywords:
+    - operator
+    - opentelemetry-collector-config
+    - observability
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: opentelemetry-collector-config
+    sources:
+    - https://github.com/open-telemetry/opentelemetry-helm-charts
+    - https://github.com/open-telemetry/opentelemetry-collector-config
+    - https://github.com/open-telemetry/opentelemetry-collector-config-contrib/tree/main/exporter/logzioexporter
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/opentelemetry-collector-config-0.0.2/opentelemetry-collector-config-0.0.2.tgz
+    version: 0.0.2
+  - apiVersion: v2
     created: "2022-06-23T20:35:44.024193744Z"
     description: A Weaveworks Helm chart for opentelemetry-collector-config
     digest: 02e1d783e6cb3889ff167c98e6ddd8e77aa95cb9472940210fc06213f5ae9047
@@ -2113,6 +2174,48 @@ entries:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/opentelemetry-collector-config-0.0.1/opentelemetry-collector-config-0.0.1.tgz
     version: 0.0.1
   opentelemetry-logzio:
+  - annotations:
+      weave.works/category: Observability
+      weave.works/layer: layer-2
+      weave.works/links: |
+        - name: Chart Sources
+          url: https://github.com/open-telemetry/opentelemetry-helm-charts
+        - name: Upstream Project
+          url: https://github.com/open-telemetry/opentelemetry-collector-config
+      weave.works/operator: "true"
+      weave.works/profile: opentelemetry-logzio
+      weave.works/profile-ci: |
+        - "gke"
+        - "kind"
+    apiVersion: v2
+    created: "2022-07-25T21:40:10.083481191Z"
+    dependencies:
+    - name: opentelemetry-operator
+      repository: https://open-telemetry.github.io/opentelemetry-helm-charts
+      version: 0.8.2
+    - name: opentelemetry-collector-config
+      repository: file://../opentelemetry-collector-config
+      version: 0.0.2
+    description: A Weaveworks Helm chart for opentelemetry-logzio
+    digest: f1a7a5e7ee5d9e97ca1bafff90b3501af541ef1754487f1c467cde925b7ebb9c
+    home: https://github.com/weaveworks/profiles-catalog
+    keywords:
+    - operator
+    - opentelemetry-logzio
+    - observability
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: opentelemetry-logzio
+    sources:
+    - https://github.com/open-telemetry/opentelemetry-helm-charts
+    - https://github.com/open-telemetry/opentelemetry-logzio
+    - https://github.com/open-telemetry/opentelemetry-logzio-contrib/tree/main/exporter/logzioexporter
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/opentelemetry-logzio-0.1.1/opentelemetry-logzio-0.1.1.tgz
+    version: 0.1.1
   - annotations:
       weave.works/category: Observability
       weave.works/layer: layer-2
@@ -4582,6 +4685,42 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/storetheindex-0.0.1/storetheindex-0.0.1.tgz
     version: 0.0.1
+  tf-controller:
+  - annotations:
+      weave.works/links: |
+        - name: Chart Sources
+          url: https://github.com/weaveworks/tf-controller
+        - name: Upstream Project
+          url: https://github.com/weaveworks/tf-controller
+      weave.works/operator: "true"
+      weave.works/profile: tf-controller
+      weave.works/profile-ci: |
+        - "gke"
+        - "kind"
+    apiVersion: v2
+    created: "2022-07-25T21:40:10.24833514Z"
+    dependencies:
+    - condition: tf-controller.enabled
+      name: tf-controller
+      repository: https://weaveworks.github.io/tf-controller/
+      version: 0.2.5
+    description: A Weaveworks Helm chart for tf-controller
+    digest: ce5ed529d25b06e046d03a457b02a204207f763065fab9c4d8a3f3d061a8756e
+    home: https://github.com/weaveworks/profiles-catalog
+    keywords:
+    - terraform
+    - gitops
+    kubeVersion: '>=1.17.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: tf-controller
+    sources:
+    - https://github.com/weaveworks/tf-controller
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/tf-controller-0.0.3/tf-controller-0.0.3.tgz
+    version: 0.0.3
   thanos:
   - annotations:
       weave.works/category: monitoring
@@ -5035,4 +5174,4 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/velero-0.0.1/velero-0.0.1.tgz
     version: 0.0.1
-generated: "2022-07-25T19:55:15.705016471Z"
+generated: "2022-07-25T21:40:10.248829545Z"
