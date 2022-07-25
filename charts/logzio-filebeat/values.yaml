@@ -13,5 +13,5 @@ logzio-k8s-logs:
   secrets:
     create: true
     logzioRegion: "us"
-    clusterName: ${CLUSTER_NAME}
+    clusterName: '{{ or (.params).CLUSTER_NAME "test-cluster" }}'
     name: logzio-logs-secret

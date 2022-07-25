@@ -26,7 +26,7 @@ logzio-fluent-bit:
       [FILTER]
           Name modify
           Match *
-          Add cluster ${CLUSTER_NAME}
+          Add cluster {{ or (.params).CLUSTER_NAME "test-cluster" }}
       [FILTER]
           Name    lua
           Match   kube.*
