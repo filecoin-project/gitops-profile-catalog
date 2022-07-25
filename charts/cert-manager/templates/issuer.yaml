@@ -4,6 +4,8 @@ kind: ClusterIssuer
 metadata:
   name: letsencrypt
   namespace: {{ template "cert-manager.namespace" . }}
+  annotations:
+    "helm.sh/hook": post-install,post-upgrade
   labels:
     {{- include "cert-manager.labels" . | nindent 4 }}   
 spec:
