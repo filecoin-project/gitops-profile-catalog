@@ -3,7 +3,7 @@ external-dns:
     create: true
   txtOwnerId: Z06730012R49VCK4SGLRZ
   domainFilters:
-  - ""
+  - w3ops.net
   serviceAccount:
     annotations:
-      eks.amazonaws.com/role-arn: ""
+      eks.amazonaws.com/role-arn: arn:aws:iam::{{ or (.params).AWS_ACCOUNT_ID "55555555555" }}:role/{{ or (.params).CLUSTER_NAME "test-cluster" }}-external-dns
