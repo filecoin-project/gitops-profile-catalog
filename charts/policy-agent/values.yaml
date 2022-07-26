@@ -24,7 +24,7 @@ config:
   # AGENT_FLUX_NOTIFICATION_SINK_ADDR: <flux-notification-controller-svc>
 
   # Enable admission functionality
-  AGENT_ENABLE_ADMISSION: "1"
+  AGENT_ENABLE_ADMISSION: "0"
 
   # Enable audit functionality
   AGENT_ENABLE_AUDIT: "1"
