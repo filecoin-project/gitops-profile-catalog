@@ -1,0 +1,21 @@
+---
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt
+  namespace: {{ template "cert-manager-issuer.namespace" . }}
+  labels:
+    {{- include "cert-manager-issuer.labels" . | nindent 4 }}   
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: bedrock@protocol.ai
+    privateKeySecretRef:
+      name: letsencrypt
+    solvers:
+      - dns01:
+          route53:
+            region: {{ .Values.region }}
+        selector:
+          dnsZones:
+            - {{ .Values.zone }}

@@ -1,5 +1,3 @@
-region: '{{ or (.params).AWS_REGION "us-east-1" }}'
-zone: '{{ printf "%.*s" 23 (.params).CLUSTER_NAME }}.{{ or (.params).TEAM "netops" }}.{{ or (.params).AWS_ACCOUNT_NAME "netops" }}.w3ops.net'
 cert-manager:
   installCRDs: true
   serviceAccount:
