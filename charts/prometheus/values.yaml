@@ -18,7 +18,7 @@ kube-prometheus-stack:
     enabled: true
     alertmanagerSpec:
       replicas: 3
-      secrets: ["alertmanager-slack-urls","opsgenie-api-tokens"]
+      secrets: ["alertmanager-slack-urls", "opsgenie-api-tokens"]
     templateFiles:
       slack.tmpl: >-
         {{`{{`}} define "slack.filecoin.text" {{`}}`}}
