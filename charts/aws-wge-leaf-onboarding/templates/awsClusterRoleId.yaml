@@ -1,0 +1,12 @@
+apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+kind: AWSClusterRoleIdentity
+metadata:
+  name: "{{ .Values.awsAccountName }}-account-role"
+
+spec:
+  allowedNamespaces: {}
+  roleARN: "arn:aws:iam::{{ .Values.awsAccountId }}:role/wge-{{ .Values.environment }}-control-plane"
+  sessionName: filecoin-dev-role-session
+  sourceIdentityRef:
+    kind: AWSClusterRoleIdentity
+    name: capi-role
