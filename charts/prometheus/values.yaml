@@ -18,7 +18,7 @@ kube-prometheus-stack:
     enabled: true
     alertmanagerSpec:
       replicas: 3
-      secrets: ["alertmanager-slack-urls"]
+      secrets: ["alertmanager-slack-urls", "opsgenie-api-tokens"]
     templateFiles:
       slack.tmpl: >-
         {{`{{`}} define "slack.filecoin.text" {{`}}`}}
@@ -41,24 +41,23 @@ kube-prometheus-stack:
         repeat_interval: 1d
         routes:
           - match:
-              severity: "critical|none|warning|info"
-            receiver: "slack-infra-alerts-test"
+              severity: "critical"
+            receiver: "slack-alerts"
+          - match:
+              severity: "page"
+            receiver: "opsgenie"
       templates:
         - '/etc/alertmanager/config/*.tmpl'
       receivers:
         - name: "null"
-        - name: "slack-infra-alerts-test"
+        - name: "opsgenie"
+          opsgenie_configs:
+          - send_resolved: true
+            api_key_file: "/etc/alertmanager/secrets/opsgenie-api-tokens/{{ .params.TEAM }}-alerts"
+        - name: "slack-alerts"
           slack_configs:
-          - channel: "#hook-testing"
-            api_url_file: "/etc/alertmanager/secrets/alertmanager-slack-urls/test-channel"
-            title: "[{{`{{ .Alerts.Firing | len }}`}} Firing] {{`{{ .CommonLabels.severity }}`}} {{`{{ .GroupLabels.alertname }}`}}"
-            text: |-
-              {{`{{`}} template "slack.filecoin.text" . {{`}}`}}
-            send_resolved: true
-        - name: "slack-{{ .params.TEAM }}-alerts-test"
-          slack_configs:
-          - channel: "#{{ .params.TEAM }}-alerts-test"
-            api_url_file: "/etc/alertmanager/secrets/alertmanager-slack-urls/{{ .params.TEAM }}-alerts-test"
+          - channel: "#{{ .params.TEAM }}-alerts-confidential"
+            api_url_file: "/etc/alertmanager/secrets/alertmanager-slack-urls/{{ .params.TEAM }}-alerts"
             title: "[{{`{{ .Alerts.Firing | len }}`}} Firing] {{`{{ .CommonLabels.severity }}`}} {{`{{ .GroupLabels.alertname }}`}}"
             text: |-
               {{`{{`}} template "slack.filecoin.text" . {{`}}`}}
