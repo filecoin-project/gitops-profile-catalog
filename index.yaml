@@ -561,7 +561,6 @@ entries:
         - name: Upstream Project
           url: https://github.com/dexidp/dex
       weave.works/operator: "true"
-      weave.works/profile: dex
       weave.works/profile-ci: |
         - "gke"
     apiVersion: v2
@@ -596,7 +595,6 @@ entries:
         - name: Upstream Project
           url: https://github.com/dexidp/dex
       weave.works/operator: "true"
-      weave.works/profile: dex
       weave.works/profile-ci: |
         - "gke"
     apiVersion: v2
@@ -631,7 +629,6 @@ entries:
         - name: Upstream Project
           url: https://github.com/dexidp/dex
       weave.works/operator: "true"
-      weave.works/profile: dex
       weave.works/profile-ci: |
         - "gke"
     apiVersion: v2
@@ -666,7 +663,6 @@ entries:
         - name: Upstream Project
           url: https://github.com/dexidp/dex
       weave.works/operator: "true"
-      weave.works/profile: dex
       weave.works/profile-ci: |
         - "gke"
     apiVersion: v2
@@ -701,7 +697,6 @@ entries:
         - name: Upstream Project
           url: https://github.com/dexidp/dex
       weave.works/operator: "true"
-      weave.works/profile: dex
       weave.works/profile-ci: |
         - "gke"
     apiVersion: v2
@@ -736,7 +731,6 @@ entries:
         - name: Upstream Project
           url: https://github.com/dexidp/dex
       weave.works/operator: "true"
-      weave.works/profile: dex
       weave.works/profile-ci: |
         - "gke"
     apiVersion: v2
@@ -771,7 +765,6 @@ entries:
         - name: Upstream Project
           url: https://github.com/dexidp/dex
       weave.works/operator: "true"
-      weave.works/profile: dex
       weave.works/profile-ci: |
         - "gke"
     apiVersion: v2
@@ -806,7 +799,6 @@ entries:
         - name: Upstream Project
           url: https://github.com/dexidp/dex
       weave.works/operator: "true"
-      weave.works/profile: dex
       weave.works/profile-ci: |
         - "gke"
     apiVersion: v2
@@ -841,7 +833,6 @@ entries:
         - name: Upstream Project
           url: https://github.com/dexidp/dex
       weave.works/operator: "true"
-      weave.works/profile: dex
       weave.works/profile-ci: |
         - "gke"
     apiVersion: v2
@@ -876,7 +867,6 @@ entries:
         - name: Upstream Project
           url: https://github.com/dexidp/dex
       weave.works/operator: "true"
-      weave.works/profile: dex
       weave.works/profile-ci: |
         - "gke"
     apiVersion: v2
@@ -911,7 +901,6 @@ entries:
         - name: Upstream Project
           url: https://github.com/dexidp/dex
       weave.works/operator: "true"
-      weave.works/profile: dex
       weave.works/profile-ci: |
         - "gke"
     apiVersion: v2
@@ -946,7 +935,6 @@ entries:
         - name: Upstream Project
           url: https://github.com/dexidp/dex
       weave.works/operator: "true"
-      weave.works/profile: dex
       weave.works/profile-ci: |
         - "gke"
     apiVersion: v2
@@ -981,7 +969,6 @@ entries:
         - name: Upstream Project
           url: https://github.com/dexidp/dex
       weave.works/operator: "true"
-      weave.works/profile: dex
       weave.works/profile-ci: |
         - "gke"
     apiVersion: v2
@@ -1016,7 +1003,6 @@ entries:
         - name: Upstream Project
           url: https://github.com/dexidp/dex
       weave.works/operator: "true"
-      weave.works/profile: dex
       weave.works/profile-ci: |
         - "gke"
     apiVersion: v2
@@ -1051,7 +1037,6 @@ entries:
         - name: Upstream Project
           url: https://github.com/dexidp/dex
       weave.works/operator: "true"
-      weave.works/profile: dex
       weave.works/profile-ci: |
         - "gke"
     apiVersion: v2
@@ -1086,7 +1071,6 @@ entries:
         - name: Upstream Project
           url: https://github.com/dexidp/dex
       weave.works/operator: "true"
-      weave.works/profile: dex
       weave.works/profile-ci: |
         - "gke"
     apiVersion: v2
