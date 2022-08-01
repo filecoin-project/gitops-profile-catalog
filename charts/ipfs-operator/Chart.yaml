@@ -1,0 +1,19 @@
+apiVersion: v2
+name: ipfs-operator
+description: Install IPFS cluster with ease.
+type: application
+version: "0.0.0"
+appVersion: "0.0.0"
+
+sources:
+  - https://github.com/redhat-et/ipfs-operator
+
+keywords:
+  - ipfs
+  - ipfs-cluster
+
+maintainers:
+  - name: Cory Schwartz
+    email: cory@protocol.ai
+
+dependencies: []
