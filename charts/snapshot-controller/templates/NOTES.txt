@@ -1,0 +1,2 @@
+{{ $.Chart.Name }} has been installed. Check its status by running:
+  kubectl --namespace {{ template "snapshot-controller.namespace" . }} get pods -l "release={{ $.Release.Name }}"

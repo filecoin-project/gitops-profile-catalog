@@ -2,7 +2,7 @@ apiVersion: v2
 name: flux-application
 description: A Weaveworks Helm chart for flux-application
 type: application
-version: 0.1.1
+version: 0.2.0
 kubeVersion: ">=1.16.0-0"
 home: https://github.com/weaveworks/profiles-catalog
 sources:
