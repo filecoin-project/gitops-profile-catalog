@@ -1521,6 +1521,30 @@ entries:
         - "gke"
         - "kind"
     apiVersion: v2
+    created: "2022-08-02T21:34:59.413993346Z"
+    description: A Weaveworks Helm chart for flux-application
+    digest: 7e5fbe0299a5acb4ab2247e76b1e3aac8f562b1d7c4032e3873b7fc0d3557942
+    home: https://github.com/weaveworks/profiles-catalog
+    keywords:
+    - flux-application
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: flux-application
+    sources:
+    - https://github.com/filecoin-project/flux-application-infra
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/flux-application-0.2.0/flux-application-0.2.0.tgz
+    version: 0.2.0
+  - annotations:
+      weave.works/category: client
+      weave.works/profile: flux-application
+      weave.works/profile-ci: |
+        - "gke"
+        - "kind"
+    apiVersion: v2
     created: "2022-07-21T21:01:10.602009959Z"
     description: A Weaveworks Helm chart for flux-application
     digest: cf545c7dc66334bf177c1d43f3f4ed4a8ef9c8c2565f4fed688388c94a5afe7c
@@ -4130,6 +4154,34 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/sentinel-0.0.1/sentinel-0.0.1.tgz
     version: 0.0.1
+  snapshot-controller:
+  - annotations:
+      weave.works/category: client
+      weave.works/profile: snapshot-controller
+      weave.works/profile-ci: |
+        - "gke"
+    apiVersion: v2
+    created: "2022-08-02T21:34:59.570637828Z"
+    dependencies:
+    - name: flux-application
+      repository: file://../flux-application
+      version: 0.2.0
+    description: A Weaveworks Helm chart for snapshot-controller
+    digest: db58a0bdd0e13fd634e52985a2e655cac5a775550e2c83a9b5235c48ff79d28c
+    home: https://github.com/weaveworks/profiles-catalog
+    keywords:
+    - snapshot-controller
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: snapshot-controller
+    sources:
+    - https://github.com/filecoin-project/snapshot-controller-infra
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/snapshot-controller-0.0.1/snapshot-controller-0.0.1.tgz
+    version: 0.0.1
   storetheindex:
   - annotations:
       weave.works/category: client
@@ -5428,4 +5480,4 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/velero-0.0.1/velero-0.0.1.tgz
     version: 0.0.1
-generated: "2022-08-02T17:54:54.364742328Z"
+generated: "2022-08-02T21:34:59.571492034Z"
