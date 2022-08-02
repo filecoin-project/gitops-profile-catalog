@@ -1,9 +1,0 @@
-flux-application:
-  secrets:
-    create: false
-  app:
-    url: "https://github.com/kubernetes-csi/external-snapshotter"
-    path: "./deploy/kubernetes/csi-snapshotter"
-    branch: ""
-    tag: v6.0.1
-    create: true
