@@ -1,19 +1,19 @@
 apiVersion: v2
-name: external-snapshotter
-description: A Weaveworks Helm chart for external-snapshotter
+name: snapshot-controller
+description: A Weaveworks Helm chart for snapshot-controller
 type: application
 version: 0.0.1
 kubeVersion: ">=1.16.0-0"
 home: https://github.com/weaveworks/profiles-catalog
 sources:
-  - https://github.com/filecoin-project/external-snapshotter-infra
+  - https://github.com/filecoin-project/snapshot-controller-infra
 
 
 keywords:
-- external-snapshotter
+- snapshot-controller
 
 annotations:
-  "weave.works/profile": external-snapshotter
+  "weave.works/profile": snapshot-controller
   "weave.works/category": client
   "weave.works/profile-ci": |
     - "gke"
@@ -24,5 +24,5 @@ maintainers:
 
 dependencies:
 - name: flux-application
-  version: "0.1.1"
+  version: "0.2.0"
   repository: "file://../flux-application"

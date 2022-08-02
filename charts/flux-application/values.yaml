@@ -12,6 +12,7 @@ secrets:
 # Used to configure a GitRepo and a Kustomization for applications
 app:
   create: false
+  branch: main
 #   url: "https://github.com/filecoin-project/lotus-infra"
 #   path: "./kubernetes/gitops/prod/us-east-2/cluster"
 #   branch: gitops-poc

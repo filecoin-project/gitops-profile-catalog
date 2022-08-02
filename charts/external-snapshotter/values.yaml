@@ -4,5 +4,6 @@ flux-application:
   app:
     url: "https://github.com/kubernetes-csi/external-snapshotter"
     path: "./deploy/kubernetes/csi-snapshotter"
-    branch: v6.0.1
+    branch: ""
+    tag: v6.0.1
     create: true

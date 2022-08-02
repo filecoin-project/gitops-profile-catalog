@@ -7,15 +7,20 @@ metadata:
   labels:
     {{- include "flux-application.labels" . | nindent 4 }}   
 spec:
-  {{ if ((.Values.app).token) }}
+  {{- if ((.Values.app).token) }}
   secretRef:
    name: {{ .Values.app.token }}
-  {{ end }}
+  {{- end }}
   interval: 1m0s
-  {{ if ((.Values.app).branch) }}
+  {{- if or ((.Values.app).branch) ((.Values.app).tag) }}
   ref:
+  {{- if ((.Values.app).branch) }}
     branch: {{ .Values.app.branch }}
-  {{ end }}
+  {{- end }}
+  {{- if ((.Values.app).tag) }}
+    tag: {{ .Values.app.tag }}
+  {{- end }}
+  {{- end }}
   timeout: 60s
   url: {{ .Values.app.url }}
 ---
@@ -28,15 +33,16 @@ metadata:
     {{- include "flux-application.labels" . | nindent 4 }}
 spec:
   interval: 5m
-  {{ if ((.Values.app).serviceAccountName) }}
+  targetNamespace: {{ .Release.Namespace }}
+  {{- if ((.Values.app).serviceAccountName) }}
   serviceAccountName: {{ .Values.app.serviceAccountName }}
-  {{ end }}
-  {{ if ((.Values.app).key) }}
+  {{- end }}
+  {{- if ((.Values.app).key) }}
   decryption:
     provider: sops
     secretRef:
       name:  {{ .Values.app.key }}
-  {{ end }}
+  {{- end }}
   path: {{ .Values.app.path }}
   prune: true
   sourceRef:
