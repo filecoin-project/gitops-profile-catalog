@@ -3,6 +3,6 @@ flux-application:
     url: "https://github.com/filecoin-project/lotus-infra"
     path: "./kubernetes/gitops/prod/us-east-2/cluster"
     branch: gitops-poc
-    # key: ""
+    key: "fil-infra-sops-gpg"
     token: flux-application-github-token
     create: true
