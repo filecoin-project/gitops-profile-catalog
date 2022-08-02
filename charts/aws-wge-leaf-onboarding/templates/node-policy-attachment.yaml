@@ -12,7 +12,7 @@ spec:
     policyArnRef:
       name: {{ .Values.awsAccountName }}-nodes
     roleNameRef:
-      name: wge-{{ .Values.environment }}-{{ .Values.AWSAccountName }}-node
+      name: wge-{{ .Values.environment }}-{{ .Values.awsAccountName }}-node
 ---
 apiVersion: iam.aws.crossplane.io/v1beta1
 kind: RolePolicyAttachment
@@ -26,7 +26,7 @@ spec:
   forProvider:
     policyArn: arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy
     roleNameRef:
-      name: wge-{{ .Values.environment }}-{{ .Values.AWSAccountName }}-node
+      name: wge-{{ .Values.environment }}-{{ .Values.awsAccountName }}-node
 ---
 apiVersion: iam.aws.crossplane.io/v1beta1
 kind: RolePolicyAttachment
@@ -40,4 +40,4 @@ spec:
   forProvider:
     policyArn: arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy
     roleNameRef:
-      name: wge-{{ .Values.environment }}-{{ .Values.AWSAccountName }}-node
+      name: wge-{{ .Values.environment }}-{{ .Values.awsAccountName }}-node
