@@ -1,0 +1,4 @@
+# aws-load-balancer-controller:
+#   serviceAccount:
+#     annotations:
+#       eks.amazonaws.com/role-arn: ""
