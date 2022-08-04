@@ -1438,6 +1438,33 @@ entries:
       weave.works/profile-ci: |
         - "gke"
     apiVersion: v2
+    created: "2022-08-04T22:15:19.636285396Z"
+    dependencies:
+    - name: flux-application
+      repository: file://../flux-application
+      version: 0.2.0
+    description: A Weaveworks Helm chart for fil-infra
+    digest: f529db8a4f7c2a3ba9e913edd7c424bbbf2c964d2923149d7d8573b7cf94fe33
+    home: https://github.com/weaveworks/profiles-catalog
+    keywords:
+    - fil-infra
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: fil-infra
+    sources:
+    - https://github.com/filecoin-project/fil-infra-infra
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/fil-infra-0.0.4/fil-infra-0.0.4.tgz
+    version: 0.0.4
+  - annotations:
+      weave.works/category: client
+      weave.works/profile: fil-infra
+      weave.works/profile-ci: |
+        - "gke"
+    apiVersion: v2
     created: "2022-08-02T17:54:54.364206224Z"
     dependencies:
     - name: flux-application
@@ -5480,4 +5507,4 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/velero-0.0.1/velero-0.0.1.tgz
     version: 0.0.1
-generated: "2022-08-02T21:34:59.571492034Z"
+generated: "2022-08-04T22:15:19.6367754Z"
