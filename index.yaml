@@ -1474,6 +1474,33 @@ entries:
       weave.works/profile-ci: |
         - "gke"
     apiVersion: v2
+    created: "2022-08-05T20:11:58.595367529Z"
+    dependencies:
+    - name: flux-application
+      repository: file://../flux-application
+      version: 0.3.0
+    description: A Weaveworks Helm chart for fil-infra
+    digest: 0f8e2d9f0e8ce9d4111b5755356048465e998aa999f57685868ec46db0e870f9
+    home: https://github.com/weaveworks/profiles-catalog
+    keywords:
+    - fil-infra
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: fil-infra
+    sources:
+    - https://github.com/filecoin-project/fil-infra-infra
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/fil-infra-0.0.5/fil-infra-0.0.5.tgz
+    version: 0.0.5
+  - annotations:
+      weave.works/category: client
+      weave.works/profile: fil-infra
+      weave.works/profile-ci: |
+        - "gke"
+    apiVersion: v2
     created: "2022-08-04T22:15:19.636285396Z"
     dependencies:
     - name: flux-application
@@ -1577,6 +1604,30 @@ entries:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/fil-infra-0.0.1/fil-infra-0.0.1.tgz
     version: 0.0.1
   flux-application:
+  - annotations:
+      weave.works/category: client
+      weave.works/profile: flux-application
+      weave.works/profile-ci: |
+        - "gke"
+        - "kind"
+    apiVersion: v2
+    created: "2022-08-05T20:11:58.871283856Z"
+    description: A Weaveworks Helm chart for flux-application
+    digest: e4aada6ce266d9bb61c274e82ee7a75eb43b2b394c5a695e70cb2111b9148b52
+    home: https://github.com/weaveworks/profiles-catalog
+    keywords:
+    - flux-application
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: flux-application
+    sources:
+    - https://github.com/filecoin-project/flux-application-infra
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/flux-application-0.3.0/flux-application-0.3.0.tgz
+    version: 0.3.0
   - annotations:
       weave.works/category: client
       weave.works/profile: flux-application
@@ -5543,4 +5594,4 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/velero-0.0.1/velero-0.0.1.tgz
     version: 0.0.1
-generated: "2022-08-05T12:04:18.685823395Z"
+generated: "2022-08-05T20:11:58.872063957Z"
