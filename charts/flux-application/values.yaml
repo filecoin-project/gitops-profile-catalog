@@ -13,6 +13,7 @@ secrets:
 app:
   create: false
   branch: main
+  setTargetNamespace: false
 #   url: "https://github.com/filecoin-project/lotus-infra"
 #   path: "./kubernetes/gitops/prod/us-east-2/cluster"
 #   branch: gitops-poc

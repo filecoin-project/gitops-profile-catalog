@@ -33,7 +33,9 @@ metadata:
     {{- include "flux-application.labels" . | nindent 4 }}
 spec:
   interval: 5m
+  {{- if ((.Values.app).setTargetNamespace) }}
   targetNamespace: {{ .Release.Namespace }}
+  {{- end }}
   {{- if ((.Values.app).serviceAccountName) }}
   serviceAccountName: {{ .Values.app.serviceAccountName }}
   {{- end }}
