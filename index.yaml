@@ -2842,6 +2842,59 @@ entries:
       weave.works/operator: "true"
       weave.works/profile: prometheus
     apiVersion: v2
+    created: "2022-08-08T20:27:18.573837826Z"
+    dependencies:
+    - condition: kube-prometheus-stack.enabled
+      name: kube-prometheus-stack
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 36.0.3
+    - condition: prometheus-pushgateway.enabled
+      name: prometheus-pushgateway
+      repository: https://prometheus-community.github.io/helm-charts
+      version: 1.18.2
+    - name: flux-application
+      repository: file://../flux-application
+      version: 0.3.0
+    - condition: thanos.enabled
+      name: thanos
+      repository: https://charts.bitnami.com/bitnami
+      version: 10.3.8
+    - condition: thanos.enabled
+      name: thanos-bucket-config
+      repository: file://../thanos-bucket-config
+      version: 0.0.5
+    description: A Weaveworks Helm chart for observability
+    digest: 43351e5f96b84e690bb18c9fb5a665985f2c8d4b60d67117c1541b57ee10e0ba
+    home: https://github.com/weaveworks/profiles-catalog
+    icon: https://raw.githubusercontent.com/prometheus/prometheus.github.io/master/assets/prometheus_logo-cb55bb5c346.png
+    keywords:
+    - operator
+    - prometheus
+    - kube-prometheus
+    - observability
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: prometheus
+    sources:
+    - https://github.com/prometheus-community/helm-charts
+    - https://github.com/prometheus-operator/kube-prometheus
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/prometheus-1.1.5/prometheus-1.1.5.tgz
+    version: 1.1.5
+  - annotations:
+      weave.works/category: Observability
+      weave.works/layer: layer-1
+      weave.works/links: |
+        - name: Chart Sources
+          url: https://github.com/prometheus-community/helm-charts
+        - name: Upstream Project
+          url: https://github.com/prometheus-operator/kube-prometheus
+      weave.works/operator: "true"
+      weave.works/profile: prometheus
+    apiVersion: v2
     created: "2022-08-08T17:54:12.418568173Z"
     dependencies:
     - condition: kube-prometheus-stack.enabled
@@ -5647,4 +5700,4 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/velero-0.0.1/velero-0.0.1.tgz
     version: 0.0.1
-generated: "2022-08-08T17:54:12.419392979Z"
+generated: "2022-08-08T20:27:18.574537831Z"
