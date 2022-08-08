@@ -110,7 +110,7 @@ kube-prometheus-stack:
       tls:
       - secretName: thanos-sidecar-tls
         hosts:
-        - 'thanos.{{ printf "%.*s" 23 (.params).CLUSTER_NAME }}.{{ or (.params).TEAM "netops" }}.{{ or (.params).AWS_ACCOUNT_NAME "netops" }}.w3ops.net'
+        - 'thanos.{{ printf "%.*s" 22 (.params).CLUSTER_NAME }}s.{{ or (.params).TEAM "netops" }}.{{ or (.params).AWS_ACCOUNT_NAME "netops" }}.w3ops.net'
 prometheus-pushgateway:
   enabled: true
   serviceMonitor:
