@@ -44,7 +44,7 @@ dependencies:
   repository: "https://prometheus-community.github.io/helm-charts"
   condition: prometheus-pushgateway.enabled
 - name: flux-application
-  version: "0.1.1"
+  version: "0.3.0"
   repository: "file://../flux-application"
 - name: thanos
   version: "10.3.8"
