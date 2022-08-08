@@ -10,8 +10,14 @@ kube-prometheus-stack:
   enabled: true
   defaultRules:
     rules:
-      kubeScheduler: false
       kubeApiserverAvailability: false
+      kubeApiserverBurnrate: false
+      kubeApiserverHistogram: false
+      kubeApiserverSlos: false
+      kubeControllerManager: false
+      kubelet: false
+      kubeScheduler: false
+      etcd: false
   grafana:
     enabled: false
   alertmanager:
