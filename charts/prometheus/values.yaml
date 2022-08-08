@@ -103,7 +103,7 @@ kube-prometheus-stack:
         nginx.ingress.kubernetes.io/auth-tls-verify-client: "on"
         nginx.ingress.kubernetes.io/auth-tls-secret: "flux-system/thanos-server-tls"
       hosts:
-      - 'thanos.{{ printf "%.*s" 23 (.params).CLUSTER_NAME }}.{{ or (.params).TEAM "netops" }}.{{ or (.params).AWS_ACCOUNT_NAME "netops" }}.w3ops.net'
+      - 'thanos.{{ printf "%.*s" 22 (.params).CLUSTER_NAME }}s.{{ or (.params).TEAM "netops" }}.{{ or (.params).AWS_ACCOUNT_NAME "netops" }}.w3ops.net'
       paths:
       - /
       pathType: ImplementationSpecific
