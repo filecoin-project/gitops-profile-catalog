@@ -6,6 +6,8 @@ flux-application:
     branch: main
 
 kube-prometheus-stack:
+  kubeControllerManager:
+    enabled: false
   fullnameOverride: weaveworks-prometheus
   enabled: true
   defaultRules:
