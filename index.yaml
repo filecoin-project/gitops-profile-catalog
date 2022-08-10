@@ -473,6 +473,41 @@ entries:
           url: https://github.com/jetstack/cert-manager-issuer
       weave.works/profile: cert-manager-issuer
     apiVersion: v2
+    created: "2022-08-10T21:40:12.750414507Z"
+    dependencies:
+    - name: cert-manager
+      repository: https://charts.jetstack.io
+      version: 1.8.0
+    description: A Weaveworks Helm chart for the Certificate Profile
+    digest: b991d0e3a322eb40d229f8e4bfce9bfc2088f11968d84e7ce12d7a36a3ec9648
+    home: https://github.com/weaveworks/profiles-catalog
+    icon: https://raw.githubusercontent.com/jetstack/cert-manager-issuer/master/logo/logo.png
+    keywords:
+    - cert-manager-issuer
+    - kube-lego
+    - letsencrypt
+    - tls
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: cert-manager-issuer
+    sources:
+    - https://charts.jetstack.io
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/cert-manager-issuer-0.0.4/cert-manager-issuer-0.0.4.tgz
+    version: 0.0.4
+  - annotations:
+      weave.works/category: Certificate
+      weave.works/layer: layer-1
+      weave.works/links: |
+        - name: Chart Sources
+          url: https://charts.jetstack.io
+        - name: Upstream Project
+          url: https://github.com/jetstack/cert-manager-issuer
+      weave.works/profile: cert-manager-issuer
+    apiVersion: v2
     created: "2022-07-26T12:12:27.171057516Z"
     dependencies:
     - name: cert-manager
@@ -5806,4 +5841,4 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/velero-0.0.1/velero-0.0.1.tgz
     version: 0.0.1
-generated: "2022-08-10T16:26:51.165199154Z"
+generated: "2022-08-10T21:40:12.750933841Z"
