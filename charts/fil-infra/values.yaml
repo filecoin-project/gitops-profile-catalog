@@ -1,7 +1,7 @@
 flux-application:
   app:
     url: "https://github.com/filecoin-project/lotus-infra"
-    path: "./kubernetes/gitops/prod/{{ or (.params).AWS_REGION "us-east-2" }}/cluster"
+    path: './kubernetes/gitops/prod/{{ or (.params).AWS_REGION "us-east-2" }}/cluster'
     branch: master
     key: "cluster-sops-gpg"
     token: flux-application-github-token
