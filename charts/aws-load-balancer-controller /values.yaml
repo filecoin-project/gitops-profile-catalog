@@ -1,0 +1,5 @@
+aws-load-balancer-controller:
+  clusterName: '{{ or (.params).CLUSTER_NAME "test-cluster" }}'
+  serviceAccount:
+    annotations:
+      eks.amazonaws.com/role-arn: 'arn:aws:iam::{{ or (.params).AWS_ACCOUNT_ID "55555555555" }}:role/{{ or (.params).CLUSTER_NAME "test-cluster" }}-aws-load-balancer-controller'

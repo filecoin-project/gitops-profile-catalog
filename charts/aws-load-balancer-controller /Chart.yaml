@@ -1,0 +1,31 @@
+apiVersion: v2
+name: aws-load-balancer-controller
+icon: https://raw.githubusercontent.com/aws/eks-charts/master/docs/logo/aws.png
+description: A Weaveworks Helm chart for the aws load balancer controller
+type: application
+version: 0.0.1
+kubeVersion: ">=1.16.0-0"
+home: https://github.com/weaveworks/profiles-catalog
+sources:
+  - https://aws.github.io/eks-charts/
+
+keywords:
+- operator
+- aws-load-balancer-controller
+
+annotations:
+  "weave.works/profile": aws-load-balancer-controller
+  "weave.works/category": eks
+  "weave.works/operator": "true"
+  "weave.works/links": |
+    - name: Chart Sources
+      url: https://aws.github.io/eks-charts/
+
+maintainers:
+  - name: Weaveworks
+    email: support@weave.works
+
+dependencies:
+- name: aws-load-balancer-controller
+  version: "1.4.4"
+  repository: "https://aws.github.io/eks-charts/"
