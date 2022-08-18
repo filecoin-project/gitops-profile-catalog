@@ -65,6 +65,38 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/aws-ebs-csi-driver-0.0.1/aws-ebs-csi-driver-0.0.1.tgz
     version: 0.0.1
+  aws-load-balancer-controller:
+  - annotations:
+      weave.works/category: eks
+      weave.works/links: |
+        - name: Chart Sources
+          url: https://aws.github.io/eks-charts/
+      weave.works/operator: "true"
+      weave.works/profile: aws-load-balancer-controller
+    apiVersion: v2
+    created: "2022-08-18T20:12:57.798962429Z"
+    dependencies:
+    - name: aws-load-balancer-controller
+      repository: https://aws.github.io/eks-charts/
+      version: 1.4.4
+    description: A Weaveworks Helm chart for the aws load balancer controller
+    digest: d1f55d8e568c6fd165f8355ef7675c47f37197b65986c767f13d2972e131771a
+    home: https://github.com/weaveworks/profiles-catalog
+    icon: https://raw.githubusercontent.com/aws/eks-charts/master/docs/logo/aws.png
+    keywords:
+    - operator
+    - aws-load-balancer-controller
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: aws-load-balancer-controller
+    sources:
+    - https://aws.github.io/eks-charts/
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/aws-load-balancer-controller-0.0.2/aws-load-balancer-controller-0.0.2.tgz
+    version: 0.0.2
   aws-node-term-handler:
   - annotations:
       weave.works/category: eks
@@ -5921,4 +5953,4 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/velero-0.0.1/velero-0.0.1.tgz
     version: 0.0.1
-generated: "2022-08-18T16:35:49.343410031Z"
+generated: "2022-08-18T20:12:57.799658538Z"
