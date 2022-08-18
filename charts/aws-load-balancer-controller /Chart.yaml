@@ -26,6 +26,6 @@ maintainers:
     email: support@weave.works
 
 dependencies:
-- name: aws-node-termination-handler
+- name: aws-load-balancer-controller
   version: "1.4.4"
   repository: "https://aws.github.io/eks-charts/"
