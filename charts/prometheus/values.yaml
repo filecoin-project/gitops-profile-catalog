@@ -122,6 +122,8 @@ thanos:
   enabled: true
   existingObjstoreSecret: thanos-storage-config
   compactor:
+    persistence:
+      size: 100Gi
     enabled: true
     retentionResolution5m: 90d
     serviceAccount:
