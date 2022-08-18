@@ -44,7 +44,7 @@ jobs:
               done
             done
           done
-      - name: Run chart-releaser
+      - name: Run chart-release
         uses: helm/chart-releaser-action@v1.1.0
         env:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
