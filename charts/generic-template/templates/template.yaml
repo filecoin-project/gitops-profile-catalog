@@ -18,9 +18,9 @@ spec:
       description: min nodes for {{ $nodeGroup.name }}
     {{- end }}
   resourcetemplates:
-{{ $currentScope := .}}
-{{ range $path, $_ :=  .Files.Glob  "**.yaml" }}
-    {{- with $currentScope}}
-        {{ .Files.Get $path }}
-    {{- end }}
-{{ end }}
+{{- $currentScope := . -}}
+{{- range $path, $_ :=  .Files.Glob  "**.yaml" -}}
+    {{- with $currentScope -}}
+        {{- tpl ( .Files.Get $path ) . | nindent 2 -}}
+    {{- end -}}
+{{- end -}}

@@ -17,6 +17,7 @@ nodeGroups:
   type: MachineDeployment #Only MachineDeployment supported today (Pending MachinePool)
   maxOptions: ["1","2","3","4","5","6","7","8","9","10","15","25","30"]
   minOptions: ["0","1"]
+  availabilityZones : ["a","b","c"]
   instanceTypesOptions: 
   - "t3.large" 
   - "t3.xlarge" 
@@ -32,6 +33,7 @@ nodeGroups:
   type: MachineDeployment #Only MachineDeployment supported today (Pending MachinePool)
   maxOptions: ["1","2","3","4","5","6","7","8","9","10","15","25","30"]
   minOptions: ["0","1"]
+  availabilityZones: ["a","b","c"]
   instanceTypesOptions: 
   - "t3.large" 
   - "t3.xlarge" 
