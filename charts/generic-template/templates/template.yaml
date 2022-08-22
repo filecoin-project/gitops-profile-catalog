@@ -1,0 +1,26 @@
+apiVersion: capi.weave.works/v1alpha1
+kind: CAPITemplate
+metadata:
+  name: {{ .Values.name }}
+  namespace:  {{ template "generic-template.namespace" . }}
+  labels:
+    {{- include "generic-template.labels" . | nindent 4 }}     
+spec:
+  renderType: templating
+  description: {{ .Values.description }}
+  params:
+    - name: CLUSTER_NAME
+      description: The name for this cluster.
+    {{- range $nodeGroup := .Values.nodeGroups }}
+    - name: MAX_NODES_NODEGROUP_{{ $nodeGroup.name }}
+      description: max nodes for {{ $nodeGroup.name }}
+    - name: MIN_NODES_NODEGROUP_{{ $nodeGroup.name }}
+      description: min nodes for {{ $nodeGroup.name }}
+    {{- end }}
+  resourcetemplates:
+{{ $currentScope := .}}
+{{ range $path, $_ :=  .Files.Glob  "**.yaml" }}
+    {{- with $currentScope}}
+        {{ .Files.Get $path }}
+    {{- end }}
+{{ end }}
