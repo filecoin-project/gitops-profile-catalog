@@ -87,12 +87,7 @@ secretsEngine: sops
 requiredProfiles:
 - name: k8s-rbac-permissions
   version: 0.0.8
-  values:
-    adminGroups:
-    - org: filecoin-project
-      team: lotus-infra-core
-    - org: filecoin-project
-      team: Weaveworks
+  values: 'adminGroups:\n- org: filecoin-project\n  team: bedrock-go\n- org: filecoin-project\n  team: Weaveworks\n- org: filecoin-project\n  team: infra'
 - name: external-dns
   version: 0.0.9
 - name: cert-manager

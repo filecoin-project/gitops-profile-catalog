@@ -71,3 +71,18 @@ Allow the release namespace to be overridden for multi-namespace deployments in 
     {{- .Release.Namespace -}}
   {{- end -}}
 {{- end -}}
+
+
+
+
+{{- define "recurseFlattenMap" -}}
+{{- $map := first . -}}
+{{- $depth := last . -}}
+{{- range $key, $val := $map -}}
+{{- if and $val (kindIs "slice" $val ) }}
+{{- $key -}}:\n-{{- list $val ($depth = add1 $depth) | include "recurseFlattenMap" -}}
+{{- else -}}
+{{- $key -}}: {{- $val -}}\n
+{{ end }}
+{{- end -}}
+{{- end -}}
