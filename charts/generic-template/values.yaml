@@ -17,8 +17,8 @@ nodeGroups:
   type: MachineDeployment #Only MachineDeployment supported today (Pending MachinePool)
   maxOptions: ["1","2","3","4","5","6","7","8","9","10","15","25","30"]
   minOptions: ["0","1"]
-  availabilityZones : ["a","b","c"]
-  instanceTypesOptions: 
+  availabilityZones: ["a","b","c"]
+  instanceTypeOptions: 
   - "t3.large" 
   - "t3.xlarge" 
   - "m5a.large"
@@ -34,7 +34,7 @@ nodeGroups:
   maxOptions: ["1","2","3","4","5","6","7","8","9","10","15","25","30"]
   minOptions: ["0","1"]
   availabilityZones: ["a","b","c"]
-  instanceTypesOptions: 
+  instanceTypeOptions: 
   - "t3.large" 
   - "t3.xlarge" 
   - "m5a.large"
@@ -47,8 +47,7 @@ nodeGroups:
   - "r5.8xlarge"
 
 
-
-awsRegionOptions:
+regionOptions:
 - "us-east-2" 
 - "us-west-2" 
 - "eu-west-1" 
@@ -56,22 +55,6 @@ awsRegionOptions:
 - "ap-southeast-2" 
 - "sa-east-1"
 
-# AwasAccounts available for selection
-awsAccountOptions:
-- name: pldw
-  id: "339508861468"
-- name: filecoin-dev
-  id: "657871693752"
-- name: filecoin-prod
-  id: "759815798766"
-- name: sti
-  id: "407967248065"
-- name: multitenant
-  id: "227262596287"
-- name: sentinel
-  id: "339508861468"
-- name: netops
-  id: "453477142348"
 
 # Teams are mapped to DNS values
 teamOptions:
@@ -80,6 +63,15 @@ teamOptions:
 - "fil-infra" 
 - "sentinel" 
 - "bedrock"
+
+
+# AwasAccounts available for selection
+awsAccountOptions:
+- name: test-1
+  id: "22222"
+- name: test-2
+  id: "33333"
+
 
 # valid values "sops" or "kms"
 secretsEngine: sops

@@ -15,11 +15,25 @@ spec:
   params:
     - name: CLUSTER_NAME
       description: The name for this cluster.
+    - name: AWS_REGION
+      description: Region for cluster
+      options:
+      {{- range $val := .Values.maxOptions }}
+      - {{ $val }}
+      {{- end }}
     {{- range $nodeGroup := .Values.nodeGroups }}
     - name: MAX_NODES_NODEGROUP_{{ $nodeGroup.name }}
       description: max nodes for {{ $nodeGroup.name }}
+      options:
+      {{- range $val := $nodeGroup.maxnOptions }}
+      - {{ $val }}
+      {{- end }}
     - name: MIN_NODES_NODEGROUP_{{ $nodeGroup.name }}
       description: min nodes for {{ $nodeGroup.name }}
+      options:
+      {{- range $val := $nodeGroup.minOptions }}
+      - {{ $val }}
+      {{- end }}
     {{- end }}
   resourcetemplates:
 {{- $currentScope := . -}}
