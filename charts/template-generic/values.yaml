@@ -102,4 +102,4 @@ template-base:
   - name: policy-agent
     version: 0.2.11
   - name: promtail
-    version: 0.0.5
+    version: 0.0.6
