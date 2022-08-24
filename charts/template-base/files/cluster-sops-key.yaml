@@ -8,7 +8,7 @@
     decryption:
       provider: sops
       secretRef:
-        name: wge-{{`{{ .params.GITOPS_ENV }}`}}-sops-gpg
+        name: wge-{{ .Values.gitopsEnv }}-sops-gpg
     interval: 10m
     targetNamespace: flux-system
     sourceRef:

@@ -105,3 +105,4 @@ requiredProfiles:
 
 
 gitopsEnv: nonprod
+oidcURL: https://nonprod-auth.w3ops.net

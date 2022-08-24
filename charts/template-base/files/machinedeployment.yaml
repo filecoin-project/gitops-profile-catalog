@@ -7,7 +7,7 @@
     template:
       spec:
         instanceType: '{{`{{ .params.INSTANCE_TYPE_NODEGROUP_`}}{{ $nodeGroup.name }} }}'
-        iamInstanceProfile: 'wge-{{`{{ .params.GITOPS_ENV }}`}}-{{`{{ .params.AWS_ACCOUNT_NAME }}`}}-node-instance-profile'
+        iamInstanceProfile: 'wge-{{ .Values.gitopsEnv }}-{{`{{ .params.AWS_ACCOUNT_NAME }}`}}-node-instance-profile'
         sshKeyName: ""
 - apiVersion: bootstrap.cluster.x-k8s.io/v1beta1
   kind: EKSConfigTemplate

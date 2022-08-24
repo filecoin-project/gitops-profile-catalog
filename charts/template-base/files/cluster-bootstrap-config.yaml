@@ -24,7 +24,7 @@
               - name: GITOPS_REPO_BRANCH
                 value: 'main'
               - name: TEMPLATE_PATH
-                value:  'clusters/wge-{{`{{ .params.GITOPS_ENV }}`}}-management/{{`{{ .params.NAMESPACE }}`}}/{{`{{ .params.CLUSTER_NAME }}`}}.yaml'
+                value:  'clusters/wge-{{ .Values.gitopsEnv }}-management/{{`{{ .params.NAMESPACE }}`}}/{{`{{ .params.CLUSTER_NAME }}`}}.yaml'
               - name: GITOPS_REPO_OWNER
                 value: filecoin-project 
               - name: GITOPS_REPO_NAME
