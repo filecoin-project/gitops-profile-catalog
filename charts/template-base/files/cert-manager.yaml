@@ -1,11 +1,11 @@
 {{- $currentScope := . -}}
 {{- range $profile := .Values.requiredProfiles }}
-{{- if eq $profile.name "external-dns" }}
+{{- if eq $profile.name "cert-manager" }}
 {{- with $currentScope -}}
 - apiVersion: iam.aws.crossplane.io/v1beta1
   kind: Policy
   metadata:
-    name: '{{`{{ .params.CLUSTER_NAME }}`}}-external-dns'
+    name: '{{`{{ .params.CLUSTER_NAME }}`}}-cert-manager'
     namespace: '{{`{{ .params.NAMESPACE }}`}}'
   spec:
     providerConfigRef:
@@ -19,25 +19,31 @@
         value: Crossplane 
       - key: cluster
         value: '{{`{{ .params.CLUSTER_NAME }}`}}'
-      description: "For external dns"
-      name: '{{`{{ .params.CLUSTER_NAME }}`}}-external-dns'
+      description: "For cert-manager"
+      name: '{{`{{ .params.CLUSTER_NAME }}`}}-cert-manager'
       document: |
         {
             "Statement": [
                 {
-                    "Action": "route53:ChangeResourceRecordSets",
+                    "Action": "route53:GetChange",
                     "Effect": "Allow",
-                    "Resource": "arn:aws:route53:::hostedzone/*",
-                    "Sid": "ChangeAndListRecordsOnDevZone"
+                    "Resource": "arn:aws:route53:::change/*",
+                    "Sid": ""
                 },
                 {
                     "Action": [
                         "route53:ListResourceRecordSets",
-                        "route53:ListHostedZones"
+                        "route53:ChangeResourceRecordSets"
                     ],
                     "Effect": "Allow",
+                    "Resource": "arn:aws:route53:::hostedzone/*",
+                    "Sid": ""
+                },
+                {
+                    "Action": "route53:ListHostedZonesByName",
+                    "Effect": "Allow",
                     "Resource": "*",
-                    "Sid": "ListZonesAndRecords"
+                    "Sid": ""
                 }
             ],
             "Version": "2012-10-17"
@@ -45,7 +51,7 @@
 - apiVersion: iam.aws.crossplane.io/v1beta1
   kind: Role
   metadata:
-    name: '{{`{{ .params.CLUSTER_NAME }}`}}-external-dns'
+    name: '{{`{{ .params.CLUSTER_NAME }}`}}-cert-manager'
     namespace: '{{`{{ .params.NAMESPACE }}`}}'
   spec:
     providerConfigRef:
@@ -66,13 +72,14 @@
                     "Sid": "",
                     "Effect": "Allow",
                     "Principal": {
-                        "Federated": "arn:aws:iam::{{ template "template.accountID" . }}:oidc-provider/oidc.eks.{{`{{ .params.AWS_REGION }}`}}.amazonaws.com/id/${EKS_CLUSTER_ID}"
+                        "Federated": "arn:aws:iam::{{ template "template-base.accountID" . }}:oidc-provider/oidc.eks.{{`{{ .params.AWS_REGION }}`}}.amazonaws.com/id/${EKS_CLUSTER_ID}"
                     },
                     "Action": "sts:AssumeRoleWithWebIdentity",
                     "Condition": {
                         "StringEquals": {
                             "oidc.eks.{{`{{ .params.AWS_REGION }}`}}.amazonaws.com/id/${EKS_CLUSTER_ID}:sub": [
-                                "system:serviceaccount:flux-system:external-dns"
+                                "system:serviceaccount:flux-system:cert-manager",
+                                "system:serviceaccount:flux-system:cert-manager-webhook"
                             ]
                         }
                     }
@@ -82,16 +89,16 @@
 - apiVersion: iam.aws.crossplane.io/v1beta1
   kind: RolePolicyAttachment
   metadata:
-    name: '{{`{{ .params.CLUSTER_NAME }}`}}-external-dns'
+    name: '{{`{{ .params.CLUSTER_NAME }}`}}-cert-manager'
     namespace: '{{`{{ .params.NAMESPACE }}`}}'
   spec:
     providerConfigRef:
       name: '{{`{{ .params.AWS_ACCOUNT_NAME }}`}}-provider'
     forProvider:
       policyArnRef:
-        name: '{{`{{ .params.CLUSTER_NAME }}`}}-external-dns'
+        name: '{{`{{ .params.CLUSTER_NAME }}`}}-cert-manager'
       roleNameRef:
-        name: '{{`{{ .params.CLUSTER_NAME }}`}}-external-dns'
+        name: '{{`{{ .params.CLUSTER_NAME }}`}}-cert-manager'
 {{- end -}}
 {{- end -}}
 {{- end -}}

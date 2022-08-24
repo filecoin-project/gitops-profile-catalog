@@ -62,7 +62,7 @@
                     "Sid": "",
                     "Effect": "Allow",
                     "Principal": {
-                        "Federated": "arn:aws:iam::{{ template "template.accountID" . }}:oidc-provider/oidc.eks.{{`{{ .params.AWS_REGION }}`}}.amazonaws.com/id/${EKS_CLUSTER_ID}"
+                        "Federated": "arn:aws:iam::{{ template "template-base.accountID" . }}:oidc-provider/oidc.eks.{{`{{ .params.AWS_REGION }}`}}.amazonaws.com/id/${EKS_CLUSTER_ID}"
                     },
                     "Action": "sts:AssumeRoleWithWebIdentity",
                     "Condition": {

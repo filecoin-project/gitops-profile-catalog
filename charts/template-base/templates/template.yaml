@@ -2,13 +2,13 @@ apiVersion: capi.weave.works/v1alpha1
 kind: CAPITemplate
 metadata:
   name: {{ .Values.name }}
-  namespace:  {{ template "template.namespace" . }}
+  namespace:  {{ template "template-base.namespace" . }}
   annotations:
   {{- range $key,$profile := .Values.requiredProfiles }}
     capi.weave.works/profile-{{ $key }}: '{"name": "{{ $profile.name }}", "version": "{{ $profile.version }}"{{if ($profile.values) }},"values:" "{{ $profile.values}} "{{ end }}}'
   {{- end }}
   labels:
-    {{- include "template.labels" . | nindent 4 }}     
+    {{- include "template-base.labels" . | nindent 4 }}     
 spec:
   renderType: templating
   description: {{ .Values.description }}

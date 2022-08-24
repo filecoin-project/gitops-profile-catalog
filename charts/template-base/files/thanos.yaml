@@ -62,7 +62,7 @@
                     "Sid": "",
                     "Effect": "Allow",
                     "Principal": {
-                        "Federated": "arn:aws:iam::{{ template "template.accountID" . }}:oidc-provider/oidc.eks.{{`{{ .params.AWS_REGION }}`}}.amazonaws.com/id/${EKS_CLUSTER_ID}"
+                        "Federated": "arn:aws:iam::{{ template "template-base.accountID" . }}:oidc-provider/oidc.eks.{{`{{ .params.AWS_REGION }}`}}.amazonaws.com/id/${EKS_CLUSTER_ID}"
                     },
                     "Condition": {
                         "StringLike": {
@@ -186,7 +186,7 @@
           serviceAccount:
             existingServiceAccount: '{{`{{ .params.AWS_ACCOUNT_NAME }}`}}-thanos-storegateway'
             annotations:
-              eks.amazonaws.com/role-arn: arn:aws:iam::{{ template "template.accountID" . }}:role/wge-{{`{{ .params.GITOPS_ENV }}`}}_gitops-thanos
+              eks.amazonaws.com/role-arn: arn:aws:iam::{{ template "template-base.accountID" . }}:role/wge-{{`{{ .params.GITOPS_ENV }}`}}_gitops-thanos
 {{- end -}}
 {{- end -}}
 {{- end -}}
