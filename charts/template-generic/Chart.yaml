@@ -17,6 +17,6 @@ maintainers:
     email: support@weave.works
 
 dependencies:
-- name: template
+- name: template-base
   version: "0.0.1"
-  repository: "file://../template"
+  repository: "file://../template-base"
