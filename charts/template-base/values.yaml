@@ -103,7 +103,5 @@ requiredProfiles:
 - name: promtail
   version: 0.0.5
 
-
-
 environment: nonprod
 oidcURL: https://nonprod-auth.w3ops.net
