@@ -14,3 +14,4 @@ config.yaml
 secret.yaml
 temp/*
 temp
+Chart.lock

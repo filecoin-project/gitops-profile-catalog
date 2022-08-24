@@ -1,0 +1,106 @@
+- apiVersion: capi.weave.works/v1alpha1
+  kind: ClusterBootstrapConfig
+  metadata:
+    name: '{{`{{ .params.CLUSTER_NAME }}`}}-capi-gitops-flux-v3'
+    namespace: '{{`{{ .params.NAMESPACE }}`}}'
+  spec:
+    clusterSelector:
+      matchLabels:
+        weave.works/capi: '{{`{{ .params.CLUSTER_NAME }}`}}-bootstrap-v3'
+    jobTemplate:
+      generateName: "run-gitops-{{`{{ .params.CLUSTER_NAME }}`}}"
+      spec:
+        imagePullSecrets:
+        - name: ghcr-image
+        initContainers:
+          - image: ghcr.io/steve-fraser/wge-post-deployment-template-renderer:0.1.2
+            imagePullPolicy: Always
+            name: configure-permissions
+            # Secret should container GITHUB_TOKEN or GITLAB_TOKEN
+            envFrom:
+              - secretRef:
+                  name: wge-github-token
+            env:
+              - name: GITOPS_REPO_BRANCH
+                value: 'main'
+              - name: TEMPLATE_PATH
+                value:  'clusters/wge-{{`{{ .params.GITOPS_ENV }}`}}-management/{{`{{ .params.NAMESPACE }}`}}/{{`{{ .params.CLUSTER_NAME }}`}}.yaml'
+              - name: GITOPS_REPO_OWNER
+                value: filecoin-project 
+              - name: GITOPS_REPO_NAME
+                value: gitops-root
+              - name: ENV_CONFIG_FILE_PATH
+                value: /tmp/env_config
+              - name: ENV_HELPER_SCRIPT
+                value: https://raw.githubusercontent.com/steve-fraser/wge-post-deployment-template-renderer/main/aws/get-cluster-id.sh
+              - name: CLUSTER_NAME
+                value: '{{`{{ .params.CLUSTER_NAME }}`}}'
+        containers:
+          - image: ghcr.io/fluxcd/flux-cli:v0.30.2
+            name: flux-bootstrap
+            resources: {}
+            volumeMounts:
+              - name: kubeconfig
+                mountPath: "/etc/gitops"
+                readOnly: true
+            args:
+              [
+                "bootstrap",
+                "$(GIT_PROVIDER)",
+                "--hostname=$(GIT_PROVIDER_HOSTNAME)",
+                "--namespace=flux-system",
+                "--owner=$(GITOPS_REPO_OWNER)",
+                "--repository=$(GITOPS_REPO_NAME)",
+                '--path={{`{{ if eq .params.GITOPS_ENV "prod" }}`}}clusters/{{`{{ .params.NAMESPACE }}`}}/{{`{{ .params.CLUSTER_NAME }}`}}{{`{{ else }}`}}clusters/{{`{{ .params.NAMESPACE }}`}}/{{`{{ .params.CLUSTER_NAME }}`}}{{`{{ end }}`}}',
+                "--components-extra=image-reflector-controller,image-automation-controller",
+                '--branch=main'
+              ]
+            # Secret should container GITHUB_TOKEN or GITLAB_TOKEN
+            envFrom:
+              - secretRef:
+                  name: wge-github-token
+            env:
+              # Update these values
+              - name: GIT_PROVIDER
+                value: github
+              - name: GIT_PROVIDER_HOSTNAME
+                value: github.com
+              - name: GITOPS_REPO_OWNER
+                value: filecoin-project 
+              - name: GITOPS_REPO_NAME
+                value: gitops-root
+              - name: KUBECONFIG
+                value: "/etc/gitops/value"
+        restartPolicy: Never
+        serviceAccountName: '{{`{{ .params.CLUSTER_NAME }}`}}-clusterbootstrap-v3'
+        volumes:
+          - name: kubeconfig
+            secret:
+              secretName: "{{`{{ .params.CLUSTER_NAME }}`}}-kubeconfig"
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: RoleBinding
+  metadata:
+    name: '{{`{{ .params.CLUSTER_NAME }}`}}-clusterbootstrap-v3'
+    namespace: '{{`{{ .params.NAMESPACE }}`}}'
+  roleRef:
+    apiGroup: rbac.authorization.k8s.io
+    kind: Role
+    name: '{{`{{ .params.CLUSTER_NAME }}`}}-clusterbootstrap-v3'
+  subjects:
+    - kind: ServiceAccount
+      name: '{{`{{ .params.CLUSTER_NAME }}`}}-clusterbootstrap-v3'
+      namespace: '{{`{{ .params.NAMESPACE }}`}}'
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: Role
+  metadata:
+    name: '{{`{{ .params.CLUSTER_NAME }}`}}-clusterbootstrap-v3'
+    namespace: '{{`{{ .params.NAMESPACE }}`}}'
+  rules:
+    - apiGroups: [ '*' ]
+      resources: [ '*' ]
+      verbs: [ '*' ]
+- apiVersion: v1
+  kind: ServiceAccount
+  metadata:
+    name:  '{{`{{ .params.CLUSTER_NAME }}`}}-clusterbootstrap-v3'
+    namespace: '{{`{{ .params.NAMESPACE }}`}}'

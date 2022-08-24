@@ -1,6 +1,6 @@
 apiVersion: v2
-name: generic-template
-description: A Weaveworks Helm chart for generic-template
+name: template
+description: A Weaveworks Helm chart for template
 type: application
 version: 0.0.1
 kubeVersion: ">=1.16.0-0"
@@ -10,13 +10,9 @@ sources:
 
 
 keywords:
-- generic-template
+- template
+
 
 maintainers:
   - name: Weaveworks
     email: support@weave.works
-
-dependencies:
-- name: template
-  version: "0.0.1"
-  repository: "file://../template"

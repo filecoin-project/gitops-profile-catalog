@@ -1,0 +1,94 @@
+{{- range $profile := .Values.requiredProfiles }}
+{{- if eq $profile.name "external-dns" }}
+- apiVersion: iam.aws.crossplane.io/v1beta1
+  kind: Policy
+  metadata:
+    name: '{{`{{ .params.CLUSTER_NAME }}`}}-external-dns'
+    namespace: '{{`{{ .params.NAMESPACE }}`}}'
+  spec:
+    providerConfigRef:
+      name: '{{`{{ .params.AWS_ACCOUNT_NAME }}`}}-provider'
+    deletionPolicy: Delete
+    forProvider:
+      tags:
+      - key: managedBy
+        value: Weave GitOps Enterprise 
+      - key: createdBy
+        value: Crossplane 
+      - key: cluster
+        value: '{{`{{ .params.CLUSTER_NAME }}`}}'
+      description: "For external dns"
+      name: '{{`{{ .params.CLUSTER_NAME }}`}}-external-dns'
+      document: |
+        {
+            "Statement": [
+                {
+                    "Action": "route53:ChangeResourceRecordSets",
+                    "Effect": "Allow",
+                    "Resource": "arn:aws:route53:::hostedzone/*",
+                    "Sid": "ChangeAndListRecordsOnDevZone"
+                },
+                {
+                    "Action": [
+                        "route53:ListResourceRecordSets",
+                        "route53:ListHostedZones"
+                    ],
+                    "Effect": "Allow",
+                    "Resource": "*",
+                    "Sid": "ListZonesAndRecords"
+                }
+            ],
+            "Version": "2012-10-17"
+        }
+- apiVersion: iam.aws.crossplane.io/v1beta1
+  kind: Role
+  metadata:
+    name: '{{`{{ .params.CLUSTER_NAME }}`}}-external-dns'
+    namespace: '{{`{{ .params.NAMESPACE }}`}}'
+  spec:
+    providerConfigRef:
+      name: '{{`{{ .params.AWS_ACCOUNT_NAME }}`}}-provider'
+    forProvider:
+      tags:
+      - key: managedBy
+        value: Weave GitOps Enterprise 
+      - key: createdBy
+        value: Crossplane 
+      - key: cluster
+        value: '{{`{{ .params.CLUSTER_NAME }}`}}'
+      assumeRolePolicyDocument: |
+        {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Sid": "",
+                    "Effect": "Allow",
+                    "Principal": {
+                        "Federated": "arn:aws:iam::{{`{{ .params.AWS_ACCOUNT_ID }}`}}:oidc-provider/oidc.eks.{{`{{ .params.AWS_REGION }}`}}.amazonaws.com/id/${EKS_CLUSTER_ID}"
+                    },
+                    "Action": "sts:AssumeRoleWithWebIdentity",
+                    "Condition": {
+                        "StringEquals": {
+                            "oidc.eks.{{`{{ .params.AWS_REGION }}`}}.amazonaws.com/id/${EKS_CLUSTER_ID}:sub": [
+                                "system:serviceaccount:flux-system:external-dns"
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+- apiVersion: iam.aws.crossplane.io/v1beta1
+  kind: RolePolicyAttachment
+  metadata:
+    name: '{{`{{ .params.CLUSTER_NAME }}`}}-external-dns'
+    namespace: '{{`{{ .params.NAMESPACE }}`}}'
+  spec:
+    providerConfigRef:
+      name: '{{`{{ .params.AWS_ACCOUNT_NAME }}`}}-provider'
+    forProvider:
+      policyArnRef:
+        name: '{{`{{ .params.CLUSTER_NAME }}`}}-external-dns'
+      roleNameRef:
+        name: '{{`{{ .params.CLUSTER_NAME }}`}}-external-dns'
+{{- end }}
+{{- end -}}
