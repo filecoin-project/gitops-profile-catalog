@@ -4412,6 +4412,38 @@ entries:
       weave.works/operator: "true"
       weave.works/profile: promtail
     apiVersion: v2
+    created: "2022-08-24T21:32:54.914386868Z"
+    dependencies:
+    - name: promtail
+      repository: https://grafana.github.io/helm-charts
+      version: 4.2.0
+    description: A Weaveworks Helm chart for the promtail
+    digest: abdbf7453bcb510aab21d0a0f4a0eda3686e8089ff8b42f79264b62d418d962e
+    home: https://github.com/weaveworks/profiles-catalog
+    icon: https://raw.githubusercontent.com/promtail/promtail.github.io/master/assets/promtail_logo-cb55bb5c346.png
+    keywords:
+    - operator
+    - promtail
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: promtail
+    sources:
+    - https://grafana.github.io/loki/charts
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/promtail-0.0.6/promtail-0.0.6.tgz
+    version: 0.0.6
+  - annotations:
+      weave.works/category: monitoring
+      weave.works/layer: layer-1
+      weave.works/links: |
+        - name: Chart Sources
+          url: https://grafana.github.io/loki/charts
+      weave.works/operator: "true"
+      weave.works/profile: promtail
+    apiVersion: v2
     created: "2022-05-22T18:11:31.887433713Z"
     dependencies:
     - name: promtail
@@ -5584,6 +5616,28 @@ entries:
     version: 0.0.1
   template-generic:
   - apiVersion: v2
+    created: "2022-08-24T21:32:55.183158479Z"
+    dependencies:
+    - name: template-base
+      repository: file://../template-base
+      version: 0.1.1
+    description: A Weaveworks Helm chart for template-generic
+    digest: 78254b79934dd7744de418f17d3f6195ea872e4beba82e9391580cc4447b7d91
+    home: https://github.com/weaveworks/profiles-catalog
+    keywords:
+    - template-generic
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: template-generic
+    sources:
+    - https://github.com/filecoin-project/template-generic-infra
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/template-generic-0.1.2/template-generic-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
     created: "2022-08-24T21:21:35.799797644Z"
     dependencies:
     - name: template-base
@@ -6204,4 +6258,4 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/velero-0.0.1/velero-0.0.1.tgz
     version: 0.0.1
-generated: "2022-08-24T21:21:35.800426179Z"
+generated: "2022-08-24T21:32:55.183864085Z"
