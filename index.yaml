@@ -5520,6 +5520,28 @@ entries:
     version: 0.0.1
   template-generic:
   - apiVersion: v2
+    created: "2022-08-24T19:38:50.509853725Z"
+    dependencies:
+    - name: template-base
+      repository: file://../template-base
+      version: 0.0.1
+    description: A Weaveworks Helm chart for template-generic
+    digest: 4269e14988b6b93f66515e8a9ff0eb4a396baa0eeeb689f575d5f72c3e0f166a
+    home: https://github.com/weaveworks/profiles-catalog
+    keywords:
+    - template-generic
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: template-generic
+    sources:
+    - https://github.com/filecoin-project/template-generic-infra
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/template-generic-0.0.2/template-generic-0.0.2.tgz
+    version: 0.0.2
+  - apiVersion: v2
     created: "2022-08-24T19:13:18.018209623Z"
     dependencies:
     - name: template-base
@@ -6030,4 +6052,4 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/velero-0.0.1/velero-0.0.1.tgz
     version: 0.0.1
-generated: "2022-08-24T19:13:18.018934483Z"
+generated: "2022-08-24T19:38:50.510771941Z"
