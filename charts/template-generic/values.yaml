@@ -90,7 +90,7 @@ template-base:
   - name: cert-manager-issuer
     version: 0.0.4
   - name: ebs-csi-controller
-    version: 0.0.2
+    version: 0.0.3
   - name: aws-node-term-handler
     version: 0.0.1
   - name: aws-load-balancer-controller
