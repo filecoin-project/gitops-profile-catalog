@@ -11,7 +11,7 @@ template-base:
   - clusters
 
   # Name of template
-  name: template
+  name: generic-helm-based-template
   description: An AWS EKS template that creates a cluster
 
   # An array of NodeGroups that are available for selection in the UI
