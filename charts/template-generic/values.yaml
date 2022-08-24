@@ -103,6 +103,3 @@ template-base:
     version: 0.2.11
   - name: promtail
     version: 0.0.5
-
-
-  gitopsEnv: nonprod

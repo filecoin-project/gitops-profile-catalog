@@ -24,7 +24,7 @@
               - name: GITOPS_REPO_BRANCH
                 value: 'main'
               - name: TEMPLATE_PATH
-                value:  'clusters/wge-{{`{{ .params.GITOPS_ENV }}`}}-management/{{`{{ .params.NAMESPACE }}`}}/{{`{{ .params.CLUSTER_NAME }}`}}.yaml'
+                value:  'clusters/wge-{{ .Values.environment }}-management/{{`{{ .params.NAMESPACE }}`}}/{{`{{ .params.CLUSTER_NAME }}`}}.yaml'
               - name: GITOPS_REPO_OWNER
                 value: filecoin-project 
               - name: GITOPS_REPO_NAME
@@ -51,7 +51,7 @@
                 "--namespace=flux-system",
                 "--owner=$(GITOPS_REPO_OWNER)",
                 "--repository=$(GITOPS_REPO_NAME)",
-                '--path={{`{{ if eq .params.GITOPS_ENV "prod" }}`}}clusters/{{`{{ .params.NAMESPACE }}`}}/{{`{{ .params.CLUSTER_NAME }}`}}{{`{{ else }}`}}clusters/{{`{{ .params.NAMESPACE }}`}}/{{`{{ .params.CLUSTER_NAME }}`}}{{`{{ end }}`}}',
+                '--path=clusters/{{`{{ .params.NAMESPACE }}`}}/{{`{{ .params.CLUSTER_NAME }}`}}',
                 "--components-extra=image-reflector-controller,image-automation-controller",
                 '--branch=main'
               ]
