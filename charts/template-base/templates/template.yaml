@@ -55,14 +55,14 @@ spec:
       required: true
       options:
       {{- range $val := $nodeGroup.maxOptions }}
-      - {{ $val }}
+      - {{ $val | quote }}
       {{- end }}
     - name: MIN_NODES_NODEGROUP_{{ $nodeGroup.name }}
       description: min nodes for {{ $nodeGroup.name }}
       required: true
       options:
       {{- range $val := $nodeGroup.minOptions }}
-      - {{ $val }}
+      - {{ $val | quote }}
       {{- end }}
     - name: INSTANCE_TYPE_NODEGROUP_{{ $nodeGroup.name }}
       description: intance type for {{ $nodeGroup.name }}
