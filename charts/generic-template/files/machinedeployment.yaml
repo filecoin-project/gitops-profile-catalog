@@ -1,4 +1,3 @@
-
 {{- range $nodeGroup := .Values.nodeGroups }}
 - apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
   kind: AWSMachineTemplate
