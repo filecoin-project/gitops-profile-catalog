@@ -1,3 +1,4 @@
+{{- $environment := .Values.environment -}}
 {{- range $nodeGroup := .Values.nodeGroups }}
 - apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
   kind: AWSMachineTemplate
@@ -7,7 +8,7 @@
     template:
       spec:
         instanceType: '{{`{{ .params.INSTANCE_TYPE_NODEGROUP_`}}{{ $nodeGroup.name }} }}'
-        iamInstanceProfile: 'wge-{{ .Values.environment }}-{{`{{ .params.AWS_ACCOUNT_NAME }}`}}-node-instance-profile'
+        iamInstanceProfile: 'wge-{{ $environment }}-{{`{{ .params.AWS_ACCOUNT_NAME }}`}}-node-instance-profile'
         sshKeyName: ""
 - apiVersion: bootstrap.cluster.x-k8s.io/v1beta1
   kind: EKSConfigTemplate
