@@ -5,7 +5,7 @@ metadata:
   namespace:  {{ template "template-base.namespace" . }}
   annotations:
   {{- range $key,$profile := .Values.requiredProfiles }}
-    capi.weave.works/profile-{{ $key }}: '{"name": "{{ $profile.name }}", "version": "{{ $profile.version }}"{{if ($profile.values) }},"values:" "{{ $profile.values}} "{{ end }}}'
+    capi.weave.works/profile-{{ $key }}: '{"name": "{{ $profile.name }}", "version": "{{ $profile.version }}"{{if ($profile.values) }},"values": "{{ $profile.values}} "{{ end }}}'
   {{- end }}
   labels:
     {{- include "template-base.labels" . | nindent 4 }}     
