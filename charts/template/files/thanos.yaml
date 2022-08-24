@@ -1,5 +1,7 @@
+{{- $currentScope := . -}}
 {{- range $profile := .Values.requiredProfiles }}
 {{- if eq $profile.name "prometheus" }}
+{{- with $currentScope -}}
 - apiVersion: iam.aws.crossplane.io/v1beta1
   kind: Policy
   metadata:
@@ -60,7 +62,7 @@
                     "Sid": "",
                     "Effect": "Allow",
                     "Principal": {
-                        "Federated": "arn:aws:iam::{{`{{ .params.AWS_ACCOUNT_ID }}`}}:oidc-provider/oidc.eks.{{`{{ .params.AWS_REGION }}`}}.amazonaws.com/id/${EKS_CLUSTER_ID}"
+                        "Federated": "arn:aws:iam::{{ template "template.accountID" . }}:oidc-provider/oidc.eks.{{`{{ .params.AWS_REGION }}`}}.amazonaws.com/id/${EKS_CLUSTER_ID}"
                     },
                     "Condition": {
                         "StringLike": {
@@ -184,6 +186,7 @@
           serviceAccount:
             existingServiceAccount: '{{`{{ .params.AWS_ACCOUNT_NAME }}`}}-thanos-storegateway'
             annotations:
-              eks.amazonaws.com/role-arn: arn:aws:iam::{{`{{ .params.AWS_ACCOUNT_ID }}`}}:role/wge-{{`{{ .params.GITOPS_ENV }}`}}_gitops-thanos
-{{- end }}
+              eks.amazonaws.com/role-arn: arn:aws:iam::{{ template "template.accountID" . }}:role/wge-{{`{{ .params.GITOPS_ENV }}`}}_gitops-thanos
+{{- end -}}
+{{- end -}}
 {{- end -}}

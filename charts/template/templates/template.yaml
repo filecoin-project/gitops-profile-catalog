@@ -15,23 +15,60 @@ spec:
   params:
     - name: CLUSTER_NAME
       description: The name for this cluster.
+      required: true
+    - name: AWS_ACCOUNT_NAME
+      description: The name of the account for the cluster
+      required: true
+      options:
+      {{- range $val := .Values.awsAccountOptions }}
+      - {{ $val.name }}
+      {{- end }}
+    - name: NAMESPACE
+      description: The namespace for this cluster
+      required: true
+      options:
+      {{- range $val := .Values.namespaceOptions }}
+      - {{ $val }}
+      {{- end }}
+    - name: TEAM
+      description: Team/or Project
+      required: true
+      options:
+      {{- range $val := .Values.teamOptions }}
+      - {{ $val }}
+      {{- end }}
+    - name: GITOPS_ENV
+      description: The GitOps environment
+      required: true
+      options:
+      - {{ .Values.gitopsEnv }}
     - name: AWS_REGION
       description: Region for cluster
+      required: true
       options:
-      {{- range $val := .Values.maxOptions }}
+      {{- range $val := .Values.regionOptions }}
       - {{ $val }}
       {{- end }}
     {{- range $nodeGroup := .Values.nodeGroups }}
     - name: MAX_NODES_NODEGROUP_{{ $nodeGroup.name }}
       description: max nodes for {{ $nodeGroup.name }}
+      required: true
       options:
-      {{- range $val := $nodeGroup.maxnOptions }}
+      {{- range $val := $nodeGroup.maxOptions }}
       - {{ $val }}
       {{- end }}
     - name: MIN_NODES_NODEGROUP_{{ $nodeGroup.name }}
       description: min nodes for {{ $nodeGroup.name }}
+      required: true
       options:
       {{- range $val := $nodeGroup.minOptions }}
+      - {{ $val }}
+      {{- end }}
+    - name: INSTANCE_TYPE_NODEGROUP_{{ $nodeGroup.name }}
+      description: intance type for {{ $nodeGroup.name }}
+      required: true
+      options:
+      {{- range $val := $nodeGroup.instanceTypeOptions }}
       - {{ $val }}
       {{- end }}
     {{- end }}

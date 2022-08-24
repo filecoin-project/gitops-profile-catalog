@@ -13,7 +13,7 @@
     iamAuthenticatorConfig:
       mapRoles:
         - username: system:node:{{"{{`{{EC2PrivateDNSName}}`}}"}}
-          rolearn: 'arn:aws:iam::{{`{{ .params.AWS_ACCOUNT_ID }}`}}:role/wge-{{`{{ .params.GITOPS_ENV }}`}}-{{`{{ .params.AWS_ACCOUNT_NAME }}`}}-node'
+          rolearn: 'arn:aws:iam::{{ template "template.accountID" . }}:role/wge-{{`{{ .params.GITOPS_ENV }}`}}-{{`{{ .params.AWS_ACCOUNT_NAME }}`}}-node'
           groups:
             - "system:bootstrappers"
             - "system:nodes"

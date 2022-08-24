@@ -73,8 +73,6 @@ Allow the release namespace to be overridden for multi-namespace deployments in 
 {{- end -}}
 
 
-
-
 {{- define "recurseFlattenMap" -}}
 {{- $map := first . -}}
 {{- $depth := last . -}}
@@ -86,3 +84,10 @@ Allow the release namespace to be overridden for multi-namespace deployments in 
 {{ end }}
 {{- end -}}
 {{- end -}} 
+
+
+{{- define "template.accountID" -}}
+{{- range $key, $val := $.Values.awsAccountOptions -}}
+{{`{{`}}{{ printf "if eq .params.AWS_ACCOUNT_NAME" }} "{{ printf "%s" $val.name }}" {{`}}`}}{{ $val.id }}{{`{{ end }}`}}
+{{- end }}
+{{- end }}

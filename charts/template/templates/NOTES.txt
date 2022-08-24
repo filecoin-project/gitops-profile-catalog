@@ -1,2 +1,1 @@
-{{ $.Chart.Name }} has been installed. Check its status by running:
-  kubectl --namespace {{ template "template.namespace" . }} get pods -l "release={{ $.Release.Name }}"
+

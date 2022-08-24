@@ -1,5 +1,7 @@
+{{- $currentScope := . -}}
 {{- range $profile := .Values.requiredProfiles }}
 {{- if eq $profile.name "prometheus" }}
+{{- with $currentScope -}}
 - apiVersion: iam.aws.crossplane.io/v1beta1
   kind: Policy
   metadata:
@@ -60,7 +62,7 @@
                     "Sid": "",
                     "Effect": "Allow",
                     "Principal": {
-                        "Federated": "arn:aws:iam::{{`{{ .params.AWS_ACCOUNT_ID }}`}}:oidc-provider/oidc.eks.{{`{{ .params.AWS_REGION }}`}}.amazonaws.com/id/${EKS_CLUSTER_ID}"
+                        "Federated": "arn:aws:iam::{{ template "template.accountID" . }}:oidc-provider/oidc.eks.{{`{{ .params.AWS_REGION }}`}}.amazonaws.com/id/${EKS_CLUSTER_ID}"
                     },
                     "Action": "sts:AssumeRoleWithWebIdentity",
                     "Condition": {
@@ -86,5 +88,6 @@
         name: '{{`{{ .params.CLUSTER_NAME }}`}}-monitoring'
       roleNameRef:
         name: '{{`{{ .params.CLUSTER_NAME }}`}}-monitoring'
-{{- end }}
+{{- end -}}
+{{- end -}}
 {{- end -}}

@@ -6,6 +6,8 @@
 kubernetesVersionOptions:
 - "v1.22.6"
 
+namespaceOptions:
+- clusters
 
 # Name of template 
 name: template

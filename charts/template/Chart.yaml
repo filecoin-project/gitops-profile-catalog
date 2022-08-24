@@ -5,8 +5,7 @@ type: application
 version: 0.0.1
 kubeVersion: ">=1.16.0-0"
 home: https://github.com/weaveworks/profiles-catalog
-sources:
-  - https://github.com/filecoin-project/generic-template-infra
+
 
 
 keywords:

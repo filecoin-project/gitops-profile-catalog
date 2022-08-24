@@ -1,4 +1,4 @@
-template:
+template-base:
   # This manifest represents a CAPITemplate that will be displayed in the WGE UI 
   # Management will be in gitops-profile caatalog and the consumed in gitops-root
   # All selectable values displayed in the WGE UI to generate a template
@@ -9,7 +9,7 @@ template:
 
 
   # Name of template 
-  name: template
+  name: generic-template-helm-poc
   description: An AWS EKS template that creates a cluster
 
   # An array of NodeGroups that are available for selection in the UI

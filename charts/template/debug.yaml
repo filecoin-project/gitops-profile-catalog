@@ -1,0 +1,1282 @@
+---
+# Source: template/templates/template.yaml
+apiVersion: capi.weave.works/v1alpha1
+kind: CAPITemplate
+metadata:
+  name: template
+  namespace:  default
+  annotations:
+    capi.weave.works/profile-0: '{"name": "k8s-rbac-permissions", "version": "0.0.8","values:" "adminGroups:\n- org: filecoin-project\n  team: bedrock-go\n- org: filecoin-project\n  team: Weaveworks\n- org: filecoin-project\n  team: infra "}'
+    capi.weave.works/profile-1: '{"name": "external-dns", "version": "0.0.9"}'
+    capi.weave.works/profile-2: '{"name": "cert-manager", "version": "2.0.1"}'
+    capi.weave.works/profile-3: '{"name": "cert-manager-issuer", "version": "0.0.4"}'
+    capi.weave.works/profile-4: '{"name": "ebs-csi-controller", "version": "0.0.2"}'
+    capi.weave.works/profile-5: '{"name": "aws-node-term-handler", "version": "0.0.1"}'
+    capi.weave.works/profile-6: '{"name": "aws-load-balancer-controller", "version": "0.0.2"}'
+    capi.weave.works/profile-7: '{"name": "prometheus", "version": "1.1.8"}'
+    capi.weave.works/profile-8: '{"name": "ingress-nginx", "version": "0.0.12"}'
+    capi.weave.works/profile-9: '{"name": "policy-agent", "version": "0.2.11"}'
+    capi.weave.works/profile-10: '{"name": "promtail", "version": "0.0.5"}'
+  labels:
+    helm.sh/chart: template-0.0.1
+    app.kubernetes.io/name: template
+    app.kubernetes.io/instance: RELEASE-NAME
+    app.kubernetes.io/managed-by: Helm     
+spec:
+  renderType: templating
+  description: An AWS EKS template that creates a cluster
+  params:
+    - name: CLUSTER_NAME
+      description: The name for this cluster.
+      required: true
+    - name: AWS_ACCOUNT_NAME
+      description: The name of the account for the cluster
+      required: true
+      options:
+      - test-1
+      - test-2
+    - name: NAMESPACE
+      description: The namespace for this cluster
+      required: true
+      options:
+      - clusters
+    - name: TEAM
+      description: Team/or Project
+      required: true
+      options:
+      - netops
+      - sti
+      - fil-infra
+      - sentinel
+      - bedrock
+    - name: GITOPS_ENV
+      description: The GitOps environment
+      required: true
+      options:
+      - nonprod
+    - name: AWS_REGION
+      description: Region for cluster
+      required: true
+      options:
+      - us-east-2
+      - us-west-2
+      - eu-west-1
+      - ap-northeast-1
+      - ap-southeast-2
+      - sa-east-1
+    - name: MAX_NODES_NODEGROUP_0
+      description: max nodes for 0
+      required: true
+      options:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      - 9
+      - 10
+      - 15
+      - 25
+      - 30
+    - name: MIN_NODES_NODEGROUP_0
+      description: min nodes for 0
+      required: true
+      options:
+      - 0
+      - 1
+    - name: INSTANCE_TYPE_NODEGROUP_0
+      description: intance type for 0
+      required: true
+      options:
+      - t3.large
+      - t3.xlarge
+      - m5a.large
+      - m5a.xlarge
+      - m5a.2xlarge
+      - c5a.xlarge
+      - c5a.2xlarge
+      - c5a.4xlarge
+      - t3.2xlarge
+      - r5.8xlarge
+    - name: MAX_NODES_NODEGROUP_1
+      description: max nodes for 1
+      required: true
+      options:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      - 9
+      - 10
+      - 15
+      - 25
+      - 30
+    - name: MIN_NODES_NODEGROUP_1
+      description: min nodes for 1
+      required: true
+      options:
+      - 0
+      - 1
+    - name: INSTANCE_TYPE_NODEGROUP_1
+      description: intance type for 1
+      required: true
+      options:
+      - t3.large
+      - t3.xlarge
+      - m5a.large
+      - m5a.xlarge
+      - m5a.2xlarge
+      - c5a.xlarge
+      - c5a.2xlarge
+      - c5a.4xlarge
+      - t3.2xlarge
+      - r5.8xlarge
+  resourcetemplates:
+  
+  - apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name:  '{{ .params.CLUSTER_NAME }}-cluster-autoscaler'
+      namespace: clusters
+      labels:
+        app: cluster-autoscaler
+    spec:
+      selector:
+        matchLabels:
+          app: cluster-autoscaler
+      replicas: 1
+      template:
+        metadata:
+          labels:
+            app: cluster-autoscaler
+        spec:
+          containers:
+          - image: k8s.gcr.io/autoscaling/cluster-autoscaler:v1.23.0
+            name: cluster-autoscaler
+            volumeMounts:
+              - name: kubeconfig
+                mountPath: "/etc/workload-kubeconfig"
+                readOnly: true
+            command:
+            - /cluster-autoscaler
+            args:
+            - --cloud-provider=clusterapi
+            - --kubeconfig=/etc/workload-kubeconfig/value
+            - --clusterapi-cloud-config-authoritative
+            - --node-group-auto-discovery=clusterapi:clusterName={{ .params.CLUSTER_NAME }}
+            - --balance-similar-node-groups
+          serviceAccountName: cluster-autoscaler
+          terminationGracePeriodSeconds: 10
+          tolerations:
+          - effect: NoSchedule
+            key: node-role.kubernetes.io/master
+          volumes:
+          - name: kubeconfig
+            secret:
+              defaultMode: 420
+              secretName: '{{ .params.CLUSTER_NAME }}-kubeconfig'
+  - apiVersion: controlplane.cluster.x-k8s.io/v1beta1
+    kind: AWSManagedControlPlane
+    metadata:
+      name: '{{ .params.CLUSTER_NAME }}-control-plane'
+      namespace: '{{ .params.NAMESPACE }}'
+      annotations:
+        kustomize.toolkit.fluxcd.io/prune: disabled
+    spec:
+      region: '{{ .params.AWS_REGION }}'
+      sshKeyName: default
+      version: '{{ .params.KUBERNETES_VERSION }}'
+      eksClusterName: '{{ .params.CLUSTER_NAME }}'
+      iamAuthenticatorConfig:
+        mapRoles:
+          - username: system:node:{{`{{EC2PrivateDNSName}}`}}
+            rolearn: 'arn:aws:iam::{{if eq .params.AWS_ACCOUNT_NAME "test-1" }}22222{{ end }}{{if eq .params.AWS_ACCOUNT_NAME "test-2" }}33333{{ end }}:role/wge-{{ .params.GITOPS_ENV }}-{{ .params.AWS_ACCOUNT_NAME }}-node'
+            groups:
+              - "system:bootstrappers"
+              - "system:nodes"
+      associateOIDCProvider: true
+      oidcIdentityProviderConfig:
+        clientId: k8s-leaf-cluster-auth
+        identityProviderConfigName: '{{ .params.CLUSTER_NAME }}-oidc-provider'
+        issuerUrl: '{{ if eq .params.GITOPS_ENV "prod" }}https://auth.w3ops.net{{ else }}https://nonprod-auth.w3ops.net{{ end }}'
+        usernameClaim: email
+        groupsClaim: groups
+        tags:
+          managedBy: Weave GitOps Enterprise
+          createdBy: clusterapi 
+          cluster: '{{ .params.CLUSTER_NAME }}'
+      network:
+        vpc:
+          cidrBlock: 20.10.0.0/16
+  - apiVersion: cluster.x-k8s.io/v1beta1
+    kind: Cluster
+    metadata:
+      name: '{{ .params.CLUSTER_NAME }}'
+      namespace: '{{ .params.NAMESPACE }}'
+      labels:
+        weave.works/capi: '{{ .params.CLUSTER_NAME }}-bootstrap-v3'
+    spec:
+      clusterNetwork:
+        pods:
+          cidrBlocks:
+          - 192.168.0.0/16
+      controlPlaneRef:
+        apiVersion: controlplane.cluster.x-k8s.io/v1beta1
+        kind: AWSManagedControlPlane
+        name: '{{ .params.CLUSTER_NAME }}-control-plane'
+      infrastructureRef:
+        apiVersion: controlplane.cluster.x-k8s.io/v1beta1
+        kind: AWSManagedControlPlane
+        name: '{{ .params.CLUSTER_NAME }}-control-plane'
+  - apiVersion: iam.aws.crossplane.io/v1beta1
+    kind: Policy
+    metadata:
+      name: '{{ .params.CLUSTER_NAME }}-cert-manager'
+      namespace: '{{ .params.NAMESPACE }}'
+    spec:
+      providerConfigRef:
+        name: '{{ .params.AWS_ACCOUNT_NAME }}-provider'
+      deletionPolicy: Delete
+      forProvider:
+        tags:
+        - key: managedBy
+          value: Weave GitOps Enterprise 
+        - key: createdBy
+          value: Crossplane 
+        - key: cluster
+          value: '{{ .params.CLUSTER_NAME }}'
+        description: "For cert-manager"
+        name: '{{ .params.CLUSTER_NAME }}-cert-manager'
+        document: |
+          {
+              "Statement": [
+                  {
+                      "Action": "route53:GetChange",
+                      "Effect": "Allow",
+                      "Resource": "arn:aws:route53:::change/*",
+                      "Sid": ""
+                  },
+                  {
+                      "Action": [
+                          "route53:ListResourceRecordSets",
+                          "route53:ChangeResourceRecordSets"
+                      ],
+                      "Effect": "Allow",
+                      "Resource": "arn:aws:route53:::hostedzone/*",
+                      "Sid": ""
+                  },
+                  {
+                      "Action": "route53:ListHostedZonesByName",
+                      "Effect": "Allow",
+                      "Resource": "*",
+                      "Sid": ""
+                  }
+              ],
+              "Version": "2012-10-17"
+          }
+  - apiVersion: iam.aws.crossplane.io/v1beta1
+    kind: Role
+    metadata:
+      name: '{{ .params.CLUSTER_NAME }}-cert-manager'
+      namespace: '{{ .params.NAMESPACE }}'
+    spec:
+      providerConfigRef:
+        name: '{{ .params.AWS_ACCOUNT_NAME }}-provider'
+      forProvider:
+        tags:
+        - key: managedBy
+          value: Weave GitOps Enterprise 
+        - key: createdBy
+          value: Crossplane 
+        - key: cluster
+          value: '{{ .params.CLUSTER_NAME }}'
+        assumeRolePolicyDocument: |
+          {
+              "Version": "2012-10-17",
+              "Statement": [
+                  {
+                      "Sid": "",
+                      "Effect": "Allow",
+                      "Principal": {
+                          "Federated": "arn:aws:iam::{{if eq .params.AWS_ACCOUNT_NAME "test-1" }}22222{{ end }}{{if eq .params.AWS_ACCOUNT_NAME "test-2" }}33333{{ end }}:oidc-provider/oidc.eks.{{ .params.AWS_REGION }}.amazonaws.com/id/${EKS_CLUSTER_ID}"
+                      },
+                      "Action": "sts:AssumeRoleWithWebIdentity",
+                      "Condition": {
+                          "StringEquals": {
+                              "oidc.eks.{{ .params.AWS_REGION }}.amazonaws.com/id/${EKS_CLUSTER_ID}:sub": [
+                                  "system:serviceaccount:flux-system:cert-manager",
+                                  "system:serviceaccount:flux-system:cert-manager-webhook"
+                              ]
+                          }
+                      }
+                  }
+              ]
+          }
+  - apiVersion: iam.aws.crossplane.io/v1beta1
+    kind: RolePolicyAttachment
+    metadata:
+      name: '{{ .params.CLUSTER_NAME }}-cert-manager'
+      namespace: '{{ .params.NAMESPACE }}'
+    spec:
+      providerConfigRef:
+        name: '{{ .params.AWS_ACCOUNT_NAME }}-provider'
+      forProvider:
+        policyArnRef:
+          name: '{{ .params.CLUSTER_NAME }}-cert-manager'
+        roleNameRef:
+          name: '{{ .params.CLUSTER_NAME }}-cert-manager'
+  - apiVersion: capi.weave.works/v1alpha1
+    kind: ClusterBootstrapConfig
+    metadata:
+      name: '{{ .params.CLUSTER_NAME }}-capi-gitops-flux-v3'
+      namespace: '{{ .params.NAMESPACE }}'
+    spec:
+      clusterSelector:
+        matchLabels:
+          weave.works/capi: '{{ .params.CLUSTER_NAME }}-bootstrap-v3'
+      jobTemplate:
+        generateName: "run-gitops-{{ .params.CLUSTER_NAME }}"
+        spec:
+          imagePullSecrets:
+          - name: ghcr-image
+          initContainers:
+            - image: ghcr.io/steve-fraser/wge-post-deployment-template-renderer:0.1.2
+              imagePullPolicy: Always
+              name: configure-permissions
+              # Secret should container GITHUB_TOKEN or GITLAB_TOKEN
+              envFrom:
+                - secretRef:
+                    name: wge-github-token
+              env:
+                - name: GITOPS_REPO_BRANCH
+                  value: 'main'
+                - name: TEMPLATE_PATH
+                  value:  'clusters/wge-{{ .params.GITOPS_ENV }}-management/{{ .params.NAMESPACE }}/{{ .params.CLUSTER_NAME }}.yaml'
+                - name: GITOPS_REPO_OWNER
+                  value: filecoin-project 
+                - name: GITOPS_REPO_NAME
+                  value: gitops-root
+                - name: ENV_CONFIG_FILE_PATH
+                  value: /tmp/env_config
+                - name: ENV_HELPER_SCRIPT
+                  value: https://raw.githubusercontent.com/steve-fraser/wge-post-deployment-template-renderer/main/aws/get-cluster-id.sh
+                - name: CLUSTER_NAME
+                  value: '{{ .params.CLUSTER_NAME }}'
+          containers:
+            - image: ghcr.io/fluxcd/flux-cli:v0.30.2
+              name: flux-bootstrap
+              resources: {}
+              volumeMounts:
+                - name: kubeconfig
+                  mountPath: "/etc/gitops"
+                  readOnly: true
+              args:
+                [
+                  "bootstrap",
+                  "$(GIT_PROVIDER)",
+                  "--hostname=$(GIT_PROVIDER_HOSTNAME)",
+                  "--namespace=flux-system",
+                  "--owner=$(GITOPS_REPO_OWNER)",
+                  "--repository=$(GITOPS_REPO_NAME)",
+                  '--path={{ if eq .params.GITOPS_ENV "prod" }}clusters/{{ .params.NAMESPACE }}/{{ .params.CLUSTER_NAME }}{{ else }}clusters/{{ .params.NAMESPACE }}/{{ .params.CLUSTER_NAME }}{{ end }}',
+                  "--components-extra=image-reflector-controller,image-automation-controller",
+                  '--branch=main'
+                ]
+              # Secret should container GITHUB_TOKEN or GITLAB_TOKEN
+              envFrom:
+                - secretRef:
+                    name: wge-github-token
+              env:
+                # Update these values
+                - name: GIT_PROVIDER
+                  value: github
+                - name: GIT_PROVIDER_HOSTNAME
+                  value: github.com
+                - name: GITOPS_REPO_OWNER
+                  value: filecoin-project 
+                - name: GITOPS_REPO_NAME
+                  value: gitops-root
+                - name: KUBECONFIG
+                  value: "/etc/gitops/value"
+          restartPolicy: Never
+          serviceAccountName: '{{ .params.CLUSTER_NAME }}-clusterbootstrap-v3'
+          volumes:
+            - name: kubeconfig
+              secret:
+                secretName: "{{ .params.CLUSTER_NAME }}-kubeconfig"
+  - apiVersion: rbac.authorization.k8s.io/v1
+    kind: RoleBinding
+    metadata:
+      name: '{{ .params.CLUSTER_NAME }}-clusterbootstrap-v3'
+      namespace: '{{ .params.NAMESPACE }}'
+    roleRef:
+      apiGroup: rbac.authorization.k8s.io
+      kind: Role
+      name: '{{ .params.CLUSTER_NAME }}-clusterbootstrap-v3'
+    subjects:
+      - kind: ServiceAccount
+        name: '{{ .params.CLUSTER_NAME }}-clusterbootstrap-v3'
+        namespace: '{{ .params.NAMESPACE }}'
+  - apiVersion: rbac.authorization.k8s.io/v1
+    kind: Role
+    metadata:
+      name: '{{ .params.CLUSTER_NAME }}-clusterbootstrap-v3'
+      namespace: '{{ .params.NAMESPACE }}'
+    rules:
+      - apiGroups: [ '*' ]
+        resources: [ '*' ]
+        verbs: [ '*' ]
+  - apiVersion: v1
+    kind: ServiceAccount
+    metadata:
+      name:  '{{ .params.CLUSTER_NAME }}-clusterbootstrap-v3'
+      namespace: '{{ .params.NAMESPACE }}'
+  
+  - apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+    kind: Kustomization
+    metadata:
+      name: '{{ .params.CLUSTER_NAME }}-cluster-sops-key'
+      namespace: '{{ .params.NAMESPACE }}'
+    spec:
+      decryption:
+        provider: sops
+        secretRef:
+          name: wge-{{ .params.GITOPS_ENV }}-sops-gpg
+      interval: 10m
+      targetNamespace: flux-system
+      sourceRef:
+        kind: GitRepository
+        name: flux-system
+        namespace: flux-system
+      path: "./secrets/{{ .params.NAMESPACE }}/{{ .params.CLUSTER_NAME }}"
+      prune: true
+      kubeConfig:
+        secretRef:
+          name: '{{ .params.CLUSTER_NAME }}-kubeconfig'
+  - apiVersion: iam.aws.crossplane.io/v1beta1
+    kind: Policy
+    metadata:
+      name: '{{ .params.CLUSTER_NAME }}-ebs-csi-controller'
+      namespace: '{{ .params.NAMESPACE }}'
+    spec:
+      providerConfigRef:
+        name: '{{ .params.AWS_ACCOUNT_NAME }}-provider'
+      deletionPolicy: Delete
+      forProvider:
+        tags:
+        - key: managedBy
+          value: Weave GitOps Enterprise 
+        - key: createdBy
+          value: Crossplane 
+        - key: cluster
+          value: '{{ .params.CLUSTER_NAME }}'
+        description: "For flux kustomize-controller"
+        name: '{{ .params.CLUSTER_NAME }}-ebs-csi-controller'
+        document: |
+          {
+              "Version": "2012-10-17",
+              "Statement": [
+                  {
+                      "Effect": "Allow",
+                      "Action": [
+                          "ec2:CreateSnapshot",
+                          "ec2:AttachVolume",
+                          "ec2:DetachVolume",
+                          "ec2:ModifyVolume",
+                          "ec2:DescribeAvailabilityZones",
+                          "ec2:DescribeInstances",
+                          "ec2:DescribeSnapshots",
+                          "ec2:DescribeTags",
+                          "ec2:DescribeVolumes",
+                          "ec2:DescribeVolumesModifications"
+                      ],
+                      "Resource": "*"
+                  },
+                  {
+                      "Effect": "Allow",
+                      "Action": [
+                          "ec2:CreateTags"
+                      ],
+                      "Resource": [
+                          "arn:aws:ec2:*:*:volume/*",
+                          "arn:aws:ec2:*:*:snapshot/*"
+                      ],
+                      "Condition": {
+                          "StringEquals": {
+                              "ec2:CreateAction": [
+                                  "CreateVolume",
+                                  "CreateSnapshot"
+                              ]
+                          }
+                      }
+                  },
+                  {
+                      "Effect": "Allow",
+                      "Action": [
+                          "ec2:DeleteTags"
+                      ],
+                      "Resource": [
+                          "arn:aws:ec2:*:*:volume/*",
+                          "arn:aws:ec2:*:*:snapshot/*"
+                      ]
+                  },
+                  {
+                      "Effect": "Allow",
+                      "Action": [
+                          "ec2:CreateVolume"
+                      ],
+                      "Resource": "*",
+                      "Condition": {
+                          "StringLike": {
+                              "aws:RequestTag/ebs.csi.aws.com/cluster": "true"
+                          }
+                      }
+                  },
+                  {
+                      "Effect": "Allow",
+                      "Action": [
+                          "ec2:CreateVolume"
+                      ],
+                      "Resource": "*",
+                      "Condition": {
+                          "StringLike": {
+                              "aws:RequestTag/CSIVolumeName": "*"
+                          }
+                      }
+                  },
+                  {
+                      "Effect": "Allow",
+                      "Action": [
+                          "ec2:CreateVolume"
+                      ],
+                      "Resource": "*",
+                      "Condition": {
+                          "StringLike": {
+                              "aws:RequestTag/kubernetes.io/cluster/*": "owned"
+                          }
+                      }
+                  },
+                  {
+                      "Effect": "Allow",
+                      "Action": [
+                          "ec2:DeleteVolume"
+                      ],
+                      "Resource": "*",
+                      "Condition": {
+                          "StringLike": {
+                              "ec2:ResourceTag/ebs.csi.aws.com/cluster": "true"
+                          }
+                      }
+                  },
+                  {
+                      "Effect": "Allow",
+                      "Action": [
+                          "ec2:DeleteVolume"
+                      ],
+                      "Resource": "*",
+                      "Condition": {
+                          "StringLike": {
+                              "ec2:ResourceTag/CSIVolumeName": "*"
+                          }
+                      }
+                  },
+                  {
+                      "Effect": "Allow",
+                      "Action": [
+                          "ec2:DeleteVolume"
+                      ],
+                      "Resource": "*",
+                      "Condition": {
+                          "StringLike": {
+                              "ec2:ResourceTag/kubernetes.io/cluster/*": "owned"
+                          }
+                      }
+                  },
+                  {
+                      "Effect": "Allow",
+                      "Action": [
+                          "ec2:DeleteSnapshot"
+                      ],
+                      "Resource": "*",
+                      "Condition": {
+                          "StringLike": {
+                              "ec2:ResourceTag/CSIVolumeSnapshotName": "*"
+                          }
+                      }
+                  },
+                  {
+                      "Effect": "Allow",
+                      "Action": [
+                          "ec2:DeleteSnapshot"
+                      ],
+                      "Resource": "*",
+                      "Condition": {
+                          "StringLike": {
+                              "ec2:ResourceTag/ebs.csi.aws.com/cluster": "true"
+                          }
+                      }
+                  }
+              ]
+          }
+  - apiVersion: iam.aws.crossplane.io/v1beta1
+    kind: Role
+    metadata:
+      name: '{{ .params.CLUSTER_NAME }}-ebs-csi-controller'
+      namespace: '{{ .params.NAMESPACE }}'
+    spec:
+      providerConfigRef:
+        name: '{{ .params.AWS_ACCOUNT_NAME }}-provider'
+      forProvider:
+        tags:
+        - key: managedBy
+          value: Weave GitOps Enterprise 
+        - key: createdBy
+          value: Crossplane 
+        - key: cluster
+          value: '{{ .params.CLUSTER_NAME }}'
+        assumeRolePolicyDocument: |
+          {
+              "Version": "2012-10-17",
+              "Statement": [
+                  {
+                      "Sid": "",
+                      "Effect": "Allow",
+                      "Principal": {
+                          "Federated": "arn:aws:iam::{{if eq .params.AWS_ACCOUNT_NAME "test-1" }}22222{{ end }}{{if eq .params.AWS_ACCOUNT_NAME "test-2" }}33333{{ end }}:oidc-provider/oidc.eks.{{ .params.AWS_REGION }}.amazonaws.com/id/${EKS_CLUSTER_ID}"
+                      },
+                      "Action": "sts:AssumeRoleWithWebIdentity",
+                      "Condition": {
+                          "StringEquals": {
+                              "oidc.eks.{{ .params.AWS_REGION }}.amazonaws.com/id/${EKS_CLUSTER_ID}:sub": [
+                                  "system:serviceaccount:flux-system:ebs-csi-controller-sa"
+                              ]
+                          }
+                      }
+                  }
+              ]
+          }
+  - apiVersion: iam.aws.crossplane.io/v1beta1
+    kind: RolePolicyAttachment
+    metadata:
+      name: '{{ .params.CLUSTER_NAME }}-ebs-csi-controller'
+      namespace: '{{ .params.NAMESPACE }}'
+    spec:
+      providerConfigRef:
+        name: '{{ .params.AWS_ACCOUNT_NAME }}-provider'
+      forProvider:
+        policyArnRef:
+          name: '{{ .params.CLUSTER_NAME }}-ebs-csi-controller'
+        roleNameRef:
+          name: '{{ .params.CLUSTER_NAME }}-ebs-csi-controller'
+  - apiVersion: iam.aws.crossplane.io/v1beta1
+    kind: Policy
+    metadata:
+      name: '{{ .params.CLUSTER_NAME }}-external-dns'
+      namespace: '{{ .params.NAMESPACE }}'
+    spec:
+      providerConfigRef:
+        name: '{{ .params.AWS_ACCOUNT_NAME }}-provider'
+      deletionPolicy: Delete
+      forProvider:
+        tags:
+        - key: managedBy
+          value: Weave GitOps Enterprise 
+        - key: createdBy
+          value: Crossplane 
+        - key: cluster
+          value: '{{ .params.CLUSTER_NAME }}'
+        description: "For external dns"
+        name: '{{ .params.CLUSTER_NAME }}-external-dns'
+        document: |
+          {
+              "Statement": [
+                  {
+                      "Action": "route53:ChangeResourceRecordSets",
+                      "Effect": "Allow",
+                      "Resource": "arn:aws:route53:::hostedzone/*",
+                      "Sid": "ChangeAndListRecordsOnDevZone"
+                  },
+                  {
+                      "Action": [
+                          "route53:ListResourceRecordSets",
+                          "route53:ListHostedZones"
+                      ],
+                      "Effect": "Allow",
+                      "Resource": "*",
+                      "Sid": "ListZonesAndRecords"
+                  }
+              ],
+              "Version": "2012-10-17"
+          }
+  - apiVersion: iam.aws.crossplane.io/v1beta1
+    kind: Role
+    metadata:
+      name: '{{ .params.CLUSTER_NAME }}-external-dns'
+      namespace: '{{ .params.NAMESPACE }}'
+    spec:
+      providerConfigRef:
+        name: '{{ .params.AWS_ACCOUNT_NAME }}-provider'
+      forProvider:
+        tags:
+        - key: managedBy
+          value: Weave GitOps Enterprise 
+        - key: createdBy
+          value: Crossplane 
+        - key: cluster
+          value: '{{ .params.CLUSTER_NAME }}'
+        assumeRolePolicyDocument: |
+          {
+              "Version": "2012-10-17",
+              "Statement": [
+                  {
+                      "Sid": "",
+                      "Effect": "Allow",
+                      "Principal": {
+                          "Federated": "arn:aws:iam::{{if eq .params.AWS_ACCOUNT_NAME "test-1" }}22222{{ end }}{{if eq .params.AWS_ACCOUNT_NAME "test-2" }}33333{{ end }}:oidc-provider/oidc.eks.{{ .params.AWS_REGION }}.amazonaws.com/id/${EKS_CLUSTER_ID}"
+                      },
+                      "Action": "sts:AssumeRoleWithWebIdentity",
+                      "Condition": {
+                          "StringEquals": {
+                              "oidc.eks.{{ .params.AWS_REGION }}.amazonaws.com/id/${EKS_CLUSTER_ID}:sub": [
+                                  "system:serviceaccount:flux-system:external-dns"
+                              ]
+                          }
+                      }
+                  }
+              ]
+          }
+  - apiVersion: iam.aws.crossplane.io/v1beta1
+    kind: RolePolicyAttachment
+    metadata:
+      name: '{{ .params.CLUSTER_NAME }}-external-dns'
+      namespace: '{{ .params.NAMESPACE }}'
+    spec:
+      providerConfigRef:
+        name: '{{ .params.AWS_ACCOUNT_NAME }}-provider'
+      forProvider:
+        policyArnRef:
+          name: '{{ .params.CLUSTER_NAME }}-external-dns'
+        roleNameRef:
+          name: '{{ .params.CLUSTER_NAME }}-external-dns'
+  - apiVersion: gitops.weave.works/v1alpha1
+    kind: GitopsCluster
+    metadata:
+      name: '{{ .params.CLUSTER_NAME }}'
+      namespace: '{{ .params.NAMESPACE }}'
+      labels:
+        weave.works/capi: '{{ .params.CLUSTER_NAME }}-bootstrap-v3'
+    spec:
+      capiClusterRef:
+        name: '{{ .params.CLUSTER_NAME }}'
+  
+  - apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+    kind: AWSMachineTemplate
+    metadata:
+      name: '{{ .params.CLUSTER_NAME }}-machine-deployment-0'
+    spec:
+      template:
+        spec:
+          instanceType: '{{ .params.INSTANCE_TYPE_NODEGROUP_0 }}'
+          iamInstanceProfile: 'wge-{{ .params.GITOPS_ENV }}-{{ .params.AWS_ACCOUNT_NAME }}-node-instance-profile'
+          sshKeyName: ""
+  - apiVersion: bootstrap.cluster.x-k8s.io/v1beta1
+    kind: EKSConfigTemplate
+    metadata:
+      name: '{{ .params.CLUSTER_NAME }}-machine-deployment-0-0'
+    spec:
+      template: {}
+  - apiVersion: cluster.x-k8s.io/v1beta1
+    kind: MachineDeployment
+    metadata:
+      name: '{{ .params.CLUSTER_NAME }}-machine-deployment-0-0'
+      namespace: '{{ .params.NAMESPACE }}'
+      annotations:
+        cluster.x-k8s.io/cluster-api-autoscaler-node-group-min-size: "{{ .params.MIN_NODES_NODEGROUP_0 }}"
+        cluster.x-k8s.io/cluster-api-autoscaler-node-group-max-size: "{{ .params.MAX_NODES_NODEGROUP_0 }}"
+        kustomize.toolkit.fluxcd.io/prune: disabled
+      clusterName: '{{ .params.CLUSTER_NAME }}'
+      selector:
+        matchLabels:
+      template:
+        metadata:
+          labels:
+            min: nodes-{{ .params.MIN_NODES_NODEGROUP_0 }}
+            max: nodes-{{ .params.MAX_NODES_NODEGROUP_0 }}
+        spec:
+          clusterName: '{{ .params.CLUSTER_NAME }}'
+          version: '{{ .params.KUBERNETES_VERSION }}'
+          failureDomain: '{{ .params.AWS_REGION }}a'
+          bootstrap:
+            configRef:
+              name: '{{ .params.CLUSTER_NAME }}-machine-deployment-0-0'
+              apiVersion: bootstrap.cluster.x-k8s.io/v1beta1
+              kind: EKSConfigTemplate
+          infrastructureRef:
+            name: '{{ .params.CLUSTER_NAME }}-machine-deployment-0-0'
+            apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+            kind: AWSMachineTemplate
+  - apiVersion: cluster.x-k8s.io/v1beta1
+    kind: MachineDeployment
+    metadata:
+      name: '{{ .params.CLUSTER_NAME }}-machine-deployment-0-1'
+      namespace: '{{ .params.NAMESPACE }}'
+      annotations:
+        cluster.x-k8s.io/cluster-api-autoscaler-node-group-min-size: "{{ .params.MIN_NODES_NODEGROUP_0 }}"
+        cluster.x-k8s.io/cluster-api-autoscaler-node-group-max-size: "{{ .params.MAX_NODES_NODEGROUP_0 }}"
+        kustomize.toolkit.fluxcd.io/prune: disabled
+      clusterName: '{{ .params.CLUSTER_NAME }}'
+      selector:
+        matchLabels:
+      template:
+        metadata:
+          labels:
+            min: nodes-{{ .params.MIN_NODES_NODEGROUP_0 }}
+            max: nodes-{{ .params.MAX_NODES_NODEGROUP_0 }}
+        spec:
+          clusterName: '{{ .params.CLUSTER_NAME }}'
+          version: '{{ .params.KUBERNETES_VERSION }}'
+          failureDomain: '{{ .params.AWS_REGION }}b'
+          bootstrap:
+            configRef:
+              name: '{{ .params.CLUSTER_NAME }}-machine-deployment-0-0'
+              apiVersion: bootstrap.cluster.x-k8s.io/v1beta1
+              kind: EKSConfigTemplate
+          infrastructureRef:
+            name: '{{ .params.CLUSTER_NAME }}-machine-deployment-0-0'
+            apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+            kind: AWSMachineTemplate
+  - apiVersion: cluster.x-k8s.io/v1beta1
+    kind: MachineDeployment
+    metadata:
+      name: '{{ .params.CLUSTER_NAME }}-machine-deployment-0-2'
+      namespace: '{{ .params.NAMESPACE }}'
+      annotations:
+        cluster.x-k8s.io/cluster-api-autoscaler-node-group-min-size: "{{ .params.MIN_NODES_NODEGROUP_0 }}"
+        cluster.x-k8s.io/cluster-api-autoscaler-node-group-max-size: "{{ .params.MAX_NODES_NODEGROUP_0 }}"
+        kustomize.toolkit.fluxcd.io/prune: disabled
+      clusterName: '{{ .params.CLUSTER_NAME }}'
+      selector:
+        matchLabels:
+      template:
+        metadata:
+          labels:
+            min: nodes-{{ .params.MIN_NODES_NODEGROUP_0 }}
+            max: nodes-{{ .params.MAX_NODES_NODEGROUP_0 }}
+        spec:
+          clusterName: '{{ .params.CLUSTER_NAME }}'
+          version: '{{ .params.KUBERNETES_VERSION }}'
+          failureDomain: '{{ .params.AWS_REGION }}c'
+          bootstrap:
+            configRef:
+              name: '{{ .params.CLUSTER_NAME }}-machine-deployment-0-0'
+              apiVersion: bootstrap.cluster.x-k8s.io/v1beta1
+              kind: EKSConfigTemplate
+          infrastructureRef:
+            name: '{{ .params.CLUSTER_NAME }}-machine-deployment-0-0'
+            apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+            kind: AWSMachineTemplate
+  - apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+    kind: AWSMachineTemplate
+    metadata:
+      name: '{{ .params.CLUSTER_NAME }}-machine-deployment-1'
+    spec:
+      template:
+        spec:
+          instanceType: '{{ .params.INSTANCE_TYPE_NODEGROUP_1 }}'
+          iamInstanceProfile: 'wge-{{ .params.GITOPS_ENV }}-{{ .params.AWS_ACCOUNT_NAME }}-node-instance-profile'
+          sshKeyName: ""
+  - apiVersion: bootstrap.cluster.x-k8s.io/v1beta1
+    kind: EKSConfigTemplate
+    metadata:
+      name: '{{ .params.CLUSTER_NAME }}-machine-deployment-1-0'
+    spec:
+      template: {}
+  - apiVersion: cluster.x-k8s.io/v1beta1
+    kind: MachineDeployment
+    metadata:
+      name: '{{ .params.CLUSTER_NAME }}-machine-deployment-1-0'
+      namespace: '{{ .params.NAMESPACE }}'
+      annotations:
+        cluster.x-k8s.io/cluster-api-autoscaler-node-group-min-size: "{{ .params.MIN_NODES_NODEGROUP_1 }}"
+        cluster.x-k8s.io/cluster-api-autoscaler-node-group-max-size: "{{ .params.MAX_NODES_NODEGROUP_1 }}"
+        kustomize.toolkit.fluxcd.io/prune: disabled
+      clusterName: '{{ .params.CLUSTER_NAME }}'
+      selector:
+        matchLabels:
+      template:
+        metadata:
+          labels:
+            min: nodes-{{ .params.MIN_NODES_NODEGROUP_1 }}
+            max: nodes-{{ .params.MAX_NODES_NODEGROUP_1 }}
+        spec:
+          clusterName: '{{ .params.CLUSTER_NAME }}'
+          version: '{{ .params.KUBERNETES_VERSION }}'
+          failureDomain: '{{ .params.AWS_REGION }}a'
+          bootstrap:
+            configRef:
+              name: '{{ .params.CLUSTER_NAME }}-machine-deployment-1-0'
+              apiVersion: bootstrap.cluster.x-k8s.io/v1beta1
+              kind: EKSConfigTemplate
+          infrastructureRef:
+            name: '{{ .params.CLUSTER_NAME }}-machine-deployment-1-0'
+            apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+            kind: AWSMachineTemplate
+  - apiVersion: cluster.x-k8s.io/v1beta1
+    kind: MachineDeployment
+    metadata:
+      name: '{{ .params.CLUSTER_NAME }}-machine-deployment-1-1'
+      namespace: '{{ .params.NAMESPACE }}'
+      annotations:
+        cluster.x-k8s.io/cluster-api-autoscaler-node-group-min-size: "{{ .params.MIN_NODES_NODEGROUP_1 }}"
+        cluster.x-k8s.io/cluster-api-autoscaler-node-group-max-size: "{{ .params.MAX_NODES_NODEGROUP_1 }}"
+        kustomize.toolkit.fluxcd.io/prune: disabled
+      clusterName: '{{ .params.CLUSTER_NAME }}'
+      selector:
+        matchLabels:
+      template:
+        metadata:
+          labels:
+            min: nodes-{{ .params.MIN_NODES_NODEGROUP_1 }}
+            max: nodes-{{ .params.MAX_NODES_NODEGROUP_1 }}
+        spec:
+          clusterName: '{{ .params.CLUSTER_NAME }}'
+          version: '{{ .params.KUBERNETES_VERSION }}'
+          failureDomain: '{{ .params.AWS_REGION }}b'
+          bootstrap:
+            configRef:
+              name: '{{ .params.CLUSTER_NAME }}-machine-deployment-1-0'
+              apiVersion: bootstrap.cluster.x-k8s.io/v1beta1
+              kind: EKSConfigTemplate
+          infrastructureRef:
+            name: '{{ .params.CLUSTER_NAME }}-machine-deployment-1-0'
+            apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+            kind: AWSMachineTemplate
+  - apiVersion: cluster.x-k8s.io/v1beta1
+    kind: MachineDeployment
+    metadata:
+      name: '{{ .params.CLUSTER_NAME }}-machine-deployment-1-2'
+      namespace: '{{ .params.NAMESPACE }}'
+      annotations:
+        cluster.x-k8s.io/cluster-api-autoscaler-node-group-min-size: "{{ .params.MIN_NODES_NODEGROUP_1 }}"
+        cluster.x-k8s.io/cluster-api-autoscaler-node-group-max-size: "{{ .params.MAX_NODES_NODEGROUP_1 }}"
+        kustomize.toolkit.fluxcd.io/prune: disabled
+      clusterName: '{{ .params.CLUSTER_NAME }}'
+      selector:
+        matchLabels:
+      template:
+        metadata:
+          labels:
+            min: nodes-{{ .params.MIN_NODES_NODEGROUP_1 }}
+            max: nodes-{{ .params.MAX_NODES_NODEGROUP_1 }}
+        spec:
+          clusterName: '{{ .params.CLUSTER_NAME }}'
+          version: '{{ .params.KUBERNETES_VERSION }}'
+          failureDomain: '{{ .params.AWS_REGION }}c'
+          bootstrap:
+            configRef:
+              name: '{{ .params.CLUSTER_NAME }}-machine-deployment-1-0'
+              apiVersion: bootstrap.cluster.x-k8s.io/v1beta1
+              kind: EKSConfigTemplate
+          infrastructureRef:
+            name: '{{ .params.CLUSTER_NAME }}-machine-deployment-1-0'
+            apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+            kind: AWSMachineTemplate
+  - apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+    kind: Kustomization
+    metadata:
+      name: '{{ .params.CLUSTER_NAME }}-profiles-sops-key'
+      namespace: '{{ .params.NAMESPACE }}'
+    spec:
+      decryption:
+        provider: sops
+        secretRef:
+          name: wge-profiles-sops-gpg
+      interval: 10m
+      targetNamespace: flux-system
+      sourceRef:
+        kind: GitRepository
+        name: flux-system
+        namespace: flux-system
+      path: "./secrets/profiles"
+      prune: true
+      kubeConfig:
+        secretRef:
+          name: '{{ .params.CLUSTER_NAME }}-kubeconfig'
+  - apiVersion: iam.aws.crossplane.io/v1beta1
+    kind: Policy
+    metadata:
+      name: '{{ .params.CLUSTER_NAME }}-monitoring'
+      namespace: '{{ .params.NAMESPACE }}'
+    spec:
+      providerConfigRef:
+        name: '{{ .params.AWS_ACCOUNT_NAME }}-provider'
+      deletionPolicy: Delete
+      forProvider:
+        tags:
+        - key: managedBy
+          value: Weave GitOps Enterprise 
+        - key: createdBy
+          value: Crossplane 
+        - key: cluster
+          value: '{{ .params.CLUSTER_NAME }}'
+        description: "For flux kustomize-controller"
+        name: '{{ .params.CLUSTER_NAME }}-monitoring'
+        document: |
+          {
+              "Statement": [
+                  {
+                      "Action": [
+                          "s3:ListBucket",
+                          "s3:GetObject",
+                          "s3:DeleteObject",
+                          "s3:PutObject"
+                      ],
+                      "Effect": "Allow",
+                      "Resource": "*",
+                      "Sid": ""
+                  }
+              ],
+              "Version": "2012-10-17"
+          }
+  - apiVersion: iam.aws.crossplane.io/v1beta1
+    kind: Role
+    metadata:
+      name: '{{ .params.CLUSTER_NAME }}-monitoring'
+      namespace: '{{ .params.NAMESPACE }}'
+    spec:
+      providerConfigRef:
+        name: '{{ .params.AWS_ACCOUNT_NAME }}-provider'
+      forProvider:
+        tags:
+        - key: managedBy
+          value: Weave GitOps Enterprise 
+        - key: createdBy
+          value: Crossplane 
+        - key: cluster
+          value: '{{ .params.CLUSTER_NAME }}'
+        assumeRolePolicyDocument: |
+          {
+              "Version": "2012-10-17",
+              "Statement": [
+                  {
+                      "Sid": "",
+                      "Effect": "Allow",
+                      "Principal": {
+                          "Federated": "arn:aws:iam::{{if eq .params.AWS_ACCOUNT_NAME "test-1" }}22222{{ end }}{{if eq .params.AWS_ACCOUNT_NAME "test-2" }}33333{{ end }}:oidc-provider/oidc.eks.{{ .params.AWS_REGION }}.amazonaws.com/id/${EKS_CLUSTER_ID}"
+                      },
+                      "Action": "sts:AssumeRoleWithWebIdentity",
+                      "Condition": {
+                          "StringLike": {
+                              "oidc.eks.{{ .params.AWS_REGION }}.amazonaws.com/id/${EKS_CLUSTER_ID}:sub": [
+                                  "system:serviceaccount:*:weaveworks-prometheus-prometheus"
+                              ]
+                          }
+                      }
+                  }
+              ]
+          }
+  - apiVersion: iam.aws.crossplane.io/v1beta1
+    kind: RolePolicyAttachment
+    metadata:
+      name: '{{ .params.CLUSTER_NAME }}-monitoring'
+      namespace: '{{ .params.NAMESPACE }}'
+    spec:
+      providerConfigRef:
+        name: '{{ .params.AWS_ACCOUNT_NAME }}-provider'
+      forProvider:
+        policyArnRef:
+          name: '{{ .params.CLUSTER_NAME }}-monitoring'
+        roleNameRef:
+          name: '{{ .params.CLUSTER_NAME }}-monitoring'
+  - apiVersion: iam.aws.crossplane.io/v1beta1
+    kind: Policy
+    metadata:
+      name: '{{ .params.CLUSTER_NAME }}-thanos-compactor'
+      namespace: '{{ .params.NAMESPACE }}'
+    spec:
+      providerConfigRef:
+        name: '{{ .params.AWS_ACCOUNT_NAME }}-provider'
+      deletionPolicy: Delete
+      forProvider:
+        tags:
+        - key: managedBy
+          value: Weave GitOps Enterprise 
+        - key: createdBy
+          value: Crossplane 
+        - key: cluster
+          value: '{{ .params.CLUSTER_NAME }}' 
+        description: "For flux kustomize-controller"
+        name: '{{ .params.CLUSTER_NAME }}-thanos-compactor'
+        document: |
+          {
+              "Statement": [
+                  {
+                      "Action": [
+                          "s3:ListBucket",
+                          "s3:GetObject",
+                          "s3:DeleteObject",
+                          "s3:PutObject"
+                      ],
+                      "Effect": "Allow",
+                      "Resource": "*",
+                      "Sid": ""
+                  }
+              ],
+              "Version": "2012-10-17"
+          }
+  - apiVersion: iam.aws.crossplane.io/v1beta1
+    kind: Role
+    metadata:
+      name: '{{ .params.CLUSTER_NAME }}-thanos-compactor'
+      namespace: '{{ .params.NAMESPACE }}'
+    spec:
+      providerConfigRef:
+        name: '{{ .params.AWS_ACCOUNT_NAME }}-provider'
+      forProvider:
+        tags:
+        - key: managedBy
+          value: Weave GitOps Enterprise 
+        - key: createdBy
+          value: Crossplane 
+        - key: cluster
+          value: '{{ .params.CLUSTER_NAME }}'
+        assumeRolePolicyDocument: |
+          {
+              "Version": "2012-10-17",
+              "Statement": [
+                  {
+                      "Sid": "",
+                      "Effect": "Allow",
+                      "Principal": {
+                          "Federated": "arn:aws:iam::{{if eq .params.AWS_ACCOUNT_NAME "test-1" }}22222{{ end }}{{if eq .params.AWS_ACCOUNT_NAME "test-2" }}33333{{ end }}:oidc-provider/oidc.eks.{{ .params.AWS_REGION }}.amazonaws.com/id/${EKS_CLUSTER_ID}"
+                      },
+                      "Condition": {
+                          "StringLike": {
+                              "oidc.eks.{{ .params.AWS_REGION }}.amazonaws.com/id/${EKS_CLUSTER_ID}:sub": [
+                                  "system:serviceaccount:*prometheus-thanos-compactor"
+                              ]
+                          }
+                      },
+                      "Action": "sts:AssumeRoleWithWebIdentity"
+                  }
+              ]
+          }
+  - apiVersion: iam.aws.crossplane.io/v1beta1
+    kind: RolePolicyAttachment
+    metadata:
+      name: '{{ .params.CLUSTER_NAME }}-thanos-compactor'
+      namespace: '{{ .params.NAMESPACE }}'
+    spec:
+      providerConfigRef:
+        name: '{{ .params.AWS_ACCOUNT_NAME }}-provider'
+      forProvider:
+        policyArnRef:
+          name: '{{ .params.CLUSTER_NAME }}-thanos-compactor'
+        roleNameRef:
+          name: '{{ .params.CLUSTER_NAME }}-thanos-compactor'
+  - apiVersion: s3.aws.crossplane.io/v1beta1
+    kind: Bucket
+    metadata:
+      name: '{{ .params.CLUSTER_NAME }}-wge-thanos'
+      namespace: '{{ .params.NAMESPACE }}'
+    spec:
+      # Deletion gets stuck if data is in the bucket
+      deletionPolicy: Orphan
+      providerConfigRef:
+        name: '{{ .params.AWS_ACCOUNT_NAME }}-provider'
+      forProvider:
+        tagging:
+          tagSet:
+          - key: managedBy
+            value: Weave GitOps Enterprise 
+          - key: createdBy
+            value: Crossplane 
+          - key: cluster
+            value: '{{ .params.CLUSTER_NAME }}'
+        publicAccessBlockConfiguration:
+          blockPublicAcls: true
+          blockPublicPolicy: true
+          ignorePublicAcls: true
+          restrictPublicBuckets: true
+        locationConstraint: '{{ .params.AWS_REGION }}'
+        acl: private
+  - apiVersion: v1
+    stringData:
+      objstore.yml: |
+        type: S3
+        config:
+          bucket: {{ .params.CLUSTER_NAME }}-wge-thanos
+          region: {{ .params.AWS_REGION }}
+          endpoint: s3.{{ .params.AWS_REGION }}.amazonaws.com
+          aws_sdk_auth: false
+    kind: Secret
+    metadata:
+      name: '{{ .params.CLUSTER_NAME }}-thanos-storage-config'
+      namespace: monitoring
+      apiVersion: helm.toolkit.fluxcd.io/v2beta1
+  - kind: HelmRelease
+    metadata:
+      creationTimestamp: null
+      name: '{{ .params.CLUSTER_NAME }}-thanos'
+      namespace: monitoring
+      labels:
+        team: '{{ .params.TEAM }}'
+    spec:
+      chart:
+        spec:
+          chart: thanos
+          sourceRef:
+            kind: HelmRepository
+            name: weaveworks-charts
+            namespace: flux-system
+          version: 0.0.6
+      interval: 5m0s
+      values:
+        thanos:
+          existingObjstoreSecret: '{{ .params.CLUSTER_NAME }}-thanos-storage-config'
+          query:
+            enabled: true
+            extraVolumes:
+            - name: grpc-client-tls
+              secret:
+                defaultMode: 420
+                secretName: thanos-query-grpc-client
+            extraVolumeMounts:
+            - mountPath: /certs/client
+              name: grpc-client-tls
+            args:
+            - query
+            - --log.level=info
+            - --log.format=logfmt
+            - --grpc-address=0.0.0.0:10901
+            - --http-address=0.0.0.0:10902
+            - --query.replica-label=replica
+            - --grpc-client-tls-secure
+            - --grpc-client-server-name=thanos.{{ printf "%.*s" 22 .params.CLUSTER_NAME }}s.{{ .params.TEAM }}.{{ .params.AWS_ACCOUNT_NAME }}.w3ops.net
+            - --store=dns+thanos.{{ printf "%.*s" 22 .params.CLUSTER_NAME }}s.{{ .params.TEAM }}.{{ .params.AWS_ACCOUNT_NAME }}.w3ops.net:443
+            - --grpc-client-tls-cert=/certs/client/tls-cert
+            - --grpc-client-tls-key=/certs/client/tls-key
+            - --grpc-client-tls-ca=/certs/client/ca-cert
+            stores: ['dns+thanos.{{ printf "%.*s" 22 .params.CLUSTER_NAME }}s.{{ .params.TEAM }}.{{ .params.AWS_ACCOUNT_NAME }}.w3ops.net:443']
+          compactor:
+            enabled: false
+          queryFrontend:
+            enabled: false
+          storegateway:
+            enabled: true
+            grpc:
+              server:
+                tls:
+                  enabled: false
+                  autoGenerated: false
+            serviceAccount:
+              existingServiceAccount: '{{ .params.AWS_ACCOUNT_NAME }}-thanos-storegateway'
+              annotations:
+                eks.amazonaws.com/role-arn: arn:aws:iam::{{if eq .params.AWS_ACCOUNT_NAME "test-1" }}22222{{ end }}{{if eq .params.AWS_ACCOUNT_NAME "test-2" }}33333{{ end }}:role/wge-{{ .params.GITOPS_ENV }}_gitops-thanos
