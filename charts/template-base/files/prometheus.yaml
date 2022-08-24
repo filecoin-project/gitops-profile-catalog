@@ -1,0 +1,93 @@
+{{- $currentScope := . -}}
+{{- range $profile := .Values.requiredProfiles }}
+{{- if eq $profile.name "prometheus" }}
+{{- with $currentScope -}}
+- apiVersion: iam.aws.crossplane.io/v1beta1
+  kind: Policy
+  metadata:
+    name: '{{`{{ .params.CLUSTER_NAME }}`}}-monitoring'
+    namespace: '{{`{{ .params.NAMESPACE }}`}}'
+  spec:
+    providerConfigRef:
+      name: '{{`{{ .params.AWS_ACCOUNT_NAME }}`}}-provider'
+    deletionPolicy: Delete
+    forProvider:
+      tags:
+      - key: managedBy
+        value: Weave GitOps Enterprise 
+      - key: createdBy
+        value: Crossplane 
+      - key: cluster
+        value: '{{`{{ .params.CLUSTER_NAME }}`}}'
+      description: "For flux kustomize-controller"
+      name: '{{`{{ .params.CLUSTER_NAME }}`}}-monitoring'
+      document: |
+        {
+            "Statement": [
+                {
+                    "Action": [
+                        "s3:ListBucket",
+                        "s3:GetObject",
+                        "s3:DeleteObject",
+                        "s3:PutObject"
+                    ],
+                    "Effect": "Allow",
+                    "Resource": "*",
+                    "Sid": ""
+                }
+            ],
+            "Version": "2012-10-17"
+        }
+- apiVersion: iam.aws.crossplane.io/v1beta1
+  kind: Role
+  metadata:
+    name: '{{`{{ .params.CLUSTER_NAME }}`}}-monitoring'
+    namespace: '{{`{{ .params.NAMESPACE }}`}}'
+  spec:
+    providerConfigRef:
+      name: '{{`{{ .params.AWS_ACCOUNT_NAME }}`}}-provider'
+    forProvider:
+      tags:
+      - key: managedBy
+        value: Weave GitOps Enterprise 
+      - key: createdBy
+        value: Crossplane 
+      - key: cluster
+        value: '{{`{{ .params.CLUSTER_NAME }}`}}'
+      assumeRolePolicyDocument: |
+        {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Sid": "",
+                    "Effect": "Allow",
+                    "Principal": {
+                        "Federated": "arn:aws:iam::{{ template "template-base.accountID" . }}:oidc-provider/oidc.eks.{{`{{ .params.AWS_REGION }}`}}.amazonaws.com/id/${EKS_CLUSTER_ID}"
+                    },
+                    "Action": "sts:AssumeRoleWithWebIdentity",
+                    "Condition": {
+                        "StringLike": {
+                            "oidc.eks.{{`{{ .params.AWS_REGION }}`}}.amazonaws.com/id/${EKS_CLUSTER_ID}:sub": [
+                                "system:serviceaccount:*:weaveworks-prometheus-prometheus"
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+- apiVersion: iam.aws.crossplane.io/v1beta1
+  kind: RolePolicyAttachment
+  metadata:
+    name: '{{`{{ .params.CLUSTER_NAME }}`}}-monitoring'
+    namespace: '{{`{{ .params.NAMESPACE }}`}}'
+  spec:
+    providerConfigRef:
+      name: '{{`{{ .params.AWS_ACCOUNT_NAME }}`}}-provider'
+    forProvider:
+      policyArnRef:
+        name: '{{`{{ .params.CLUSTER_NAME }}`}}-monitoring'
+      roleNameRef:
+        name: '{{`{{ .params.CLUSTER_NAME }}`}}-monitoring'
+{{- end -}}
+{{- end -}}
+{{- end -}}

@@ -1,0 +1,33 @@
+- apiVersion: controlplane.cluster.x-k8s.io/v1beta1
+  kind: AWSManagedControlPlane
+  metadata:
+    name: '{{`{{ .params.CLUSTER_NAME }}`}}-control-plane'
+    namespace: '{{`{{ .params.NAMESPACE }}`}}'
+    annotations:
+      kustomize.toolkit.fluxcd.io/prune: disabled
+  spec:
+    region: '{{`{{ .params.AWS_REGION }}`}}'
+    sshKeyName: default
+    version: '{{`{{ .params.KUBERNETES_VERSION }}`}}'
+    eksClusterName: '{{`{{ .params.CLUSTER_NAME }}`}}'
+    iamAuthenticatorConfig:
+      mapRoles:
+        - username: system:node:{{"{{`{{EC2PrivateDNSName}}`}}"}}
+          rolearn: 'arn:aws:iam::{{ template "template-base.accountID" . }}:role/wge-{{`{{ .params.GITOPS_ENV }}`}}-{{`{{ .params.AWS_ACCOUNT_NAME }}`}}-node'
+          groups:
+            - "system:bootstrappers"
+            - "system:nodes"
+    associateOIDCProvider: true
+    oidcIdentityProviderConfig:
+      clientId: k8s-leaf-cluster-auth
+      identityProviderConfigName: '{{`{{ .params.CLUSTER_NAME }}`}}-oidc-provider'
+      issuerUrl: '{{`{{ if eq .params.GITOPS_ENV "prod" }}`}}https://auth.w3ops.net{{`{{ else }}`}}https://nonprod-auth.w3ops.net{{`{{ end }}`}}'
+      usernameClaim: email
+      groupsClaim: groups
+      tags:
+        managedBy: Weave GitOps Enterprise
+        createdBy: clusterapi 
+        cluster: '{{`{{ .params.CLUSTER_NAME }}`}}'
+    network:
+      vpc:
+        cidrBlock: 20.10.0.0/16

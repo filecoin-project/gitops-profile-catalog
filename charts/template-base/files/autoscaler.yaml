@@ -1,0 +1,42 @@
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    name:  '{{`{{ .params.CLUSTER_NAME }}`}}-cluster-autoscaler'
+    namespace: clusters
+    labels:
+      app: cluster-autoscaler
+  spec:
+    selector:
+      matchLabels:
+        app: cluster-autoscaler
+    replicas: 1
+    template:
+      metadata:
+        labels:
+          app: cluster-autoscaler
+      spec:
+        containers:
+        - image: k8s.gcr.io/autoscaling/cluster-autoscaler:v1.23.0
+          name: cluster-autoscaler
+          volumeMounts:
+            - name: kubeconfig
+              mountPath: "/etc/workload-kubeconfig"
+              readOnly: true
+          command:
+          - /cluster-autoscaler
+          args:
+          - --cloud-provider=clusterapi
+          - --kubeconfig=/etc/workload-kubeconfig/value
+          - --clusterapi-cloud-config-authoritative
+          - --node-group-auto-discovery=clusterapi:clusterName={{`{{ .params.CLUSTER_NAME }}`}}
+          - --balance-similar-node-groups
+        serviceAccountName: cluster-autoscaler
+        terminationGracePeriodSeconds: 10
+        tolerations:
+        - effect: NoSchedule
+          key: node-role.kubernetes.io/master
+        volumes:
+        - name: kubeconfig
+          secret:
+            defaultMode: 420
+            secretName: '{{`{{ .params.CLUSTER_NAME }}`}}-kubeconfig'

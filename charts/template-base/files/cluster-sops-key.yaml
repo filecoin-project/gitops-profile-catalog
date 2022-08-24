@@ -1,0 +1,23 @@
+{{- if eq .Values.secretsEngine "sops" }}
+- apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+  kind: Kustomization
+  metadata:
+    name: '{{`{{ .params.CLUSTER_NAME }}`}}-cluster-sops-key'
+    namespace: '{{`{{ .params.NAMESPACE }}`}}'
+  spec:
+    decryption:
+      provider: sops
+      secretRef:
+        name: wge-{{`{{ .params.GITOPS_ENV }}`}}-sops-gpg
+    interval: 10m
+    targetNamespace: flux-system
+    sourceRef:
+      kind: GitRepository
+      name: flux-system
+      namespace: flux-system
+    path: "./secrets/{{`{{ .params.NAMESPACE }}`}}/{{`{{ .params.CLUSTER_NAME }}`}}"
+    prune: true
+    kubeConfig:
+      secretRef:
+        name: '{{`{{ .params.CLUSTER_NAME }}`}}-kubeconfig'
+{{- end }}

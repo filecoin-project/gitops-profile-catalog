@@ -1,0 +1,192 @@
+{{- $currentScope := . -}}
+{{- range $profile := .Values.requiredProfiles }}
+{{- if eq $profile.name "prometheus" }}
+{{- with $currentScope -}}
+- apiVersion: iam.aws.crossplane.io/v1beta1
+  kind: Policy
+  metadata:
+    name: '{{`{{ .params.CLUSTER_NAME }}`}}-thanos-compactor'
+    namespace: '{{`{{ .params.NAMESPACE }}`}}'
+  spec:
+    providerConfigRef:
+      name: '{{`{{ .params.AWS_ACCOUNT_NAME }}`}}-provider'
+    deletionPolicy: Delete
+    forProvider:
+      tags:
+      - key: managedBy
+        value: Weave GitOps Enterprise 
+      - key: createdBy
+        value: Crossplane 
+      - key: cluster
+        value: '{{`{{ .params.CLUSTER_NAME }}`}}' 
+      description: "For flux kustomize-controller"
+      name: '{{`{{ .params.CLUSTER_NAME }}`}}-thanos-compactor'
+      document: |
+        {
+            "Statement": [
+                {
+                    "Action": [
+                        "s3:ListBucket",
+                        "s3:GetObject",
+                        "s3:DeleteObject",
+                        "s3:PutObject"
+                    ],
+                    "Effect": "Allow",
+                    "Resource": "*",
+                    "Sid": ""
+                }
+            ],
+            "Version": "2012-10-17"
+        }
+- apiVersion: iam.aws.crossplane.io/v1beta1
+  kind: Role
+  metadata:
+    name: '{{`{{ .params.CLUSTER_NAME }}`}}-thanos-compactor'
+    namespace: '{{`{{ .params.NAMESPACE }}`}}'
+  spec:
+    providerConfigRef:
+      name: '{{`{{ .params.AWS_ACCOUNT_NAME }}`}}-provider'
+    forProvider:
+      tags:
+      - key: managedBy
+        value: Weave GitOps Enterprise 
+      - key: createdBy
+        value: Crossplane 
+      - key: cluster
+        value: '{{`{{ .params.CLUSTER_NAME }}`}}'
+      assumeRolePolicyDocument: |
+        {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Sid": "",
+                    "Effect": "Allow",
+                    "Principal": {
+                        "Federated": "arn:aws:iam::{{ template "template-base.accountID" . }}:oidc-provider/oidc.eks.{{`{{ .params.AWS_REGION }}`}}.amazonaws.com/id/${EKS_CLUSTER_ID}"
+                    },
+                    "Condition": {
+                        "StringLike": {
+                            "oidc.eks.{{`{{ .params.AWS_REGION }}`}}.amazonaws.com/id/${EKS_CLUSTER_ID}:sub": [
+                                "system:serviceaccount:*prometheus-thanos-compactor"
+                            ]
+                        }
+                    },
+                    "Action": "sts:AssumeRoleWithWebIdentity"
+                }
+            ]
+        }
+- apiVersion: iam.aws.crossplane.io/v1beta1
+  kind: RolePolicyAttachment
+  metadata:
+    name: '{{`{{ .params.CLUSTER_NAME }}`}}-thanos-compactor'
+    namespace: '{{`{{ .params.NAMESPACE }}`}}'
+  spec:
+    providerConfigRef:
+      name: '{{`{{ .params.AWS_ACCOUNT_NAME }}`}}-provider'
+    forProvider:
+      policyArnRef:
+        name: '{{`{{ .params.CLUSTER_NAME }}`}}-thanos-compactor'
+      roleNameRef:
+        name: '{{`{{ .params.CLUSTER_NAME }}`}}-thanos-compactor'
+- apiVersion: s3.aws.crossplane.io/v1beta1
+  kind: Bucket
+  metadata:
+    name: '{{`{{ .params.CLUSTER_NAME }}`}}-wge-thanos'
+    namespace: '{{`{{ .params.NAMESPACE }}`}}'
+  spec:
+    # Deletion gets stuck if data is in the bucket
+    deletionPolicy: Orphan
+    providerConfigRef:
+      name: '{{`{{ .params.AWS_ACCOUNT_NAME }}`}}-provider'
+    forProvider:
+      tagging:
+        tagSet:
+        - key: managedBy
+          value: Weave GitOps Enterprise 
+        - key: createdBy
+          value: Crossplane 
+        - key: cluster
+          value: '{{`{{ .params.CLUSTER_NAME }}`}}'
+      publicAccessBlockConfiguration:
+        blockPublicAcls: true
+        blockPublicPolicy: true
+        ignorePublicAcls: true
+        restrictPublicBuckets: true
+      locationConstraint: '{{`{{ .params.AWS_REGION }}`}}'
+      acl: private
+- apiVersion: v1
+  stringData:
+    objstore.yml: |
+      type: S3
+      config:
+        bucket: {{`{{ .params.CLUSTER_NAME }}`}}-wge-thanos
+        region: {{`{{ .params.AWS_REGION }}`}}
+        endpoint: s3.{{`{{ .params.AWS_REGION }}`}}.amazonaws.com
+        aws_sdk_auth: false
+  kind: Secret
+  metadata:
+    name: '{{`{{ .params.CLUSTER_NAME }}`}}-thanos-storage-config'
+    namespace: monitoring
+    apiVersion: helm.toolkit.fluxcd.io/v2beta1
+- kind: HelmRelease
+  metadata:
+    creationTimestamp: null
+    name: '{{`{{ .params.CLUSTER_NAME }}`}}-thanos'
+    namespace: monitoring
+    labels:
+      team: '{{`{{ .params.TEAM }}`}}'
+  spec:
+    chart:
+      spec:
+        chart: thanos
+        sourceRef:
+          kind: HelmRepository
+          name: weaveworks-charts
+          namespace: flux-system
+        version: 0.0.6
+    interval: 5m0s
+    values:
+      thanos:
+        existingObjstoreSecret: '{{`{{ .params.CLUSTER_NAME }}`}}-thanos-storage-config'
+        query:
+          enabled: true
+          extraVolumes:
+          - name: grpc-client-tls
+            secret:
+              defaultMode: 420
+              secretName: thanos-query-grpc-client
+          extraVolumeMounts:
+          - mountPath: /certs/client
+            name: grpc-client-tls
+          args:
+          - query
+          - --log.level=info
+          - --log.format=logfmt
+          - --grpc-address=0.0.0.0:10901
+          - --http-address=0.0.0.0:10902
+          - --query.replica-label=replica
+          - --grpc-client-tls-secure
+          - --grpc-client-server-name=thanos.{{`{{ printf "%.*s" 22 .params.CLUSTER_NAME }}`}}s.{{`{{ .params.TEAM }}`}}.{{`{{ .params.AWS_ACCOUNT_NAME }}`}}.w3ops.net
+          - --store=dns+thanos.{{`{{ printf "%.*s" 22 .params.CLUSTER_NAME }}`}}s.{{`{{ .params.TEAM }}`}}.{{`{{ .params.AWS_ACCOUNT_NAME }}`}}.w3ops.net:443
+          - --grpc-client-tls-cert=/certs/client/tls-cert
+          - --grpc-client-tls-key=/certs/client/tls-key
+          - --grpc-client-tls-ca=/certs/client/ca-cert
+          stores: ['dns+thanos.{{`{{ printf "%.*s" 22 .params.CLUSTER_NAME }}`}}s.{{`{{ .params.TEAM }}`}}.{{`{{ .params.AWS_ACCOUNT_NAME }}`}}.w3ops.net:443']
+        compactor:
+          enabled: false
+        queryFrontend:
+          enabled: false
+        storegateway:
+          enabled: true
+          grpc:
+            server:
+              tls:
+                enabled: false
+                autoGenerated: false
+          serviceAccount:
+            existingServiceAccount: '{{`{{ .params.AWS_ACCOUNT_NAME }}`}}-thanos-storegateway'
+            annotations:
+              eks.amazonaws.com/role-arn: arn:aws:iam::{{ template "template-base.accountID" . }}:role/wge-{{`{{ .params.GITOPS_ENV }}`}}_gitops-thanos
+{{- end -}}
+{{- end -}}
+{{- end -}}

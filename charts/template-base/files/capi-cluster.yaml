@@ -1,0 +1,20 @@
+- apiVersion: cluster.x-k8s.io/v1beta1
+  kind: Cluster
+  metadata:
+    name: '{{`{{ .params.CLUSTER_NAME }}`}}'
+    namespace: '{{`{{ .params.NAMESPACE }}`}}'
+    labels:
+      weave.works/capi: '{{`{{ .params.CLUSTER_NAME }}`}}-bootstrap-v3'
+  spec:
+    clusterNetwork:
+      pods:
+        cidrBlocks:
+        - 192.168.0.0/16
+    controlPlaneRef:
+      apiVersion: controlplane.cluster.x-k8s.io/v1beta1
+      kind: AWSManagedControlPlane
+      name: '{{`{{ .params.CLUSTER_NAME }}`}}-control-plane'
+    infrastructureRef:
+      apiVersion: controlplane.cluster.x-k8s.io/v1beta1
+      kind: AWSManagedControlPlane
+      name: '{{`{{ .params.CLUSTER_NAME }}`}}-control-plane'

@@ -1,0 +1,10 @@
+- apiVersion: gitops.weave.works/v1alpha1
+  kind: GitopsCluster
+  metadata:
+    name: '{{`{{ .params.CLUSTER_NAME }}`}}'
+    namespace: '{{`{{ .params.NAMESPACE }}`}}'
+    labels:
+      weave.works/capi: '{{`{{ .params.CLUSTER_NAME }}`}}-bootstrap-v3'
+  spec:
+    capiClusterRef:
+      name: '{{`{{ .params.CLUSTER_NAME }}`}}'
