@@ -1,7 +1,7 @@
-# This manifest represents a CAPITemplate that will be displayed in the WGE UI 
+# This manifest represents a CAPITemplate that will be displayed in the WGE UI
 # Management will be in gitops-profile caatalog and the consumed in gitops-root
 # All selectable values displayed in the WGE UI to generate a template
- 
+
 # K8s version applied to the leafcluster
 kubernetesVersionOptions:
 - "v1.22.6"
@@ -9,61 +9,61 @@ kubernetesVersionOptions:
 namespaceOptions:
 - clusters
 
-# Name of template 
+# Name of template
 name: template
 description: An AWS EKS template that creates a cluster
 
 # An array of NodeGroups that are available for selection in the UI
 nodeGroups:
 - name: 0
-  type: MachineDeployment #Only MachineDeployment supported today (Pending MachinePool)
-  maxOptions: ["1","2","3","4","5","6","7","8","9","10","15","25","30"]
-  minOptions: ["0","1"]
-  availabilityZones: ["a","b","c"]
-  instanceTypeOptions: 
-  - "t3.large" 
-  - "t3.xlarge" 
+  type: MachineDeployment   # Only MachineDeployment supported today (Pending MachinePool)
+  maxOptions: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "15", "25", "30"]
+  minOptions: ["0", "1"]
+  availabilityZones: ["a", "b", "c"]
+  instanceTypeOptions:
+  - "t3.large"
+  - "t3.xlarge"
   - "m5a.large"
-  - "m5a.xlarge" 
-  - "m5a.2xlarge" 
-  - "c5a.xlarge" 
-  - "c5a.2xlarge" 
-  - "c5a.4xlarge" 
-  - "t3.2xlarge" 
+  - "m5a.xlarge"
+  - "m5a.2xlarge"
+  - "c5a.xlarge"
+  - "c5a.2xlarge"
+  - "c5a.4xlarge"
+  - "t3.2xlarge"
   - "r5.8xlarge"
 - name: 1
-  type: MachineDeployment #Only MachineDeployment supported today (Pending MachinePool)
-  maxOptions: ["1","2","3","4","5","6","7","8","9","10","15","25","30"]
-  minOptions: ["0","1"]
-  availabilityZones: ["a","b","c"]
-  instanceTypeOptions: 
-  - "t3.large" 
-  - "t3.xlarge" 
+  type: MachineDeployment   # Only MachineDeployment supported today (Pending MachinePool)
+  maxOptions: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "15", "25", "30"]
+  minOptions: ["0", "1"]
+  availabilityZones: ["a", "b", "c"]
+  instanceTypeOptions:
+  - "t3.large"
+  - "t3.xlarge"
   - "m5a.large"
-  - "m5a.xlarge" 
-  - "m5a.2xlarge" 
-  - "c5a.xlarge" 
-  - "c5a.2xlarge" 
-  - "c5a.4xlarge" 
-  - "t3.2xlarge" 
+  - "m5a.xlarge"
+  - "m5a.2xlarge"
+  - "c5a.xlarge"
+  - "c5a.2xlarge"
+  - "c5a.4xlarge"
+  - "t3.2xlarge"
   - "r5.8xlarge"
 
 
 regionOptions:
-- "us-east-2" 
-- "us-west-2" 
-- "eu-west-1" 
-- "ap-northeast-1" 
-- "ap-southeast-2" 
+- "us-east-2"
+- "us-west-2"
+- "eu-west-1"
+- "ap-northeast-1"
+- "ap-southeast-2"
 - "sa-east-1"
 
 
 # Teams are mapped to DNS values
 teamOptions:
 - "netops"
-- "sti" 
-- "fil-infra" 
-- "sentinel" 
+- "sti"
+- "fil-infra"
+- "sentinel"
 - "bedrock"
 
 
@@ -105,4 +105,3 @@ requiredProfiles:
 
 
 gitopsEnv: nonprod
-
