@@ -37,11 +37,6 @@ spec:
       {{- range $val := .Values.teamOptions }}
       - {{ $val }}
       {{- end }}
-    - name: GITOPS_ENV
-      description: The GitOps environment
-      required: true
-      options:
-      - {{ .Values.gitopsEnv }}
     - name: AWS_REGION
       description: Region for cluster
       required: true

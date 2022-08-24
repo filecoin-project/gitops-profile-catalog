@@ -186,7 +186,7 @@
           serviceAccount:
             existingServiceAccount: '{{`{{ .params.AWS_ACCOUNT_NAME }}`}}-thanos-storegateway'
             annotations:
-              eks.amazonaws.com/role-arn: arn:aws:iam::{{ template "template-base.accountID" . }}:role/wge-{{ .Values.gitopsEnv }}_gitops-thanos
+              eks.amazonaws.com/role-arn: arn:aws:iam::{{ template "template-base.accountID" . }}:role/wge-{{ .Values.environment }}_gitops-thanos
 {{- end -}}
 {{- end -}}
 {{- end -}}

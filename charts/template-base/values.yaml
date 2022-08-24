@@ -104,5 +104,6 @@ requiredProfiles:
   version: 0.0.5
 
 
-gitopsEnv: nonprod
+
+environment: nonprod
 oidcURL: https://nonprod-auth.w3ops.net
