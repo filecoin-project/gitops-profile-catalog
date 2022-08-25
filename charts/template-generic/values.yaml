@@ -136,7 +136,7 @@ requiredProfiles:
    \ compactor:\\n
    \  serviceAccount:\\n
    \    annotations:\\n
-   \      eks.amazonaws.com/role-arn: arn:aws:iam::{{ template \"template-base.accountIDAnnotation\" . }}:role/{{`{{ .params.CLUSTER_NAME }}`}}--thanos-compactor\\n
+   \      eks.amazonaws.com/role-arn: arn:aws:iam::{{ template \"template-base.accountIDAnnotation\" . }}:role/{{`{{ .params.CLUSTER_NAME }}`}}-thanos-compactor\\n
    thanos-bucket-config:\\n
    \ region: {{`{{ .params.AWS_REGION }}`}}\\n
    \ clusterName: {{`{{ .params.CLUSTER_NAME }}`}}\n
