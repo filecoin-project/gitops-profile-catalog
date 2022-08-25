@@ -79,32 +79,88 @@ template-base:
   # valid values "sops" or "kms" (pending support)
   secretsEngine: sops
 
-  requiredProfiles:
-  - name: k8s-rbac-permissions
-    version: 0.0.8
-    values: 'adminGroups:\n- org: filecoin-project\n  team: bedrock-go\n- org: filecoin-project\n  team: Weaveworks\n- org: filecoin-project\n  team: infra'
-  - name: external-dns
-    version: 0.0.9
-    values: 'external-dns:\n  serviceAccount:\n    annotations:\n      eks.amazonaws.com/role-arn: arn:aws:iam::{{ template "template-base.accountID" . }}:role/{{ or (.params).CLUSTER_NAME "test-cluster" }}-external-dns'
-  - name: cert-manager
-    version: 2.0.1
-    values: 'cert-manager:\n  serviceAccount:\n    annotations:\n      eks.amazonaws.com/role-arn: arn:aws:iam::{{ template "template-base.accountID" . }}:role/{{ or (.params).CLUSTER_NAME "test-cluster" }}-cert-manager'
-  - name: cert-manager-issuer
-    version: 0.0.4
-  - name: ebs-csi-controller
-    version: 0.0.3
-    values: 'aws-ebs-csi-driver:\n   controller:\n    serviceAccount:\n      annotations:\n        eks.amazonaws.com/role-arn: arn:aws:iam::{{ template "template-base.accountID" . }}:role/{{ or (.params).CLUSTER_NAME "test-cluster" }}-ebs-csi-controller'
-  - name: aws-node-term-handler
-    version: 0.0.1
-  - name: aws-load-balancer-controller
-    version: 0.0.2
-    values: 'aws-load-balancer-controller:\n  serviceAccount:\n    annotations:\n      eks.amazonaws.com/role-arn: arn:aws:iam::{{ template "template-base.accountID" . }}:role/{{ or (.params).CLUSTER_NAME "test-cluster" }}-aws-load-balancer-controller'
-  - name: prometheus
-    version: 1.1.8
-    values: 'kube-prometheus-stack:\n  prometheus:\n    serviceAccount:\n      annotations:\neks.amazonaws.com/role-arn: arn:aws:iam::{{ template "template-base.accountID" . }}:role/{{ or (.params).CLUSTER_NAME "test-cluster" }}-monitoring\nthanos:  compactor:\n    serviceAccount:\n      annotations:\n        eks.amazonaws.com/role-arn: arn:aws:iam::{{ template "template-base.accountID" . }}:role/{{ or (.params).CLUSTER_NAME "test-cluster" }}-thanos-compactor'
-  - name: ingress-nginx
-    version: 0.0.12
-  - name: policy-agent
-    version: 0.2.11
-  - name: promtail
-    version: 0.0.6
+requiredProfiles:
+- name: k8s-rbac-permissions
+  version: 0.0.8
+  values: "\
+   adminGroups:\\n
+   - org: filecoin-project\\n
+  \  team: bedrock-go\\n
+   - org: filecoin-project\\n
+  \  team: infra\\n
+   - org: filecoin-project\\n
+  \  team: Sentinel\\n
+   - org: filecoin-project\\n
+  \  team: Weaveworks
+   "
+- name: external-dns
+  version: 0.0.9
+  values: "\
+   external-dns:\\n
+   \ txtOwnerId: {{`{{ .params.CLUSTER_NAME }}`}}\\n
+   \ serviceAccount:\\n
+   \  annotations:\\n
+   \    eks.amazonaws.com/role-arn: arn:aws:iam::{{ template \"template-base.accountIDAnnotation\" . }}:role/{{`{{ .params.CLUSTER_NAME }}`}}-external-dns
+   "
+- name: cert-manager
+  version: 2.0.1
+  values: "\
+   cert-manager:\\n
+   \ serviceAccount:\\n
+   \  annotations:\\n
+   \    eks.amazonaws.com/role-arn: arn:aws:iam::{{ template \"template-base.accountIDAnnotation\" . }}:role/{{`{{ .params.CLUSTER_NAME }}`}}-cert-manager
+   "
+- name: cert-manager-issuer
+  version: 0.0.4
+- name: ebs-csi-controller
+  version: 0.0.3
+  values: "\
+   cert-manager:\\n
+   \ serviceAccount:\\n
+   \  annotations:\\n
+   \    eks.amazonaws.com/role-arn: arn:aws:iam::{{ template \"template-base.accountIDAnnotation\" . }}:role/{{`{{ .params.CLUSTER_NAME }}`}}-cert-manager
+   "
+- name: aws-node-term-handler
+  version: 0.0.1
+- name: aws-load-balancer-controller
+  version: 0.0.2
+  values: "\
+   aws-load-balancer-controller:\\n
+   \ clusterName: {{`{{ .params.CLUSTER_NAME }}`}}\\n
+   \ serviceAccount:\\n
+   \  annotations:\\n
+   \    eks.amazonaws.com/role-arn: arn:aws:iam::{{ template \"template-base.accountIDAnnotation\" . }}:role/{{`{{ .params.CLUSTER_NAME }}`}}-aws-load-balancer-controller
+   "
+- name: prometheus
+  version: 1.1.8
+  values: "\
+   \ kube-prometheus-stack:\\n
+   \ prometheus:\\n
+   \  prometheusSpec:\\n
+   \    externalLabels:\\n
+   \      cluster: {{`{{ .params.CLUSTER_NAME }}`}}\\n
+   \  serviceAccount:\\n
+   \    annotations:\\n
+   \      eks.amazonaws.com/role-arn: arn:aws:iam::{{ template \"template-base.accountIDAnnotation\" . }}:role/{{`{{ .params.CLUSTER_NAME }}`}}-monitoring\\n
+   \  thanosIngress:\\n
+   \    hosts:\\n
+   \    - thanos.{{`{{ .params.CLUSTER_NAME }}`}}s.{{`{{ .params.TEAM }}`}}.{{`{{ .params.AWS_ACCOUNT_NAME }}`}}.w3ops.net\\n
+   \    tls:\\n
+   \    - secretName: thanos-sidecar-tls\\n
+   \      hosts:\\n
+   \      - thanos.{{`{{ .params.CLUSTER_NAME }}`}}s.{{`{{ .params.TEAM }}`}}.{{`{{ .params.AWS_ACCOUNT_NAME }}`}}.w3ops.net\\n
+   thanos:\\n
+   \ compactor:\\n
+   \  serviceAccount:\\n
+   \    annotations:\\n
+   \      eks.amazonaws.com/role-arn: arn:aws:iam::{{ template \"template-base.accountIDAnnotation\" . }}:role/{{`{{ .params.CLUSTER_NAME }}`}}--thanos-compactor\\n
+   thanos-bucket-config:\\n
+   \ region: {{`{{ .params.AWS_REGION }}`}}\\n
+   \ clusterName: {{`{{ .params.CLUSTER_NAME }}`}}\n
+   "
+- name: ingress-nginx
+  version: 0.0.12
+- name: policy-agent
+  version: 0.2.11
+- name: promtail
+  version: 0.0.7
