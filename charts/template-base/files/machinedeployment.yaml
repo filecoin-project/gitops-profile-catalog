@@ -13,7 +13,7 @@
 - apiVersion: bootstrap.cluster.x-k8s.io/v1beta1
   kind: EKSConfigTemplate
   metadata:
-    name: '{{`{{ .params.CLUSTER_NAME }}`}}-machine-deployment-{{ $nodeGroup.name }}-0'
+    name: '{{`{{ .params.CLUSTER_NAME }}`}}-machine-deployment-{{ $nodeGroup.name }}'
   spec:
     template: {}
 {{- range $key,$az := $nodeGroup.availabilityZones }}
@@ -42,11 +42,11 @@
         failureDomain: '{{`{{ .params.AWS_REGION }}`}}{{ $az }}'
         bootstrap:
           configRef:
-            name: '{{`{{ .params.CLUSTER_NAME }}`}}-machine-deployment-{{ $nodeGroup.name }}-0'
+            name: '{{`{{ .params.CLUSTER_NAME }}`}}-machine-deployment-{{ $nodeGroup.name }}'
             apiVersion: bootstrap.cluster.x-k8s.io/v1beta1
             kind: EKSConfigTemplate
         infrastructureRef:
-          name: '{{`{{ .params.CLUSTER_NAME }}`}}-machine-deployment-{{ $nodeGroup.name }}-0'
+          name: '{{`{{ .params.CLUSTER_NAME }}`}}-machine-deployment-{{ $nodeGroup.name }}'
           apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
           kind: AWSMachineTemplate
 {{- end }}
