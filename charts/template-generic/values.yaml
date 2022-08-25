@@ -92,7 +92,7 @@ template-base:
   - name: cert-manager-issuer
     version: 0.0.4
   - name: ebs-csi-controller
-    version: 0.0.2
+    version: 0.0.3
     values: 'aws-ebs-csi-driver:\n   controller:\n    serviceAccount:\n      annotations:\n        eks.amazonaws.com/role-arn: arn:aws:iam::{{ template "template-base.accountID" . }}:role/{{ or (.params).CLUSTER_NAME "test-cluster" }}-ebs-csi-controller'
   - name: aws-node-term-handler
     version: 0.0.1
