@@ -10,6 +10,38 @@ entries:
       weave.works/operator: "true"
       weave.works/profile: aws-ebs-csi-driver
     apiVersion: v2
+    created: "2022-08-25T13:14:37.09505266Z"
+    dependencies:
+    - name: aws-ebs-csi-driver
+      repository: https://kubernetes-sigs.github.io/aws-ebs-csi-driver
+      version: 2.6.7
+    description: A Weaveworks Helm chart for the aws ebs csi driver
+    digest: c9633fec813f8756a396a0ae2526f1b15fba7438895328a7a8cec91e06006140
+    home: https://github.com/weaveworks/profiles-catalog
+    icon: https://raw.githubusercontent.com/aws-ebs-csi-driver/aws-ebs-csi-driver.github.io/master/assets/aws-ebs-csi-driver_logo-cb55bb5c346.png
+    keywords:
+    - operator
+    - aws-ebs-csi-driver
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: aws-ebs-csi-driver
+    sources:
+    - https://kubernetes-sigs.github.io/aws-ebs-csi-driver
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/aws-ebs-csi-driver-0.0.3/aws-ebs-csi-driver-0.0.3.tgz
+    version: 0.0.3
+  - annotations:
+      weave.works/category: eks
+      weave.works/layer: layer-1
+      weave.works/links: |
+        - name: Chart Sources
+          url: https://kubernetes-sigs.github.io/aws-ebs-csi-driver
+      weave.works/operator: "true"
+      weave.works/profile: aws-ebs-csi-driver
+    apiVersion: v2
     created: "2022-05-16T18:06:56.988218783Z"
     dependencies:
     - name: aws-ebs-csi-driver
@@ -5616,6 +5648,28 @@ entries:
     version: 0.0.1
   template-generic:
   - apiVersion: v2
+    created: "2022-08-25T13:14:37.395046179Z"
+    dependencies:
+    - name: template-base
+      repository: file://../template-base
+      version: 0.1.1
+    description: A Weaveworks Helm chart for template-generic
+    digest: 0600f24fb9b6256127966cf4b3f70e42e0b42e1f52923f551d3c0bde93fcfbea
+    home: https://github.com/weaveworks/profiles-catalog
+    keywords:
+    - template-generic
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: template-generic
+    sources:
+    - https://github.com/filecoin-project/template-generic-infra
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/template-generic-0.1.3/template-generic-0.1.3.tgz
+    version: 0.1.3
+  - apiVersion: v2
     created: "2022-08-24T21:32:55.183158479Z"
     dependencies:
     - name: template-base
@@ -6258,4 +6312,4 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/velero-0.0.1/velero-0.0.1.tgz
     version: 0.0.1
-generated: "2022-08-24T21:32:55.183864085Z"
+generated: "2022-08-25T13:14:37.395650215Z"
