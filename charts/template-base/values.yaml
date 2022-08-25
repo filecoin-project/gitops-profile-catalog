@@ -112,7 +112,7 @@ requiredProfiles:
 - name: cert-manager-issuer
   version: 0.0.4
 - name: ebs-csi-controller
-  version: 0.0.2
+  version: 0.0.3
   values: "\
    cert-manager:\\n
    \ serviceAccount:\\n
@@ -133,7 +133,7 @@ requiredProfiles:
 - name: prometheus
   version: 1.1.8
   values: "\
-   kube-prometheus-stack:\\n
+   \ kube-prometheus-stack:\\n
    \ prometheus:\\n
    \  prometheusSpec:\\n
    \    externalLabels:\\n
@@ -155,14 +155,14 @@ requiredProfiles:
    \      eks.amazonaws.com/role-arn: arn:aws:iam::{{ template \"template-base.accountIDAnnotation\" . }}:role/{{`{{ .params.CLUSTER_NAME }}`}}--thanos-compactor\\n
    thanos-bucket-config:\\n
    \ region: {{`{{ .params.AWS_REGION }}`}}\\n
-   \ clusterName: {{`{{ .params.CLUSTER_NAME }}`}}
+   \ clusterName: {{`{{ .params.CLUSTER_NAME }}`}}\n
    "
 - name: ingress-nginx
   version: 0.0.12
 - name: policy-agent
   version: 0.2.11
-# - name: promtail
-#   version: 0.0.5
+- name: promtail
+  version: 0.0.6
 
 environment: nonprod
 oidcURL: https://nonprod-auth.w3ops.net
