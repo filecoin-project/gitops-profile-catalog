@@ -32,23 +32,6 @@ template-base:
     - "c5a.4xlarge"
     - "t3.2xlarge"
     - "r5.8xlarge"
-  - name: 1
-    type: MachineDeployment   # Only MachineDeployment supported today (Pending MachinePool)
-    maxOptions: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "15", "25", "30"]
-    minOptions: ["0", "1"]
-    availabilityZones: ["a", "b", "c"]
-    instanceTypeOptions:
-    - "t3.large"
-    - "t3.xlarge"
-    - "m5a.large"
-    - "m5a.xlarge"
-    - "m5a.2xlarge"
-    - "c5a.xlarge"
-    - "c5a.2xlarge"
-    - "c5a.4xlarge"
-    - "t3.2xlarge"
-    - "r5.8xlarge"
-
 
   regionOptions:
   - "us-east-2"

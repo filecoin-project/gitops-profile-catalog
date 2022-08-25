@@ -27,8 +27,6 @@
       cluster.x-k8s.io/cluster-api-autoscaler-node-group-max-size: "{{`{{ .params.MAX_NODES_NODEGROUP_`}}{{ $nodeGroup.name }} }}"
       kustomize.toolkit.fluxcd.io/prune: disabled
     clusterName: '{{`{{ .params.CLUSTER_NAME }}`}}'
-    selector:
-      matchLabels:
     template:
       metadata:
         labels:
