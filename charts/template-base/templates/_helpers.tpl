@@ -75,15 +75,24 @@ Allow the release namespace to be overridden for multi-namespace deployments in 
 
 {{- define "recurseFlattenMap" -}}
 {{- $map := first . -}}
-{{- $depth := last . -}}
+{{- $label := last . -}}
 {{- range $key, $val := $map -}}
-{{- if and $val (kindIs "slice" $val ) }}
-{{- $key -}}:\n-{{- list $val ($depth = add1 $depth) | include "recurseFlattenMap" -}}
-{{- else -}}
-{{- $key -}}: {{- $val -}}\n
-{{ end }}
+{{ $key }}:
+{{- if kindOf $val | eq "slice" -}}
+{{- range $subKey, $subVal := $val -}}
+\n{{ $subVal }} is an array
 {{- end -}}
-{{- end -}} 
+{{- else -}}
+{{ end -}}
+{{- end -}}
+{{- end -}}
+
+
+{{- define "template-base.accountIDAnnotation" -}}
+{{- range $key, $val := $.Values.awsAccountOptions -}}
+{{`{{`}}{{ printf " if eq .params.AWS_ACCOUNT_NAME" }} \"{{ printf "%s" $val.name }}\" {{`}}`}}{{ $val.id }}{{`{{ end }}`}}
+{{- end }}
+{{- end }}
 
 
 {{- define "template-base.accountID" -}}
