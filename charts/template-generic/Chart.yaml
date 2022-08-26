@@ -2,7 +2,7 @@ apiVersion: v2
 name: template-generic
 description: A Weaveworks Helm chart for template-generic
 type: application
-version: 0.1.10
+version: 0.1.11
 kubeVersion: ">=1.16.0-0"
 home: https://github.com/weaveworks/profiles-catalog
 sources:

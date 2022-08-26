@@ -98,10 +98,11 @@ requiredProfiles:
 - name: ebs-csi-controller
   version: 0.0.3
   values: "\
-   cert-manager:\\n
-   \ serviceAccount:\\n
-   \  annotations:\\n
-   \    eks.amazonaws.com/role-arn: arn:aws:iam::{{ template \"template-base.accountIDAnnotation\" . }}:role/{{`{{ .params.CLUSTER_NAME }}`}}-cert-manager
+   ebs-csi-controller:\\n
+   \ controller:\\n
+   \  serviceAccount:\\n
+   \    annotations\\n
+   \       eks.amazonaws.com/role-arn: arn:aws:iam::{{ template \"template-base.accountIDAnnotation\" . }}:role/{{`{{ .params.CLUSTER_NAME }}`}}-cert-manager
    "
 - name: aws-node-term-handler
   version: 0.0.1
