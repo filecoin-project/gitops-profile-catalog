@@ -7,5 +7,5 @@
   volumeBindingMode: WaitForFirstConsumer
   parameters:
     type: io2
-    iopsPerGB: {{ .Values.storageClass.size }}
+    iopsPerGB: {{ .Values.storageClass.iopsPerGB}}
 {{- end }}

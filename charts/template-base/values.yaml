@@ -80,7 +80,7 @@ secretsEngine: sops
 
 # valid values "io2"
 storageClass: 
-  size: 
+  iopsPerGB:
 
 requiredProfiles:
 - name: k8s-rbac-permissions
