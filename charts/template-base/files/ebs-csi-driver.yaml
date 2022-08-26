@@ -1,6 +1,6 @@
 {{- $currentScope := . -}}
 {{- range $profile := .Values.requiredProfiles }}
-{{- if eq $profile.name "ebs-csi-driver" }}
+{{- if eq $profile.name "aws-ebs-csi-driver" }}
 {{- with $currentScope -}}
 - apiVersion: iam.aws.crossplane.io/v1beta1
   kind: Policy
