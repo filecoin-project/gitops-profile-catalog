@@ -1,0 +1,11 @@
+{{- if eq .Values.storageClass "io2" }}
+- kind: StorageClass
+  apiVersion: storage.k8s.io/v1
+  metadata:
+    name: io2
+  provisioner: ebs.csi.aws.com
+  volumeBindingMode: WaitForFirstConsumer
+  parameters:
+    type: io2
+    iopsPerGB: {{ .Values.storageClass.size }}
+{{- end }}

@@ -78,6 +78,10 @@ awsAccountOptions:
 # valid values "sops" or "kms" (pending support)
 secretsEngine: sops
 
+# valid values "io2"
+storageClass: 
+  size: 
+
 requiredProfiles:
 - name: k8s-rbac-permissions
   version: 0.0.8
