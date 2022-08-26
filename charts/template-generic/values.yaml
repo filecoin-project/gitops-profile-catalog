@@ -95,14 +95,14 @@ requiredProfiles:
    "
 - name: cert-manager-issuer
   version: 0.0.4
-- name: ebs-csi-controller
+- name: aws-ebs-csi-driver
   version: 0.0.3
   values: "\
-   ebs-csi-controller:\\n
+   aws-ebs-csi-driver:\\n
    \ controller:\\n
    \  serviceAccount:\\n
    \    annotations\\n
-   \       eks.amazonaws.com/role-arn: arn:aws:iam::{{ template \"template-base.accountIDAnnotation\" . }}:role/{{`{{ .params.CLUSTER_NAME }}`}}-cert-manager
+   \       eks.amazonaws.com/role-arn: arn:aws:iam::{{ template \"template-base.accountIDAnnotation\" . }}:role/{{`{{ .params.CLUSTER_NAME }}`}}-ebs-csi-driver
    "
 - name: aws-node-term-handler
   version: 0.0.1

@@ -1,11 +1,11 @@
 {{- $currentScope := . -}}
 {{- range $profile := .Values.requiredProfiles }}
-{{- if eq $profile.name "ebs-csi-controller" }}
+{{- if eq $profile.name "ebs-csi-driver" }}
 {{- with $currentScope -}}
 - apiVersion: iam.aws.crossplane.io/v1beta1
   kind: Policy
   metadata:
-    name: '{{`{{ .params.CLUSTER_NAME }}`}}-ebs-csi-controller'
+    name: '{{`{{ .params.CLUSTER_NAME }}`}}-ebs-csi-driver'
     namespace: '{{`{{ .params.NAMESPACE }}`}}'
   spec:
     providerConfigRef:
@@ -20,7 +20,7 @@
       - key: cluster
         value: '{{`{{ .params.CLUSTER_NAME }}`}}'
       description: "For flux kustomize-controller"
-      name: '{{`{{ .params.CLUSTER_NAME }}`}}-ebs-csi-controller'
+      name: '{{`{{ .params.CLUSTER_NAME }}`}}-ebs-csi-driver'
       document: |
         {
             "Version": "2012-10-17",
@@ -170,7 +170,7 @@
 - apiVersion: iam.aws.crossplane.io/v1beta1
   kind: Role
   metadata:
-    name: '{{`{{ .params.CLUSTER_NAME }}`}}-ebs-csi-controller'
+    name: '{{`{{ .params.CLUSTER_NAME }}`}}-ebs-csi-driver'
     namespace: '{{`{{ .params.NAMESPACE }}`}}'
   spec:
     providerConfigRef:
@@ -197,7 +197,7 @@
                     "Condition": {
                         "StringEquals": {
                             "oidc.eks.{{`{{ .params.AWS_REGION }}`}}.amazonaws.com/id/${EKS_CLUSTER_ID}:sub": [
-                                "system:serviceaccount:flux-system:ebs-csi-controller-sa"
+                                "system:serviceaccount:flux-system:ebs-csi-driver-sa"
                             ]
                         }
                     }
@@ -207,16 +207,16 @@
 - apiVersion: iam.aws.crossplane.io/v1beta1
   kind: RolePolicyAttachment
   metadata:
-    name: '{{`{{ .params.CLUSTER_NAME }}`}}-ebs-csi-controller'
+    name: '{{`{{ .params.CLUSTER_NAME }}`}}-ebs-csi-driver'
     namespace: '{{`{{ .params.NAMESPACE }}`}}'
   spec:
     providerConfigRef:
       name: '{{`{{ .params.AWS_ACCOUNT_NAME }}`}}-provider'
     forProvider:
       policyArnRef:
-        name: '{{`{{ .params.CLUSTER_NAME }}`}}-ebs-csi-controller'
+        name: '{{`{{ .params.CLUSTER_NAME }}`}}-ebs-csi-driver'
       roleNameRef:
-        name: '{{`{{ .params.CLUSTER_NAME }}`}}-ebs-csi-controller'
+        name: '{{`{{ .params.CLUSTER_NAME }}`}}-ebs-csi-driver'
 {{- end -}}
 {{- end -}}
 {{- end -}}
