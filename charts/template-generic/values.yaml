@@ -2,11 +2,10 @@
 # Management will be in gitops-profile caatalog and the consumed in gitops-root
 # All selectable values displayed in the WGE UI to generate a template
 
-flux:
-  noCrossNamespaceRefs:
-    enabled: true
-
 template-base:
+  flux:
+    noCrossNamespaceRefs:
+      enabled: true
   kubernetesVersionOptions:
   - "v1.22.6"
 

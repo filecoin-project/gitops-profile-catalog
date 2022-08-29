@@ -20,9 +20,7 @@
               [
                 "install",
                 "--components-extra=image-reflector-controller,image-automation-controller",
-                "--export",
-                ">",
-                "/etc/manifests/flux.yaml"
+                "--export>/etc/manifests/flux.yaml",
               ]
             volumeMounts:
               - name: flux-export
