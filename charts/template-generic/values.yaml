@@ -7,8 +7,6 @@ flux:
   noCrossNamespaceRefs:
     enabled: true
 
-
-
 template-base:
   kubernetesVersionOptions:
   - "v1.22.6"

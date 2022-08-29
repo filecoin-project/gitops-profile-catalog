@@ -7,7 +7,7 @@ flux:
     image: ghcr.io/fluxcd/flux-cli:v0.30.2
   noCrossNamespaceRefs:
     enabled: false
-  
+
 wgePostDeploymentRenderer:
   enabled: true
   # Needs to be moved to Weaveworks or filecoin
