@@ -16,12 +16,7 @@
           - image: {{ .Values.flux.cli.image }}
             imagePullPolicy: Always
             name: flux-install-export
-            args:
-              [
-                "install",
-                "--components-extra=image-reflector-controller,image-automation-controller",
-                "--export>/etc/manifests/flux.yaml",
-              ]
+            command: ['sh', '-c', '/usr/local/bin/flux install --components-extra=image-reflector-controller,image-automation-controller --export > /etc/manifests/flux.yaml']
             volumeMounts:
               - name: flux-export
                 mountPath: "/etc/manifests"
