@@ -122,7 +122,6 @@ requiredProfiles:
    "
 - name: cert-manager-issuer
   version: 0.0.4
-  editable: true
 - name: aws-ebs-csi-driver
   version: 0.0.3
   values: "\

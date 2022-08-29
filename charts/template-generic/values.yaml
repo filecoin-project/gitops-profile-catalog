@@ -73,6 +73,7 @@ template-base:
 requiredProfiles:
 - name: k8s-rbac-permissions
   version: 0.0.8
+  editable: true
   values: "\
    adminGroups:\\n
    - org: filecoin-project\\n
