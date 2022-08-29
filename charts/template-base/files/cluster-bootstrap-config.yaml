@@ -20,7 +20,6 @@
               [
                 "install",
                 "--components-extra=image-reflector-controller,image-automation-controller",
-                "--manifests=/etc/manifests/",
                 "--export",
                 ">",
                 "/etc/manifests/flux.yaml"
