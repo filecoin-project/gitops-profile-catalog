@@ -12,8 +12,9 @@
       spec:
         imagePullSecrets:
         - name: ghcr-image
+        {{- if or (.Values.wgePostDeploymentRenderer.enabled) (.Values.flux.noCrossNamespaceRefs.enabled) }}
         initContainers:
-          - image: ghcr.io/steve-fraser/wge-post-deployment-template-renderer:0.1.2
+          - image: {{ .Values.wgePostDeploymentRenderer.version }}
             imagePullPolicy: Always
             name: configure-permissions
             # Secret should container GITHUB_TOKEN or GITLAB_TOKEN
@@ -35,8 +36,9 @@
                 value: https://raw.githubusercontent.com/steve-fraser/wge-post-deployment-template-renderer/main/aws/get-cluster-id.sh
               - name: CLUSTER_NAME
                 value: '{{`{{ .params.CLUSTER_NAME }}`}}'
+        {{- end }}
         containers:
-          - image: ghcr.io/fluxcd/flux-cli:v0.30.2
+          - image: {{ .Values.flux.cli.image }}
             name: flux-bootstrap
             resources: {}
             volumeMounts:
