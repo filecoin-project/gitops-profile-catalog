@@ -4,7 +4,7 @@
 
 flux:
   cli:
-    image: ghcr.io/fluxcd/flux-cli:v0.30.2
+    image: ghcr.io/fluxcd/flux-cli:v0.32.0
   noCrossNamespaceRefs:
     enabled: false
 
