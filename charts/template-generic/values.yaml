@@ -4,8 +4,6 @@
 
 # K8s version applied to the leafcluster
 flux: 
-  cli:
-    image: ghcr.io/fluxcd/flux-cli:v0.30.2
   noCrossNamespaceRefs:
     enabled: true
 
