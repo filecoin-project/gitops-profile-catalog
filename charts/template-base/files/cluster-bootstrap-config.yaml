@@ -45,6 +45,9 @@
               - name: kubeconfig
                 mountPath: "/etc/gitops"
                 readOnly: true
+              - name: manifests
+                mountPath: "/etc/manifests"
+                readOnly: true
             args:
               [
                 "bootstrap",
@@ -55,7 +58,8 @@
                 "--repository=$(GITOPS_REPO_NAME)",
                 '--path=clusters/{{`{{ .params.NAMESPACE }}`}}/{{`{{ .params.CLUSTER_NAME }}`}}',
                 "--components-extra=image-reflector-controller,image-automation-controller",
-                '--branch=main'
+                '--branch=main',
+                "--manifests=/etc/manifests/"
               ]
             # Secret should container GITHUB_TOKEN or GITLAB_TOKEN
             envFrom:
@@ -79,6 +83,9 @@
           - name: kubeconfig
             secret:
               secretName: "{{`{{ .params.CLUSTER_NAME }}`}}-kubeconfig"
+          - name: manifests
+            configMap:
+              name: "{{`{{ .params.CLUSTER_NAME }}`}}-flux-manifests"
 - apiVersion: rbac.authorization.k8s.io/v1
   kind: RoleBinding
   metadata:
