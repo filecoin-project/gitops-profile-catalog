@@ -2,7 +2,17 @@
 # Management will be in gitops-profile caatalog and the consumed in gitops-root
 # All selectable values displayed in the WGE UI to generate a template
 
-# K8s version applied to the leafcluster
+flux:
+  cli:
+    image: ghcr.io/fluxcd/flux-cli:v0.30.2
+  noCrossNamespaceRefs:
+    enabled: false
+
+wgePostDeploymentRenderer:
+  enabled: true
+  # Needs to be moved to Weaveworks or filecoin
+  image: ghcr.io/steve-fraser/wge-post-deployment-template-renderer:0.1.2
+
 kubernetesVersionOptions:
 - "v1.22.6"
 
@@ -81,6 +91,7 @@ secretsEngine: sops
 requiredProfiles:
 - name: k8s-rbac-permissions
   version: 0.0.8
+  editable: true
   values: "\
    adminGroups:\\n
    - org: filecoin-project\\n

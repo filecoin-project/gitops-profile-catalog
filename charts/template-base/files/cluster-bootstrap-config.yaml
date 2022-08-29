@@ -12,8 +12,9 @@
       spec:
         imagePullSecrets:
         - name: ghcr-image
+        {{- if or (.Values.wgePostDeploymentRenderer.enabled) (.Values.flux.noCrossNamespaceRefs.enabled) }}
         initContainers:
-          - image: ghcr.io/steve-fraser/wge-post-deployment-template-renderer:0.1.2
+          - image: {{ .Values.wgePostDeploymentRenderer.image }}
             imagePullPolicy: Always
             name: configure-permissions
             # Secret should container GITHUB_TOKEN or GITLAB_TOKEN
@@ -35,13 +36,17 @@
                 value: https://raw.githubusercontent.com/steve-fraser/wge-post-deployment-template-renderer/main/aws/get-cluster-id.sh
               - name: CLUSTER_NAME
                 value: '{{`{{ .params.CLUSTER_NAME }}`}}'
+        {{- end }}
         containers:
-          - image: ghcr.io/fluxcd/flux-cli:v0.30.2
+          - image: {{ .Values.flux.cli.image }}
             name: flux-bootstrap
             resources: {}
             volumeMounts:
               - name: kubeconfig
                 mountPath: "/etc/gitops"
+                readOnly: true
+              - name: manifests
+                mountPath: "/etc/manifests"
                 readOnly: true
             args:
               [
@@ -53,7 +58,8 @@
                 "--repository=$(GITOPS_REPO_NAME)",
                 '--path=clusters/{{`{{ .params.NAMESPACE }}`}}/{{`{{ .params.CLUSTER_NAME }}`}}',
                 "--components-extra=image-reflector-controller,image-automation-controller",
-                '--branch=main'
+                '--branch=main',
+                "--manifests=/etc/manifests/"
               ]
             # Secret should container GITHUB_TOKEN or GITLAB_TOKEN
             envFrom:
@@ -77,6 +83,9 @@
           - name: kubeconfig
             secret:
               secretName: "{{`{{ .params.CLUSTER_NAME }}`}}-kubeconfig"
+          - name: manifests
+            configMap:
+              name: "{{`{{ .params.CLUSTER_NAME }}`}}-flux-manifests"
 - apiVersion: rbac.authorization.k8s.io/v1
   kind: RoleBinding
   metadata:
