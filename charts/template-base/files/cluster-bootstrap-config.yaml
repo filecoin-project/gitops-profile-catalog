@@ -25,9 +25,9 @@
                 "/etc/manifests/flux.yaml"
               ]
             volumeMounts:
-              - name: manifests
+              - name: flux-export
                 mountPath: "/etc/manifests"
-                readOnly: true
+                readOnly: false
           {{- if .Values.wgePostDeploymentRenderer.enabled}}
           - image: {{ .Values.wgePostDeploymentRenderer.image }}
             imagePullPolicy: Always
@@ -60,9 +60,13 @@
               - name: kubeconfig
                 mountPath: "/etc/gitops"
                 readOnly: true
-              - name: manifests
+              - name: flux-export
                 mountPath: "/etc/manifests"
-                readOnly: true
+                readOnly: false
+              - name: flux-kustomization
+                mountPath: "/etc/manifests/kustomization.yaml"
+                readOnly: false
+                subPath: kustomization.yaml
             args:
               [
                 "bootstrap",
@@ -98,9 +102,11 @@
           - name: kubeconfig
             secret:
               secretName: "{{`{{ .params.CLUSTER_NAME }}`}}-kubeconfig"
-          - name: manifests
+          - name: flux-kustomization
             configMap:
               name: "{{`{{ .params.CLUSTER_NAME }}`}}-flux-manifests"
+          - name: flux-export
+            emptyDir: {}
 - apiVersion: rbac.authorization.k8s.io/v1
   kind: RoleBinding
   metadata:
