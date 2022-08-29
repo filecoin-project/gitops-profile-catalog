@@ -12,8 +12,23 @@
       spec:
         imagePullSecrets:
         - name: ghcr-image
-        {{- if or (.Values.wgePostDeploymentRenderer.enabled) (.Values.flux.noCrossNamespaceRefs.enabled) }}
         initContainers:
+          - image: {{ .Values.flux.cli.image }}
+            imagePullPolicy: Always
+            name: flux-install-export
+            args:
+              [
+                "install",
+                "--components-extra=image-reflector-controller,image-automation-controller",
+                "--export",
+                ">",
+                "/etc/manifests/flux.yaml"
+              ]
+            volumeMounts:
+              - name: manifests
+                mountPath: "/etc/manifests"
+                readOnly: true
+          {{- if .Values.wgePostDeploymentRenderer.enabled}}
           - image: {{ .Values.wgePostDeploymentRenderer.image }}
             imagePullPolicy: Always
             name: configure-permissions
@@ -36,7 +51,7 @@
                 value: https://raw.githubusercontent.com/steve-fraser/wge-post-deployment-template-renderer/main/aws/get-cluster-id.sh
               - name: CLUSTER_NAME
                 value: '{{`{{ .params.CLUSTER_NAME }}`}}'
-        {{- end }}
+          {{- end }}
         containers:
           - image: {{ .Values.flux.cli.image }}
             name: flux-bootstrap
