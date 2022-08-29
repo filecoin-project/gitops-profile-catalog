@@ -14,7 +14,7 @@
         - name: ghcr-image
         {{- if or (.Values.wgePostDeploymentRenderer.enabled) (.Values.flux.noCrossNamespaceRefs.enabled) }}
         initContainers:
-          - image: {{ .Values.wgePostDeploymentRenderer.version }}
+          - image: {{ .Values.wgePostDeploymentRenderer.image }}
             imagePullPolicy: Always
             name: configure-permissions
             # Secret should container GITHUB_TOKEN or GITLAB_TOKEN
