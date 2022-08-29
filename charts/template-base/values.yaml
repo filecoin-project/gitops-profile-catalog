@@ -2,7 +2,7 @@
 # Management will be in gitops-profile caatalog and the consumed in gitops-root
 # All selectable values displayed in the WGE UI to generate a template
 
-flux: 
+flux:
   cli:
     image: ghcr.io/fluxcd/flux-cli:v0.30.2
   noCrossNamespaceRefs:
