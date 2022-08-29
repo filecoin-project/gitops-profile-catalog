@@ -6,9 +6,9 @@ flux:
   cli:
     image: ghcr.io/fluxcd/flux-cli:v0.30.2
   noCrossNamespaceRefs:
-    enabled: true
+    enabled: false
   
-wgePostDeploymentRenderer: 
+wgePostDeploymentRenderer:
   enabled: true
   # Needs to be moved to Weaveworks or filecoin
   image: ghcr.io/steve-fraser/wge-post-deployment-template-renderer:0.1.2
