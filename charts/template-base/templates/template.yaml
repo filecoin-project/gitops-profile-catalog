@@ -6,7 +6,7 @@ metadata:
   annotations:
   {{- $currentScope := . -}}
   {{- range $key,$profile := .Values.requiredProfiles }}
-    {{ with $currentScope }}capi.weave.works/profile-{{ $key }}: '{"name": "{{ $profile.name }}", "version": "{{ $profile.version }}"{{if $profile.editable }},"editable": {{ $profile.editable }}{{ end }}{{if ($profile.values) }},"values": "{{ tpl $profile.values . }}"{{ end }}}'{{ end }}
+    {{ with $currentScope }}capi.weave.works/profile-{{ $key }}: '{"name": "{{ $profile.name }}", "version": "{{ $profile.version }}"{{if $profile.editable }},"editable": {{ $profile.editable }}{{ end }}{{if $profile.values }},"values": "{{ tpl $profile.values . }}"{{ end }}}'{{ end }}
   {{- end }}
   labels:
     {{- include "template-base.labels" . | nindent 4 }}     

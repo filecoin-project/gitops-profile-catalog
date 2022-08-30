@@ -97,4 +97,3 @@ template-base:
     \    eks.amazonaws.com/role-arn: arn:aws:iam::{{ template \"template-base.accountIDAnnotation\" . }}:role/{{`{{ .params.CLUSTER_NAME }}`}}-cert-manager"
   - name: cert-manager-issuer
     version: 0.0.4
-    values: "test: val"
