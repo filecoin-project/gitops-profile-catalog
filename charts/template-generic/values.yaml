@@ -2,10 +2,11 @@
 # Management will be in gitops-profile caatalog and the consumed in gitops-root
 # All selectable values displayed in the WGE UI to generate a template
 
+flux:
+  noCrossNamespaceRefs:
+    enabled: true
+
 template-base:
-  flux:
-    noCrossNamespaceRefs:
-      enabled: true
   kubernetesVersionOptions:
   - "v1.22.6"
 
@@ -143,7 +144,7 @@ requiredProfiles:
    \      eks.amazonaws.com/role-arn: arn:aws:iam::{{ template \"template-base.accountIDAnnotation\" . }}:role/{{`{{ .params.CLUSTER_NAME }}`}}-thanos-compactor\\n
    thanos-bucket-config:\\n
    \ region: {{`{{ .params.AWS_REGION }}`}}\\n
-   \ clusterName: {{`{{ .params.CLUSTER_NAME }}`}}\n
+   \ clusterName: {{`{{ .params.CLUSTER_NAME }}`}}
    "
 - name: ingress-nginx
   version: 0.0.12
