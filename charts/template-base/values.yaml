@@ -167,7 +167,7 @@ requiredProfiles:
    \      eks.amazonaws.com/role-arn: arn:aws:iam::{{ template \"template-base.accountIDAnnotation\" . }}:role/{{`{{ .params.CLUSTER_NAME }}`}}-thanos-compactor\\n
    thanos-bucket-config:\\n
    \ region: {{`{{ .params.AWS_REGION }}`}}\\n
-   \ clusterName: {{`{{ .params.CLUSTER_NAME }}`}}\n
+   \ clusterName: {{`{{ .params.CLUSTER_NAME }}`}}
    "
 - name: ingress-nginx
   version: 0.0.12
