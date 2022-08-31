@@ -15,7 +15,7 @@
       kind: GitRepository
       name: flux-system
       namespace: flux-system
-    path: "./secrets/{{`{{ .params.NAMESPACE }}`}}/{{`{{ .params.CLUSTER_NAME }}`}}"
+    path: "./secrets/{{`{{ .params.NAMESPACE }}`}}/wge-{{ .Values.environment }}/{{`{{ .params.CLUSTER_NAME }}`}}"
     prune: true
     kubeConfig:
       secretRef:
