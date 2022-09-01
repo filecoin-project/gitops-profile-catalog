@@ -148,6 +148,6 @@ template-base:
   - name: ingress-nginx
     version: 0.0.12
   - name: policy-agent
-    version: 0.2.11
+    version: 1.0.1
   - name: promtail
     version: 0.0.7
