@@ -2855,6 +2855,43 @@ entries:
         - "gke"
         - "kind"
     apiVersion: v2
+    created: "2022-09-01T12:00:17.858455025Z"
+    dependencies:
+    - name: weave-policy-agent
+      repository: https://weaveworks.github.io/profiles-catalog/
+      version: 0.5.0
+    - name: flux-application
+      repository: file://../flux-application
+      version: 0.3.0
+    description: A Weaveworks Helm chart for Kubernetes to configure the policy agent
+    digest: fdcb396a6fd1cbdcf1e03290d95151081bbf70639d51ae81b149edf183e8f865
+    home: https://github.com/weaveworks/profiles-catalog
+    icon: https://www.magalix.com/hubfs/Imported%20images/logo-02.png%3Fwidth=560%26name=logo-02-Dec-18-2020-11-24-41-75-AM.png
+    keywords:
+    - policy
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: policy-agent
+    sources:
+    - https://github.com/weaveworks/policy-agent
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/policy-agent-1.0.1/policy-agent-1.0.1.tgz
+    version: 1.0.1
+  - annotations:
+      weave.works/category: Policy
+      weave.works/layer: layer-1
+      weave.works/links: |
+        - name: Upstream Project
+          url: https://github.com/weaveworks/policy-agent
+      weave.works/operator: "true"
+      weave.works/profile: policy-agent
+      weave.works/profile-ci: |
+        - "gke"
+        - "kind"
+    apiVersion: v2
     appVersion: "1.0"
     created: "2022-07-26T18:43:48.807626905Z"
     description: A Weaveworks Helm chart for Kubernetes to configure the policy agent
@@ -7301,4 +7338,4 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/velero-0.0.1/velero-0.0.1.tgz
     version: 0.0.1
-generated: "2022-09-01T11:42:55.563066297Z"
+generated: "2022-09-01T12:00:17.859195225Z"
