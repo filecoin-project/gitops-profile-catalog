@@ -5995,6 +5995,28 @@ entries:
     version: 0.0.1
   template-generic:
   - apiVersion: v2
+    created: "2022-09-01T11:42:55.279582114Z"
+    dependencies:
+    - name: template-base
+      repository: file://../template-base
+      version: 0.2.7
+    description: A Weaveworks Helm chart for template-generic
+    digest: 77cec51c5d3a87c0644fc171e97a5b4c119ec186d589d688c4356a28ca98c95b
+    home: https://github.com/weaveworks/profiles-catalog
+    keywords:
+    - template-generic
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: template-generic
+    sources:
+    - https://github.com/filecoin-project/template-generic-infra
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/template-generic-0.2.15/template-generic-0.2.15.tgz
+    version: 0.2.15
+  - apiVersion: v2
     created: "2022-08-31T16:34:11.730176451Z"
     dependencies:
     - name: template-base
@@ -6733,6 +6755,41 @@ entries:
         - "gke"
         - "kind"
     apiVersion: v2
+    created: "2022-09-01T11:42:55.561598902Z"
+    dependencies:
+    - condition: tf-controller.enabled
+      name: tf-controller
+      repository: https://weaveworks.github.io/tf-controller/
+      version: 0.5.3
+    description: A Weaveworks Helm chart for tf-controller
+    digest: 810a7ccd639ba184efdb8a9595754cc5edc69ca88e5564bde1dc4e4e374455ce
+    home: https://github.com/weaveworks/profiles-catalog
+    keywords:
+    - terraform
+    - gitops
+    kubeVersion: '>=1.17.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: tf-controller
+    sources:
+    - https://github.com/weaveworks/tf-controller
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/tf-controller-0.0.5/tf-controller-0.0.5.tgz
+    version: 0.0.5
+  - annotations:
+      weave.works/links: |
+        - name: Chart Sources
+          url: https://github.com/weaveworks/tf-controller
+        - name: Upstream Project
+          url: https://github.com/weaveworks/tf-controller
+      weave.works/operator: "true"
+      weave.works/profile: tf-controller
+      weave.works/profile-ci: |
+        - "gke"
+        - "kind"
+    apiVersion: v2
     created: "2022-08-26T13:29:49.456591638Z"
     dependencies:
     - condition: tf-controller.enabled
@@ -7244,4 +7301,4 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/velero-0.0.1/velero-0.0.1.tgz
     version: 0.0.1
-generated: "2022-08-31T16:34:11.731019637Z"
+generated: "2022-09-01T11:42:55.563066297Z"
