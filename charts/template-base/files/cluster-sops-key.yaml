@@ -10,7 +10,6 @@
       secretRef:
         name: wge-{{ .Values.environment }}-sops-gpg
     interval: 10m
-    targetNamespace: flux-system
     sourceRef:
       kind: GitRepository
       name: flux-system
