@@ -104,3 +104,15 @@
             ],
             "Version": "2012-10-17"
         }
+- apiVersion: iam.aws.crossplane.io/v1beta1
+  kind: RolePolicyAttachment
+  metadata:
+    name: '{{`{{ .params.CLUSTER_NAME }}`}}-kustomize-controller'
+  spec:
+    providerConfigRef:
+      name: '{{ .params.AWS_ACCOUNT_NAME }}-provider'
+    forProvider:
+      policyArnRef:
+        name: '{{`{{ .params.CLUSTER_NAME }}`}}-kustomize-controller'
+      roleNameRef:
+        name: '{{`{{ .params.CLUSTER_NAME }}`}}-kustomize-controller'
