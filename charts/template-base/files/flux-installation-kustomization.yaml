@@ -27,6 +27,16 @@
           target:
             kind: Kustomization
             name: "flux-system"
+        - patch: |
+            apiVersion: v1
+            kind: ServiceAccount
+            metadata:
+              name: kustomize-controller
+              annotations:
+                eks.amazonaws.com/role-arn: arn:aws:iam::{{ template "template-base.accountID" . }}:role/{{`{{ .params.CLUSTER_NAME }}`}}-kustomize-controller
+          target:
+            kind: ServiceAccount
+            name: kustomize-controller
   kind: ConfigMap
   metadata:
     creationTimestamp: null
