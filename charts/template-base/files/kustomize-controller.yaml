@@ -70,41 +70,6 @@
             ]
         }
 - apiVersion: iam.aws.crossplane.io/v1beta1
-  kind: Policy
-  metadata:
-    name: '{{`{{ .params.CLUSTER_NAME }}`}}-kustomize-controller'
-  spec:
-    providerConfigRef:
-      name: '{{`{{ .params.AWS_ACCOUNT_NAME }}`}}-provider'
-    deletionPolicy: Delete
-    forProvider:
-      tags:
-      - key: managedBy
-        value: Weave GitOps Enterprise 
-      - key: createdBy
-        value: Crossplane 
-      - key: cluster
-        value: '{{`{{ .params.CLUSTER_NAME }}`}}'
-      description: "For flux kustomize-controller"
-      name: '{{`{{ .params.CLUSTER_NAME }}`}}-kustomize-controller'
-      document: |
-        {
-            "Statement": [
-                {
-                    "Action": [
-                        "kms:DescribeKey",
-                        "kms:Decrypt"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": [
-                        "*"
-                    ],
-                    "Sid": ""
-                }
-            ],
-            "Version": "2012-10-17"
-        }
-- apiVersion: iam.aws.crossplane.io/v1beta1
   kind: RolePolicyAttachment
   metadata:
     name: '{{`{{ .params.CLUSTER_NAME }}`}}-kustomize-controller'
