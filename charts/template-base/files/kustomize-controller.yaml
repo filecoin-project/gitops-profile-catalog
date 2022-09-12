@@ -72,10 +72,10 @@
 - apiVersion: iam.aws.crossplane.io/v1beta1
   kind: Policy
   metadata:
-    name: '{{ .params.CLUSTER_NAME }}-kustomize-controller'
+    name: '{{`{{ .params.CLUSTER_NAME }}`}}-kustomize-controller'
   spec:
     providerConfigRef:
-      name: '{{ .params.AWS_ACCOUNT_NAME }}-provider'
+      name: '{{`{{ .params.AWS_ACCOUNT_NAME }}`}}-provider'
     deletionPolicy: Delete
     forProvider:
       tags:
@@ -84,9 +84,9 @@
       - key: createdBy
         value: Crossplane 
       - key: cluster
-        value: '{{ .params.CLUSTER_NAME }}'
+        value: '{{`{{ .params.CLUSTER_NAME }}`}}'
       description: "For flux kustomize-controller"
-      name: '{{ .params.CLUSTER_NAME }}-kustomize-controller'
+      name: '{{`{{ .params.CLUSTER_NAME }}`}}-kustomize-controller'
       document: |
         {
             "Statement": [
