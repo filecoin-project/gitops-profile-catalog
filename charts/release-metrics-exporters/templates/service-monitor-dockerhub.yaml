@@ -6,7 +6,7 @@ metadata:
     name: dockerhub-exporter
 spec:
   endpoints:
-  - interval:
+  - interval: 10m
     port: metrics
     path: {{ .Values.dockerhub.metricsPath }}
   namespaceSelector:

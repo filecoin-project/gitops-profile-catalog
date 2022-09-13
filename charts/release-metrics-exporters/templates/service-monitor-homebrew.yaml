@@ -6,7 +6,7 @@ metadata:
     name: homebrew-exporter
 spec:
   endpoints:
-  - interval:
+  - interval: 1d
     port: metrics
     path: {{ .Values.homebrew.metricsPath }}
   namespaceSelector:

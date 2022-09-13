@@ -6,7 +6,7 @@ metadata:
     name: snapcraft-exporter
 spec:
   endpoints:
-  - interval:
+  - interval: 10m
     port: metrics
     path: {{ .Values.snapcraft.metricsPath }}
   namespaceSelector:
