@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: github-exporter
+  labels:
+    app: github-exporter
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: github-exporter
+  template:
+    metadata:
+      labels:
+        app: github-exporter
+    spec:
+      containers:
+      - name: github-exporter
+        image: infinityworks/github-exporter:latest
+        ports:
+        - containerPort: {{ .Values.github.listenPort }}
+        env:
+        - name: ORGS # If supplied, the exporter will enumerate all repositories for that organization. Expected in the format "org1, org2".
+          value:
+            {{ range $i, $org := .Values.github.orgs }}
+              {{if $i}}, {{end}}
+              {{$org}}
+            {{end}}
+        - name: REPOS # If supplied, The repos you wish to monitor, expected in the format "user/repo1, user/repo2". Can be across different Github users/orgs.
+          value:
+            {{ range $i, $repo := .Values.github.repos }}
+              {{if $i}}, {{end}}
+              {{$repo}}
+            {{end}}
+        - name: USERS # If supplied, the exporter will enumerate all repositories for that users. Expected in the format "user1, user2".
+          value:
+            {{ range $i, $user := .Values.github.users }}
+              {{if $i}}, {{end}}
+              {{$user}}
+            {{end}}
+        - name: API_URL # Github API URL, shouldn't need to change this. Defaults to https://api.github.com
+          value: {{ .Values.github.apiUrl }}
+        - name: LISTEN_PORT # The port you wish to run the container on, defaults this to 9171
+          value: {{ .Values.github.listenPort }}
+        - name: METRICS_PATH # the metrics URL path you wish to use, defaults to /metrics
+          value: {{ .Values.github.metricsPath }}
+        - name: LOG_LEVEL # The level of logging the exporter will run with, defaults to debug
+          value: {{ .Values.github.logLevel }}
+        - name: GITHUB_TOKEN # If supplied, enables the user to supply a github authentication token that allows the API to be queried more often. Optional, but recommended.
+          valueFrom:
+            secretKeyRef:
+              name: github
+              key: token
+              optional: true

@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: homebrew-exporter
+  labels:
+    app: homebrew-exporter
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: homebrew-exporter
+  template:
+    metadata:
+      labels:
+        app: homebrew-exporter
+    spec:
+      containers:
+      - name: homebrew-exporter
+        image: filecoin-project/homebrew-exporter:latest
+        ports:
+        - containerPort: {{ .Values.homebrew.listenPort }}
+        env:
+        - name: HOMEBREW_FORMULAE # REQUIRED. The formulae to grab metrics for.
+          value:
+            {{ range $i, $formula := .Values.homebrew.formulae}}
+              {{if $i}}, {{end}}
+              {{$formula}}
+            {{end}}
+        - name: LISTEN_PORT # The port you wish to run the container on, the Dockerfile defaults this to 9171
+          value: {{ .Values.homebrew.listenPort }}
+        - name: METRICS_PATH # the metrics URL path you wish to use, defaults to /metrics
+          value: {{ .Values.homebrew.metricsPath }}

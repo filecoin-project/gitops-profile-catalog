@@ -1,0 +1,31 @@
+github:
+  listenPort: 9888
+  metricsPath: /metrics
+  repos:
+  - filecoin-project/lotus
+  orgs:
+  - ""
+  users:
+  - ""
+dockerhub:
+  listenPort: 9888
+  metricsPath: /metrics
+  images:
+  - filecoin-project/lotus
+  - filecoin-project/lotus-all-in-one
+  - filecoin-project/lotus-test
+  orgs:
+  - ""
+homebrew:
+  listenPort: 9888
+  metricsPath: /metrics
+  formulae:
+  - filecoin-project/lotus/lotus
+snapcraft:
+  listenPort: 9888
+  metricsPath: /metrics
+  # names: lotus, lotus-filecoin
+  # ids can be found at https://dashboard.snapcraft.io/snaps/<SNAP_NAME>/
+  ids:
+  - NJBwi12Vq8X2ygw2FoJWnhvYYhQlRhuT
+  - 1vzTBhup6bI9eocqFz93rMQjrC2qQvbg

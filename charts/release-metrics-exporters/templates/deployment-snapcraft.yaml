@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: snapcraft-exporter
+  labels:
+    app: snapcraft-exporter
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: snapcraft-exporter
+  template:
+    metadata:
+      labels:
+        app: snapcraft-exporter
+    spec:
+      containers:
+      - name: snapcraft-exporter
+        image: infinityworks/snapcraft-exporter:latest
+        ports:
+        - containerPort: {{ .Values.snapcraft.listenPort }}
+        env:
+        - name: SNAP_IDS # If supplied, the exporter will fetch all metrics for that snap.
+          value:
+            {{ range $i, $id := .Values.snapcraft.ids }}
+              {{if $i}}, {{end}}
+              {{$id}}
+            {{end}}
+        - name: LISTEN_PORT # The port you wish to run the container on, defaults this to 9888
+          value: {{ .Values.snapcraft.listenPort }}
+        - name: METRICS_PATH # the metrics URL path you wish to use, defaults to /metrics
+          value: {{ .Values.snapcraft.metricsPath }}
+        - name: SNAPCRAFT_STORE_MACAROON
+          valueFrom:
+            secretKeyRef:
+              name: snapcraft
+              key: macaroon
+              optional: false
