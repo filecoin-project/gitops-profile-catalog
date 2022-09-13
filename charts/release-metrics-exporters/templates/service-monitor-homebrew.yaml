@@ -1,9 +1,9 @@
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
+  name: homebrew-exporter
   labels:
     serviceMonitorSelector: homebrew-exporter
-    name: homebrew-exporter
 spec:
   endpoints:
   - interval: 1d

@@ -1,9 +1,9 @@
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
+  name: github-exporter
   labels:
     serviceMonitorSelector: github-exporter
-    name: github-exporter
 spec:
   endpoints:
   - interval: 10m

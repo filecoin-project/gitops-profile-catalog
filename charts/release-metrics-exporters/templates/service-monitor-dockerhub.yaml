@@ -1,9 +1,9 @@
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
+  name: dockerhub-exporter
   labels:
     serviceMonitorSelector: dockerhub-exporter
-    name: dockerhub-exporter
 spec:
   endpoints:
   - interval: 10m

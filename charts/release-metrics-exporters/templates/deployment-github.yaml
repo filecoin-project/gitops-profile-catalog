@@ -21,27 +21,15 @@ spec:
         - containerPort: {{ .Values.github.listenPort }}
         env:
         - name: ORGS # If supplied, the exporter will enumerate all repositories for that organization. Expected in the format "org1, org2".
-          value:
-            {{ range $i, $org := .Values.github.orgs }}
-              {{if $i}}, {{end}}
-              {{$org}}
-            {{end}}
+          value: {{ range $i, $org := .Values.github.orgs }}{{if $i}}, {{end}}{{$org}}{{end}}
         - name: REPOS # If supplied, The repos you wish to monitor, expected in the format "user/repo1, user/repo2". Can be across different Github users/orgs.
-          value:
-            {{ range $i, $repo := .Values.github.repos }}
-              {{if $i}}, {{end}}
-              {{$repo}}
-            {{end}}
+          value: {{ range $i, $repo := .Values.github.repos }}{{if $i}}, {{end}}{{$repo}}{{end}}
         - name: USERS # If supplied, the exporter will enumerate all repositories for that users. Expected in the format "user1, user2".
-          value:
-            {{ range $i, $user := .Values.github.users }}
-              {{if $i}}, {{end}}
-              {{$user}}
-            {{end}}
+          value: {{ range $i, $user := .Values.github.users }}{{if $i}}, {{end}}{{$user}}{{end}}
         - name: API_URL # Github API URL, shouldn't need to change this. Defaults to https://api.github.com
           value: {{ .Values.github.apiUrl }}
         - name: LISTEN_PORT # The port you wish to run the container on, defaults this to 9171
-          value: {{ .Values.github.listenPort }}
+          value: "{{ .Values.github.listenPort }}"
         - name: METRICS_PATH # the metrics URL path you wish to use, defaults to /metrics
           value: {{ .Values.github.metricsPath }}
         - name: LOG_LEVEL # The level of logging the exporter will run with, defaults to debug
