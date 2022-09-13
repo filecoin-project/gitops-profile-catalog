@@ -1,0 +1,16 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    serviceMonitorSelector: github-exporter
+    name: github-exporter
+spec:
+  endpoints:
+  - interval:
+    port: metrics
+    path: {{ .Values.github.metricsPath }}
+  namespaceSelector:
+    any: true
+  selector:
+    matchLabels:
+      operated-prometheus: "true"

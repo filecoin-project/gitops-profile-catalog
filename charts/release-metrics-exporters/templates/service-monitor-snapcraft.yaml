@@ -1,0 +1,16 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    serviceMonitorSelector: snapcraft-exporter
+    name: snapcraft-exporter
+spec:
+  endpoints:
+  - interval:
+    port: metrics
+    path: {{ .Values.snapcraft.metricsPath }}
+  namespaceSelector:
+    any: true
+  selector:
+    matchLabels:
+      operated-prometheus: "true"

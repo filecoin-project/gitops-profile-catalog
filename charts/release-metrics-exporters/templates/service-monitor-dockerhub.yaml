@@ -1,0 +1,16 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    serviceMonitorSelector: dockerhub-exporter
+    name: dockerhub-exporter
+spec:
+  endpoints:
+  - interval:
+    port: metrics
+    path: {{ .Values.dockerhub.metricsPath }}
+  namespaceSelector:
+    any: true
+  selector:
+    matchLabels:
+      operated-prometheus: "true"
