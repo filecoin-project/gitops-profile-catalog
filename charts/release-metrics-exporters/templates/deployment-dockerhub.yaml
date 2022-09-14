@@ -17,7 +17,7 @@ spec:
       containers:
       - name: dockerhub-exporter
         image: infinityworks/docker-hub-exporter:latest
-        command: ["/entrypoint"]
+        command: ["/exporter"]
         args: ["-telemetry-path={{ .Values.dockerhub.metricsPath }}"]
         ports:
         - containerPort: {{ .Values.dockerhub.listenPort }}
