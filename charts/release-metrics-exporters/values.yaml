@@ -26,5 +26,5 @@ snapcraft:
   metricsPath: /metrics
   names:
   # ids can be found at https://dashboard.snapcraft.io/snaps/<SNAP_NAME>/
-  - lotus # id: NJBwi12Vq8X2ygw2FoJWnhvYYhQlRhuT
-  - lotus-filecoin # id: 1vzTBhup6bI9eocqFz93rMQjrC2qQvbg
+  - lotus  # id: NJBwi12Vq8X2ygw2FoJWnhvYYhQlRhuT
+  - lotus-filecoin  # id: 1vzTBhup6bI9eocqFz93rMQjrC2qQvbg

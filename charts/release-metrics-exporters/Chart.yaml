@@ -19,7 +19,7 @@ keywords:
   - docker-hub
 
 maintainers:
-  - name: Ian S Davis
+  - name: ianconsolata
     email: ian.s.davis@protocol.ai
 
 dependencies: []
