@@ -24,8 +24,7 @@ homebrew:
 snapcraft:
   listenPort: 9888
   metricsPath: /metrics
-  # names: lotus, lotus-filecoin
+  names:
   # ids can be found at https://dashboard.snapcraft.io/snaps/<SNAP_NAME>/
-  ids:
-  - NJBwi12Vq8X2ygw2FoJWnhvYYhQlRhuT
-  - 1vzTBhup6bI9eocqFz93rMQjrC2qQvbg
+  - lotus # id: NJBwi12Vq8X2ygw2FoJWnhvYYhQlRhuT
+  - lotus-filecoin # id: 1vzTBhup6bI9eocqFz93rMQjrC2qQvbg

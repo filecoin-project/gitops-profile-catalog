@@ -20,15 +20,15 @@ spec:
         ports:
         - containerPort: {{ .Values.snapcraft.listenPort }}
         env:
-        - name: SNAP_IDS # If supplied, the exporter will fetch all metrics for that snap.
-          value: {{ range $i, $id := .Values.snapcraft.ids }}{{if $i}}, {{end}}{{$id}}{{end}}
+        - name: SNAP_NAMES # If supplied, the exporter will fetch all metrics for that snap.
+          value: {{ range $i, $name := .Values.snapcraft.names }}{{if $i}}, {{end}}{{$name}}{{end}}
         - name: LISTEN_PORT # The port you wish to run the container on, defaults this to 9888
           value: "{{ .Values.snapcraft.listenPort }}"
         - name: METRICS_PATH # the metrics URL path you wish to use, defaults to /metrics
           value: {{ .Values.snapcraft.metricsPath }}
-        - name: SNAPCRAFT_STORE_MACAROON
+        - name: SNAPCRAFT_STORE_CREDENTIALS
           valueFrom:
             secretKeyRef:
               name: snapcraft
-              key: macaroon
+              key: SNAPCRAFT_STORE_CREDENTIALS
               optional: false
