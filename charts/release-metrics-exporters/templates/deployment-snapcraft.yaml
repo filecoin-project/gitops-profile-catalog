@@ -17,6 +17,7 @@ spec:
       containers:
       - name: snapcraft-exporter
         image: ianconsolata/snapcraft-exporter:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: {{ .Values.snapcraft.listenPort }}
         env:

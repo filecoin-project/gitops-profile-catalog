@@ -17,6 +17,7 @@ spec:
       containers:
       - name: homebrew-exporter
         image: ianconsolata/homebrew-exporter:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: {{ .Values.homebrew.listenPort }}
         env:

@@ -17,6 +17,7 @@ spec:
       containers:
       - name: github-exporter
         image: infinityworks/github-exporter:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: {{ .Values.github.listenPort }}
         env:
