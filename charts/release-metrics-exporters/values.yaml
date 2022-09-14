@@ -11,9 +11,9 @@ dockerhub:
   listenPort: 9888
   metricsPath: /metrics
   images:
-  - filecoin-project/lotus
-  - filecoin-project/lotus-all-in-one
-  - filecoin-project/lotus-test
+  - filecoin/lotus
+  - filecoin/lotus-all-in-one
+  - filecoin/lotus-test
   orgs:
   - ""
 homebrew:
