@@ -10,6 +10,7 @@
     jobTemplate:
       generateName: "run-gitops-{{`{{ .params.CLUSTER_NAME }}`}}"
       spec:
+        backoffLimit: 500
         imagePullSecrets:
         - name: ghcr-image
         initContainers:
