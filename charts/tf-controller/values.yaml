@@ -14,5 +14,7 @@ tf-controller:
   image:
     tag: v0.12.0-rc.5
   runner:
+    grpc:
+      maxMessageSize: 15
     image:
       tag: v0.12.0-rc.5
