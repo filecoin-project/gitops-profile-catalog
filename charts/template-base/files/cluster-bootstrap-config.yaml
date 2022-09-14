@@ -9,6 +9,7 @@
         weave.works/capi: '{{`{{ .params.CLUSTER_NAME }}`}}-bootstrap-v3'
     jobTemplate:
       generateName: "run-gitops-{{`{{ .params.CLUSTER_NAME }}`}}"
+      backoffLimit: 500
       spec:
         imagePullSecrets:
         - name: ghcr-image
