@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dockerhub-exporter
+  labels:
+    app: dockerhub-exporter
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dockerhub-exporter
+  template:
+    metadata:
+      labels:
+        app: dockerhub-exporter
+    spec:
+      containers:
+      - name: dockerhub-exporter
+        image: infinityworks/docker-hub-exporter:latest
+        imagePullPolicy: Always
+        command: ["/exporter"]
+        args: ["-telemetry-path={{ .Values.dockerhub.metricsPath }}"]
+        ports:
+        - containerPort: {{ .Values.dockerhub.listenPort }}
+        env:
+        - name: ORGS # The docker hub organizations you wish to monitor, expected in the format "org1, org2" (Also works for users)
+          value: {{ range $i, $org := .Values.dockerhub.orgs }}{{if $i}}, {{end}}{{$org}}{{end}}
+        - name: IMAGES # The images you wish to monitor, expected in the format "user/image1, user/image2". Can be across different dockerhub users.
+          value: {{ range $i, $image := .Values.dockerhub.images}}{{if $i}}, {{end}}{{$image}}{{end}}
+        - name: BIND_PORT # The port you wish to run the container on, defaults this to 9888
+          value: "{{ .Values.dockerhub.listenPort }}"

@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: snapcraft-exporter
+  labels:
+    app: snapcraft-exporter
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: snapcraft-exporter
+  template:
+    metadata:
+      labels:
+        app: snapcraft-exporter
+    spec:
+      containers:
+      - name: snapcraft-exporter
+        image: ianconsolata/snapcraft-exporter:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: {{ .Values.snapcraft.listenPort }}
+        env:
+        - name: SNAP_NAMES # If supplied, the exporter will fetch all metrics for that snap.
+          value: {{ range $i, $name := .Values.snapcraft.names }}{{if $i}}, {{end}}{{$name}}{{end}}
+        - name: LISTEN_PORT # The port you wish to run the container on, defaults this to 9888
+          value: "{{ .Values.snapcraft.listenPort }}"
+        - name: METRICS_PATH # the metrics URL path you wish to use, defaults to /metrics
+          value: {{ .Values.snapcraft.metricsPath }}
+        - name: SNAPCRAFT_STORE_CREDENTIALS
+          valueFrom:
+            secretKeyRef:
+              name: snapcraft
+              key: SNAPCRAFT_STORE_CREDENTIALS
+              optional: false
