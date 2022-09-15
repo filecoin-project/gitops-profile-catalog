@@ -4723,6 +4723,32 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/promtail-0.0.1/promtail-0.0.1.tgz
     version: 0.0.1
+  release-metrics-exporter:
+  - apiVersion: v2
+    appVersion: 0.0.0
+    created: "2022-09-15T21:05:05.812416693Z"
+    description: A suite of Prometheus Exporters to caputre release metrics from github,
+      docker hub, homebrew, and snapcraft.
+    digest: 75cf9107b113eee752041459a0ff133c563d4b55a374e032b21b2f8f470cfa73
+    keywords:
+    - release-metrics
+    - homebrew
+    - snapcraft
+    - github
+    - docker-hub
+    maintainers:
+    - email: ian.s.davis@protocol.ai
+      name: ianconsolata
+    name: release-metrics-exporter
+    sources:
+    - https://github.com/filecoin-project/snapcraft-exporter
+    - https://github.com/filecoin-project/homebrew-exporter
+    - https://github.com/infinityworks/github-exporter
+    - https://github.com/infinityworks/docker-hub-exporter
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/release-metrics-exporter-0.0.0/release-metrics-exporter-0.0.0.tgz
+    version: 0.0.0
   sentinel:
   - annotations:
       weave.works/category: client
@@ -7664,4 +7690,4 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/velero-0.0.1/velero-0.0.1.tgz
     version: 0.0.1
-generated: "2022-09-14T20:12:39.367646502Z"
+generated: "2022-09-15T21:05:05.814597662Z"
