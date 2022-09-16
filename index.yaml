@@ -2084,6 +2084,26 @@ entries:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/ingress-nginx-0.0.10/ingress-nginx-0.0.10.tgz
     version: 0.0.10
   ipfs-operator:
+  - annotations:
+      weave.works/profile: ipfs-operator
+    apiVersion: v2
+    appVersion: 0.0.0
+    created: "2022-09-16T18:02:54.630595395Z"
+    description: Install IPFS cluster with ease.
+    digest: 9015e718a0a74789543b50a0b127ace97d9b210325905f9a0fa1cf11a9335492
+    keywords:
+    - ipfs
+    - ipfs-cluster
+    maintainers:
+    - email: cory@protocol.ai
+      name: Cory Schwartz
+    name: ipfs-operator
+    sources:
+    - https://github.com/redhat-et/ipfs-operator
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/ipfs-operator-0.0.1/ipfs-operator-0.0.1.tgz
+    version: 0.0.1
   - apiVersion: v2
     appVersion: 0.0.0
     created: "2022-08-01T22:47:12.410332604Z"
@@ -7690,4 +7710,4 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/velero-0.0.1/velero-0.0.1.tgz
     version: 0.0.1
-generated: "2022-09-15T21:05:05.814597662Z"
+generated: "2022-09-16T18:02:54.631419453Z"
