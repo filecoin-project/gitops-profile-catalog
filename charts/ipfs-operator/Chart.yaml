@@ -9,7 +9,7 @@ sources:
   - https://github.com/redhat-et/ipfs-operator
 
 annotations:
-  "weave.works/profile": tf-controller
+  "weave.works/profile": ipfs-operator
 
 keywords:
   - ipfs
