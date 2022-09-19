@@ -16,7 +16,7 @@ spec:
       			"Sid": "",
       			"Effect": "Allow",
       			"Principal": {
-      				"AWS": "arn:aws:iam::453477142348:role/nodes.cluster-api-provider-aws.sigs.k8s.io"
+      				"AWS": "arn:aws:iam::453477142348:role/wge-{{ .Values.environment }}_clusterapi"
       			},
       			"Action": [
       				"sts:TagSession",
