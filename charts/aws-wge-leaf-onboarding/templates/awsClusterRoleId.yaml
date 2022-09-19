@@ -7,6 +7,3 @@ spec:
   allowedNamespaces: {}
   roleARN: "arn:aws:iam::{{ .Values.awsAccountId }}:role/wge-{{ .Values.environment }}-{{ .Values.awsAccountName }}-control-plane"
   sessionName: filecoin-dev-role-session
-  sourceIdentityRef:
-    kind: AWSClusterRoleIdentity
-    name: capi-role
