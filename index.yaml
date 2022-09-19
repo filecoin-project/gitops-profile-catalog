@@ -164,6 +164,24 @@ entries:
   aws-wge-leaf-onboarding:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2022-09-19T21:41:40.350471862Z"
+    description: A Helm chart to install Crossplane roles and policies per leaf cluster
+      definition
+    digest: 1a7319abb97122aaa00dc59e83c3a3e61de3c49f5700a6304e595eac0d11b84f
+    home: https://github.com/weaveworks/profiles-catalog
+    keywords:
+    - operator
+    - crossplane
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: aws-wge-leaf-onboarding
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/aws-wge-leaf-onboarding-0.0.8/aws-wge-leaf-onboarding-0.0.8.tgz
+    version: 0.0.8
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2022-09-19T21:35:33.893885163Z"
     description: A Helm chart to install Crossplane roles and policies per leaf cluster
       definition
@@ -7784,4 +7802,4 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/velero-0.0.1/velero-0.0.1.tgz
     version: 0.0.1
-generated: "2022-09-19T21:35:33.895270577Z"
+generated: "2022-09-19T21:41:40.351432208Z"
