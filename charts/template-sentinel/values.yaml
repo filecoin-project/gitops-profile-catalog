@@ -133,5 +133,6 @@ template-base:
     version: 1.0.1
   - name: promtail
     version: 0.0.7
+    editable: true
   - name: grafana-agent
     version: 0.0.1
