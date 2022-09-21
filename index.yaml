@@ -5781,6 +5781,22 @@ entries:
     version: 0.0.1
   template-base:
   - apiVersion: v2
+    created: "2022-09-21T19:31:30.17267367Z"
+    description: A Weaveworks Helm chart for template
+    digest: e6a1771ce2f29c92ff12bc2dbcbcb5c279c95bf3592903ec177df33a35803944
+    home: https://github.com/weaveworks/profiles-catalog
+    keywords:
+    - template-base
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: template-base
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/template-base-0.5.1/template-base-0.5.1.tgz
+    version: 0.5.1
+  - apiVersion: v2
     created: "2022-09-21T15:54:52.703027556Z"
     description: A Weaveworks Helm chart for template
     digest: 46ac7313dd955bca602ba8d81c68a6d054df6dc8053d06ae8a5558b17ee7662b
@@ -7329,6 +7345,28 @@ entries:
     version: 0.0.1
   template-sentinel:
   - apiVersion: v2
+    created: "2022-09-21T19:31:30.343619159Z"
+    dependencies:
+    - name: template-base
+      repository: file://../template-base
+      version: 0.5.1
+    description: A Weaveworks Helm chart for template-sentinel
+    digest: babc964a1fee1247d30738eaa26ef59eeef50578629b49a407a3f7d8c2594fd9
+    home: https://github.com/weaveworks/profiles-catalog
+    keywords:
+    - template-sentinel
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: template-sentinel
+    sources:
+    - https://github.com/filecoin-project/template-sentinel-infra
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/template-sentinel-0.4.2/template-sentinel-0.4.2.tgz
+    version: 0.4.2
+  - apiVersion: v2
     created: "2022-09-21T17:59:45.168856965Z"
     dependencies:
     - name: template-base
@@ -8045,4 +8083,4 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/velero-0.0.1/velero-0.0.1.tgz
     version: 0.0.1
-generated: "2022-09-21T17:59:45.169846077Z"
+generated: "2022-09-21T19:31:30.344896558Z"
