@@ -13,6 +13,7 @@
           target:
             kind: Deployment
             name: "(kustomize-controller|helm-controller|notification-controller|image-reflector-controller|image-automation-controller)"
+        {{`{{- if .params.MULTI_TENANT_ENABLED }}`}}
         - patch: |
             - op: add
               path: /spec/template/spec/containers/0/args/0
@@ -20,6 +21,7 @@
           target:
             kind: Deployment
             name: "(kustomize-controller|helm-controller)"
+        {{`{{- end }}`}}
         - patch: |
             - op: add
               path: /spec/serviceAccountName
