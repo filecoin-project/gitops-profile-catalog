@@ -7267,6 +7267,29 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/template-generic-0.0.1/template-generic-0.0.1.tgz
     version: 0.0.1
+  template-sentinel:
+  - apiVersion: v2
+    created: "2022-09-21T15:31:27.614965053Z"
+    dependencies:
+    - name: template-base
+      repository: file://../template-base
+      version: 0.4.1
+    description: A Weaveworks Helm chart for template-sentinel
+    digest: c91b1bf881bfc97258c3c5212f6490c2feb564a509babd1662d1a106101dee17
+    home: https://github.com/weaveworks/profiles-catalog
+    keywords:
+    - template-sentinel
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: template-sentinel
+    sources:
+    - https://github.com/filecoin-project/template-sentinel-infra
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/template-sentinel-0.3.1/template-sentinel-0.3.1.tgz
+    version: 0.3.1
   tf-controller:
   - annotations:
       weave.works/links: |
@@ -7896,4 +7919,4 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/velero-0.0.1/velero-0.0.1.tgz
     version: 0.0.1
-generated: "2022-09-21T14:52:29.837912785Z"
+generated: "2022-09-21T15:31:27.616069376Z"
