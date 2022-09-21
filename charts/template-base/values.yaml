@@ -23,6 +23,14 @@ namespaceOptions:
 name: template
 description: An AWS EKS template that creates a cluster
 
+
+# extraTemplateOptions:
+# - description: Environment type for app
+#   name: ENVIRONMENT_TYPE
+#   options:
+#   - dev
+#   - prod
+
 # An array of NodeGroups that are available for selection in the UI
 nodeGroups:
 - name: 0

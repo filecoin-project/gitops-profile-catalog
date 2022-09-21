@@ -80,6 +80,11 @@ spec:
       - {{ $val }}
       {{- end }}
     {{- end }}
+    {{- if .Values.extraTemplateOptions }}
+    {{- with .Values.extraTemplateOptions }}
+        {{- toYaml . | nindent 4 }}
+    {{- end }}
+    {{- end }}
   resourcetemplates:
 {{- $currentScope := . -}}
 {{- range $path, $_ :=  .Files.Glob  "**.yaml" -}}
