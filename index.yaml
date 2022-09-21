@@ -5781,6 +5781,22 @@ entries:
     version: 0.0.1
   template-base:
   - apiVersion: v2
+    created: "2022-09-21T15:54:52.703027556Z"
+    description: A Weaveworks Helm chart for template
+    digest: 46ac7313dd955bca602ba8d81c68a6d054df6dc8053d06ae8a5558b17ee7662b
+    home: https://github.com/weaveworks/profiles-catalog
+    keywords:
+    - template-base
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: template-base
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/template-base-0.4.2/template-base-0.4.2.tgz
+    version: 0.4.2
+  - apiVersion: v2
     created: "2022-09-21T14:52:29.702213049Z"
     description: A Weaveworks Helm chart for template
     digest: fc4f911730a0267bccfee104261c9f98dcb91bf09fae08de2f71b8d6634a9851
@@ -6277,6 +6293,28 @@ entries:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/template-base-0.0.1/template-base-0.0.1.tgz
     version: 0.0.1
   template-generic:
+  - apiVersion: v2
+    created: "2022-09-21T15:54:52.892426577Z"
+    dependencies:
+    - name: template-base
+      repository: file://../template-base
+      version: 0.4.2
+    description: A Weaveworks Helm chart for template-generic
+    digest: aaea3cc17c0d2aafa04c5014c8ed885bfa5da90a3cbcfbbafe0421ddf5685c2d
+    home: https://github.com/weaveworks/profiles-catalog
+    keywords:
+    - template-generic
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: template-generic
+    sources:
+    - https://github.com/filecoin-project/template-generic-infra
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/template-generic-0.3.2/template-generic-0.3.2.tgz
+    version: 0.3.2
   - apiVersion: v2
     created: "2022-09-21T14:52:29.836518587Z"
     dependencies:
@@ -7269,6 +7307,28 @@ entries:
     version: 0.0.1
   template-sentinel:
   - apiVersion: v2
+    created: "2022-09-21T15:54:53.066709426Z"
+    dependencies:
+    - name: template-base
+      repository: file://../template-base
+      version: 0.4.2
+    description: A Weaveworks Helm chart for template-sentinel
+    digest: 9e52f4a5aad2f7625af8cf5dbfd5a5aefd960c420226e8b131f98532fba32f13
+    home: https://github.com/weaveworks/profiles-catalog
+    keywords:
+    - template-sentinel
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: template-sentinel
+    sources:
+    - https://github.com/filecoin-project/template-sentinel-infra
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/template-sentinel-0.3.2/template-sentinel-0.3.2.tgz
+    version: 0.3.2
+  - apiVersion: v2
     created: "2022-09-21T15:31:27.614965053Z"
     dependencies:
     - name: template-base
@@ -7919,4 +7979,4 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/velero-0.0.1/velero-0.0.1.tgz
     version: 0.0.1
-generated: "2022-09-21T15:31:27.616069376Z"
+generated: "2022-09-21T15:54:53.068150771Z"
