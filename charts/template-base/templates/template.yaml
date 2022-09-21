@@ -56,7 +56,7 @@ spec:
       description: Enabled multi-tenant restrictions 
       required: false
       options:
-      - true
+      - "true"
     {{- range $nodeGroup := .Values.nodeGroups }}
     - name: MAX_NODES_NODEGROUP_{{ $nodeGroup.name }}
       description: max nodes for {{ $nodeGroup.name }}
