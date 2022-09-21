@@ -52,6 +52,11 @@ spec:
       {{- range $val := .Values.regionOptions }}
       - {{ $val }}
       {{- end }}
+    - name: MULTI_TENANT_ENABLED
+      description: Enabled multi-tenant restrictions 
+      required: false
+      options:
+      - true
     {{- range $nodeGroup := .Values.nodeGroups }}
     - name: MAX_NODES_NODEGROUP_{{ $nodeGroup.name }}
       description: max nodes for {{ $nodeGroup.name }}
