@@ -60,13 +60,10 @@ extraTemplateOptions:
 
   # AwasAccounts available for selection
   awsAccountOptions:
-  - name: "netops"
-    id: "453477142348"
-  - name: "filecoin-dev"
-    id: "453477142348"
-  - name: "filecoin-prod"
-    id: "453477142348"
-
+  - name: test-1
+    id: "22222"
+  - name: test-2
+    id: "33333"
 
   # valid values "sops" or "kms" (pending support)
   secretsEngine: sops
