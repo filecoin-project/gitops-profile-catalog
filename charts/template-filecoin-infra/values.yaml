@@ -40,12 +40,12 @@ template-base:
     instanceTypeOptions:
     - "r5b.8xlarge"
 
-extraTemplateOptions:
-- description: Environment type for app
-  name: ENVIRONMENT_TYPE
-  options:
-  - dev
-  - prod
+  extraTemplateOptions:
+  - description: Environment type for app
+    name: ENVIRONMENT_TYPE
+    options:
+    - dev
+    - prod
 
   regionOptions:
   - "us-east-2"
