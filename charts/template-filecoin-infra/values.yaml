@@ -20,22 +20,22 @@ template-base:
   nodeGroups:
   - name: 0
     type: MachineDeployment   # Only MachineDeployment supported today (Pending MachinePool)
-    maxOptions: ["0","1","2","3","4","5","6","7","8","9","10","15","25"]
+    maxOptions: ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "15", "25"]
     minOptions: ["1"]
-    availabilityZones: ["a", "b", "c"]
+    availabilityZones: ["a",  "b",  "c"]
     instanceTypeOptions:
     - "r5.8xlarge"
   - name: 1
     type: MachineDeployment   # Only MachineDeployment supported today (Pending MachinePool)
-    maxOptions: ["0","1","2","3","4","5","6","7","8","9","10","15","25","30"]
-    minOptions: ["0","1"]
-    availabilityZones: ["a", "b", "c"]
+    maxOptions: ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "15", "25", "30"]
+    minOptions: ["0", "1"]
+    availabilityZones: ["a",  "b",  "c"]
     instanceTypeOptions:
     - "r5.2xlarge"
   - name: 2
     type: MachineDeployment   # Only MachineDeployment supported today (Pending MachinePool)
-    maxOptions: ["0","1","2"]
-    minOptions: ["0","1"]
+    maxOptions: ["0", "1", "2"]
+    minOptions: ["0", "1"]
     availabilityZones: ["a", "b", "c"]
     instanceTypeOptions:
     - "r5b.8xlarge"
