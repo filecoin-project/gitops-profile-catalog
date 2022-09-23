@@ -1,15 +1,15 @@
 apiVersion: v2
-name: template-sentinel
-description: A Weaveworks Helm chart for template-sentinel
+name: template-filecoin-infra
+description: A Weaveworks Helm chart for template-filecoin-infra
 type: application
-version: 0.4.3
+version: 0.0.2
 kubeVersion: ">=1.16.0-0"
 home: https://github.com/weaveworks/profiles-catalog
 sources:
   - https://github.com/filecoin-project/gitops-profile-catalog
 
 keywords:
-- template-sentinel
+- template-filecoin-infra
 
 maintainers:
   - name: Weaveworks
