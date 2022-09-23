@@ -1,0 +1,162 @@
+# This manifest represents a CAPITemplate that will be displayed in the WGE UI
+# Management will be in gitops-profile caatalog and the consumed in gitops-root
+# All selectable values displayed in the WGE UI to generate a template
+
+template-base:
+  flux:
+    noCrossNamespaceRefs:
+      enabled: false
+  kubernetesVersionOptions:
+  - "v1.22.6"
+
+  namespaceOptions:
+  - clusters
+
+  # Name of template
+  name: filecoin-infra-template
+  description: An AWS EKS template that creates a cluster
+
+  # An array of NodeGroups that are available for selection in the UI
+  nodeGroups:
+  - name: 0
+    type: MachineDeployment   # Only MachineDeployment supported today (Pending MachinePool)
+    maxOptions: ["0","1","2","3","4","5","6","7","8","9","10","15","25"]
+    minOptions: ["1"]
+    availabilityZones: ["a", "b", "c"]
+    instanceTypeOptions:
+    - "r5.8xlarge"
+  - name: 1
+    type: MachineDeployment   # Only MachineDeployment supported today (Pending MachinePool)
+    maxOptions: ["0","1","2","3","4","5","6","7","8","9","10","15","25","30"]
+    minOptions: ["0","1"]
+    availabilityZones: ["a", "b", "c"]
+    instanceTypeOptions:
+    - "r5.2xlarge"
+  - name: 2
+    type: MachineDeployment   # Only MachineDeployment supported today (Pending MachinePool)
+    maxOptions: ["0","1","2"]
+    minOptions: ["0","1"]
+    availabilityZones: ["a", "b", "c"]
+    instanceTypeOptions:
+    - "r5b.8xlarge"
+
+extraTemplateOptions:
+- description: Environment type for app
+  name: ENVIRONMENT_TYPE
+  options:
+  - dev
+  - prod
+
+  regionOptions:
+  - "us-east-2"
+  - "us-west-2"
+  - "ap-south-1"
+
+
+  # Teams are mapped to DNS values
+  teamOptions:
+  - "file-infra"
+
+
+  # AwasAccounts available for selection
+  awsAccountOptions:
+  - name: "netops"
+    id: "453477142348" 
+  - name: "filecoin-dev"
+    id: "453477142348" 
+  - name: "filecoin-prod" 
+    id: "453477142348" 
+
+
+  # valid values "sops" or "kms" (pending support)
+  secretsEngine: sops
+
+  requiredProfiles:
+  - name: k8s-rbac-permissions
+    version: 0.0.8
+    editable: true
+    values: "\
+    adminGroups:\\n
+    - org: filecoin-project\\n
+    \  team: lotus-infra-core\\n
+    - org: filecoin-project\\n
+    \  team: Weaveworks\\n
+    "
+  - name: external-dns
+    version: 0.0.9
+    values: "\
+    external-dns:\\n
+    \ txtOwnerId: {{`{{ .params.CLUSTER_NAME }}`}}\\n
+    \ serviceAccount:\\n
+    \  annotations:\\n
+    \    eks.amazonaws.com/role-arn: arn:aws:iam::{{ template \"template-base.accountIDAnnotation\" . }}:role/{{`{{ .params.CLUSTER_NAME }}`}}-external-dns
+    "
+  - name: cert-manager
+    version: 2.0.1
+    values: "\
+    cert-manager:\\n
+    \ serviceAccount:\\n
+    \  annotations:\\n
+    \    eks.amazonaws.com/role-arn: arn:aws:iam::{{ template \"template-base.accountIDAnnotation\" . }}:role/{{`{{ .params.CLUSTER_NAME }}`}}-cert-manager
+    "
+  - name: cert-manager-issuer
+    version: 0.0.4
+  - name: aws-ebs-csi-driver
+    version: 0.0.3
+    values: "\
+    aws-ebs-csi-driver:\\n
+    \ controller:\\n
+    \  serviceAccount:\\n
+    \   annotations:\\n
+    \    eks.amazonaws.com/role-arn: arn:aws:iam::{{ template \"template-base.accountIDAnnotation\" . }}:role/{{`{{ .params.CLUSTER_NAME }}`}}-ebs-csi-driver
+    "
+  - name: aws-node-term-handler
+    version: 0.0.1
+  - name: aws-load-balancer-controller
+    version: 0.0.2
+    values: "\
+    aws-load-balancer-controller:\\n
+    \ clusterName: {{`{{ .params.CLUSTER_NAME }}`}}\\n
+    \ serviceAccount:\\n
+    \  annotations:\\n
+    \    eks.amazonaws.com/role-arn: arn:aws:iam::{{ template \"template-base.accountIDAnnotation\" . }}:role/{{`{{ .params.CLUSTER_NAME }}`}}-aws-load-balancer-controller
+    "
+  - name: prometheus
+    version: 1.1.8
+    editable: true
+    values: "\
+    \ kube-prometheus-stack:\\n
+    \ prometheus:\\n
+    \  prometheusSpec:\\n
+    \    externalLabels:\\n
+    \      cluster: {{`{{ .params.CLUSTER_NAME }}`}}\\n
+    \  serviceAccount:\\n
+    \    annotations:\\n
+    \      eks.amazonaws.com/role-arn: arn:aws:iam::{{ template \"template-base.accountIDAnnotation\" . }}:role/{{`{{ .params.CLUSTER_NAME }}`}}-monitoring\\n
+    \  thanosIngress:\\n
+    \    hosts:\\n
+    \    - thanos.{{`{{ .params.CLUSTER_NAME }}`}}s.{{`{{ .params.TEAM }}`}}.{{`{{ .params.AWS_ACCOUNT_NAME }}`}}.w3ops.net\\n
+    \    tls:\\n
+    \    - secretName: thanos-sidecar-tls\\n
+    \      hosts:\\n
+    \      - thanos.{{`{{ .params.CLUSTER_NAME }}`}}s.{{`{{ .params.TEAM }}`}}.{{`{{ .params.AWS_ACCOUNT_NAME }}`}}.w3ops.net\\n
+    thanos:\\n
+    \ compactor:\\n
+    \  serviceAccount:\\n
+    \    annotations:\\n
+    \      eks.amazonaws.com/role-arn: arn:aws:iam::{{ template \"template-base.accountIDAnnotation\" . }}:role/{{`{{ .params.CLUSTER_NAME }}`}}-thanos-compactor\\n
+    thanos-bucket-config:\\n
+    \ region: {{`{{ .params.AWS_REGION }}`}}\\n
+    \ clusterName: {{`{{ .params.CLUSTER_NAME }}`}}
+    "
+  - name: ingress-nginx
+    version: 0.0.12
+  - name: policy-agent
+    version: 1.0.1
+  - name: promtail
+    version: 0.0.7
+    editable: true
+  - name: snapshot-controller
+    version: 0.0.1
+  - name: fil-infra
+    version: 0.0.7

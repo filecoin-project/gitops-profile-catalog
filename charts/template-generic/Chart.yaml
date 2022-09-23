@@ -6,7 +6,7 @@ version: 0.4.0
 kubeVersion: ">=1.16.0-0"
 home: https://github.com/weaveworks/profiles-catalog
 sources:
-  - https://github.com/filecoin-project/template-generic-infra
+  - https://github.com/filecoin-project/gitops-profile-catalog
 
 keywords:
 - template-generic
