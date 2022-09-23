@@ -55,7 +55,7 @@ template-base:
 
   # Teams are mapped to DNS values
   teamOptions:
-  - "file-infra"
+  - "fil-infra"
 
 
   # AwasAccounts available for selection
