@@ -197,7 +197,7 @@
                     "Condition": {
                         "StringEquals": {
                             "oidc.eks.{{`{{ .params.AWS_REGION }}`}}.amazonaws.com/id/${EKS_CLUSTER_ID}:sub": [
-                                "system:serviceaccount:flux-system:ebs-csi-driver-sa"
+                                "system:serviceaccount:flux-system:ebs-csi-controller-sa"
                             ]
                         }
                     }
