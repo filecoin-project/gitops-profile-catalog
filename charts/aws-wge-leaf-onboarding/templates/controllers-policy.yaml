@@ -76,6 +76,7 @@ spec:
                       "elasticloadbalancing:RegisterInstancesWithLoadBalancer",
                       "elasticloadbalancing:DeregisterInstancesFromLoadBalancer",
                       "elasticloadbalancing:RemoveTags",
+                      "elasticloadbalancing:DeleteTargetGroup",
                       "autoscaling:DescribeAutoScalingGroups",
                       "autoscaling:DescribeInstanceRefreshes",
                       "ec2:CreateLaunchTemplate",
