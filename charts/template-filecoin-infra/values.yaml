@@ -157,3 +157,4 @@ template-base:
     version: 0.0.1
   - name: fil-infra
     version: 0.0.7
+    editable: true
