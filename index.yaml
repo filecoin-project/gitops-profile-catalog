@@ -6360,6 +6360,28 @@ entries:
     version: 0.0.1
   template-filecoin-infra:
   - apiVersion: v2
+    created: "2022-09-27T16:10:52.581291199Z"
+    dependencies:
+    - name: template-base
+      repository: file://../template-base
+      version: 0.5.3
+    description: A Weaveworks Helm chart for template-filecoin-infra
+    digest: d2f10a8d6ad24f5cd6972092ada48d32895135d3b6793a333d2f54745d288408
+    home: https://github.com/weaveworks/profiles-catalog
+    keywords:
+    - template-filecoin-infra
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: template-filecoin-infra
+    sources:
+    - https://github.com/filecoin-project/gitops-profile-catalog
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/template-filecoin-infra-0.0.8/template-filecoin-infra-0.0.8.tgz
+    version: 0.0.8
+  - apiVersion: v2
     created: "2022-09-27T15:45:58.532127111Z"
     dependencies:
     - name: template-base
@@ -8398,4 +8420,4 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/velero-0.0.1/velero-0.0.1.tgz
     version: 0.0.1
-generated: "2022-09-27T15:45:58.533536639Z"
+generated: "2022-09-27T16:10:52.583417755Z"
