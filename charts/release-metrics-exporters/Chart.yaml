@@ -2,7 +2,7 @@ apiVersion: v2
 name: release-metrics-exporters
 description: A suite of Prometheus Exporters to caputre release metrics from github, docker hub, homebrew, and snapcraft.
 type: application
-version: "0.0.1"
+version: "0.0.2"
 appVersion: "0.0.0"
 
 annotations:
@@ -17,15 +17,15 @@ annotations:
     - name: Homebrew Exporter
       url: https://github.com/filecoin-project/homebrew-exporter
     - name: Github Exporter
-      url: https://github.com/infinityworks/github-exporter
+      url: https://github.com/filecoin-project/github-exporter
     - name: DockerHub Exporter
-      url: https://github.com/infinityworks/docker-hub-exporter
+      url: https://github.com/filecoin-project/docker-hub-exporter
 
 sources:
   - https://github.com/filecoin-project/snapcraft-exporter
   - https://github.com/filecoin-project/homebrew-exporter
-  - https://github.com/infinityworks/github-exporter
-  - https://github.com/infinityworks/docker-hub-exporter
+  - https://github.com/filecoin-project/github-exporter
+  - https://github.com/filecoin-project/docker-hub-exporter
 
 keywords:
   - release-metrics

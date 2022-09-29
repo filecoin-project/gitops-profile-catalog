@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: dockerhub-exporter
-        image: infinityworks/docker-hub-exporter:latest
+        image: ianconsolata/docker-hub-exporter:latest
         imagePullPolicy: Always
         command: ["/exporter"]
         args: ["-telemetry-path={{ .Values.dockerhub.metricsPath }}"]
