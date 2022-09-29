@@ -1,8 +1,8 @@
 apiVersion: v2
-name: release-metrics-exporter
+name: release-metrics-exporters
 description: A suite of Prometheus Exporters to caputre release metrics from github, docker hub, homebrew, and snapcraft.
 type: application
-version: "0.0.0"
+version: "0.0.1"
 appVersion: "0.0.0"
 
 annotations:
