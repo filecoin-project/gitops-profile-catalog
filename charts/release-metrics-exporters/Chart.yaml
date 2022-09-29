@@ -5,6 +5,22 @@ type: application
 version: "0.0.0"
 appVersion: "0.0.0"
 
+annotations:
+  "weave.works/profile": release-metrics-exporters
+  "weave.works/category": Observability
+  "weave.works/layer": layer-2
+  "weave.works/links": |
+    - name: Release Metrics Application Repo
+      url: https://github.com/filecoin-project/release-metrics-gitops
+    - name: Snapcraft Exporter
+      url: https://github.com/filecoin-project/snapcraft-exporter
+    - name: Homebrew Exporter
+      url: https://github.com/filecoin-project/homebrew-exporter
+    - name: Github Exporter
+      url: https://github.com/infinityworks/github-exporter
+    - name: DockerHub Exporter
+      url: https://github.com/infinityworks/docker-hub-exporter
+
 sources:
   - https://github.com/filecoin-project/snapcraft-exporter
   - https://github.com/filecoin-project/homebrew-exporter
