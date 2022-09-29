@@ -4859,6 +4859,47 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/release-metrics-exporter-0.0.0/release-metrics-exporter-0.0.0.tgz
     version: 0.0.0
+  release-metrics-exporters:
+  - annotations:
+      weave.works/category: Observability
+      weave.works/layer: layer-2
+      weave.works/links: |
+        - name: Release Metrics Application Repo
+          url: https://github.com/filecoin-project/release-metrics-gitops
+        - name: Snapcraft Exporter
+          url: https://github.com/filecoin-project/snapcraft-exporter
+        - name: Homebrew Exporter
+          url: https://github.com/filecoin-project/homebrew-exporter
+        - name: Github Exporter
+          url: https://github.com/infinityworks/github-exporter
+        - name: DockerHub Exporter
+          url: https://github.com/infinityworks/docker-hub-exporter
+      weave.works/profile: release-metrics-exporters
+    apiVersion: v2
+    appVersion: 0.0.0
+    created: "2022-09-29T09:17:15.249288097Z"
+    description: A suite of Prometheus Exporters to caputre release metrics from github,
+      docker hub, homebrew, and snapcraft.
+    digest: 088609e1763546d3a11c9438faef51197d46b3e2e1a54018130b1e61887ea033
+    keywords:
+    - release-metrics
+    - homebrew
+    - snapcraft
+    - github
+    - docker-hub
+    maintainers:
+    - email: ian.s.davis@protocol.ai
+      name: ianconsolata
+    name: release-metrics-exporters
+    sources:
+    - https://github.com/filecoin-project/snapcraft-exporter
+    - https://github.com/filecoin-project/homebrew-exporter
+    - https://github.com/infinityworks/github-exporter
+    - https://github.com/infinityworks/docker-hub-exporter
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/release-metrics-exporters-0.0.1/release-metrics-exporters-0.0.1.tgz
+    version: 0.0.1
   sentinel:
   - annotations:
       weave.works/category: client
@@ -6360,6 +6401,28 @@ entries:
     version: 0.0.1
   template-filecoin-infra:
   - apiVersion: v2
+    created: "2022-09-29T09:17:15.436061969Z"
+    dependencies:
+    - name: template-base
+      repository: file://../template-base
+      version: 0.5.3
+    description: A Weaveworks Helm chart for template-filecoin-infra
+    digest: ebd8b38febcda49118b862e3612b01377b0cf8ca1dd58c5a6e4c4f6a559e0e13
+    home: https://github.com/weaveworks/profiles-catalog
+    keywords:
+    - template-filecoin-infra
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: template-filecoin-infra
+    sources:
+    - https://github.com/filecoin-project/gitops-profile-catalog
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/template-filecoin-infra-0.0.12/template-filecoin-infra-0.0.12.tgz
+    version: 0.0.12
+  - apiVersion: v2
     created: "2022-09-27T16:53:53.317864497Z"
     dependencies:
     - name: template-base
@@ -6558,6 +6621,28 @@ entries:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/template-filecoin-infra-0.0.2/template-filecoin-infra-0.0.2.tgz
     version: 0.0.2
   template-generic:
+  - apiVersion: v2
+    created: "2022-09-29T09:17:15.620874628Z"
+    dependencies:
+    - name: template-base
+      repository: file://../template-base
+      version: 0.5.3
+    description: A Weaveworks Helm chart for template-generic
+    digest: 65517c680868fd1abf28dfeff8c617882fe90bdfbb1b1d16daad45d023b94878
+    home: https://github.com/weaveworks/profiles-catalog
+    keywords:
+    - template-generic
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: template-generic
+    sources:
+    - https://github.com/filecoin-project/gitops-profile-catalog
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/template-generic-0.4.5/template-generic-0.4.5.tgz
+    version: 0.4.5
   - apiVersion: v2
     created: "2022-09-25T14:41:13.50789976Z"
     dependencies:
@@ -7660,6 +7745,28 @@ entries:
     version: 0.0.1
   template-sentinel:
   - apiVersion: v2
+    created: "2022-09-29T09:17:15.798304936Z"
+    dependencies:
+    - name: template-base
+      repository: file://../template-base
+      version: 0.5.3
+    description: A Weaveworks Helm chart for template-sentinel
+    digest: 24ce8d85ebe4ac374875cf3e8a7e38b870c71e68495b514e67c51cd01fc5196e
+    home: https://github.com/weaveworks/profiles-catalog
+    keywords:
+    - template-sentinel
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: template-sentinel
+    sources:
+    - https://github.com/filecoin-project/gitops-profile-catalog
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/template-sentinel-0.4.7/template-sentinel-0.4.7.tgz
+    version: 0.4.7
+  - apiVersion: v2
     created: "2022-09-25T14:41:13.793569552Z"
     dependencies:
     - name: template-base
@@ -8464,4 +8571,4 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/velero-0.0.1/velero-0.0.1.tgz
     version: 0.0.1
-generated: "2022-09-27T16:53:53.319231201Z"
+generated: "2022-09-29T09:17:15.800150949Z"
