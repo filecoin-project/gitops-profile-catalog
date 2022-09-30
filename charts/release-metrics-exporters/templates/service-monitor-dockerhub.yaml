@@ -13,4 +13,4 @@ spec:
     any: true
   selector:
     matchLabels:
-      operated-prometheus: "true"
+      app: dockerhub-exporter
