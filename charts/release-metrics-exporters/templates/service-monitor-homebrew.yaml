@@ -6,7 +6,7 @@ metadata:
     serviceMonitorSelector: homebrew-exporter
 spec:
   endpoints:
-  - interval: 1d
+  - interval: 10m
     port: metrics
     path: {{ .Values.homebrew.metricsPath }}
   namespaceSelector:
