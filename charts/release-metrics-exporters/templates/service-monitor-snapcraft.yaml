@@ -6,7 +6,7 @@ metadata:
     serviceMonitorSelector: snapcraft-exporter
 spec:
   endpoints:
-  - interval: 10m
+  - interval: 1d
     scrapeTimeout: 5m
     port: metrics
     path: {{ .Values.snapcraft.metricsPath }}
