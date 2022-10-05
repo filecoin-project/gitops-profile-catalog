@@ -6707,6 +6707,28 @@ entries:
     version: 0.0.1
   template-filecoin-infra:
   - apiVersion: v2
+    created: "2022-10-05T17:54:37.165662925Z"
+    dependencies:
+    - name: template-base
+      repository: file://../template-base
+      version: 0.5.3
+    description: A Weaveworks Helm chart for template-filecoin-infra
+    digest: 1edd87d8c2d9600d87fafd6dfff951e2eb2227f3b5a9271468cdd32838a1f407
+    home: https://github.com/weaveworks/profiles-catalog
+    keywords:
+    - template-filecoin-infra
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: template-filecoin-infra
+    sources:
+    - https://github.com/filecoin-project/gitops-profile-catalog
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/template-filecoin-infra-0.0.13/template-filecoin-infra-0.0.13.tgz
+    version: 0.0.13
+  - apiVersion: v2
     created: "2022-09-29T09:17:15.436061969Z"
     dependencies:
     - name: template-base
@@ -8161,6 +8183,28 @@ entries:
     version: 0.0.1
   template-sentinel:
   - apiVersion: v2
+    created: "2022-10-05T17:54:37.301241023Z"
+    dependencies:
+    - name: template-base
+      repository: file://../template-base
+      version: 0.5.3
+    description: A Weaveworks Helm chart for template-sentinel
+    digest: aaa7a35b03e271fd0ec9a10c95540442458567e6fdb6bfeea2bb5bc1403d5985
+    home: https://github.com/weaveworks/profiles-catalog
+    keywords:
+    - template-sentinel
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: template-sentinel
+    sources:
+    - https://github.com/filecoin-project/gitops-profile-catalog
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/template-sentinel-0.4.8/template-sentinel-0.4.8.tgz
+    version: 0.4.8
+  - apiVersion: v2
     created: "2022-09-29T09:17:15.798304936Z"
     dependencies:
     - name: template-base
@@ -8987,4 +9031,4 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/velero-0.0.1/velero-0.0.1.tgz
     version: 0.0.1
-generated: "2022-10-05T17:42:21.644359835Z"
+generated: "2022-10-05T17:54:37.302506644Z"
