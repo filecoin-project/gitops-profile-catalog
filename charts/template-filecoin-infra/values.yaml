@@ -133,11 +133,11 @@ template-base:
     \      eks.amazonaws.com/role-arn: arn:aws:iam::{{ template \"template-base.accountIDAnnotation\" . }}:role/{{`{{ .params.CLUSTER_NAME }}`}}-monitoring\\n
     \  thanosIngress:\\n
     \    hosts:\\n
-    \    - thanos.{{ printf \"%.*s\" 22 `{{ .params.CLUSTER_NAME }}`}}s.{{`{{ .params.TEAM }}`}}.{{`{{ .params.AWS_ACCOUNT_NAME }}`}}.w3ops.net\\n
+    \    - thanos.{{`{{`}} printf {{`\\`}}\"{{`\\\\`}}%.*s{{`\\`}}\" 22 .params.CLUSTER_NAME {{`}}`}}s.{{`{{ .params.TEAM }}`}}.{{`{{ .params.AWS_ACCOUNT_NAME }}`}}.w3ops.net\\n
     \    tls:\\n
     \    - secretName: thanos-sidecar-tls\\n
     \      hosts:\\n
-    \      - thanos.{{`{{ printf \"%.*s\" 22 .params.CLUSTER_NAME }}`}}s.{{`{{ .params.TEAM }}`}}.{{`{{ .params.AWS_ACCOUNT_NAME }}`}}.w3ops.net\\n
+    \      - thanos.{{`{{`}} printf {{`\\`}}\"{{`\\\\`}}%.*s{{`\\`}}\" 22 .params.CLUSTER_NAME {{`}}`}}s.{{`{{ .params.TEAM }}`}}.{{`{{ .params.AWS_ACCOUNT_NAME }}`}}.w3ops.net\\n
     thanos:\\n
     \ compactor:\\n
     \  serviceAccount:\\n
