@@ -9,5 +9,5 @@ flux-application:
     path: "./kubernetes/gitops/staging/cluster"
     branch: main
     key: sentinel-sops-gpg
-    token: sentinel-github-token
+    token: flux-application-github-token
     create: true
