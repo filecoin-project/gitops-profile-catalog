@@ -42,7 +42,7 @@
               - name: ENV_CONFIG_FILE_PATH
                 value: /tmp/env_config
               - name: ENV_HELPER_SCRIPT
-                value: https://raw.githubusercontent.com/steve-fraser/wge-post-deployment-template-renderer/main/aws/get-cluster-id.sh
+                value: https://raw.githubusercontent.com/filecoin-project/wge-post-deployment-template-renderer/main/aws/get-cluster-id.sh
               - name: CLUSTER_NAME
                 value: '{{`{{ .params.CLUSTER_NAME }}`}}'
           {{- end }}
