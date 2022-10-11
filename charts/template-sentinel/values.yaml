@@ -9,6 +9,10 @@ template-base:
   kubernetesVersionOptions:
   - "v1.22.6"
 
+
+  wgePostDeploymentRenderer:
+    enabled: false
+
   namespaceOptions:
   - clusters
 
