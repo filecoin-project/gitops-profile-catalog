@@ -9,7 +9,7 @@ flux:
     enabled: false
 
 wgePostDeploymentRenderer:
-  enabled: true
+  enabled: false
   # Needs to be moved to Weaveworks or filecoin
   image: ghcr.io/steve-fraser/wge-post-deployment-template-renderer:0.1.2
 
