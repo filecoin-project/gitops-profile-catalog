@@ -9,9 +9,9 @@ flux:
     enabled: false
 
 wgePostDeploymentRenderer:
-  enabled: false
+  enabled: true
   # Needs to be moved to Weaveworks or filecoin
-  image: ghcr.io/steve-fraser/wge-post-deployment-template-renderer:0.1.2
+  image: ghcr.io/filecoin-project/wge-post-deployment-template-renderer:0.1.2
 
 kubernetesVersionOptions:
 - "v1.22.6"
