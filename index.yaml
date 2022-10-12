@@ -5213,6 +5213,33 @@ entries:
       weave.works/profile-ci: |
         - "gke"
     apiVersion: v2
+    created: "2022-10-12T17:23:29.597256418Z"
+    dependencies:
+    - name: flux-application
+      repository: file://../flux-application
+      version: 0.3.0
+    description: A Weaveworks Helm chart for sentinel
+    digest: dafd02428dd5ed81141636154361c300af54cc0d7eebe8ef611f8539b0685e14
+    home: https://github.com/weaveworks/profiles-catalog
+    keywords:
+    - sentinel
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: sentinel
+    sources:
+    - https://github.com/filecoin-project/sentinel-infra
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/sentinel-0.1.2/sentinel-0.1.2.tgz
+    version: 0.1.2
+  - annotations:
+      weave.works/category: client
+      weave.works/profile: sentinel
+      weave.works/profile-ci: |
+        - "gke"
+    apiVersion: v2
     created: "2022-06-29T20:26:18.795859987Z"
     dependencies:
     - name: flux-application
@@ -9151,4 +9178,4 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/velero-0.0.1/velero-0.0.1.tgz
     version: 0.0.1
-generated: "2022-10-11T21:30:36.310030773Z"
+generated: "2022-10-12T17:23:29.598443859Z"
