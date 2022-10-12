@@ -11,7 +11,7 @@ template-base:
 
 
   wgePostDeploymentRenderer:
-    enabled: true 
+    enabled: true
 
   namespaceOptions:
   - clusters
