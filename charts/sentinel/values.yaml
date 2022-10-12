@@ -1,7 +1,7 @@
 flux-application:
   secrets:
     url: https://github.com/filecoin-project/gitops-profile-catalog
-    path: "./secrets/sentinel"
+    path: "./secrets/flux-application"
     branch: main
 
   app:
@@ -9,5 +9,5 @@ flux-application:
     path: "./kubernetes/gitops/staging/cluster"
     branch: main
     key: sentinel-sops-gpg
-    token: sentinel-github-token
+    token: flux-application-github-token
     create: true
