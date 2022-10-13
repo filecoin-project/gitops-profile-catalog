@@ -26,6 +26,9 @@ promtail:
       scrape_configs:
         {{ `{{- tpl .Values.config.snippets.scrapeConfigs . | nindent 2 }}` }}
         {{ `{{- tpl .Values.config.snippets.extraScrapeConfigs . | nindent 2 }}` }}
+    snippets:
+      pipelineStages:
+        - docker: {}
   extraArgs:
     - -client.external-labels=environment={{ or (.params).CLUSTER_NAME "test-cluster" }}
     - -config.expand-env

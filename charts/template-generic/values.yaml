@@ -152,4 +152,4 @@ s    thanos:\\n
   - name: policy-agent
     version: 1.0.1
   - name: promtail
-    version: 0.0.7
+    version: 0.0.8
