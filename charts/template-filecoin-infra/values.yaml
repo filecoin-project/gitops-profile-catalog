@@ -152,7 +152,7 @@ template-base:
   - name: policy-agent
     version: 1.0.1
   - name: promtail
-    version: 0.0.7
+    version: 0.0.8
     editable: true
   - name: snapshot-controller
     version: 0.0.1
