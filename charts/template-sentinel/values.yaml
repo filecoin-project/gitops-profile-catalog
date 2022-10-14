@@ -141,6 +141,27 @@ template-base:
     values: "\
     \ promtail:\\n
     \   config:\\n
+    \     lokiAddress: https://logs-prod-us-central1.grafana.net/loki/api/v1/push
+    \     basic_auth:
+    \       username: ${PROMTAIL_USERNAME}
+    \       password: ${PROMTAIL_PASSWORD}
+    \     file: |
+    \       server:
+    \         log_level: {{`{{ .Values.config.logLevel }}`}}
+    \         http_listen_port: {{`{{ .Values.config.serverPort }}`}}
+    \       clients:
+    \         - url: {{`{{ tpl .Values.config.lokiAddress . }}`}}
+    \           basic_auth:
+    \             username: ${PROMTAIL_USERNAME}
+    \             password: ${PROMTAIL_PASSWORD}
+    \         {{`{{- with .Values.config.snippets.extraClientConfigs }}`}}
+    \         {{`{{- toYaml . | nindent 2 }}`}}
+    \         {{`{{- end }}`}}
+    \       positions:
+    \         filename: /run/promtail/positions.yaml
+    \       scrape_configs:
+    \         {{ `{{- tpl .Values.config.snippets.scrapeConfigs . | nindent 2 }}` }}
+    \         {{ `{{- tpl .Values.config.snippets.extraScrapeConfigs . | nindent 2 }}` }}
     \     snippets:\\n
     \       pipelineStages:\\n
     \       - json:\\n
