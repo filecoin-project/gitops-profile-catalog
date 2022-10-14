@@ -139,34 +139,34 @@ template-base:
     version: 0.0.8
     editable: true
     values: "\
-    / promtail:\\n
-    /   config:\\n
-    /     snippets:\\n
-    /       pipelineStages:\\n
-    /       - json:\\n
-    /           expressions:\\n
-    /             log: null\\n
-    /             stream: stream\\n
-    /       - json:\\n
-    /           expressions:\\n
-    /             caller: null\\n
-    /             level: null\\n
-    /             logger: null\\n
-    /             reporter: null\\n
-    /             task: null\\n
-    /             timestamp: ts\\n
-    /           source: log\\n
-    /       - timestamp:\\n
-    /           format: RFC3339Nano\\n
-    /           source: timestamp\\n
-    /       - labels:\\n
-    /           caller: null\\n
-    /           level: null\\n
-    /           logger: null\\n
-    /           reporter: null\\n
-    /           task: null\\n
-    /       - output:\\n
-    /           source: log\\n
+    \ promtail:\\n
+    \   config:\\n
+    \     snippets:\\n
+    \       pipelineStages:\\n
+    \       - json:\\n
+    \           expressions:\\n
+    \             log: null\\n
+    \             stream: stream\\n
+    \       - json:\\n
+    \           expressions:\\n
+    \             caller: null\\n
+    \             level: null\\n
+    \             logger: null\\n
+    \             reporter: null\\n
+    \             task: null\\n
+    \             timestamp: ts\\n
+    \           source: log\\n
+    \       - timestamp:\\n
+    \           format: RFC3339Nano\\n
+    \           source: timestamp\\n
+    \       - labels:\\n
+    \           caller: null\\n
+    \           level: null\\n
+    \           logger: null\\n
+    \           reporter: null\\n
+    \           task: null\\n
+    \       - output:\\n
+    \           source: log\\n
     "
   - name: grafana-agent
     version: 0.0.1
