@@ -8808,6 +8808,41 @@ entries:
         - "gke"
         - "kind"
     apiVersion: v2
+    created: "2022-10-17T21:09:42.079977242Z"
+    dependencies:
+    - condition: tf-controller.enabled
+      name: tf-controller
+      repository: https://weaveworks.github.io/tf-controller/
+      version: 0.6.2
+    description: A Weaveworks Helm chart for tf-controller
+    digest: aa8a7c6d04b4e3265b9a19527bf5f28f0fb75d075213aa38c197d7b0eef314fe
+    home: https://github.com/weaveworks/profiles-catalog
+    keywords:
+    - terraform
+    - gitops
+    kubeVersion: '>=1.17.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: tf-controller
+    sources:
+    - https://github.com/weaveworks/tf-controller
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/tf-controller-0.0.8/tf-controller-0.0.8.tgz
+    version: 0.0.8
+  - annotations:
+      weave.works/links: |
+        - name: Chart Sources
+          url: https://github.com/weaveworks/tf-controller
+        - name: Upstream Project
+          url: https://github.com/weaveworks/tf-controller
+      weave.works/operator: "true"
+      weave.works/profile: tf-controller
+      weave.works/profile-ci: |
+        - "gke"
+        - "kind"
+    apiVersion: v2
     created: "2022-09-14T20:12:39.366410589Z"
     dependencies:
     - condition: tf-controller.enabled
@@ -9424,4 +9459,4 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/velero-0.0.1/velero-0.0.1.tgz
     version: 0.0.1
-generated: "2022-10-14T18:40:02.186749264Z"
+generated: "2022-10-17T21:09:42.081662969Z"
