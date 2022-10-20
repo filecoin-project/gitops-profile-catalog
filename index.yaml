@@ -6205,6 +6205,22 @@ entries:
     version: 0.0.1
   template-base:
   - apiVersion: v2
+    created: "2022-10-20T13:24:53.667401036Z"
+    description: A Weaveworks Helm chart for template
+    digest: ac7b1539e861dc9cfb7032701b817234e9d54fe3b16a402689000526b8f8b766
+    home: https://github.com/weaveworks/profiles-catalog
+    keywords:
+    - template-base
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: template-base
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/template-base-0.5.7/template-base-0.5.7.tgz
+    version: 0.5.7
+  - apiVersion: v2
     created: "2022-10-13T20:47:20.439567698Z"
     description: A Weaveworks Helm chart for template
     digest: 18d241871e8fa81481b5b2c291df2032cb933bbd1c4982cf4fb6fead7e3c8988
@@ -7122,6 +7138,28 @@ entries:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/template-filecoin-infra-0.0.2/template-filecoin-infra-0.0.2.tgz
     version: 0.0.2
   template-generic:
+  - apiVersion: v2
+    created: "2022-10-20T13:24:53.845191565Z"
+    dependencies:
+    - name: template-base
+      repository: file://../template-base
+      version: 0.5.7
+    description: A Weaveworks Helm chart for template-generic
+    digest: f568738c13afa9e0a6e31fe474f8c2f013de98330613cf0354f6ab03642d60fe
+    home: https://github.com/weaveworks/profiles-catalog
+    keywords:
+    - template-generic
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: template-generic
+    sources:
+    - https://github.com/filecoin-project/gitops-profile-catalog
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/template-generic-0.4.14/template-generic-0.4.14.tgz
+    version: 0.4.14
   - apiVersion: v2
     created: "2022-10-19T16:41:18.992316962Z"
     dependencies:
@@ -9560,4 +9598,4 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/velero-0.0.1/velero-0.0.1.tgz
     version: 0.0.1
-generated: "2022-10-19T16:57:48.606432477Z"
+generated: "2022-10-20T13:24:53.848406793Z"
