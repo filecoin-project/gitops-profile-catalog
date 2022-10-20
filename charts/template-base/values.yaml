@@ -152,7 +152,7 @@ requiredProfiles:
    \    eks.amazonaws.com/role-arn: arn:aws:iam::{{ template \"template-base.accountIDAnnotation\" . }}:role/{{`{{ .params.CLUSTER_NAME }}`}}-aws-load-balancer-controller
    "
 - name: prometheus
-  version: 1.1.8
+  version: 1.1.10
   values: "\
    \ kube-prometheus-stack:\\n
    \ prometheus:\\n
