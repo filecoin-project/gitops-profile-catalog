@@ -17,4 +17,4 @@ tf-controller:
     grpc:
       maxMessageSize: 15
     image:
-      tag: v0.13.0-rc.10
+      tag: v0.13.0
