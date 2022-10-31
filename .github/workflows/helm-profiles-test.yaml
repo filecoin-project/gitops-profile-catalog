@@ -28,6 +28,7 @@ jobs:
       - name: Add helm dependencies
         shell: bash
         run: |
+          helm version 
           for dir in $(ls -d charts/*/ | cut -f2 -d'/'); do
             repo_urls=$(helm dependency list charts/"$dir" | grep -Eo "(http|https)://[a-zA-Z0-9./?=_%:-]*" || true)
             i=0
