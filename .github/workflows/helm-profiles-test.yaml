@@ -104,6 +104,7 @@ jobs:
         - name: Install flux
           if: steps.compile-and-sort-layers.outputs.kind-ci == 'true' 
           run:  kubectl apply -f https://github.com/fluxcd/flux2/releases/download/v0.35.0/install.yaml
+
         - name: Test kind platform (kind)
           if: steps.compile-and-sort-layers.outputs.kind-ci == 'true' 
           env:
