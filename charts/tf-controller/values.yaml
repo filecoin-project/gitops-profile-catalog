@@ -12,7 +12,7 @@ tf-controller:
   caCertValidityDuration: 24h
   certRotationCheckFrequency: 30m
   image:
-    tag: v0.13.0-rc.10
+    tag: v0.13.0
   runner:
     grpc:
       maxMessageSize: 15
