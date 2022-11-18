@@ -16,6 +16,8 @@
   kind: EKSConfigTemplate
   metadata:
     name: '{{`{{ .params.CLUSTER_NAME }}`}}-machine-deployment-{{ $nodeGroup.name }}-0'
+    annotations:
+      kustomize.toolkit.fluxcd.io/prune: disabled
   spec:
     template: {}
 {{- range $key,$az := $nodeGroup.availabilityZones }}
