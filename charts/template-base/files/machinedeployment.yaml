@@ -4,6 +4,7 @@
   kind: AWSMachineTemplate
   metadata:
     name: '{{`{{ .params.CLUSTER_NAME }}`}}-{{`{{ .params.INSTANCE_TYPE_NODEGROUP_`}}{{ $nodeGroup.name }} }}-machine-deployment-{{ $nodeGroup.name }}-0'
+    namespace: '{{`{{ .params.NAMESPACE }}`}}'
     annotations:
       kustomize.toolkit.fluxcd.io/prune: disabled
   spec:
@@ -16,6 +17,7 @@
   kind: EKSConfigTemplate
   metadata:
     name: '{{`{{ .params.CLUSTER_NAME }}`}}-machine-deployment-{{ $nodeGroup.name }}-0'
+    namespace: '{{`{{ .params.NAMESPACE }}`}}'
     annotations:
       kustomize.toolkit.fluxcd.io/prune: disabled
   spec:
