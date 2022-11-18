@@ -31,7 +31,7 @@ template-base:
     minOptions: ["0", "1"]
     availabilityZones: ["a", "b", "c"]
     instanceTypeOptions:
-    - "r5.2xlarge"
+    - "r5.8xlarge"
   - name: 2
     type: MachineDeployment   # Only MachineDeployment supported today (Pending MachinePool)
     maxOptions: ["0", "1", "2"]
