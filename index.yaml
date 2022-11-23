@@ -5015,6 +5015,46 @@ entries:
       weave.works/profile: release-metrics-exporters
     apiVersion: v2
     appVersion: 0.0.0
+    created: "2022-11-23T13:21:41.184674116Z"
+    description: A suite of Prometheus Exporters to caputre release metrics from github,
+      docker hub, homebrew, and snapcraft.
+    digest: 5f2defa6d6e738f533b2e7421eb07c6abcaab5b919a6cf10e95d422893c80565
+    keywords:
+    - release-metrics
+    - homebrew
+    - snapcraft
+    - github
+    - docker-hub
+    maintainers:
+    - email: ian.s.davis@protocol.ai
+      name: ianconsolata
+    name: release-metrics-exporters
+    sources:
+    - https://github.com/filecoin-project/snapcraft-exporter
+    - https://github.com/filecoin-project/homebrew-exporter
+    - https://github.com/filecoin-project/github-exporter
+    - https://github.com/filecoin-project/docker-hub-exporter
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/release-metrics-exporters-0.1.0/release-metrics-exporters-0.1.0.tgz
+    version: 0.1.0
+  - annotations:
+      weave.works/category: Observability
+      weave.works/layer: layer-2
+      weave.works/links: |
+        - name: Release Metrics Application Repo
+          url: https://github.com/filecoin-project/release-metrics-gitops
+        - name: Snapcraft Exporter
+          url: https://github.com/filecoin-project/snapcraft-exporter
+        - name: Homebrew Exporter
+          url: https://github.com/filecoin-project/homebrew-exporter
+        - name: Github Exporter
+          url: https://github.com/filecoin-project/github-exporter
+        - name: DockerHub Exporter
+          url: https://github.com/filecoin-project/docker-hub-exporter
+      weave.works/profile: release-metrics-exporters
+    apiVersion: v2
+    appVersion: 0.0.0
     created: "2022-10-03T21:56:55.020622477Z"
     description: A suite of Prometheus Exporters to caputre release metrics from github,
       docker hub, homebrew, and snapcraft.
@@ -10056,4 +10096,4 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/velero-0.0.1/velero-0.0.1.tgz
     version: 0.0.1
-generated: "2022-11-18T20:02:33.135648877Z"
+generated: "2022-11-23T13:21:41.18766056Z"
