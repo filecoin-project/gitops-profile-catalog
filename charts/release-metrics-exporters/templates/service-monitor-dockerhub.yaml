@@ -6,7 +6,7 @@ metadata:
     serviceMonitorSelector: dockerhub-exporter
 spec:
   endpoints:
-  - interval: 10m
+  - interval: {{ .Values.dockerhub.interval }}
     port: metrics
     path: {{ .Values.dockerhub.metricsPath }}
   namespaceSelector:

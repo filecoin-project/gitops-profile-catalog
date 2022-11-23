@@ -39,5 +39,5 @@ spec:
           valueFrom:
             secretKeyRef:
               name: github
-              key: token
+              key: GITHUB_TOKEN
               optional: true
