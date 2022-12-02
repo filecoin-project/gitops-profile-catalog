@@ -20,7 +20,7 @@ spec:
         imagePullPolicy: Always
         command: ["/exporter"]
         args:
-        - --web.telemetry-path="{{ .Values.circleci.metricsPath }}""
+        - --web.telemetry-path="{{ .Values.circleci.metricsPath }}"
         - --web.listen-address=":{{ .Values.circleci.listenPort }}"
         - --gh.circleci-org="{{ .Values.circleci.org }}"
         - --gh.circleci-vcs-slug="{{ .Values.circleci.vcs }}"
