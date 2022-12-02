@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: circleci-exporter
+  labels:
+    app: circleci-exporter
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: circleci-exporter
+  template:
+    metadata:
+      labels:
+        app: circleci-exporter
+    spec:
+      containers:
+      - name: circleci-exporter
+        image: ianconsolata/circleci-exporter:latest
+        imagePullPolicy: Always
+        command: ["/bin/circleci-exporter"]
+        args:
+        - --web.telemetry-path={{ .Values.circleci.metricsPath }}
+        - --web.listen-address=":{{ .Values.circleci.listenPort }}"
+        - --gh.circleci-org="{{ .Values.circleci.org }}"
+        - --gh.circleci-vsc-slug="{{ .Values.circleci.vsc }}"
+        {{- range .Values.circleci.projects }}
+        - --gh.circleci-projects="{{ . }}"
+        {{- end}}
+        - --gh.circleci-token="CIRCLECI_TOKEN"
+        ports:
+        - containerPort: {{ .Values.circleci.listenPort }}
+        env:
+        - name: CIRCLECI_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: circleci
+              key: CIRCLECI_TOKEN
+              optional: true
