@@ -1,19 +1,19 @@
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  name: dockerhub-exporter
+  name: circleci-exporter
   labels:
-    serviceMonitorSelector: dockerhub-exporter
+    serviceMonitorSelector: circleci-exporter
 spec:
   endpoints:
-  - interval: {{ .Values.dockerhub.interval }}
+  - interval: {{ .Values.circleci.interval }}
     # TODO: This is a horrible hack to allow us to scrape many projects with one exporter,
     # a better solution is to deploy one exporter per project.
-    scrapeTimeout: {{ .Values.dockerhub.interval }}
+    scrapeTimeout: {{ .Values.circleci.interval }}
     port: metrics
-    path: {{ .Values.dockerhub.metricsPath }}
+    path: {{ .Values.circleci.metricsPath }}
   namespaceSelector:
     any: true
   selector:
     matchLabels:
-      app: dockerhub-exporter
+      app: circleci-exporter

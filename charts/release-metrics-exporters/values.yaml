@@ -1,5 +1,5 @@
 github:
-  interval : 10m
+  interval: 10m
   listenPort: 9888
   metricsPath: /metrics
   repos:
@@ -9,7 +9,7 @@ github:
   users:
   - ""
 dockerhub:
-  interval : 10m
+  interval: 10m
   listenPort: 9888
   metricsPath: /metrics
   images:
@@ -17,14 +17,22 @@ dockerhub:
   orgs:
   - ""
 homebrew:
-  interval : 10m
+  interval: 10m
   listenPort: 9888
   metricsPath: /metrics
   formulae:
   - ""
 snapcraft:
-  interval : 10m
+  interval: 10m
   listenPort: 9888
   metricsPath: /metrics
   names:
   - ""
+circleci:
+  interval: 10m
+  listenPort: 9888
+  metricsPath: /metrics
+  projects:
+  - ""
+  org: ""
+  vcs: github     # github, bitbucket

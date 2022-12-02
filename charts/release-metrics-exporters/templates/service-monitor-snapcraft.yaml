@@ -7,7 +7,9 @@ metadata:
 spec:
   endpoints:
   - interval: {{ .Values.snapcraft.interval }}
-    scrapeTimeout: 5m
+    # TODO: This is a horrible hack to allow us to scrape many projects with one exporter,
+    # a better solution is to deploy one exporter per project.
+    scrapeTimeout: {{ .Values.snapcraft.interval }}
     port: metrics
     path: {{ .Values.snapcraft.metricsPath }}
   namespaceSelector:
