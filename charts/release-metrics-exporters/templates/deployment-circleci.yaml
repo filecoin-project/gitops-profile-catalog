@@ -23,7 +23,7 @@ spec:
         - --web.telemetry-path={{ .Values.circleci.metricsPath }}
         - --web.listen-address=":{{ .Values.circleci.listenPort }}"
         - --gh.circleci-org="{{ .Values.circleci.org }}"
-        - --gh.circleci-vsc-slug="{{ .Values.circleci.vsc }}"
+        - --gh.circleci-vcs-slug="{{ .Values.circleci.vcs }}"
         {{- range .Values.circleci.projects }}
         - --gh.circleci-projects="{{ . }}"
         {{- end}}
