@@ -7,6 +7,9 @@ metadata:
 spec:
   endpoints:
   - interval: {{ .Values.dockerhub.interval }}
+    # TODO: This is a horrible hack to allow us to scrape many projects with one exporter,
+    # a better solution is to deploy one exporter per project.
+    scrapeTimeout: {{ .Values.dockerhub.interval }}
     port: metrics
     path: {{ .Values.dockerhub.metricsPath }}
   namespaceSelector:

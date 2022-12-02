@@ -7,6 +7,8 @@ metadata:
 spec:
   endpoints:
   - interval: {{ .Values.homebrew.interval }}
+    # Unlike the other exporters, homebrew makes a constant number of request then pulls all projects out of that request,
+    # so it can scale to many projects with a single exporter and no scrapeTimeout is needed
     port: metrics
     path: {{ .Values.homebrew.metricsPath }}
   namespaceSelector:
