@@ -791,6 +791,40 @@ entries:
       weave.works/profile-ci: |
         - "gke"
     apiVersion: v2
+    created: "2022-12-06T18:21:34.185001067Z"
+    dependencies:
+    - condition: dex.enabled
+      name: dex
+      repository: https://charts.dexidp.io
+      version: 0.12.1
+    description: A Weaveworks Helm chart for OpenID Connect (OIDC)
+    digest: a72bc8ce5c56cdbe0839df993ec6e060bd2cf60fd9de4aacd305bf02f77c9878
+    home: https://github.com/weaveworks/profiles-catalog
+    icon: https://dexidp.io/img/logos/dex-horizontal-color.png
+    keywords:
+    - dex
+    - oidc
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: dex
+    sources:
+    - https://github.com/dexidp/helm-charts
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/dex-0.0.30/dex-0.0.30.tgz
+    version: 0.0.30
+  - annotations:
+      weave.works/links: |
+        - name: Chart Sources
+          url: https://github.com/dexidp/helm-charts
+        - name: Upstream Project
+          url: https://github.com/dexidp/dex
+      weave.works/operator: "true"
+      weave.works/profile-ci: |
+        - "gke"
+    apiVersion: v2
     created: "2022-12-06T17:01:09.59024857Z"
     dependencies:
     - condition: dex.enabled
@@ -10330,4 +10364,4 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/velero-0.0.1/velero-0.0.1.tgz
     version: 0.0.1
-generated: "2022-12-06T17:01:09.591984389Z"
+generated: "2022-12-06T18:21:34.186486953Z"
