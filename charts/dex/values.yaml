@@ -22,10 +22,6 @@ dex:
         paths:
           - path: /
             pathType: ImplementationSpecific
-    tls:
-    - hosts:
-      - nonprod-auth.w3ops.net
-      secretName: dex-cert
   envFrom:
   - secretRef:
       name: dex-auth
