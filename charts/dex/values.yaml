@@ -25,7 +25,7 @@ dex:
     # -- (duration) Prometheus scrape timeout.
     scrapeTimeout: 15m
     # -- Labels to be added to the ServiceMonitor.
-    labels: {"dex", "wge"}
+    labels: {}
 
   ingress:
     enabled: true
