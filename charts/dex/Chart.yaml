@@ -1,3 +1,4 @@
+# https://github.com/dexidp/helm-charts/blob/5b9fc6fa39b7c6779d83e4e6aeaf56da67dcf2e3/charts/dex/values.yaml
 apiVersion: v2
 name: dex
 icon: https://dexidp.io/img/logos/dex-horizontal-color.png
