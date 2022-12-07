@@ -12,6 +12,26 @@ dex:
     storage:
       type: memory
     enablePasswordDB: true
+
+  serviceMonitor:
+    # -- Enable Prometheus ServiceMonitor.
+    # See the [documentation](https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/design.md#servicemonitor) and the [API reference](https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#servicemonitor) for details.
+    enabled: false
+  
+    # -- Namespace where the ServiceMonitor resource should be deployed.
+    # @default -- Release namespace.
+    namespace: "monitoring"
+  
+    # -- (duration) Prometheus scrape interval.
+    interval: 1h
+  
+    # -- (duration) Prometheus scrape timeout.
+    scrapeTimeout: 15m
+  
+    # -- Labels to be added to the ServiceMonitor.
+    labels: {"dex", "wge"}
+
+
   ingress:
     enabled: true
     className: nginx
