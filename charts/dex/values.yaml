@@ -19,7 +19,7 @@ dex:
     enabled: false
     # -- Namespace where the ServiceMonitor resource should be deployed.
     # @default -- Release namespace.
-    namespace: "dex"
+    namespace: "monitoring"
     # -- (duration) Prometheus scrape interval.
     interval: 1h
     # -- (duration) Prometheus scrape timeout.
