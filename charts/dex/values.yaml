@@ -10,8 +10,9 @@ dex:
   config:
     issuer: https://nonprod-auth.w3ops.net
     storage:
-      type: memory
-    enablePasswordDB: true
+      type: kubernetes
+      config:
+        inCluster: true
 
   serviceMonitor:
     # -- Enable Prometheus ServiceMonitor.
