@@ -35,6 +35,10 @@
     clusterName: '{{`{{ .params.CLUSTER_NAME }}`}}'
   spec:
     clusterName: '{{`{{ .params.CLUSTER_NAME }}`}}'
+    strategy: 
+      type: RollingUpdate
+      RollingUpdate:
+        maxUnavailable: 1 
     selector:
       matchLabels:
     template:
@@ -43,10 +47,6 @@
           min: nodes-{{`{{ .params.MIN_NODES_NODEGROUP_`}}{{ $nodeGroup.name }} }}
           max: nodes-{{`{{ .params.MAX_NODES_NODEGROUP_`}}{{ $nodeGroup.name }} }}
       spec:
-        strategy: 
-          type: RollingUpdate
-          RollingUpdate:
-            maxUnavailable: 1 
         clusterName: '{{`{{ .params.CLUSTER_NAME }}`}}'
         version: '{{`{{ .params.KUBERNETES_VERSION }}`}}'
         failureDomain: '{{`{{ .params.AWS_REGION }}`}}{{ $az }}'
