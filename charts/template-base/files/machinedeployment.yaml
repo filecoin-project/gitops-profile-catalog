@@ -37,7 +37,7 @@
     clusterName: '{{`{{ .params.CLUSTER_NAME }}`}}'
     strategy: 
       type: RollingUpdate
-      RollingUpdate:
+      rollingUpdate:
         maxUnavailable: 1 
     selector:
       matchLabels:
