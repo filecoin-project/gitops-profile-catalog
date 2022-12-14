@@ -357,6 +357,45 @@ entries:
         - "gke"
         - "kind"
     apiVersion: v2
+    created: "2022-12-14T21:39:42.309422472Z"
+    dependencies:
+    - name: cert-manager
+      repository: https://charts.jetstack.io
+      version: 1.9.2
+    description: A Weaveworks Helm chart for the Certificate Profile
+    digest: c0f32928d423422d05d32e16431aaecf70b6f181a3bbc35780a49cc574358818
+    home: https://github.com/weaveworks/profiles-catalog
+    icon: https://raw.githubusercontent.com/jetstack/cert-manager/master/logo/logo.png
+    keywords:
+    - cert-manager
+    - kube-lego
+    - letsencrypt
+    - tls
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: cert-manager
+    sources:
+    - https://charts.jetstack.io
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/cert-manager-2.0.2/cert-manager-2.0.2.tgz
+    version: 2.0.2
+  - annotations:
+      weave.works/category: Certificate
+      weave.works/layer: layer-0
+      weave.works/links: |
+        - name: Chart Sources
+          url: https://charts.jetstack.io
+        - name: Upstream Project
+          url: https://github.com/jetstack/cert-manager
+      weave.works/operator: "true"
+      weave.works/profile: cert-manager
+      weave.works/profile-ci: |
+        - "gke"
+        - "kind"
+    apiVersion: v2
     created: "2022-07-26T13:42:49.97772916Z"
     dependencies:
     - name: cert-manager
@@ -7557,6 +7596,28 @@ entries:
     version: 0.0.1
   template-filecoin-infra:
   - apiVersion: v2
+    created: "2022-12-14T21:39:42.702609198Z"
+    dependencies:
+    - name: template-base
+      repository: file://../template-base
+      version: 0.5.16
+    description: A Weaveworks Helm chart for template-filecoin-infra
+    digest: 7bb8dbae52b0cd9ce4b2ba9996e966e0030abbcb6fdcbd081d7bc5949e4dedcf
+    home: https://github.com/weaveworks/profiles-catalog
+    keywords:
+    - template-filecoin-infra
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: template-filecoin-infra
+    sources:
+    - https://github.com/filecoin-project/gitops-profile-catalog
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/template-filecoin-infra-0.0.25/template-filecoin-infra-0.0.25.tgz
+    version: 0.0.25
+  - apiVersion: v2
     created: "2022-12-08T21:59:42.249293282Z"
     dependencies:
     - name: template-base
@@ -10835,4 +10896,4 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/velero-0.0.1/velero-0.0.1.tgz
     version: 0.0.1
-generated: "2022-12-09T23:33:59.44679533Z"
+generated: "2022-12-14T21:39:42.704645759Z"
