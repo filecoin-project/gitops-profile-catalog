@@ -90,7 +90,7 @@ template-base:
     \    eks.amazonaws.com/role-arn: arn:aws:iam::{{ template \"template-base.accountIDAnnotation\" . }}:role/{{`{{ .params.CLUSTER_NAME }}`}}-external-dns
     "
   - name: cert-manager
-    version: 2.0.1
+    version: 2.0.2
     values: "\
     cert-manager:\\n
     \ serviceAccount:\\n
