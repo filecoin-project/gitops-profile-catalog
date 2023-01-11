@@ -2,7 +2,7 @@ apiVersion: v2
 name: template-sentinel
 description: A Weaveworks Helm chart for template-sentinel
 type: application
-version: 0.4.22
+version: 0.4.23
 kubeVersion: ">=1.16.0-0"
 home: https://github.com/weaveworks/profiles-catalog
 sources:
@@ -17,5 +17,5 @@ maintainers:
 
 dependencies:
 - name: template-base
-  version: "0.5.17"
+  version: "0.5.18"
   repository: "file://../template-base"

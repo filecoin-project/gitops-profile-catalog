@@ -3,6 +3,8 @@
   metadata:
     name:  '{{`{{ .params.CLUSTER_NAME }}`}}-cluster-autoscaler'
     namespace: clusters
+    annotations:
+      reloader.stakater.com/auto: "true"
     labels:
       app: cluster-autoscaler
   spec:
