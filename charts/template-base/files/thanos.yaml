@@ -166,6 +166,7 @@
           - --grpc-address=0.0.0.0:10901
           - --http-address=0.0.0.0:10902
           - --query.replica-label=replica
+          - --query.auto-downsampling
           - --grpc-client-tls-secure
           - --grpc-client-server-name=thanos.{{`{{ printf "%.*s" 22 .params.CLUSTER_NAME }}`}}s.{{`{{ .params.TEAM }}`}}.{{`{{ .params.AWS_ACCOUNT_NAME }}`}}.w3ops.net
           - --store=dns+thanos.{{`{{ printf "%.*s" 22 .params.CLUSTER_NAME }}`}}s.{{`{{ .params.TEAM }}`}}.{{`{{ .params.AWS_ACCOUNT_NAME }}`}}.w3ops.net:443
