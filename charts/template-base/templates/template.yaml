@@ -57,7 +57,7 @@ spec:
       {{- end }}
     - name: MULTI_TENANT_ENABLED
       description: Enabled multi-tenant restrictions 
-      required: false
+      required: true
       options:
       - "true"
       - "false"
