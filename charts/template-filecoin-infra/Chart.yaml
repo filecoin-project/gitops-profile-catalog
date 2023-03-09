@@ -2,7 +2,7 @@ apiVersion: v2
 name: template-filecoin-infra
 description: A Weaveworks Helm chart for template-filecoin-infra
 type: application
-version: 0.0.30
+version: 0.0.31
 kubeVersion: ">=1.16.0-0"
 home: https://github.com/weaveworks/profiles-catalog
 sources:
@@ -17,5 +17,5 @@ maintainers:
 
 dependencies:
 - name: template-base
-  version: "0.5.21"
+  version: "0.5.22"
   repository: "file://../template-base"
