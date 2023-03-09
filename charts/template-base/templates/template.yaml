@@ -60,6 +60,7 @@ spec:
       required: false
       options:
       - "true"
+      - "false"
     {{- range $nodeGroup := .Values.nodeGroups }}
     - name: MAX_NODES_NODEGROUP_{{ $nodeGroup.name }}
       description: max nodes for {{ $nodeGroup.name }}
