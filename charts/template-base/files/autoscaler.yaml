@@ -32,6 +32,8 @@
           - --clusterapi-cloud-config-authoritative
           - --node-group-auto-discovery=clusterapi:clusterName={{`{{ .params.CLUSTER_NAME }}`}}
           - --balance-similar-node-groups
+          - --scale-down-enabled
+          - --scale-down-unneeded-time=3m
         serviceAccountName: cluster-autoscaler
         terminationGracePeriodSeconds: 10
         tolerations:
