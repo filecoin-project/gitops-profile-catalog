@@ -82,6 +82,7 @@ template-base:
     "
   - name: external-dns
     version: 0.0.9
+    editable: true
     values: "\
     external-dns:\\n
     \ txtOwnerId: {{`{{ .params.CLUSTER_NAME }}`}}\\n
@@ -91,6 +92,7 @@ template-base:
     "
   - name: cert-manager
     version: 2.0.2
+    editable: true
     values: "\
     cert-manager:\\n
     \ serviceAccount:\\n
@@ -99,8 +101,10 @@ template-base:
     "
   - name: cert-manager-issuer
     version: 0.0.4
+    editable: true
   - name: aws-ebs-csi-driver
     version: 0.0.3
+    editable: true
     values: "\
     aws-ebs-csi-driver:\\n
     \ controller:\\n
@@ -110,8 +114,10 @@ template-base:
     "
   - name: aws-node-term-handler
     version: 0.0.1
+    editable: true
   - name: aws-load-balancer-controller
     version: 0.0.2
+    editable: true
     values: "\
     aws-load-balancer-controller:\\n
     \ clusterName: {{`{{ .params.CLUSTER_NAME }}`}}\\n
@@ -147,8 +153,10 @@ template-base:
     "
   - name: ingress-nginx
     version: 0.0.12
+    editable: true
   - name: policy-agent
     version: 1.0.1
+    editable: true
   - name: promtail
     version: 0.0.8
     editable: true
