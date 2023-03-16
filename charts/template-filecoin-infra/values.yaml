@@ -162,6 +162,7 @@ template-base:
     editable: true
   - name: snapshot-controller
     version: 0.0.1
+    editable: true
   - name: fil-infra
     version: 0.0.7
     editable: true
