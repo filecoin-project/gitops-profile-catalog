@@ -3,3 +3,28 @@ aws-ebs-csi-driver:
     serviceAccount:
       annotations:
         eks.amazonaws.com/role-arn: 'arn:aws:iam::{{ .params.AWS_ACCOUNT_ID }}:role/{{ .params.CLUSTER_NAME }}-ebs-csi-controller'
+    enableMetrics: true
+  storageClasses:
+  - name: gp3
+    annotations:
+      storageclass.kubernetes.io/is-default-class: "true"
+    provisioner: ebs.csi.aws.com
+    volumeBindingMode: WaitForFirstConsumer
+    reclaimPolicy: Delete
+    allowVolumeExpansion: true
+  - name: gp3-retain
+    annotations:
+      storageclass.kubernetes.io/is-default-class: "false"
+    provisioner: ebs.csi.aws.com
+    volumeBindingMode: WaitForFirstConsumer
+    reclaimPolicy: Retain
+    allowVolumeExpansion: true
+  volumeSnapshotClasses:
+  - name: ebs-csi-snapclass
+    annotations:
+      snapshot.storage.kubernetes.io/is-default-class: "true"
+    deletionPolicy: Delete
+    driver: ebs.csi.aws.com
+  - name: ebs-csi-snapclass-retain
+    deletionPolicy: Retain
+    driver: ebs.csi.aws.com
