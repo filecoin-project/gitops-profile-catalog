@@ -3,7 +3,7 @@ name: aws-ebs-csi-driver
 icon: https://raw.githubusercontent.com/aws-ebs-csi-driver/aws-ebs-csi-driver.github.io/master/assets/aws-ebs-csi-driver_logo-cb55bb5c346.png
 description: A Weaveworks Helm chart for the aws ebs csi driver
 type: application
-version: 0.0.3
+version: 0.0.4
 kubeVersion: ">=1.16.0-0"
 home: https://github.com/weaveworks/profiles-catalog
 sources:
@@ -28,5 +28,5 @@ maintainers:
 
 dependencies:
 - name: aws-ebs-csi-driver
-  version: "2.6.7"
+  version: "2.18.0"
   repository: "https://kubernetes-sigs.github.io/aws-ebs-csi-driver"
