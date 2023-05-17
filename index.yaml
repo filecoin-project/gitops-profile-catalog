@@ -10,6 +10,38 @@ entries:
       weave.works/operator: "true"
       weave.works/profile: aws-ebs-csi-driver
     apiVersion: v2
+    created: "2023-05-17T17:52:55.719713115Z"
+    dependencies:
+    - name: aws-ebs-csi-driver
+      repository: https://kubernetes-sigs.github.io/aws-ebs-csi-driver
+      version: 2.18.0
+    description: A Weaveworks Helm chart for the aws ebs csi driver
+    digest: b1c9c359b3e6e3049a27fb8d9bcc4f8886a7cb2cff06664ec3fc4f3a8588d51a
+    home: https://github.com/weaveworks/profiles-catalog
+    icon: https://raw.githubusercontent.com/aws-ebs-csi-driver/aws-ebs-csi-driver.github.io/master/assets/aws-ebs-csi-driver_logo-cb55bb5c346.png
+    keywords:
+    - operator
+    - aws-ebs-csi-driver
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: aws-ebs-csi-driver
+    sources:
+    - https://kubernetes-sigs.github.io/aws-ebs-csi-driver
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/aws-ebs-csi-driver-0.0.5/aws-ebs-csi-driver-0.0.5.tgz
+    version: 0.0.5
+  - annotations:
+      weave.works/category: eks
+      weave.works/layer: layer-1
+      weave.works/links: |
+        - name: Chart Sources
+          url: https://kubernetes-sigs.github.io/aws-ebs-csi-driver
+      weave.works/operator: "true"
+      weave.works/profile: aws-ebs-csi-driver
+    apiVersion: v2
     created: "2023-05-17T17:29:12.790400973Z"
     dependencies:
     - name: aws-ebs-csi-driver
@@ -11350,4 +11382,4 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/velero-0.0.1/velero-0.0.1.tgz
     version: 0.0.1
-generated: "2023-05-17T17:29:12.792928313Z"
+generated: "2023-05-17T17:52:55.721996119Z"
