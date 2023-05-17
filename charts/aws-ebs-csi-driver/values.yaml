@@ -8,14 +8,12 @@ aws-ebs-csi-driver:
   - name: gp3
     annotations:
       storageclass.kubernetes.io/is-default-class: "true"
-    provisioner: ebs.csi.aws.com
     volumeBindingMode: WaitForFirstConsumer
     reclaimPolicy: Delete
     allowVolumeExpansion: true
   - name: gp3-retain
     annotations:
       storageclass.kubernetes.io/is-default-class: "false"
-    provisioner: ebs.csi.aws.com
     volumeBindingMode: WaitForFirstConsumer
     reclaimPolicy: Retain
     allowVolumeExpansion: true
