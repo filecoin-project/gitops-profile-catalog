@@ -95,7 +95,7 @@ jobs:
 
         - name: Create kind cluster
           if: steps.compile-and-sort-layers.outputs.kind-ci == 'true'
-          uses: helm/kind-action@v1.2.0
+          uses: helm/kind-action@v1.7.0
 
         - name: Create wego-system namespace (kind)
           if: steps.compile-and-sort-layers.outputs.kind-ci == 'true' 
