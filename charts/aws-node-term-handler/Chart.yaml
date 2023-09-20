@@ -3,7 +3,8 @@ name: aws-node-term-handler
 icon: https://raw.githubusercontent.com/aws/eks-charts/master/docs/logo/aws.png
 description: A Weaveworks Helm chart for the aws node termination handler
 type: application
-version: 0.0.1
+version: 0.1.0
+appVersion: 1.20.0
 kubeVersion: ">=1.16.0-0"
 home: https://github.com/weaveworks/profiles-catalog
 sources:
@@ -27,5 +28,5 @@ maintainers:
 
 dependencies:
 - name: aws-node-termination-handler
-  version: "0.18.3"
+  version: "0.21.0"
   repository: "https://aws.github.io/eks-charts/"
