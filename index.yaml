@@ -202,6 +202,38 @@ entries:
       weave.works/operator: "true"
       weave.works/profile: aws-node-term-handler
     apiVersion: v2
+    appVersion: 1.20.0
+    created: "2023-09-20T17:17:26.546553048Z"
+    dependencies:
+    - name: aws-node-termination-handler
+      repository: https://aws.github.io/eks-charts/
+      version: 0.21.0
+    description: A Weaveworks Helm chart for the aws node termination handler
+    digest: 81a61ebdfa1975be39ec391fcc428467fdc90d670a5f08ef11ba2c0c76f892d9
+    home: https://github.com/weaveworks/profiles-catalog
+    icon: https://raw.githubusercontent.com/aws/eks-charts/master/docs/logo/aws.png
+    keywords:
+    - operator
+    - aws-node-term-handler
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: support@weave.works
+      name: Weaveworks
+    name: aws-node-term-handler
+    sources:
+    - https://aws.github.io/eks-charts/
+    type: application
+    urls:
+    - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/aws-node-term-handler-0.1.0/aws-node-term-handler-0.1.0.tgz
+    version: 0.1.0
+  - annotations:
+      weave.works/category: eks
+      weave.works/links: |
+        - name: Chart Sources
+          url: https://aws.github.io/eks-charts/
+      weave.works/operator: "true"
+      weave.works/profile: aws-node-term-handler
+    apiVersion: v2
     created: "2022-06-27T13:31:48.447693955Z"
     dependencies:
     - name: aws-node-termination-handler
@@ -11382,4 +11414,4 @@ entries:
     urls:
     - https://github.com/filecoin-project/gitops-profile-catalog/releases/download/velero-0.0.1/velero-0.0.1.tgz
     version: 0.0.1
-generated: "2023-05-17T17:52:55.721996119Z"
+generated: "2023-09-20T17:17:26.548633499Z"
