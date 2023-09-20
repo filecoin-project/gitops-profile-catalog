@@ -2,3 +2,5 @@
 #   serviceAccount:
 #     annotations:
 #       eks.amazonaws.com/role-arn: ""
+image:
+  tag: v1.20.0
